@@ -1,10 +1,12 @@
-import HeroSection from '../components/HeroSection';
+// src/app/page.js
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
-      <HeroSection />
-      {/* Other home page content */}
+      <Navbar />
+      <Hero />
     </>
   );
 }
