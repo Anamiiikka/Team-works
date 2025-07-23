@@ -5,7 +5,7 @@ const SideCard = ({ imgUrl, title, description, overlayCard, className = "", pos
   return (
     <div className={`relative ${className}`}>
       {/* Main Card - Fully Responsive */}
-      <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl shadow-2xl overflow-hidden w-64 h-80 lg:w-64 lg:h-80 md:w-48 md:h-64 sm:w-40 sm:h-52">
+      <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl overflow-hidden w-56 h-80 lg:w-56 lg:h-80 md:w-44 md:h-64 sm:w-36 sm:h-52">
         <div className="h-48 overflow-hidden lg:h-48 md:h-32 sm:h-26">
           <img
             src={imgUrl}
@@ -22,7 +22,7 @@ const SideCard = ({ imgUrl, title, description, overlayCard, className = "", pos
       {/* Overlay Card - Fully Responsive */}
       {overlayCard && (
         <div
-          className="absolute bg-white/70 backdrop-blur-md rounded-2xl p-4 shadow-xl w-48 z-10 border border-white/20 lg:w-48 lg:p-4 md:w-36 md:p-3 sm:w-28 sm:p-2"
+          className="absolute bg-white/70 backdrop-blur-md rounded-lg p-4 shadow-xl w-44 z-10 border border-white/20 lg:w-44 lg:p-4 md:w-32 md:p-3 sm:w-24 sm:p-2"
           style={{
             ...positionStyle,
           }}
@@ -81,15 +81,17 @@ export default function Hero() {
                 title="Analytics"
                 description="Real-time insights and data"
                 overlayCard={
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-4 h-4 bg-blue-500 rounded-lg flex items-center justify-center">
-                        <div className="w-1 h-1 bg-white rounded"></div>
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-900">Portfolio</p>
-                        <p className="text-[8px] text-gray-500">Active</p>
-                      </div>
+                  <div className="text-center">
+                    <div className="w-10 h-10 mx-auto mb-3 rounded-full overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
+                        alt="Profile" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-gray-900 mb-1">Portfolio</p>
+                      <p className="text-[8px] text-gray-500 mb-2">Active</p>
                     </div>
                     <p className="text-sm font-bold text-gray-900 mb-1">$24,500</p>
                     <p className="text-xs text-green-600 font-medium">+12.5%</p>
@@ -117,7 +119,7 @@ export default function Hero() {
               </div>
 
               {/* Ray S. Anderson Card - Mobile Horizontal */}
-              <div className="bg-white/70 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-white/20">
+              <div className="bg-white/70 backdrop-blur-md rounded-xl p-4 shadow-xl border border-white/20">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-6 h-6 bg-pink-500/20 rounded-full flex items-center justify-center">
                     <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
@@ -138,15 +140,17 @@ export default function Hero() {
                   title="Real-time"
                   description="Analytics Data Dashboard"
                   overlayCard={
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
-                          <div className="w-1 h-1 bg-white rounded-full"></div>
-                        </div>
-                        <div>
-                          <p className="text-xs font-semibold text-gray-900">Analytics</p>
-                          <p className="text-[8px] text-gray-500">Real-time</p>
-                        </div>
+                    <div className="text-center">
+                      <div className="w-10 h-10 mx-auto mb-3 rounded-full overflow-hidden">
+                        <img 
+                          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=100&h=100&fit=crop&crop=center" 
+                          alt="Analytics" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-gray-900 mb-1">Analytics</p>
+                        <p className="text-[8px] text-gray-500 mb-2">Real-time</p>
                       </div>
                       <p className="text-sm font-bold text-gray-900 mb-1">94.2%</p>
                       <p className="text-xs text-green-600 font-medium">+2.1%</p>
@@ -158,31 +162,33 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Desktop Layout (grid) - UNCHANGED */}
+          {/* Desktop Layout (grid) - UPDATED POSITIONING */}
           <div className="hidden lg:grid lg:grid-cols-12 gap-16 items-start">
            
-            {/* Left Card - Desktop */}
-            <div className="lg:col-span-3 flex justify-center lg:justify-end mt-32 relative z-50">
+            {/* Left Card - Desktop - Lower position */}
+            <div className="lg:col-span-3 flex justify-center lg:justify-end mt-40 relative z-50">
               <SideCard
                 imgUrl="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=600&fit=crop"
                 title="Analytics"
                 description="Real-time insights and data"
                 overlayCard={
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-6 h-6 bg-blue-500 rounded-lg flex items-center justify-center">
-                        <div className="w-2 h-2 bg-white rounded"></div>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">Portfolio</p>
-                        <p className="text-xs text-gray-500">Active</p>
-                      </div>
+                  <div className="text-center">
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-full overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" 
+                        alt="Profile" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900 mb-1">Portfolio</p>
+                      <p className="text-xs text-gray-500 mb-2">Active</p>
                     </div>
                     <p className="text-xl font-bold text-gray-900 mb-1">$24,500</p>
                     <p className="text-sm text-green-600 font-medium">+12.5%</p>
                   </div>
                 }
-                positionStyle={{ bottom: '-1.5rem', right: '-1.5rem' }}
+                positionStyle={{ bottom: '-1.5rem', right: '-1.5rem', zIndex: 100 }}
               />
             </div>
            
@@ -208,28 +214,30 @@ export default function Hero() {
               </div>
             </div>
            
-            {/* Right Card - Desktop */}
-            <div className="lg:col-span-3 flex justify-center lg:justify-start mt-32">
+            {/* Right Card - Desktop - Higher position */}
+            <div className="lg:col-span-3 flex justify-center lg:justify-start mt-24">
               <SideCard
                 imgUrl="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=600&fit=crop"
                 title="Real-time"
                 description="Analytics Data Dashboard"
                 overlayCard={
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900">Analytics</p>
-                        <p className="text-xs text-gray-500">Real-time</p>
-                      </div>
+                  <div className="text-center">
+                    <div className="w-12 h-12 mx-auto mb-3 rounded-full overflow-hidden">
+                      <img 
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=100&h=100&fit=crop&crop=center" 
+                        alt="Analytics" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900 mb-1">Analytics</p>
+                      <p className="text-xs text-gray-500 mb-2">Real-time</p>
                     </div>
                     <p className="text-xl font-bold text-gray-900 mb-1">94.2%</p>
                     <p className="text-sm text-green-600 font-medium">+2.1%</p>
                   </div>
                 }
-                positionStyle={{ bottom: '-1.5rem', left: '-1.5rem' }}
+                positionStyle={{ bottom: '-4rem', left: '-1.5rem' }}
               />
             </div>
           </div>
@@ -240,8 +248,8 @@ export default function Hero() {
           <div className="max-w-5xl mx-auto px-4 lg:px-6">
             <div className="grid grid-cols-1 gap-4 max-w-3xl mx-auto sm:grid-cols-2 sm:gap-6">
              
-              {/* Bottom Left Card - Desktop */}
-              <div className="bg-white/70 backdrop-blur-md rounded-xl p-3 shadow-xl border border-white/20 lg:p-5 md:p-4">
+              {/* Bottom Left Card - Desktop - Lower z-index */}
+              <div className="bg-white/70 backdrop-blur-md rounded-xl p-3 shadow-xl border border-white/20 lg:p-5 md:p-4 relative z-20">
                 <div className="flex items-center gap-2 mb-2 lg:gap-3 lg:mb-3">
                   <div className="w-6 h-6 bg-purple-500/20 rounded-lg flex items-center justify-center lg:w-8 lg:h-8">
                     <div className="w-3 h-3 bg-purple-500 rounded lg:w-4 lg:h-4"></div>
@@ -256,7 +264,7 @@ export default function Hero() {
               </div>
              
               {/* Bottom Right Card - Desktop */}
-              <div className="bg-white/70 backdrop-blur-md rounded-2xl p-3 shadow-xl border border-white/20 relative z-40 lg:p-5 md:p-4">
+              <div className="bg-white/70 backdrop-blur-md rounded-xl p-3 shadow-xl border border-white/20 relative z-40 lg:p-5 md:p-4">
                 <div className="flex items-center gap-2 mb-2 lg:gap-3 lg:mb-3">
                   <div className="w-6 h-6 bg-pink-500/20 rounded-full flex items-center justify-center lg:w-8 lg:h-8">
                     <div className="w-3 h-3 bg-pink-500 rounded-full lg:w-4 lg:h-4"></div>
