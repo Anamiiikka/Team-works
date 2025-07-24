@@ -9,20 +9,22 @@ const AboutUs = () => {
           {/* Left Side - Overlapping Images */}
           <div className="relative h-96 lg:h-[500px]">
             {/* Main background image - Office meeting */}
-            <div className="absolute top-0 left-0 w-120 h-100 rounded-2xl overflow-hidden shadow-xl z-10">
+            <div className="absolute top-0 left-0 w-120 h-100 rounded-2xl shadow-xl z-10 border-4 border-white bg-white p-1">
               <img 
                 src="/about2.png" 
                 alt="Business meeting" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl"
+                style={{ borderRadius: '0.75rem' }}
               />
             </div>
             
             {/* Second overlapping image - Woman with tablet */}
-            <div className="absolute top-52 right-8 w-78 h-68 rounded-2xl overflow-hidden shadow-xl z-20">
+            <div className="absolute top-52 right-8 w-78 h-68 rounded-2xl shadow-xl z-20 border-4 border-white bg-white p-1">
               <img 
                 src="/about1.png" 
                 alt="Professional woman with tablet" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl"
+                style={{ borderRadius: '0.75rem' }}
               />
             </div>
             
