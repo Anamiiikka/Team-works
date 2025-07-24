@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { Header } from "./ui/Header";
+
 
 export default function Index() {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -47,8 +47,7 @@ export default function Index() {
         }}
       />
 
-      {/* Header */}
-      <Header />
+      
 
       {/* Hero Section */}
       <div className="relative w-full flex flex-col items-center">
