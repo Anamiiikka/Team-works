@@ -117,7 +117,7 @@ export default function Index() {
 
         {/* MIDDLE: Large Container Card with Two Cards Inside */}
         <div
-          className="w-full max-w-[640px] h-[300px] rounded-[20px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_10px_30px_0_rgba(0,0,0,0.15)] relative p-[10px] mb-[40px] mx-auto"
+          className="w-full max-w-[744px] h-[258px] rounded-[20px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_10px_30px_0_rgba(0,0,0,0.15)] relative p-[10px] mb-[40px] mx-auto"
           style={{ backdropFilter: "blur(13px)" }}
         >
           {/* Background Blur Effect */}
@@ -188,7 +188,7 @@ export default function Index() {
       </div>
 
       {/* Left Dashboard Image */}
-      <div className="w-[269px] h-[350px] absolute left-[100px] top-[300px]">
+      <div className="w-[261px] h-[353px] absolute left-[31px] top-[356px]">
         <img 
           className="w-[269px] h-[350px] rounded-[10px] absolute left-0 top-0" 
           src="/left.png"
@@ -198,7 +198,7 @@ export default function Index() {
 
       {/* Left Statistics Card */}
       <div 
-        className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] absolute left-[200px] top-[500px] w-[246px] h-[310px]"
+        className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] absolute left-[200px] top-[500px] w-[240px] h-[257px]"
         style={{ backdropFilter: "blur(10px)" }}
       >
         <h3 className="w-[206px] h-[60px] text-[#000] text-center font-['Inter'] text-[20px] font-[500] leading-[30px]">
