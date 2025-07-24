@@ -1,7 +1,6 @@
 import React from 'react';
 import { Star, TrendingUp, User, BarChart3, Diamond } from 'lucide-react';
 
-// Smart Finance Kicker - positioned below heading
 // Smart Finance Kicker - positioned below heading with one-line text
 const SmartFinanceKicker = () => {
   return (
@@ -17,7 +16,7 @@ const SmartFinanceKicker = () => {
       <div 
         className="inline-flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
         style={{
-          width: '260px', // Increased width to accommodate one-line text
+          width: '260px',
           height: '42px',
           borderRadius: '12px',
           padding: '10px 20px',
@@ -27,7 +26,7 @@ const SmartFinanceKicker = () => {
           boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
           position: 'relative',
           zIndex: 101,
-          whiteSpace: 'nowrap' // Ensures text stays on one line
+          whiteSpace: 'nowrap'
         }}
       >
         <Diamond className="w-5 h-5 text-blue-600" style={{ fill: 'currentColor' }} />
@@ -35,7 +34,7 @@ const SmartFinanceKicker = () => {
           color: '#374151', 
           fontSize: '15px', 
           fontWeight: '600',
-          whiteSpace: 'nowrap' // Prevents text wrapping
+          whiteSpace: 'nowrap'
         }}>
           Smart Finance, smart living
         </span>
@@ -43,7 +42,6 @@ const SmartFinanceKicker = () => {
     </div>
   );
 };
-
 
 // Main side card component
 const SideCard = ({ imgUrl, overlayCard, className = "", positionStyle = {} }) => {
@@ -73,7 +71,7 @@ const SideCard = ({ imgUrl, overlayCard, className = "", positionStyle = {} }) =
   );
 };
 
-// Hero Component - Modified for normal document flow
+// Hero Component
 export default function Hero() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-white overflow-hidden relative">
@@ -105,11 +103,54 @@ export default function Hero() {
               </p>
              
               <div className="flex flex-col gap-3 items-center -mt-1">
-                <button className="w-full max-w-xs px-6 py-3 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors text-sm">
-                  Get Started
+                <button 
+                  className="bg-black text-white font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center relative"
+                  style={{
+                    width: '150px',
+                    height: '51px',
+                    borderRadius: '240px',
+                    opacity: 1,
+                    fontSize: '14px',
+                    fontWeight: '600'
+                  }}
+                >
+                  {/* Icon with exact positioning */}
+                  <div
+                    className="absolute"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      top: '6px',
+                      left: '7px',
+                      opacity: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '50%'
+                    }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14m-7-7 7 7-7 7"/>
+                    </svg>
+                  </div>
+                  
+                  {/* Button text - adjusted for icon space */}
+                  <span style={{ marginLeft: '20px' }}>Get Started</span>
                 </button>
-                <button className="w-full max-w-xs px-6 py-3 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition-colors text-sm">
-                  Try Now
+                
+                <button 
+                  className="bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center"
+                  style={{
+                    width: '150px',
+                    height: '51px',
+                    borderRadius: '240px',
+                    opacity: 1,
+                    fontSize: '14px',
+                    fontWeight: '600'
+                  }}
+                >
+                  Get a Demo
                 </button>
               </div>
             </div>
@@ -216,26 +257,66 @@ export default function Hero() {
             </div>
            
             <div className="lg:col-span-6 text-center px-6 pt-0">
-               <SmartFinanceKicker />
+              <SmartFinanceKicker />
               {/* Main heading first - Desktop */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 leading-none text-gray-900 text-center max-w-4xl mx-auto">
                 <span className="block whitespace-nowrap">We're here to help you</span>
                 <span className="block whitespace-nowrap">achieve financial success</span>
               </h1>
-
-              {/* Smart Finance Kicker below heading - Desktop */}
-             
              
               <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
                 Achieve financial success through personalized strategies and expert guidance tailored to your unique goals and circumstances.
               </p>
              
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center -mt-2">
-                <button className="px-10 py-4 bg-black text-white rounded-full font-semibold hover:bg-gray-800 transition-colors text-base">
-                  Get Started
+                <button 
+                  className="bg-black text-white font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center relative"
+                  style={{
+                    width: '150px',
+                    height: '51px',
+                    borderRadius: '240px',
+                    opacity: 1,
+                    fontSize: '14px',
+                    fontWeight: '600'
+                  }}
+                >
+                  {/* Icon with exact positioning */}
+                  <div
+                    className="absolute"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      top: '6px',
+                      left: '7px',
+                      opacity: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '50%'
+                    }}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14m-7-7 7 7-7 7"/>
+                    </svg>
+                  </div>
+                  
+                  {/* Button text - adjusted for icon space */}
+                  <span style={{ marginLeft: '20px' }}>Get Started</span>
                 </button>
-                <button className="px-10 py-4 bg-blue-500 text-white rounded-full font-semibold hover:bg-blue-600 transition-colors text-base">
-                  Try Now
+                
+                <button 
+                  className="bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center"
+                  style={{
+                    width: '150px',
+                    height: '51px',
+                    borderRadius: '240px',
+                    opacity: 1,
+                    fontSize: '14px',
+                    fontWeight: '600'
+                  }}
+                >
+                  Get a Demo
                 </button>
               </div>
             </div>
