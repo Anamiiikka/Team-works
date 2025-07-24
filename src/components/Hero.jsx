@@ -2,6 +2,7 @@ import React from 'react';
 import { Star, TrendingUp, User, BarChart3, Diamond } from 'lucide-react';
 
 // Smart Finance Kicker - positioned below heading
+// Smart Finance Kicker - positioned below heading with one-line text
 const SmartFinanceKicker = () => {
   return (
     <div 
@@ -16,7 +17,7 @@ const SmartFinanceKicker = () => {
       <div 
         className="inline-flex items-center justify-center cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-lg"
         style={{
-          width: '240px',
+          width: '260px', // Increased width to accommodate one-line text
           height: '42px',
           borderRadius: '12px',
           padding: '10px 20px',
@@ -25,17 +26,24 @@ const SmartFinanceKicker = () => {
           gap: '10px',
           boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
           position: 'relative',
-          zIndex: 101
+          zIndex: 101,
+          whiteSpace: 'nowrap' // Ensures text stays on one line
         }}
       >
         <Diamond className="w-5 h-5 text-blue-600" style={{ fill: 'currentColor' }} />
-        <span style={{ color: '#374151', fontSize: '15px', fontWeight: '600' }}>
+        <span style={{ 
+          color: '#374151', 
+          fontSize: '15px', 
+          fontWeight: '600',
+          whiteSpace: 'nowrap' // Prevents text wrapping
+        }}>
           Smart Finance, smart living
         </span>
       </div>
     </div>
   );
 };
+
 
 // Main side card component
 const SideCard = ({ imgUrl, overlayCard, className = "", positionStyle = {} }) => {
@@ -208,7 +216,7 @@ export default function Hero() {
             </div>
            
             <div className="lg:col-span-6 text-center px-6 pt-0">
-              
+               <SmartFinanceKicker />
               {/* Main heading first - Desktop */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 leading-none text-gray-900 text-center max-w-4xl mx-auto">
                 <span className="block whitespace-nowrap">We're here to help you</span>
@@ -216,7 +224,7 @@ export default function Hero() {
               </h1>
 
               {/* Smart Finance Kicker below heading - Desktop */}
-              <SmartFinanceKicker />
+             
              
               <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
                 Achieve financial success through personalized strategies and expert guidance tailored to your unique goals and circumstances.
