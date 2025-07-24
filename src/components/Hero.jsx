@@ -1,5 +1,7 @@
+
 'use client';
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Index() {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -190,10 +192,13 @@ export default function Index() {
 
       {/* Left Dashboard Image */}
       <div className="w-[261px] h-[353px] absolute left-[31px] top-[356px]">
-        <img 
-          className="w-[269px] h-[350px] rounded-[10px] absolute left-0 top-0" 
+        <Image 
           src="/left.png"
           alt="Finance Dashboard" 
+          width={269}
+          height={350}
+          className="rounded-[10px] absolute left-0 top-0"
+          loading="lazy"
         />
       </div>
 
@@ -272,10 +277,13 @@ export default function Index() {
 
       {/* Right Dashboard Image */}
       <div className="w-[269px] h-[350px] absolute left-[1154px] top-[332px]">
-        <img 
-          className="w-[269px] h-[350px] rounded-[10px] absolute left-0 top-0" 
-          src="/right.png" 
+        <Image 
+          src="/right.png"
           alt="Finance Dashboard" 
+          width={269}
+          height={350}
+          className="rounded-[10px] absolute left-0 top-0"
+          loading="lazy"
         />
       </div>
 
