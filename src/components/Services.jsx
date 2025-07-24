@@ -174,24 +174,31 @@ const Services = () => {
 
         {/* Bottom CTA Section */}
         <div className="relative">
-          <div className="rounded-3xl p-8 flex items-center justify-between" style={{ backgroundColor: '#5292E4' }}>
+          <div className="w-3/5 mx-auto rounded-full px-6 py-3 flex items-center justify-between" style={{ background: 'linear-gradient(to right, #5292E4, #036DA9)' }}>
             {/* Left side with icon */}
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center">
-                <svg className="w-8 h-8 text-green-500" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M13 3L4 14h6v7l9-11h-6V3z"/>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style={{stopColor: '#6AF2A2', stopOpacity: 1}} />
+                            <stop offset="100%" style={{stopColor: '#2F9E5F', stopOpacity: 1}} />
+                        </linearGradient>
+                    </defs>
+                    <path d="M13 3L4 14h6v7l9-11h-6V3z" fill="url(#grad1)"/>
                 </svg>
               </div>
-              <div className="text-white">
-                <span className="text-xl font-medium">We strive to lead the way in the business </span>
-                <span className="text-xl font-medium underline cursor-pointer">know all services</span>
+              <div className="text-white flex items-center gap-4">
+                <span className="text-lg font-medium">We strive to lead the way in the business</span>
+                <div className="flex items-center gap-2 cursor-pointer">
+                  <span className="text-lg font-medium underline">know all services</span>
+                  <ArrowRight className="w-8 h-8 text-white" />
+                </div>
               </div>
             </div>
 
-            {/* Right side arrow */}
-            <div className="hidden md:block">
-              <ArrowRight className="w-8 h-8 text-white" />
-            </div>
+            {/* Right side arrow - moved */}
+            
           </div>
         </div>
       </div>
