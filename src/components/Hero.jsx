@@ -173,14 +173,15 @@ export default function Index() {
                   <div className="text-[#000] text-[18px] font-[600] mb-[8px]">Buy Subscription</div>
                   <div className="text-gray-600 text-[12px] leading-[1.4]">Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nunc posuere neque laoreet. Massa consectetur scelerisque</div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-[#036DA9] text-[14px] font-[500]">Learn More</div>
-                  <div className="w-[24px] h-[24px] bg-[#036DA9] rounded-full flex items-center justify-center">
-                    <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
-                      <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                </div>
+                 {/* Learn More Button */}
+      <div className="mt-4">
+        <button className="bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-4xl transition-colors duration-200 flex items-center gap-2">
+          Learn More
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+      </div>
               </div>
             </div>
           </div>
