@@ -122,7 +122,7 @@ export default function Index() {
         >
           {/* Background Blur Effect */}
           <div
-            className="absolute inset-0 rounded-[20px] opacity-30 pointer-events-none"
+            className="absolute inset-0 rounded-[16px] opacity-30 pointer-events-none"
             style={{
               background: "conic-gradient(from 136deg at 40.63% 50.41%, rgba(242,98,181,0.00) 125deg, rgba(95,197,255,0.70) 193deg, rgba(255,172,137,0.70) 216deg, rgba(129,85,255,0.70) 236deg, rgba(120,157,255,0.70) 260deg, rgba(159,115,241,0.00) 311deg)",
               filter: "blur(45px)"
@@ -130,10 +130,10 @@ export default function Index() {
           />
 
           {/* Inner Cards Container */}
-          <div className="relative z-10 flex gap-[20px] h-full">
+          <div className="relative flex gap-[20px] h-full">
             {/* Cash Flow Management Card */}
             <div
-              className="flex-1 h-full rounded-[16px] bg-[linear-gradient(135deg,#5FB5E5_0%,#2E8BC0_100%)] shadow-[0_10px_25px_0_rgba(94,181,229,0.3)] relative overflow-hidden"
+              className="flex-1 h-full rounded-[16px] bg-[linear-gradient(135deg,#5FB5E5_0%,#2E8BC0_100%)] shadow-[0_10px_25px_0_rgba(94,181,229,0.3)] relative overflow-hidden transition-all duration-300 hover:z-50 hover:scale-105 hover:shadow-lg"
             >
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-[-20px] right-[-20px] w-[80px] h-[80px] rounded-full bg-white/20"></div>
@@ -158,7 +158,7 @@ export default function Index() {
 
             {/* Buy Subscription Card */}
             <div
-              className="flex-1 h-full rounded-[16px] bg-white/60 backdrop-blur-lg shadow-[0_10px_25px_0_rgba(0,0,0,0.1)] border border-white/20 relative"
+              className="flex-1 h-full rounded-[16px] bg-white/60 backdrop-blur-lg shadow-[0_10px_25px_0_rgba(0,0,0,0.1)] border border-white/20 relative transition-all duration-300 hover:z-50 hover:scale-105 hover:shadow-lg"
             >
               <div className="p-[20px] h-full flex flex-col justify-between">
                 <div>
@@ -191,7 +191,7 @@ export default function Index() {
       <div className="w-[269px] h-[350px] absolute left-[100px] top-[300px]">
         <img 
           className="w-[269px] h-[350px] rounded-[10px] absolute left-0 top-0" 
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+          src="/left.png"
           alt="Finance Dashboard" 
         />
       </div>
@@ -273,7 +273,7 @@ export default function Index() {
       <div className="w-[269px] h-[350px] absolute left-[1154px] top-[332px]">
         <img 
           className="w-[269px] h-[350px] rounded-[10px] absolute left-0 top-0" 
-          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+          src="/right.png" 
           alt="Finance Dashboard" 
         />
       </div>
