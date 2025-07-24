@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import { Star, TrendingUp, User, BarChart3, Diamond } from 'lucide-react';
 
 // Smart Finance Kicker - positioned below heading with one-line text
@@ -71,6 +72,136 @@ const SideCard = ({ imgUrl, overlayCard, className = "", positionStyle = {} }) =
   );
 };
 
+const CombinedCard = () => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  return (
+    <div 
+      className="relative bg-white/60 backdrop-blur-sm rounded-[20px] shadow-xl border-[1.31px] border-white/30 overflow-hidden"
+      style={{
+        width: '680px', // Expanded from 520px
+        height: '180px',
+        minWidth: '340px', // Adjusted proportionally
+        padding: '8px',
+        gap: '8px',
+        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.5) 100%)',
+        position: 'relative',
+        marginTop: '80px' // Shifted downward
+      }}
+    >
+      <div className="flex gap-2 h-full">
+        {/* Blue Cash Flow Management Card */}
+        <div 
+          className="relative overflow-hidden shadow-2xl flex-1 cursor-pointer transition-all duration-300 ease-in-out transform"
+          style={{
+            borderRadius: '10px',
+            border: '1.31px solid rgba(255, 255, 255, 0.2)',
+            background: 'linear-gradient(135deg, #4A90E2 0%, #357ABD 50%, #2E5984 100%)',
+            zIndex: hoveredCard === 'cashflow' ? 20 : 10,
+            transform: hoveredCard === 'cashflow' ? 'scale(1.02) translateZ(0)' : 'scale(1) translateZ(0)'
+          }}
+          onMouseEnter={() => setHoveredCard('cashflow')}
+          onMouseLeave={() => setHoveredCard(null)}
+        >
+          {/* Decorative circles */}
+          <div className="absolute inset-0">
+            <div className="absolute top-4 right-8 w-12 h-12 bg-white/10 rounded-full"></div>
+            <div className="absolute top-8 right-4 w-8 h-8 bg-white/8 rounded-full"></div>
+            <div className="absolute bottom-6 right-12 w-6 h-6 bg-white/6 rounded-full"></div>
+            <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/10 rounded-full"></div>
+            {/* Additional circles for wider card */}
+            <div className="absolute top-6 right-20 w-4 h-4 bg-white/5 rounded-full"></div>
+            <div className="absolute bottom-8 right-24 w-5 h-5 bg-white/7 rounded-full"></div>
+          </div>
+
+          {/* Best Offer Badge */}
+          <div 
+            className="absolute top-2 right-2 text-white text-xs font-medium px-2 py-1 rounded-lg"
+            style={{
+              background: 'rgba(0, 0, 0, 0.4)',
+              backdropFilter: 'blur(10px)',
+            }}
+          >
+            Best Offer
+          </div>
+
+          {/* Card Content */}
+          <div className="relative z-10 p-4 h-full flex flex-col justify-between">
+            <div>
+              <h2 className="text-white text-lg font-semibold mb-2">Yearly</h2>
+              
+              <div className="space-y-1 mb-3">
+                <div className="flex items-center text-white">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full mr-2"></div>
+                  <span className="text-xs">Save 50%</span>
+                </div>
+                <div className="flex items-center text-white">
+                  <div className="w-1.5 h-1.5 bg-white rounded-full mr-2"></div>
+                  <span className="text-xs">Get 7 Days free</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div 
+                className="inline-block px-3 py-1.5 rounded-md mb-2 text-white text-xs font-medium"
+                style={{
+                  background: 'rgba(138, 43, 226, 0.8)',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                Cash flow management
+              </div>
+              
+              <div className="text-white">
+                <span className="text-lg font-bold">Rs6000</span>
+                <span className="text-sm ml-1 opacity-80">Yearly</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* White Buy Subscription Card */}
+        <div 
+          className="relative bg-white rounded-[12px] flex-1 p-4 cursor-pointer transition-all duration-300 ease-in-out transform shadow-lg"
+          style={{
+            zIndex: hoveredCard === 'subscription' ? 20 : 10,
+            transform: hoveredCard === 'subscription' ? 'scale(1.02) translateZ(0)' : 'scale(1) translateZ(0)'
+          }}
+          onMouseEnter={() => setHoveredCard('subscription')}
+          onMouseLeave={() => setHoveredCard(null)}
+        >
+          <div className="h-full flex flex-col">
+            <div className="flex items-start gap-2 mb-3">
+              <div className="w-6 h-6 bg-gray-100 rounded-md flex items-center justify-center">
+                <div className="w-3 h-3 bg-gray-400 rounded"></div>
+              </div>
+              <div className="flex-1">
+                <p className="text-gray-900 font-semibold text-sm leading-tight">All your paid packs in one place</p>
+              </div>
+            </div>
+            
+            <h3 className="text-gray-900 text-lg font-bold mb-2">Buy Subscription</h3>
+            
+            <p className="text-gray-600 text-xs leading-relaxed mb-3 line-clamp-3">
+              Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nunc posuere neque laoreet. Massa consectetur scelerisque fauc et.
+            </p>
+            
+            <div className="mt-auto">
+              <button className="bg-black text-white px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-gray-800 transition-colors flex items-center gap-1">
+                Learn More
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M5 12h14m-7-7 7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // Hero Component
 export default function Hero() {
   return (
@@ -106,22 +237,22 @@ export default function Hero() {
                 <button 
                   className="bg-black text-white font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center relative"
                   style={{
-                    width: '150px',
-                    height: '51px',
+                    width: '120px',        // Reduced from 150px
+                    height: '40px',        // Reduced from 51px
                     borderRadius: '240px',
                     opacity: 1,
-                    fontSize: '14px',
+                    fontSize: '12px',      // Reduced from 14px
                     fontWeight: '600'
                   }}
                 >
-                  {/* Icon with exact positioning */}
+                  {/* Icon with adjusted positioning */}
                   <div
                     className="absolute"
                     style={{
-                      width: '40px',
-                      height: '40px',
-                      top: '6px',
-                      left: '7px',
+                      width: '32px',         // Reduced from 40px
+                      height: '32px',        // Reduced from 40px
+                      top: '4px',            // Adjusted from 6px
+                      left: '6px',           // Adjusted from 7px
                       opacity: 1,
                       display: 'flex',
                       alignItems: 'center',
@@ -130,23 +261,23 @@ export default function Hero() {
                       borderRadius: '50%'
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14m-7-7 7 7-7 7"/>
                     </svg>
                   </div>
                   
-                  {/* Button text - adjusted for icon space */}
-                  <span style={{ marginLeft: '20px' }}>Get Started</span>
+                  {/* Button text - adjusted for smaller icon space */}
+                  <span style={{ marginLeft: '16px' }}>Get Started</span>
                 </button>
                 
                 <button 
                   className="bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center"
                   style={{
-                    width: '150px',
-                    height: '51px',
+                    width: '120px',        // Reduced from 150px
+                    height: '40px',        // Reduced from 51px
                     borderRadius: '240px',
                     opacity: 1,
-                    fontSize: '14px',
+                    fontSize: '12px',      // Reduced from 14px
                     fontWeight: '600'
                   }}
                 >
@@ -178,56 +309,33 @@ export default function Hero() {
               />
             </div>
 
-            <div className="space-y-6 px-4">
-              <div className="bg-white/40 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-white/30">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-6 h-6 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                    <TrendingUp className="w-3 h-3 text-purple-500" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">Investments</p>
-                    <p className="text-xs text-gray-500">Diversified Portfolio</p>
-                  </div>
-                </div>
-                <p className="text-xl font-bold text-gray-900 mb-1">$45,890</p>
-                <p className="text-sm text-green-600 font-medium">+15.3%</p>
+            {/* Mobile Combined Card */}
+            <div className="px-4 flex justify-center">
+              <div className="w-full max-w-sm">
+                <CombinedCard />
               </div>
+            </div>
 
-              <div className="bg-white/40 backdrop-blur-sm rounded-xl p-4 shadow-xl border border-white/30">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-6 h-6 bg-pink-500/20 rounded-full flex items-center justify-center">
-                    <User className="w-3 h-3 text-pink-500" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm">Ray S. Anderson</p>
-                    <p className="text-xs text-gray-500">Account Balance</p>
-                  </div>
-                </div>
-                <p className="text-xl font-bold text-gray-900 mb-1">$12,340</p>
-                <p className="text-sm text-green-600 font-medium">+8.2%</p>
-              </div>
-
-              <div className="flex justify-center">
-                <SideCard
-                  imgUrl="/right.png"
-                  overlayCard={
-                    <div className="text-center">
-                      <div className="w-10 h-10 mx-auto mb-3 rounded-full overflow-hidden bg-green-100">
-                        <div className="w-full h-full flex items-center justify-center">
-                          <BarChart3 className="w-4 h-4 text-green-600" />
-                        </div>
+            <div className="flex justify-center px-4">
+              <SideCard
+                imgUrl="/right.png"
+                overlayCard={
+                  <div className="text-center">
+                    <div className="w-10 h-10 mx-auto mb-3 rounded-full overflow-hidden bg-green-100">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <BarChart3 className="w-4 h-4 text-green-600" />
                       </div>
-                      <div>
-                        <p className="text-xs font-semibold text-gray-900 mb-1">Performance</p>
-                        <p className="text-[8px] text-gray-500 mb-2">Real-time</p>
-                      </div>
-                      <p className="text-sm font-bold text-gray-900 mb-1">94.2%</p>
-                      <p className="text-xs text-green-600 font-medium">+2.1%</p>
                     </div>
-                  }
-                  positionStyle={{ bottom: '-2rem', left: '-0.75rem' }}
-                />
-              </div>
+                    <div>
+                      <p className="text-xs font-semibold text-gray-900 mb-1">Performance</p>
+                      <p className="text-[8px] text-gray-500 mb-2">Real-time</p>
+                    </div>
+                    <p className="text-sm font-bold text-gray-900 mb-1">94.2%</p>
+                    <p className="text-xs text-green-600 font-medium">+2.1%</p>
+                  </div>
+                }
+                positionStyle={{ bottom: '-2rem', left: '-0.75rem' }}
+              />
             </div>
           </div>
 
@@ -272,22 +380,22 @@ export default function Hero() {
                 <button 
                   className="bg-black text-white font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center relative"
                   style={{
-                    width: '150px',
-                    height: '51px',
+                    width: '120px',        // Reduced from 150px
+                    height: '40px',        // Reduced from 51px
                     borderRadius: '240px',
                     opacity: 1,
-                    fontSize: '14px',
+                    fontSize: '12px',      // Reduced from 14px
                     fontWeight: '600'
                   }}
                 >
-                  {/* Icon with exact positioning */}
+                  {/* Icon with adjusted positioning */}
                   <div
                     className="absolute"
                     style={{
-                      width: '40px',
-                      height: '40px',
-                      top: '6px',
-                      left: '7px',
+                      width: '32px',         // Reduced from 40px
+                      height: '32px',        // Reduced from 40px
+                      top: '4px',            // Adjusted from 6px
+                      left: '6px',           // Adjusted from 7px
                       opacity: 1,
                       display: 'flex',
                       alignItems: 'center',
@@ -296,23 +404,23 @@ export default function Hero() {
                       borderRadius: '50%'
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14m-7-7 7 7-7 7"/>
                     </svg>
                   </div>
                   
-                  {/* Button text - adjusted for icon space */}
-                  <span style={{ marginLeft: '20px' }}>Get Started</span>
+                  {/* Button text - adjusted for smaller icon space */}
+                  <span style={{ marginLeft: '16px' }}>Get Started</span>
                 </button>
                 
                 <button 
                   className="bg-blue-500 text-white font-semibold hover:bg-blue-600 transition-colors flex items-center justify-center"
                   style={{
-                    width: '150px',
-                    height: '51px',
+                    width: '120px',        // Reduced from 150px
+                    height: '40px',        // Reduced from 51px
                     borderRadius: '240px',
                     opacity: 1,
-                    fontSize: '14px',
+                    fontSize: '12px',      // Reduced from 14px
                     fontWeight: '600'
                   }}
                 >
@@ -345,38 +453,10 @@ export default function Hero() {
           </div>
         </div>
        
+        {/* Desktop Combined Card */}
         <div className="hidden lg:block absolute bottom-4 left-0 right-0 z-30 lg:bottom-12 md:bottom-8">
-          <div className="max-w-5xl mx-auto px-4 lg:px-6">
-            <div className="grid grid-cols-1 gap-4 max-w-3xl mx-auto sm:grid-cols-2 sm:gap-6">
-             
-              <div className="bg-white/40 backdrop-blur-sm rounded-xl p-3 shadow-xl border border-white/30 lg:p-5 md:p-4 relative z-20">
-                <div className="flex items-center gap-2 mb-2 lg:gap-3 lg:mb-3">
-                  <div className="w-6 h-6 bg-purple-500/20 rounded-lg flex items-center justify-center lg:w-8 lg:h-8">
-                    <TrendingUp className="w-3 h-3 text-purple-500 lg:w-4 lg:h-4" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm lg:text-base">Investments</p>
-                    <p className="text-xs text-gray-500 lg:text-sm">Diversified Portfolio</p>
-                  </div>
-                </div>
-                <p className="text-lg font-bold text-gray-900 mb-1 lg:text-2xl">$45,890</p>
-                <p className="text-sm text-green-600 font-medium lg:text-base">+15.3%</p>
-              </div>
-             
-              <div className="bg-white/40 backdrop-blur-sm rounded-xl p-3 shadow-xl border border-white/30 relative z-40 lg:p-5 md:p-4">
-                <div className="flex items-center gap-2 mb-2 lg:gap-3 lg:mb-3">
-                  <div className="w-6 h-6 bg-pink-500/20 rounded-full flex items-center justify-center lg:w-8 lg:h-8">
-                    <User className="w-3 h-3 text-pink-500 lg:w-4 lg:h-4" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 text-sm lg:text-base">Ray S. Anderson</p>
-                    <p className="text-xs text-gray-500 lg:text-sm">Account Balance</p>
-                  </div>
-                </div>
-                <p className="text-lg font-bold text-gray-900 mb-1 lg:text-2xl">$12,340</p>
-                <p className="text-sm text-green-600 font-medium lg:text-base">+8.2%</p>
-              </div>
-            </div>
+          <div className="max-w-5xl mx-auto px-4 lg:px-6 flex justify-center">
+            <CombinedCard />
           </div>
         </div>
       </section>
