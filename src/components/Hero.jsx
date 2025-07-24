@@ -50,7 +50,7 @@ export default function Index() {
       {/* Header */}
       <Header />
 
-      {/* Hero Section - Changed to relative positioning */}
+      {/* Hero Section */}
       <div className="relative w-full flex flex-col items-center">
         <div className="flex w-full max-w-[711px] flex-col justify-center items-center gap-[21px] px-4 lg:px-0 mt-[148px]">
           {/* Badge */}
@@ -119,245 +119,158 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Images and Cards Container */}
-        <div className="relative w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row justify-between items-start px-4 lg:px-[50px] mt-[40px]">
-          {/* LEFT Dashboard Image */}
-          <div className="w-[269px] h-[350px] mb-[40px] lg:mb-0">
-            <img 
-              className="w-[269px] h-[350px] rounded-[10px]" 
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-              alt="Finance Dashboard" 
-            />
-          </div>
-
-          {/* MIDDLE: Large Container Card with Two Cards Inside */}
+        {/* MIDDLE: Large Container Card with Two Cards Inside */}
+        <div
+          className="w-full max-w-[550px] h-[320px] rounded-[20px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_10px_30px_0_rgba(0,0,0,0.15)] relative p-[10px] mb-[40px] mx-auto"
+          style={{ backdropFilter: "blur(13px)" }}
+        >
+          {/* Background Blur Effect */}
           <div
-            className="w-full max-w-[550px] h-[320px] rounded-[20px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_10px_30px_0_rgba(0,0,0,0.15)] relative p-[10px] mb-[40px] lg:mb-0"
-            style={{ backdropFilter: "blur(13px)" }}
-          >
-            {/* Background Blur Effect */}
+            className="absolute inset-0 rounded-[20px] opacity-30 pointer-events-none"
+            style={{
+              background: "conic-gradient(from 136deg at 40.63% 50.41%, rgba(242,98,181,0.00) 125deg, rgba(95,197,255,0.70) 193deg, rgba(255,172,137,0.70) 216deg, rgba(129,85,255,0.70) 236deg, rgba(120,157,255,0.70) 260deg, rgba(159,115,241,0.00) 311deg)",
+              filter: "blur(45px)"
+            }}
+          />
+
+          {/* Inner Cards Container */}
+          <div className="relative z-10 flex gap-[20px] h-full">
+            {/* Cash Flow Management Card */}
             <div
-              className="absolute inset-0 rounded-[20px] opacity-30 pointer-events-none"
-              style={{
-                background: "conic-gradient(from 136deg at 40.63% 50.41%, rgba(242,98,181,0.00) 125deg, rgba(95,197,255,0.70) 193deg, rgba(255,172,137,0.70) 216deg, rgba(129,85,255,0.70) 236deg, rgba(120,157,255,0.70) 260deg, rgba(159,115,241,0.00) 311deg)",
-                filter: "blur(45px)"
-              }}
-            />
-
-            {/* Inner Cards Container */}
-            <div className="relative z-10 flex gap-[20px] h-full">
-              {/* Cash Flow Management Card */}
-              <div
-                className="flex-1 h-full rounded-[16px] bg-[linear-gradient(135deg,#5FB5E5_0%,#2E8BC0_100%)] shadow-[0_10px_25px_0_rgba(94,181,229,0.3)] relative overflow-hidden"
-              >
-                <div className="absolute inset-0 opacity-20">
-                  <div className="absolute top-[-20px] right-[-20px] w-[80px] h-[80px] rounded-full bg-white/20"></div>
-                  <div className="absolute bottom-[-10px] left-[-10px] w-[60px] h-[60px] rounded-full bg-white/10"></div>
-                </div>
-                <div className="relative z-10 p-[20px] h-full flex flex-col justify-between">
-                  <div>
-                    <div className="bg-white/20 text-white text-[11px] px-[8px] py-[2px] rounded-[12px] inline-block mb-[12px]">Best Offer</div>
-                    <div className="text-white text-[20px] font-[600] mb-[8px]">Cash Flow Management</div>
-                    <div className="text-white/80 text-[12px] leading-[1.4]">Track and optimize your cash flow with real-time insights and forecasting tools</div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-white text-[14px] font-[500]">Learn More</div>
-                    <div className="w-[24px] h-[24px] bg-white/20 rounded-full flex items-center justify-center">
-                      <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+              className="flex-1 h-full rounded-[16px] bg-[linear-gradient(135deg,#5FB5E5_0%,#2E8BC0_100%)] shadow-[0_10px_25px_0_rgba(94,181,229,0.3)] relative overflow-hidden"
+            >
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-[-20px] right-[-20px] w-[80px] h-[80px] rounded-full bg-white/20"></div>
+                <div className="absolute bottom-[-10px] left-[-10px] w-[60px] h-[60px] rounded-full bg-white/10"></div>
               </div>
-
-              {/* Buy Subscription Card */}
-              <div
-                className="flex-1 h-full rounded-[16px] bg-white/60 backdrop-blur-lg shadow-[0_10px_25px_0_rgba(0,0,0,0.1)] border border-white/20 relative"
-              >
-                <div className="p-[20px] h-full flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-[8px] mb-[12px]">
-                      <div className="w-[24px] h-[24px] bg-[#036DA9] rounded-[6px] flex items-center justify-center">
-                        <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
-                          <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                      <span className="text-[12px] text-gray-600">All your paid packs in one place</span>
-                    </div>
-                    <div className="text-[#000] text-[18px] font-[600] mb-[8px]">Buy Subscription</div>
-                    <div className="text-gray-600 text-[12px] leading-[1.4]">Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nunc posuere neque laoreet. Massa consectetur scelerisque</div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-[#036DA9] text-[14px] font-[500]">Learn More</div>
-                    <div className="w-[24px] h-[24px] bg-[#036DA9] rounded-full flex items-center justify-center">
-                      <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
+              <div className="relative z-10 p-[20px] h-full flex flex-col justify-between">
+                <div>
+                  <div className="bg-white/20 text-white text-[11px] px-[8px] py-[2px] rounded-[12px] inline-block mb-[12px]">Best Offer</div>
+                  <div className="text-white text-[20px] font-[600] mb-[8px]">Cash Flow Management</div>
+                  <div className="text-white/80 text-[12px] leading-[1.4]">Track and optimize your cash flow with real-time insights and forecasting tools</div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="text-white text-[14px] font-[500]">Learn More</div>
+                  <div className="w-[24px] h-[24px] bg-white/20 rounded-full flex items-center justify-center">
+                    <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* RIGHT Dashboard Image and Statistics Cards */}
-          <div className="flex flex-col items-end">
-            <div className="w-[269px] h-[350px] mb-[40px]">
-              <img 
-                className="w-[269px] h-[350px] rounded-[10px]" 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                alt="Finance Dashboard" 
-              />
-            </div>
-
-            {/* RIGHT Statistics Card */}
-            <div 
-              className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] w-[246px] h-[310px]"
-              style={{ backdropFilter: "blur(10px)" }}
+            {/* Buy Subscription Card */}
+            <div
+              className="flex-1 h-full rounded-[16px] bg-white/60 backdrop-blur-lg shadow-[0_10px_25px_0_rgba(0,0,0,0.1)] border border-white/20 relative"
             >
-              <h3 className="w-[206px] h-[60px] text-[#000] text-center font-['Inter'] text-[20px] font-[500] leading-[30px]">
-                Watch your Business Grow
-              </h3>
-
-              {/* Pie Chart */}
-              <svg className="w-[200px] h-[200px]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="paint0_linear_pie_right" x1="100.01" y1="18.3716" x2="100.01" y2="181.671" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF968E" />
-                    <stop offset="1" stopColor="#FF968E" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="paint1_linear_pie_right" x1="188.626" y1="96.6482" x2="40.9047" y2="156.375" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint2_linear_pie_right" x1="18.3691" y1="99.9998" x2="181.651" y2="99.9998" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF7EAB" />
-                    <stop offset="1" stopColor="#FF7EAB" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="paint3_linear_pie_right" x1="96.6376" y1="11.3746" x2="156.38" y2="159.103" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint4_linear_pie_right" x1="10.2051" y1="21.1318" x2="85.0428" y2="21.1318" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#6792FF" />
-                    <stop offset="1" stopColor="#6792FF" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="paint5_linear_pie_right" x1="15.2869" y1="126.195" x2="142.521" y2="30.2697" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint6_linear_pie_right" x1="178.849" y1="78.8675" x2="21.1283" y2="121.124" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#613CCB" />
-                    <stop offset="1" stopColor="#613CCB" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="paint7_linear_pie_right" x1="126.183" y1="184.732" x2="30.2419" y2="57.5046" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint8_linear_pie_right" x1="100.01" y1="35.3818" x2="100.01" y2="164.66" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.3" />
-                    <stop offset="1" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="paint9_linear_pie_right" x1="100.01" y1="35.3818" x2="100.01" y2="164.66" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="white" stopOpacity="0.3" />
-                    <stop offset="1" stopColor="white" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="paint10_linear_pie_right" x1="95.1866" y1="45.769" x2="143.591" y2="117.112" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#ED6B60" />
-                    <stop offset="1" stopColor="#E248E5" />
-                  </linearGradient>
-                </defs>
-                
-                <path d="M181.651 100.021C181.651 117.995 175.721 135.467 164.781 149.726C153.84 163.986 138.5 174.237 121.141 178.889L114.801 155.229C126.953 151.972 137.691 144.797 145.349 134.815C153.008 124.833 157.159 112.603 157.159 100.021H181.651Z" fill="url(#paint0_linear_pie_right)" stroke="url(#paint1_linear_pie_right)" strokeWidth="1.53846" />
-                <path d="M78.88 21.1322C90.9761 17.8908 103.656 17.4757 115.938 19.919C128.22 22.3623 139.775 27.5986 149.71 35.2227C159.645 42.8469 167.693 52.6546 173.232 63.8871C178.771 75.1195 181.651 87.4757 181.651 99.9998L157.159 99.9998C157.159 91.2329 155.143 82.5836 151.265 74.7209C147.388 66.8581 141.755 59.9928 134.8 54.6559C127.846 49.3189 119.757 45.6535 111.159 43.9432C102.562 42.2329 93.6863 42.5235 85.2191 44.7925L78.88 21.1322Z" fill="url(#paint2_linear_pie_right)" stroke="url(#paint3_linear_pie_right)" strokeWidth="1.53846" />
-                <path d="M42.2814 42.2643C52.415 32.1297 65.0375 24.8414 78.8801 21.1318L85.2192 44.7921C75.5293 47.3888 66.6936 52.4906 59.6001 59.5848L42.2814 42.2643Z" fill="url(#paint4_linear_pie_right)" stroke="url(#paint5_linear_pie_right)" strokeWidth="1.53846" />
-                <path d="M121.12 178.868C103.76 183.519 85.351 182.313 68.747 175.434C52.1431 168.556 38.2725 156.391 29.2865 140.825C20.3004 125.259 16.7012 107.163 19.0471 89.3426C21.3929 71.5225 29.5526 54.9744 42.2607 42.265L59.5794 59.5855C50.6838 68.4821 44.9719 80.0657 43.3299 92.5398C41.6878 105.014 44.2072 117.681 50.4974 128.577C56.7876 139.473 66.4971 147.989 78.1199 152.804C89.7426 157.619 102.629 158.464 114.781 155.207L121.12 178.868Z" fill="url(#paint6_linear_pie_right)" stroke="url(#paint7_linear_pie_right)" strokeWidth="1.53846" />
-                <path d="M100.01 34.9971C135.918 34.9972 165.026 64.1099 165.026 100.021C165.026 135.933 135.918 165.045 100.01 165.045C64.1018 165.045 34.9924 135.933 34.9922 100.021C34.9922 64.1098 64.1017 34.9971 100.01 34.9971Z" fill="url(#paint8_linear_pie_right)" fillOpacity="0.7" stroke="url(#paint9_linear_pie_right)" strokeWidth="0.769231" />
-                
-                <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie_right)" fontFamily="Inter" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
-                  941
-                </text>
-                <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontFamily="SF Pro" fontSize="13" letterSpacing="-0.4px">
-                  Transactions
-                </text>
-              </svg>
-            </div>
-
-            {/* LEFT Statistics Card - Positioned below RIGHT Statistics Card */}
-            <div 
-              className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] w-[246px] h-[310px] mt-[40px]"
-              style={{ backdropFilter: "blur(10px)" }}
-            >
-              <h3 className="w-[206px] h-[60px] text-[#000] text-center font-['Inter'] text-[20px] font-[500] leading-[30px]">
-                Watch your Business Grow
-              </h3>
-
-              {/* Pie Chart */}
-              <svg className="w-[200px] h-[200px]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="paint0_linear_pie_left" x1="100.01" y1="18.3716" x2="100.01" y2="181.671" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF968E" />
-                    <stop offset="1" stopColor="#FF968E" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="paint1_linear_pie_left" x1="188.626" y1="96.6482" x2="40.9047" y2="156.375" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint2_linear_pie_left" x1="18.3691" y1="99.9998" x2="181.651" y2="99.9998" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FF7EAB" />
-                    <stop offset="1" stopColor="#FF7EAB" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="paint3_linear_pie_left" x1="96.6376" y1="11.3746" x2="156.38" y2="159.103" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint4_linear_pie_left" x1="10.2051" y1="21.1318" x2="85.0428" y2="21.1318" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#6792FF" />
-                    <stop offset="1" stopColor="#6792FF" stopOpacity="0.3" />
-                  </linearGradient>
-                  <linearGradient id="paint5_linear_pie_left" x1="15.2869" y1="126.195" x2="142.521" y2="30.2697" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint6_linear_pie_left" x1="178.849" y1="78.8675" x2="21.1283" y2="121.124" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#613CCB" />
-                    <stop offset="1" stopColor="#613CCB" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="paint7_linear_pie_left" x1="126.183" y1="184.732" x2="30.2419" y2="57.5046" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.58" />
-                    <stop offset="1" stopColor="white" stopOpacity="0.21" />
-                  </linearGradient>
-                  <linearGradient id="paint8_linear_pie_left" x1="100.01" y1="35.3818" x2="100.01" y2="164.66" gradientUnits="userSpaceOnUse">
-                    <stop stopOpacity="0.3" />
-                    <stop offset="1" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="paint9_linear_pie_left" x1="100.01" y1="35.3818" x2="100.01" y2="164.66" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="white" stopOpacity="0.3" />
-                    <stop offset="1" stopColor="white" stopOpacity="0" />
-                  </linearGradient>
-                  <linearGradient id="paint10_linear_pie_left" x1="95.1866" y1="45.769" x2="143.591" y2="117.112" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#ED6B60" />
-                    <stop offset="1" stopColor="#E248E5" />
-                  </linearGradient>
-                </defs>
-                
-                <path d="M181.651 100.021C181.651 117.995 175.721 135.467 164.781 149.726C153.84 163.986 138.5 174.237 121.141 178.889L114.801 155.229C126.953 151.972 137.691 144.797 145.349 134.815C153.008 124.833 157.159 112.603 157.159 100.021H181.651Z" fill="url(#paint0_linear_pie_left)" stroke="url(#paint1_linear_pie_left)" strokeWidth="1.53846" />
-                <path d="M78.88 21.1322C90.9761 17.8908 103.656 17.4757 115.938 19.919C128.22 22.3623 139.775 27.5986 149.71 35.2227C159.645 42.8469 167.693 52.6546 173.232 63.8871C178.771 75.1195 181.651 87.4757 181.651 99.9998L157.159 99.9998C157.159 91.2329 155.143 82.5836 151.265 74.7209C147.388 66.8581 141.755 59.9928 134.8 54.6559C127.846 49.3189 119.757 45.6535 111.159 43.9432C102.562 42.2329 93.6863 42.5235 85.2191 44.7925L78.88 21.1322Z" fill="url(#paint2_linear_pie_left)" stroke="url(#paint3_linear_pie_left)" strokeWidth="1.53846" />
-                <path d="M42.2814 42.2643C52.415 32.1297 65.0375 24.8414 78.8801 21.1318L85.2192 44.7921C75.5293 47.3888 66.6936 52.4906 59.6001 59.5848L42.2814 42.2643Z" fill="url(#paint4_linear_pie_left)" stroke="url(#paint5_linear_pie_left)" strokeWidth="1.53846" />
-                <path d="M121.12 178.868C103.76 183.519 85.351 182.313 68.747 175.434C52.1431 168.556 38.2725 156.391 29.2865 140.825C20 competition://docs.google.com/document/d/1WjDogImnO8q0g4zAz8ZcT4A3Y7W0qB6/edit?usp=sharing&ouid=108894846177481577571&rtpof=true&sd=true.3004 125.259 16.7012 107.163 19.0471 89.3426C21.3929 71.5225 29.5526 54.9744 42.2607 42.265L59.5794 59.5855C50.6838 68.4821 44.9719 80.0657 43.3299 92.5398C41.6878 105.014 44.2072 117.681 50.4974 128.577C56.7876 139.473 66.4971 147.989 78.1199 152.804C89.7426 157.619 102.629 158.464 114.781 155.207L121.12 178.868Z" fill="url(#paint6_linear_pie_left)" stroke="url(#paint7_linear_pie_left)" strokeWidth="1.53846" />
-                <path d="M100.01 34.9971C135.918 34.9972 165.026 64.1099 165.026 100.021C165.026 135.933 135.918 165.045 100.01 165.045C64.1018 165.045 34.9924 135.933 34.9922 100.021C34.9922 64.1098 64.1017 34.9971 100.01 34.9971Z" fill="url(#paint8_linear_pie_left)" fillOpacity="0.7" stroke="url(#paint9_linear_pie_left)" strokeWidth="0.769231" />
-                
-                <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie_left)" fontFamily="Inter" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
-                  941
-                </text>
-                <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontFamily="SF Pro" fontSize="13" letterSpacing="-0.4px">
-                  Transactions
-                </text>
-              </svg>
+              <div className="p-[20px] h-full flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-[8px] mb-[12px]">
+                    <div className="w-[24px] h-[24px] bg-[#036DA9] rounded-[6px] flex items-center justify-center">
+                      <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 12L11 14L15 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span className="text-[12px] text-gray-600">All your paid packs in one place</span>
+                  </div>
+                  <div className="text-[#000] text-[18px] font-[600] mb-[8px]">Buy Subscription</div>
+                  <div className="text-gray-600 text-[12px] leading-[1.4]">Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nunc posuere neque laoreet. Massa consectetur scelerisque</div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="text-[#036DA9] text-[14px] font-[500]">Learn More</div>
+                  <div className="w-[24px] h-[24px] bg-[#036DA9] rounded-full flex items-center justify-center">
+                    <svg className="w-[12px] h-[12px]" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Dashboard Image */}
+      <div className="w-[269px] h-[350px] absolute left-[1154px] top-[332px]">
+        <img 
+          className="w-[269px] h-[350px] rounded-[10px] absolute left-0 top-0" 
+          src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+          alt="Finance Dashboard" 
+        />
+      </div>
+
+      {/* Statistics Card */}
+      <div 
+        className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] absolute left-[1039px] top-[555px] w-[246px] h-[310px]"
+        style={{ backdropFilter: "blur(10px)" }}
+      >
+        <h3 className="w-[206px] h-[60px] text-[#000] text-center font-['Inter'] text-[20px] font-[500] leading-[30px]">
+          Watch your Business Grow
+        </h3>
+
+        {/* Pie Chart */}
+        <svg className="w-[200px] h-[200px]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="paint0_linear_pie" x1="100.01" y1="18.3716" x2="100.01" y2="181.671" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#FF968E" />
+              <stop offset="1" stopColor="#FF968E" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="paint1_linear_pie" x1="188.626" y1="96.6482" x2="40.9047" y2="156.375" gradientUnits="userSpaceOnUse">
+              <stop stopOpacity="0.58" />
+              <stop offset="1" stopColor="white" stopOpacity="0.21" />
+            </linearGradient>
+            <linearGradient id="paint2_linear_pie" x1="18.3691" y1="99.9998" x2="181.651" y2="99.9998" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#FF7EAB" />
+              <stop offset="1" stopColor="#FF7EAB" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="paint3_linear_pie" x1="96.6376" y1="11.3746" x2="156.38" y2="159.103" gradientUnits="userSpaceOnUse">
+              <stop stopOpacity="0.58" />
+              <stop offset="1" stopColor="white" stopOpacity="0.21" />
+            </linearGradient>
+            <linearGradient id="paint4_linear_pie" x1="10.2051" y1="21.1318" x2="85.0428" y2="21.1318" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#6792FF" />
+              <stop offset="1" stopColor="#6792FF" stopOpacity="0.3" />
+            </linearGradient>
+            <linearGradient id="paint5_linear_pie" x1="15.2869" y1="126.195" x2="142.521" y2="30.2697" gradientUnits="userSpaceOnUse">
+              <stop stopOpacity="0.58" />
+              <stop offset="1" stopColor="white" stopOpacity="0.21" />
+            </linearGradient>
+            <linearGradient id="paint6_linear_pie" x1="178.849" y1="78.8675" x2="21.1283" y2="121.124" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#613CCB" />
+              <stop offset="1" stopColor="#613CCB" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="paint7_linear_pie" x1="126.183" y1="184.732" x2="30.2419" y2="57.5046" gradientUnits="userSpaceOnUse">
+              <stop stopOpacity="0.58" />
+              <stop offset="1" stopColor="white" stopOpacity="0.21" />
+            </linearGradient>
+            <linearGradient id="paint8_linear_pie" x1="100.01" y1="35.3818" x2="100.01" y2="164.66" gradientUnits="userSpaceOnUse">
+              <stop stopOpacity="0.3" />
+              <stop offset="1" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="paint9_linear_pie" x1="100.01" y1="35.3818" x2="100.01" y2="164.66" gradientUnits="userSpaceOnUse">
+              <stop stopColor="white" stopOpacity="0.3" />
+              <stop offset="1" stopColor="white" stopOpacity="0" />
+            </linearGradient>
+            <linearGradient id="paint10_linear_pie" x1="95.1866" y1="45.769" x2="143.591" y2="117.112" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#ED6B60" />
+              <stop offset="1" stopColor="#E248E5" />
+            </linearGradient>
+          </defs>
+          
+          <path d="M181.651 100.021C181.651 117.995 175.721 135.467 164.781 149.726C153.84 163.986 138.5 174.237 121.141 178.889L114.801 155.229C126.953 151.972 137.691 144.797 145.349 134.815C153.008 124.833 157.159 112.603 157.159 100.021H181.651Z" fill="url(#paint0_linear_pie)" stroke="url(#paint1_linear_pie)" strokeWidth="1.53846" />
+          <path d="M78.88 21.1322C90.9761 17.8908 103.656 17.4757 115.938 19.919C128.22 22.3623 139.775 27.5986 149.71 35.2227C159.645 42.8469 167.693 52.6546 173.232 63.8871C178.771 75.1195 181.651 87.4757 181.651 99.9998L157.159 99.9998C157.159 91.2329 155.143 82.5836 151.265 74.7209C147.388 66.8581 141.755 59.9928 134.8 54.6559C127.846 49.3189 119.757 45.6535 111.159 43.9432C102.562 42.2329 93.6863 42.5235 85.2191 44.7925L78.88 21.1322Z" fill="url(#paint2_linear_pie)" stroke="url(#paint3_linear_pie)" strokeWidth="1.53846" />
+          <path d="M42.2814 42.2643C52.415 32.1297 65.0375 24.8414 78.8801 21.1318L85.2192 44.7921C75.5293 47.3888 66.6936 52.4906 59.6001 59.5848L42.2814 42.2643Z" fill="url(#paint4_linear_pie)" stroke="url(#paint5_linear_pie)" strokeWidth="1.53846" />
+          <path d="M121.12 178.868C103.76 183.519 85.351 182.313 68.747 175.434C52.1431 168.556 38.2725 156.391 29.2865 140.825C20.3004 125.259 16.7012 107.163 19.0471 89.3426C21.3929 71.5225 29.5526 54.9744 42.2607 42.265L59.5794 59.5855C50.6838 68.4821 44.9719 80.0657 43.3299 92.5398C41.6878 105.014 44.2072 117.681 50.4974 128.577C56.7876 139.473 66.4971 147.989 78.1199 152.804C89.7426 157.619 102.629 158.464 114.781 155.207L121.12 178.868Z" fill="url(#paint6_linear_pie)" stroke="url(#paint7_linear_pie)" strokeWidth="1.53846" />
+          <path d="M100.01 34.9971C135.918 34.9972 165.026 64.1099 165.026 100.021C165.026 135.933 135.918 165.045 100.01 165.045C64.1018 165.045 34.9924 135.933 34.9922 100.021C34.9922 64.1098 64.1017 34.9971 100.01 34.9971Z" fill="url(#paint8_linear_pie)" fillOpacity="0.7" stroke="url(#paint9_linear_pie)" strokeWidth="0.769231" />
+          
+          <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie)" fontFamily="Inter" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
+            941
+          </text>
+          <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontFamily="SF Pro" fontSize="13" letterSpacing="-0.4px">
+            Transactions
+          </text>
+        </svg>
       </div>
     </div>
   );
