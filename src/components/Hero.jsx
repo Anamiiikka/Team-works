@@ -5,7 +5,7 @@ export default function Index() {
   const [hoveredButton, setHoveredButton] = useState(null);
 
   return (
-    <div className="w-full min-h-screen bg-white font-['Inter'] relative">
+    <div className="w-full min-h-screen bg-white relative">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <svg 
@@ -68,12 +68,12 @@ export default function Index() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="w-full max-w-[837px] text-[#000] text-center font-['Inter'] text-[32px] sm:text-[48px] lg:text-[64px] font-[700] leading-[1.2] tracking-[-0.02em] lg:tracking-[-2.56px]">
+          <h1 className="w-full max-w-[837px] text-[#000] text-center text-[32px] sm:text-[48px] lg:text-[60px] font-[700] leading-[1.2] tracking-[-0.02em] lg:tracking-[-2.56px]">
             We're here to help you achieve financial success
           </h1>
 
           {/* Description */}
-          <p className="w-full max-w-[696px] text-[rgba(0,0,0,0.70)] text-center font-['Inter'] text-[17px] font-[400] leading-[24px]">
+          <p className="w-full max-w-[696px] text-[rgba(0,0,0,0.70)] text-center text-[17px] font-[400] leading-[24px]">
             Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui
             gravida ligula nunc posuere neque laoreet. Massa consectetur
             scelerisque faucibus scelerisque elementum mauris interdum. Mi
@@ -93,7 +93,7 @@ export default function Index() {
                   <circle cx="20" cy="20" r="13" fill="white" fillOpacity="0.33" />
                   <path d="M25.668 13.5045L25.7475 13.5L25.845 13.506L25.9125 13.518L26.0048 13.5443L26.085 13.5788L26.16 13.6215L26.2275 13.6718L26.289 13.728L26.328 13.7722L26.3895 13.8593L26.4285 13.9313C26.4635 14.0063 26.486 14.0853 26.496 14.1683L26.4998 14.2478C26.4998 14.3043 26.4938 14.3593 26.4818 14.4128L26.4555 14.505L21.5565 28.0628C21.4636 28.2649 21.3147 28.4362 21.1274 28.5563C20.9401 28.6763 20.7222 28.7401 20.4998 28.74C20.2994 28.7404 20.1024 28.6891 19.9277 28.5909C19.7531 28.4927 19.6068 28.3511 19.503 28.1798L19.4543 28.0845L16.9403 23.058L11.9378 20.556C11.7527 20.4713 11.593 20.3396 11.4748 20.1739C11.3567 20.0082 11.284 19.8143 11.2643 19.6118L11.2598 19.5C11.2598 19.08 11.4855 18.696 11.8905 18.4725L11.9955 18.42L25.5083 13.5405L25.5878 13.518L25.668 13.5045Z" fill="white" />
                 </svg>
-                <span className="text-[#FFF] font-['Inter'] text-[14px] font-[500] leading-[20px] absolute left-[56px] top-[16px] w-[78px] h-[20px]">
+                <span className="text-[#FFF] text-[14px] font-[500] leading-[20px] absolute left-[56px] top-[16px] w-[78px] h-[20px]">
                   Get Started
                 </span>
               </div>
@@ -107,7 +107,7 @@ export default function Index() {
                 onMouseEnter={() => setHoveredButton('getdemo')}
                 onMouseLeave={() => setHoveredButton(null)}
               >
-                <span className="text-[#FFF] font-['Inter'] text-[16px] font-[500] leading-[20px] absolute left-[30px] top-[15px] w-[90px] h-[20px]">
+                <span className="text-[#FFF] text-[16px] font-[500] leading-[20px] absolute left-[30px] top-[15px] w-[90px] h-[20px]">
                   Get a Demo
                 </span>
               </div>
@@ -173,15 +173,15 @@ export default function Index() {
                   <div className="text-[#000] text-[18px] font-[600] mb-[8px]">Buy Subscription</div>
                   <div className="text-gray-600 text-[12px] leading-[1.4]">Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nunc posuere neque laoreet. Massa consectetur scelerisque</div>
                 </div>
-                 {/* Learn More Button */}
-      <div className="mt-4">
-        <button className="bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-4xl transition-colors duration-200 flex items-center gap-2">
-          Learn More
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </button>
-      </div>
+                {/* Learn More Button */}
+                <div className="mt-4">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-4xl transition-colors duration-200 flex items-center gap-2">
+                    Learn More
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -202,7 +202,7 @@ export default function Index() {
         className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] absolute left-[200px] top-[500px] w-[240px] h-[257px]"
         style={{ backdropFilter: "blur(10px)" }}
       >
-        <h3 className="w-[206px] h-[60px] text-[#000] text-center font-['Inter'] text-[20px] font-[500] leading-[30px]">
+        <h3 className="w-[206px] h-[60px] text-[#000] text-center text-[20px] font-[500] leading-[30px]">
           Watch your Business Grow
         </h3>
 
@@ -261,10 +261,10 @@ export default function Index() {
           <path d="M121.12 178.868C103.76 183.519 85.351 182.313 68.747 175.434C52.1431 168.556 38.2725 156.391 29.2865 140.825C20.3004 125.259 16.7012 107.163 19.0471 89.3426C21.3929 71.5225 29.5526 54.9744 42.2607 42.265L59.5794 59.5855C50.6838 68.4821 44.9719 80.0657 43.3299 92.5398C41.6878 105.014 44.2072 117.681 50.4974 128.577C56.7876 139.473 66.4971 147.989 78.1199 152.804C89.7426 157.619 102.629 158.464 114.781 155.207L121.12 178.868Z" fill="url(#paint6_linear_pie)" stroke="url(#paint7_linear_pie)" strokeWidth="1.53846" />
           <path d="M100.01 34.9971C135.918 34.9972 165.026 64.1099 165.026 100.021C165.026 135.933 135.918 165.045 100.01 165.045C64.1018 165.045 34.9924 135.933 34.9922 100.021C34.9922 64.1098 64.1017 34.9971 100.01 34.9971Z" fill="url(#paint8_linear_pie)" fillOpacity="0.7" stroke="url(#paint9_linear_pie)" strokeWidth="0.769231" />
           
-          <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie)" fontFamily="Inter" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
+          <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie)" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
             941
           </text>
-          <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontFamily="SF Pro" fontSize="13" letterSpacing="-0.4px">
+          <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontSize="13" letterSpacing="-0.4px">
             Transactions
           </text>
         </svg>
@@ -284,7 +284,7 @@ export default function Index() {
         className="flex px-[20px] py-[20px] flex-col justify-center items-center gap-[10px] rounded-[10px] border border-[rgba(255,255,255,0.10)] bg-[linear-gradient(180deg,rgba(255,255,255,0.60)_0%,rgba(255,255,255,0.50)_100%)] shadow-[0_5px_10px_0_rgba(0,0,0,0.05),0_15px_30px_0_rgba(0,0,0,0.15),0_20px_40px_0_rgba(0,0,0,0.25)] absolute left-[1039px] top-[500px] w-[246px] h-[310px]"
         style={{ backdropFilter: "blur(10px)" }}
       >
-        <h3 className="w-[206px] h-[60px] text-[#000] text-center font-['Inter'] text-[20px] font-[500] leading-[30px]">
+        <h3 className="w-[206px] h-[60px] text-[#000] text-center text-[20px] font-[500] leading-[30px]">
           Watch your Business Grow
         </h3>
 
@@ -343,10 +343,10 @@ export default function Index() {
           <path d="M121.12 178.868C103.76 183.519 85.351 182.313 68.747 175.434C52.1431 168.556 38.2725 156.391 29.2865 140.825C20.3004 125.259 16.7012 107.163 19.0471 89.3426C21.3929 71.5225 29.5526 54.9744 42.2607 42.265L59.5794 59.5855C50.6838 68.4821 44.9719 80.0657 43.3299 92.5398C41.6878 105.014 44.2072 117.681 50.4974 128.577C56.7876 139.473 66.4971 147.989 78.1199 152.804C89.7426 157.619 102.629 158.464 114.781 155.207L121.12 178.868Z" fill="url(#paint6_linear_pie)" stroke="url(#paint7_linear_pie)" strokeWidth="1.53846" />
           <path d="M100.01 34.9971C135.918 34.9972 165.026 64.1099 165.026 100.021C165.026 135.933 135.918 165.045 100.01 165.045C64.1018 165.045 34.9924 135.933 34.9922 100.021C34.9922 64.1098 64.1017 34.9971 100.01 34.9971Z" fill="url(#paint8_linear_pie)" fillOpacity="0.7" stroke="url(#paint9_linear_pie)" strokeWidth="0.769231" />
           
-          <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie)" fontFamily="Inter" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
+          <text x="66.0668" y="99.3145" fill="url(#paint10_linear_pie)" fontSize="40" fontWeight="600" letterSpacing="-0.04em">
             941
           </text>
-          <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontFamily="SF Pro" fontSize="13" letterSpacing="-0.4px">
+          <text x="62.207" y="128.136" fill="black" fillOpacity="0.6" fontSize="13" letterSpacing="-0.4px">
             Transactions
           </text>
         </svg>
