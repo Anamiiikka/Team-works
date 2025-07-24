@@ -6,54 +6,45 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 top-0 left-0 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 lg:px-8 lg:py-5 md:px-6 md:py-4">
-        
-        {/* Logo - Responsive */}
-        <div className="flex items-center">
-          <div className="w-6 h-6 lg:w-7 lg:h-7 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg mr-2 lg:mr-3 flex items-center justify-center">
-            <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-white rounded-sm"></div>
-          </div>
-          <span className="text-lg lg:text-xl font-bold text-gray-900">FinanceApp</span>
+    <nav className="fixed w-full z-50 top-0 left-0 bg-white/80 backdrop-blur-md border-b border-blue-100 shadow-lg">
+      <div className="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+
+        {/* Logo */}
+        <div className="flex items-center h-14">
+          <Link href="/" className="flex items-center">
+            <img 
+              src="/logo.png" 
+              alt="Team Works Inc"
+              className="h-full w-auto object-contain drop-shadow-md"
+              style={{ maxHeight: '56px', filter: 'drop-shadow(0 2px 8px rgba(65,152,201,0.15))' }}
+            />
+          </Link>
         </div>
-        
-        {/* Desktop Navigation Links - Hidden on Mobile */}
-        <ul className="hidden lg:flex gap-6 xl:gap-8 text-gray-600 font-medium">
-          <li>
-            <Link href="/" className="hover:text-gray-900 transition-colors text-sm lg:text-base">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="#features" className="hover:text-gray-900 transition-colors text-sm lg:text-base">
-              Features
-            </Link>
-          </li>
-          <li>
-            <Link href="#pricing" className="hover:text-gray-900 transition-colors text-sm lg:text-base">
-              Pricing
-            </Link>
-          </li>
-          <li>
-            <Link href="#contact" className="hover:text-gray-900 transition-colors text-sm lg:text-base">
-              Contact
-            </Link>
-          </li>
-        </ul>
-        
-        {/* Desktop Action Buttons - Hidden on Mobile */}
-        <div className="hidden md:flex items-center gap-2 lg:gap-3">
-          <button className="px-3 py-1.5 lg:px-5 lg:py-2 text-gray-600 hover:text-gray-900 font-medium transition-colors text-sm lg:text-base">
-            Log In
+
+        {/* Desktop Navigation Links */}
+        <div className="hidden lg:flex space-x-8 text-gray-700 font-medium">
+          <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+          <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
+          <Link href="/services" className="hover:text-blue-600 transition-colors">Services</Link>
+          <Link href="/client" className="hover:text-blue-600 transition-colors">Client</Link>
+          <Link href="/contact" className="hover:text-blue-600 transition-colors">Contact us</Link>
+        </div>
+
+        {/* Desktop Action Buttons */}
+        <div className="hidden md:flex space-x-2 items-center">
+          <button className="text-gray-600 hover:text-blue-700 font-medium text-sm px-4 py-1 rounded-full border border-blue-200 bg-white/60">
+            Sign In
           </button>
-          <button className="px-4 py-2 lg:px-6 lg:py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium shadow-sm hover:shadow-md transition-all duration-200 text-sm lg:text-base">
-            Get Started
+          <button className="text-white font-medium text-sm px-4 py-1 rounded-full shadow-md" style={{
+            background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)'
+          }}>
+            Sign Up
           </button>
         </div>
 
         {/* Mobile Menu Button */}
         <button 
-          className="lg:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg"
+          className="lg:hidden p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle mobile menu"
         >
@@ -72,57 +63,20 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown - Responsive */}
+      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-md border-b border-gray-100 shadow-lg">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg">
           <div className="px-4 py-6 space-y-4">
-            
-            {/* Mobile Navigation Links */}
             <div className="space-y-3">
-              <Link 
-                href="/" 
-                className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link 
-                href="#features" 
-                className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Features
-              </Link>
-              <Link 
-                href="#pricing" 
-                className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Pricing
-              </Link>
-              <Link 
-                href="#contact" 
-                className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
+              <Link href="/" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+              <Link href="/about" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+              <Link href="/services" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+              <Link href="/client" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
+              <Link href="/contact" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
             </div>
-            
-            {/* Mobile Action Buttons */}
             <div className="pt-4 border-t border-gray-200 space-y-3">
-              <button 
-                className="w-full py-3 px-4 text-gray-700 hover:text-gray-900 font-medium transition-colors text-center border border-gray-200 rounded-lg hover:bg-gray-50"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Log In
-              </button>
-              <button 
-                className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium shadow-sm hover:shadow-md transition-all duration-200"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Get Started
-              </button>
+              <button className="w-full py-3 px-4 text-gray-700 hover:text-gray-900 font-medium border border-gray-200 rounded-lg hover:bg-gray-50">Sign In</button>
+              <button className="w-full py-3 px-4 text-white rounded-lg font-medium" style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}>Sign Up</button>
             </div>
           </div>
         </div>
