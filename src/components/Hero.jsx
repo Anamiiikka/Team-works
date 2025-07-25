@@ -26,33 +26,33 @@ export default function Index() {
             <div className="absolute top-[160px] left-4 w-[240px] h-[320px] max-w-full">
               <Image src="/left.png" alt="Finance Dashboard" layout="fill" objectFit="contain" className="rounded-[10px]" />
             </div>
-            {/* FIX: The left statistics card has been updated to match the image */}
+            {/* FIX: The card and its internal elements have been resized to fit correctly */}
             <div
-              className="absolute top-[280px] left-[80px] w-[250px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center"
+              className="absolute top-[280px] left-[90px] w-[220px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center"
             >
               <Image 
-                src="/right.png" // Replace with your actual image path
+                src="/right.png" // Using a placeholder for the testimonial image
                 alt="User Testimonial"
-                width={64}
-                height={64}
-                className="rounded-full mb-3"
+                width={60}
+                height={60}
+                className="rounded-full mb-2"
               />
-              <h3 className="text-black text-xl font-bold mb-2">
+              <h3 className="text-black text-sm font-bold mb-2">
                 Excellent
               </h3>
-              <div className="flex gap-1 mb-3">
+              <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5" viewBox="0 0 24 24" fill="#FFC81D">
+                  <svg key={i} className="w-4 h-4" viewBox="0 0 24 24" fill="#FFC81D">
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                 ))}
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-xs leading-relaxed mb-3">
                 Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula.
               </p>
-              <button className="bg-white hover:bg-gray-100 text-gray-800 text-sm font-semibold px-4 py-2 rounded-full shadow-md transition-colors flex items-center gap-2">
+              <button className="bg-white hover:bg-gray-100 text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-md transition-colors flex items-center gap-1.5">
                 View all
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path d="M14 5l7 7m0 0l-7 7m7-7H3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
@@ -83,7 +83,7 @@ export default function Index() {
           </div>
 
           {/* Middle Container with Two Cards */}
-          <div className="w-full max-w-2xl rounded-2xl border border-white/20 bg-white/50 shadow-2xl p-2.5 mb-10 backdrop-blur-md">
+          <div className="w-full max-w-3xl rounded-2xl border border-white/20 bg-white/50 shadow-2xl p-2.5 mb-10 backdrop-blur-md">
             <div className="relative flex flex-col md:flex-row gap-5 h-full">
               <div className="flex-1 rounded-xl bg-gradient-to-br from-[#5FB5E5] to-[#2E8BC0] shadow-lg text-white p-5 flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:z-20 min-h-[240px]">
                 <div>
