@@ -6,9 +6,9 @@ const Services = () => {
     <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#F6F5EF' }}>
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start mb-16">
           {/* Left Side - Title */}
-          <div>
+          <div className="lg:col-span-1">
             {/* Header with triangle icon */}
             <div className="flex items-center gap-2 mb-6">
               <div className="relative">
@@ -25,8 +25,8 @@ const Services = () => {
           </div>
 
           {/* Right Side - Description */}
-          <div className="lg:pt-12">
-            <p style={{ color: '#6C7278', fontSize: '22px', lineHeight: '33px', maxWidth: '580px' }} className="font-normal">
+          <div style={{ width: '580px', height: '207px' }} className="lg:col-span-2 lg:justify-self-end">
+            <p style={{ color: '#6C7278', fontSize: '22px', lineHeight: '33px' }} className="font-normal">
               Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nuncaliquet et.Ipsum dolor sit amet consectetur. Dolor pulvinar sed d.
             </p>
           </div>
