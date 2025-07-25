@@ -20,22 +20,22 @@ export default function Index() {
       </div>
 
       {/* Main content layout */}
-      <main className="relative z-10 lg:grid lg:grid-cols-[1fr_minmax(auto,744px)_1fr] lg:gap-x-8 xl:gap-x-12 px-4 sm:px-6 lg:px-8">
+      <main className="relative z-10 lg:grid lg:grid-cols-[280px_minmax(auto,744px)_280px] lg:gap-x-4 xl:gap-x-8 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
         
         {/* Left Decorative Column */}
-        <div className="hidden lg:block relative h-full">
+        <div className="hidden lg:block relative h-full overflow-hidden">
           <div className="sticky top-24 pt-20">
-            <div className="absolute top-[160px] left-0 w-[250px] h-[353px]">
+            <div className="absolute top-[160px] left-4 w-[240px] h-[320px] max-w-full">
               <Image src="/left.png" alt="Finance Dashboard" layout="fill" objectFit="contain" className="rounded-[10px]" />
-            </div>50
+            </div>
             <div
-              className="absolute top-[320px] left-[100px] w-[240px] p-5 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md"
+              className="absolute top-[320px] left-[80px] w-[200px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full"
             >
-              <h3 className="text-black text-center text-xl font-medium leading-snug mb-2">
+              <h3 className="text-black text-center text-lg font-medium leading-snug mb-2">
                 Watch your Business Grow
               </h3>
-              <div className="w-40 h-40 mx-auto bg-gray-200/50 rounded-full flex items-center justify-center">
-                <span className="text-4xl font-bold text-gray-800">941</span>
+              <div className="w-32 h-32 mx-auto bg-gray-200/50 rounded-full flex items-center justify-center">
+                <span className="text-2xl font-bold text-gray-800">941</span>
               </div>
             </div>
           </div>
@@ -43,16 +43,16 @@ export default function Index() {
 
         {/* Center Content Column */}
         {/* FIX: Added top padding (pt-16) to this column to create space BELOW the navbar */}
-        <div className="w-full flex flex-col items-center pt-16 sm:pt-24">
+        <div className="w-full flex flex-col items-center pt-16 sm:pt-24 px-2 sm:px-4">
           
           {/* Hero Section */}
-          <div className="w-full flex flex-col justify-center items-center gap-5 text-center">
+          <div className="w-full max-w-4xl flex flex-col justify-center items-center gap-5 text-center">
             <div className="flex items-center gap-2 h-9 px-3 py-1 rounded-lg border border-gray-200 bg-white/50 shadow-lg backdrop-blur-md">
                 <svg className="w-4 h-4" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.85 1.83l4.65 13.34m4.65-13.34L8.5 15.17m-3.25-9.34l3.25-4m3.25 4l-3.25-4m4.65-2.34H3.85L1.83 5.83h13.34L13.15 1.83zM8.5 15.17L15.17 5.83H1.83L8.5 15.17z" stroke="black" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" /></svg>
                 <span className="text-sm font-medium text-black">Smart Finance, smart living</span>
             </div>
 
-            <h1 className="w-full text-black text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter max-w-3xl">
+            <h1 className="w-full text-black text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tighter max-w-3xl px-4">
               We're here to help you achieve financial success
             </h1>
           </div>
@@ -65,7 +65,7 @@ export default function Index() {
           </div>
 
           {/* Middle Container with Two Cards */}
-          <div className="w-full rounded-2xl border border-white/20 bg-white/50 shadow-2xl p-2.5 mb-10 backdrop-blur-md">
+          <div className="w-full max-w-2xl rounded-2xl border border-white/20 bg-white/50 shadow-2xl p-2.5 mb-10 backdrop-blur-md">
             <div className="relative flex flex-col md:flex-row gap-5 h-full">
               <div className="flex-1 rounded-xl bg-gradient-to-br from-[#5FB5E5] to-[#2E8BC0] shadow-lg text-white p-5 flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:z-20 min-h-[240px]">
                 <div>
@@ -88,17 +88,17 @@ export default function Index() {
         </div>
 
         {/* Right Decorative Column */}
-        <div className="hidden lg:block relative h-full">
+        <div className="hidden lg:block relative h-full overflow-hidden">
           <div className="sticky top-24 pt-20">
-            <div className="absolute top-[120px] right-0 w-[269px] h-[350px]">
+            <div className="absolute top-[120px] right-4 w-[240px] h-[320px] max-w-full">
                <Image src="/right.png" alt="Analyze Performance" layout="fill" objectFit="contain" className="rounded-[10px]" />
             </div>
-            <div className="absolute top-[320px] right-[150px] w-[246px] p-5 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md">
-              <h3 className="text-black text-center text-xl font-medium leading-snug mb-2">
+            <div className="absolute top-[320px] right-[80px] w-[200px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full">
+              <h3 className="text-black text-center text-lg font-medium leading-snug mb-2">
                 Analyze Your Performance
               </h3>
-              <div className="w-40 h-40 mx-auto bg-gray-200/50 rounded-full flex items-center justify-center">
-                 <span className="text-4xl font-bold text-gray-800">941</span>
+              <div className="w-32 h-32 mx-auto bg-gray-200/50 rounded-full flex items-center justify-center">
+                 <span className="text-2xl font-bold text-gray-800">941</span>
               </div>
             </div>
           </div>
