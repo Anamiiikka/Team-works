@@ -42,14 +42,14 @@ export default function Footer() {
               Research collective's<br />
               newsletter
             </h3>
-            <div className="flex rounded-full overflow-hidden border border-gray-600">
+            <div className="flex rounded-full overflow-hidden border border-gray-600 w-full max-w-xs">
               <input
                 type="email"
                 placeholder="Enter email"
-                className="border-0 rounded-none bg-black/50 text-white placeholder:text-gray-400 focus:ring-0 focus:outline-none flex-1"
+                className="border-0 rounded-none bg-black/50 text-white placeholder:text-gray-400 focus:ring-0 focus:outline-none flex-1 px-6 py-3 text-base"
               />
-              <button className="rounded-none bg-blue-600 hover:bg-blue-700 px-4 border-0 flex items-center justify-center">
-                <ArrowRight size={20} />
+              <button className="rounded-none bg-blue-600 hover:bg-blue-700 px-6 py-3 border-0 flex items-center justify-center">
+                <ArrowRight size={24} />
               </button>
             </div>
           </div>
