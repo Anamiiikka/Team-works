@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useState } from 'react';
 import { Phone, Mail, Send, ChevronDown } from 'lucide-react';
 
@@ -155,7 +155,7 @@ const ContactSection = () => {
                       <button
                         key={index}
                         onClick={() => handleServiceSelect(service)}
-                        className="w-full px-4 py-3 text-left hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
+                        className="w-full px-4 py-3 text-left text-black hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors duration-200"
                       >
                         {service}
                       </button>
