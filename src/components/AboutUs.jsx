@@ -79,10 +79,15 @@ const AboutUs = () => {
             
             {/* Learn more button */}
             <div>
-              <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-colors duration-200 shadow-lg hover:shadow-xl" style={{ backgroundColor: '#5292E4' }}>
+              <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" style={{
+                background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
+              }}>
                 Learn more
-                <div className="bg-white rounded-full p-2.5 ml-4">
-                  <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#5292E4' }} />
+                <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
                 </div>
               </button>
             </div>

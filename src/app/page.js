@@ -2,6 +2,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AboutUs from '@/components/AboutUs';
+import WhoWeAre from '@/components/WhoWeAre';
 import Services from '@/components/Services';
 import Trusted from '@/components/Trusted';
 import Opportunity from '@/components/Opportunity';
@@ -16,7 +17,7 @@ export default function Home() {
       <Hero />
       <Trusted />
       <AboutUs />
-      
+      <WhoWeAre />
       <Services />
       <Opportunity />
       <ContactUs />
