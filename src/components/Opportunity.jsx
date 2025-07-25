@@ -18,16 +18,16 @@ export default function Opportunity() {
             style={{
               left: '0px',
               bottom: '0px',
-              width: '300px',
-              height: '380px',
-              transform: 'translateY(0)', // Ensure no vertical offset
+              width: '380px',
+              height: '380px'
             }}
           >
             <Image
               src="/cardl.png"
               alt="Left Card"
               fill
-              className="object-contain object-bottom" // Align image from bottom
+
+              className="object-bottom"
             />
           </div>
 
@@ -37,45 +37,71 @@ export default function Opportunity() {
             style={{
               right: '0px',
               bottom: '0px',
-              width: '300px',
-              height: '380px',
-              transform: 'translateY(0)', // Ensure no vertical offset
+              width: '380px',
+              height: '380px
             }}
           >
             <Image
               src="/cardr.png"
               alt="Right Card"
               fill
-              className="object-contain object-bottom" // Align image from bottom
+              className="object-bottom"
             />
           </div>
 
           {/* Central Content */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-black px-8 max-w-3xl z-20">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <div className="text-center text-black z-20 flex flex-col items-center">
+              <h2 
+                style={{
+                  fontFamily: 'Inter',
+                  fontWeight: 600,
+                  fontSize: '62px',
+                  lineHeight: '78px',
+                  letterSpacing: '-2%',
+                  textAlign: 'center',
+                  maxWidth: '870px',
+                  opacity: 1,
+                  marginBottom: '24px'
+                }}
+              >
                 Looking for job opportunity
               </h2>
               
-              <p className="text-lg md:text-xl mb-8 opacity-90 leading-relaxed max-w-2xl mx-auto">
+              <p 
+                style={{
+                  fontFamily: 'Inter',
+                  fontWeight: 600,
+                  fontSize: '17px',
+                  lineHeight: '24px',
+                  letterSpacing: '0%',
+                  textAlign: 'center',
+                  maxWidth: '562px',
+                  opacity: 1,
+                  marginBottom: '32px'
+                }}
+              >
                 Lorem ipsum dolor sit amet consectetur. Ullamcorper puruse et sit 
                 rhoncus sed imperdiet eget. Varius mattis tortor magna vitae 
                 magna.
               </p>
 
               {/* Get Started Button */}
-              <button className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg">
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+              <button className="inline-flex items-center gap-3 bg-black text-white py-3 pr-6 pl-2 rounded-full text-base font-medium hover:bg-gray-800 transition-colors duration-300 shadow-lg">
+                <div 
+                  className="bg-white rounded-full flex items-center justify-center"
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    opacity: 1
+                  }}
+                >
                   <svg 
-                    className="w-3 h-3 text-black" 
+                    className="w-5 h-5 text-black transform -rotate-45" 
                     fill="currentColor" 
-                    viewBox="0 0 20 20"
+                    viewBox="0 0 24 24"
                   >
-                    <path 
-                      fillRule="evenodd" 
-                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" 
-                      clipRule="evenodd" 
-                    />
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                   </svg>
                 </div>
                 Get Started
