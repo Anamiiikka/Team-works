@@ -8,6 +8,7 @@ import Trusted from '@/components/Trusted';
 import Opportunity from '@/components/Opportunity';
 import Footer from '@/components/Footer';
 import ContactUs from '@/components/ContactUs';
+import FAQ from '@/components/FAQ';
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <AboutUs />
       <WhoWeAre />
       <Services />
+      <FAQ />
       <Opportunity />
       <ContactUs />
       <Footer/>
