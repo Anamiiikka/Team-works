@@ -12,10 +12,11 @@ export default function Footer() {
           <div className="flex flex-col space-y-6">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <span className="text-black font-bold text-sm">TW</span>
-              </div>
-              <span className="text-white font-bold text-lg underline">TEAM WORKS INC</span>
+              <img 
+                src="/logof.png"
+                alt="Team Works Logo" 
+                className="w-45 h-12 rounded-full"
+              />
             </div>
             
             {/* Social Icons */}
@@ -36,8 +37,8 @@ export default function Footer() {
           </div>
 
           {/* Right side - Newsletter Signup */}
-          <div className="text-right max-w-md">
-            <h3 className="text-white text-lg font-medium mb-4">
+          <div className="text-left max-w-md">
+            <h3 className="text-white text-xl font-medium mb-4">
               Subscribe to the flow<br />
               Research collective's<br />
               newsletter
@@ -46,7 +47,7 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter email"
-                className="border-0 rounded-none bg-black/50 text-white placeholder:text-gray-400 focus:ring-0 focus:outline-none flex-1 px-6 py-3 text-base"
+                className="border-0 rounded-none bg-black/50 text-white placeholder:text-white focus:ring-0 focus:outline-none flex-1 px-6 py-3 text-base "
               />
               <button className="rounded-none bg-blue-600 hover:bg-blue-700 px-6 py-3 border-0 flex items-center justify-center">
                 <ArrowRight size={24} />
@@ -57,7 +58,7 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <nav className="mt-8 pt-6 border-t border-gray-800">
-          <div className="flex flex-wrap justify-center lg:justify-start gap-8 text-gray-300">
+          <div className="flex flex-wrap justify-between lg:justify-between gap-8 text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <a href="#" className="hover:text-white transition-colors">Services</a>
             <a href="#" className="hover:text-white transition-colors">About us</a>

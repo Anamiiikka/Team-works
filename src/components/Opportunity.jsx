@@ -26,6 +26,7 @@ export default function Opportunity() {
               src="/cardl.png"
               alt="Left Card"
               fill
+
               className="object-bottom"
             />
           </div>
@@ -37,7 +38,7 @@ export default function Opportunity() {
               right: '0px',
               bottom: '0px',
               width: '380px',
-              height: '380px'
+              height: '380px
             }}
           >
             <Image
