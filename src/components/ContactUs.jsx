@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import { Phone, Mail, Send, ChevronDown } from 'lucide-react';
 
@@ -50,14 +50,13 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-16 px-6 bg-white">
+    <section className="py-16 px-6" style={{ backgroundColor: '#F6F5EF' }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left Side - Content */}
           <div className="space-y-8">
             {/* Header */}
             <div>
-              <div className="relative">
               <div className="flex items-center gap-2 mb-4">
                 <div className="relative">
                   <div className="w-0 h-0 border-l-[20px] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent" style={{ borderLeftColor: '#036DA9' }}></div>
@@ -65,7 +64,6 @@ const ContactSection = () => {
                 </div>
                 <span className="font-medium ml-2" style={{ color: '#000000' }}>Our Contact</span>
               </div>
-            </div>
               <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Let's work together
               </h2>
