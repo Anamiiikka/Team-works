@@ -6,7 +6,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed w-full z-50 top-0 left-0 bg-white/80 backdrop-blur-md border-b border-blue-100 shadow-lg">
+    <nav className="w-full z-50 bg-gray-50 rounded-t-xl">
       <div className="w-full px-4 sm:px-6 lg:px-8 pl-0 pr-0 ml-0 mr-0 h-20 flex items-center relative">
         {/* Logo */}
         <div className="flex items-center h-14">
@@ -31,7 +31,7 @@ export default function Navbar() {
 
         {/* Desktop Action Buttons */}
         <div className="hidden md:flex space-x-3 items-center ml-auto mr-0">
-          <button className="text-gray-600 hover:text-blue-700 font-medium text-base px-5 py-2 rounded-full border border-blue-200 bg-white/60">
+          <button className="text-gray-600 hover:text-blue-700 font-medium text-base px-5 py-2 rounded-full border border-blue-200 bg-white">
             Sign In
           </button>
           <button className="text-white font-medium text-base px-5 py-2 rounded-full shadow-md" style={{
@@ -80,6 +80,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      <div className="w-full border-t border-gray-900/10"></div> {/* Light black line added here */}
     </nav>
   );
 }

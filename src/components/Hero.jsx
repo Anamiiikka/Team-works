@@ -1,13 +1,13 @@
-
 'use client';
 import { useState } from "react";
 import Image from "next/image";
+import Navbar from "./Navbar"; // Updated Navbar
 
 export default function Index() {
   const [hoveredButton, setHoveredButton] = useState(null);
 
   return (
-    <div className="w-full min-h-screen bg-white relative">
+    <div className="w-full min-h-screen bg-gray-50 relative rounded-t-[24px]"> {/* Changed to bg-gray-50 to match the light background */}
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <svg 
@@ -39,18 +39,10 @@ export default function Index() {
         </svg>
       </div>
 
-      {/* Background Blur Effect */}
-      <div 
-        className="absolute top-[-114px] left-[178px] w-[940px] h-[940px] rounded-[940px] pointer-events-none"
-        style={{
-          background: "linear-gradient(136deg, rgba(3,109,169,0.09) 5.3%, rgba(197,234,255,0.12) 115.18%)",
-          filter: "blur(100px)"
-        }}
-      />
-
-      {/* Hero Section */}
+      {/* Hero Section with Navbar */}
       <div className="relative w-full flex flex-col items-center">
-        <div className="flex w-full max-w-[711px] flex-col justify-center items-center gap-[21px] px-4 lg:px-0 mt-[148px]">
+        <Navbar />
+        <div className="flex w-full max-w-[711px] flex-col justify-center items-center gap-[21px] px-4 lg:px-0 mt-[80px]"> {/* Adjusted mt for navbar height */}
           {/* Badge */}
           <div 
             className="flex h-[35px] px-[12px] py-[4px] items-center gap-[8px] rounded-[8px] border border-[rgba(255,255,255,0.07)] bg-[rgba(70,95,241,0.12)] shadow-[0_1px_0_0_rgba(0,0,0,0.05),0_4px_4px_0_rgba(0,0,0,0.05),0_10px_10px_0_rgba(0,0,0,0.10)]"
