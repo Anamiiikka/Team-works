@@ -57,7 +57,7 @@ export default function Footer() {
         </div>
 
         {/* Navigation Links */}
-        <nav className="mt-8 pt-6 border-t border-gray-800">
+        <nav className="mt-8 pt-6 ">
           <div className="flex flex-wrap justify-between lg:justify-between gap-8 text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <a href="#" className="hover:text-white transition-colors">Services</a>

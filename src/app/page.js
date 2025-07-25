@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import Trusted from '@/components/Trusted';
 import Opportunity from '@/components/Opportunity';
 import Footer from '@/components/Footer';
+import ContactUs from '@/components/ContactUs';
 
 
 export default function Home() {
@@ -15,9 +16,12 @@ export default function Home() {
       <Hero />
       <Trusted />
       <AboutUs />
+      
       <Services />
       <Opportunity />
+      <ContactUs />
       <Footer/>
+
      
     </>
   );
