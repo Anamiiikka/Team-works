@@ -71,10 +71,10 @@ export default function FAQ() {
           opacity: 1,
           borderRadius: '40px'
         }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2">
+          <div className="flex flex-col lg:flex-row lg:items-start">
             
             {/* Left Section - Title */}
-            <div className="space-y-8">
+            <div className="space-y-8 lg:flex-shrink-0 lg:mr-8">
               <div className="flex items-center gap-2">
                 <div className="relative">
                   <div className="w-0 h-0 border-l-[20px] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent" style={{ borderLeftColor: '#036DA9' }}></div>
@@ -97,7 +97,7 @@ export default function FAQ() {
             </div>
 
             {/* Right Section - FAQ Content */}
-            <div className="space-y-8">
+            <div className="space-y-8 lg:flex-1">
               
               {/* Tab Navigation */}
               <div className="flex gap-4">
@@ -132,16 +132,18 @@ export default function FAQ() {
                     style={{
                       width: '100%',
                       maxWidth: '447px',
-                      minHeight: expandedFAQ === faq.id ? 'auto' : '111px',
-                      height: 'auto',
+                      height: '111px',
                       opacity: 1,
                       borderRadius: '16px',
                       borderWidth: '1px',
                       padding: '32px',
-                      wordWrap: 'break-word',
+                      display: 'flex',
+                      flexDirection: 'column',
                       overflow: 'hidden',
                       ...(expandedFAQ === faq.id ? {
-                        background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)'
+                        background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                        height: 'auto',
+                        minHeight: '111px'
                       } : {
                         background: 'white'
                       })
@@ -149,10 +151,10 @@ export default function FAQ() {
                   >
                     <button
                       onClick={() => toggleFAQ(faq.id)}
-                      className="w-full h-full text-left transition-colors duration-200"
+                      className="w-full flex-1 text-left transition-colors duration-200 flex flex-col justify-center"
                     >
-                      <div className="flex items-start justify-between w-full">
-                        <div className="flex-1 pr-6 min-w-0">
+                      <div className="flex items-start justify-between w-full h-full">
+                        <div className="flex-1 pr-6 min-w-0 flex flex-col justify-center">
                           <div className="flex items-center gap-3 mb-2">
                             <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                               expandedFAQ === faq.id
@@ -168,13 +170,19 @@ export default function FAQ() {
                               {faq.category}
                             </span>
                           </div>
-                          <h3 className={`text-lg font-semibold ${
+                          <h3 className={`font-semibold leading-tight ${
                             expandedFAQ === faq.id ? 'text-white' : 'text-gray-900'
                           }`}
                           style={{
+                            fontSize: faq.question.length > 50 ? '14px' : '16px',
+                            lineHeight: faq.question.length > 50 ? '1.3' : '1.4',
                             wordBreak: 'break-word',
                             overflowWrap: 'break-word',
-                            hyphens: 'auto'
+                            hyphens: 'auto',
+                            display: '-webkit-box',
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: 'vertical',
+                            overflow: 'hidden'
                           }}
                           >
                             {faq.question}
