@@ -19,14 +19,15 @@ export default function Opportunity() {
               left: '0px',
               bottom: '0px',
               width: '300px',
-              height: '380px'
+              height: '380px',
+              transform: 'translateY(0)', // Ensure no vertical offset
             }}
           >
             <Image
               src="/cardl.png"
               alt="Left Card"
               fill
-              className="object-contain"
+              className="object-contain object-bottom" // Align image from bottom
             />
           </div>
 
@@ -37,14 +38,15 @@ export default function Opportunity() {
               right: '0px',
               bottom: '0px',
               width: '300px',
-              height: '380px'
+              height: '380px',
+              transform: 'translateY(0)', // Ensure no vertical offset
             }}
           >
             <Image
               src="/cardr.png"
               alt="Right Card"
               fill
-              className="object-contain"
+              className="object-contain object-bottom" // Align image from bottom
             />
           </div>
 

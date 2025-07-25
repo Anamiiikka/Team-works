@@ -12,10 +12,11 @@ export default function Footer() {
           <div className="flex flex-col space-y-6">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <span className="text-black font-bold text-sm">TW</span>
-              </div>
-              <span className="text-white font-bold text-lg underline">TEAM WORKS INC</span>
+              <img 
+                src="/logof.png"
+                alt="Team Works Logo" 
+                className="w-45 h-12 rounded-full"
+              />
             </div>
             
             {/* Social Icons */}
@@ -57,7 +58,7 @@ export default function Footer() {
 
         {/* Navigation Links */}
         <nav className="mt-8 pt-6 border-t border-gray-800">
-          <div className="flex flex-wrap justify-center lg:justify-start gap-8 text-gray-300">
+          <div className="flex flex-wrap justify-between lg:justify-between gap-8 text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <a href="#" className="hover:text-white transition-colors">Services</a>
             <a href="#" className="hover:text-white transition-colors">About us</a>
