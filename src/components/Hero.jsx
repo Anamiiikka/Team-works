@@ -8,7 +8,19 @@ export default function Index() {
 
   return (
     // The main container for the entire page
-    <div className="w-full min-h-screen bg-white relative overflow-x-hidden">
+    <div 
+      className="w-full min-h-screen relative overflow-x-hidden"
+      style={{ 
+        backgroundColor: '#FFFFFF',
+        backgroundImage: `
+          radial-gradient(ellipse 800px 600px at center, #C5EAFF 0%, rgba(197, 234, 255, 0.4) 50%, transparent 70%),
+          radial-gradient(ellipse at top left, #EFF1F5A8 0%, transparent 50%),
+          radial-gradient(ellipse at top right, #EFF1F5A8 0%, transparent 50%),
+          radial-gradient(ellipse at bottom left, #EFF1F5A8 0%, transparent 50%),
+          radial-gradient(ellipse at bottom right, #EFF1F5A8 0%, transparent 50%)
+        `
+      }}
+    >
       
       <Navbar />
 
