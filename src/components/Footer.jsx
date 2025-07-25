@@ -49,8 +49,14 @@ export default function Footer() {
                 placeholder="Enter email"
                 className="border-0 rounded-none bg-black/50 text-white placeholder:text-white focus:ring-0 focus:outline-none flex-1 px-6 py-3 text-base "
               />
-              <button className="rounded-none bg-blue-600 hover:bg-blue-700 px-6 py-3 border-0 flex items-center justify-center">
-                <ArrowRight size={24} />
+              <button 
+                className="rounded-none px-6 py-3 border-0 flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+                style={{
+                  background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                  boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
+                }}
+              >
+                <ArrowRight size={24} className="text-white" />
               </button>
             </div>
           </div>

@@ -180,11 +180,17 @@ const ContactSection = () => {
               <div className="pt-4">
                 <button
                   onClick={handleSubmit}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-medium flex items-center gap-3 transition-colors duration-300 group"
+                  className="text-white font-medium px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+                  style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
+                  }}
                 >
                   Send a message
-                  <div className="bg-white p-2 rounded-full group-hover:bg-gray-100 transition-all duration-300">
-                    <Send className="w-5 h-5 text-blue-500" />
+                  <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full group-hover:bg-white transition-all duration-300" style={{
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                  }}>
+                    <Send className="w-5 h-5" style={{ color: '#036DA9' }} />
                   </div>
                 </button>
               </div>
