@@ -13,29 +13,8 @@ export default function Index() {
       <Navbar />
 
       {/* Background elements are now separate and behind the content */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Gradient Background with Blur - Made much larger and repositioned */}
-        <div 
-          className="absolute w-[150vw] h-[150vh] top-[-50vh] left-[-25vw]"
-          style={{
-            background: 'linear-gradient(135.72deg, rgba(3, 109, 169, 0.0924) 5.3%, rgba(197, 234, 255, 0.12) 115.18%)',
-            backdropFilter: 'blur(200px)',
-            opacity: 1
-          }}
-        />
-        {/* Additional gradient overlay for better spread */}
-        <div 
-          className="absolute w-[120vw] h-[120vh] top-[-30vh] left-[-10vw]"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(197, 234, 255, 0.08) 0%, rgba(3, 109, 169, 0.05) 50%, transparent 100%)',
-            backdropFilter: 'blur(150px)',
-            opacity: 1
-          }}
-        />
-        {/* Placeholder for large SVG background pattern if needed */}
-        <div className="absolute inset-0 opacity-10">
-          {/* SVG background pattern can go here */}
-        </div>
+      <div className="absolute inset-0 opacity-10 pointer-events-none z-0">
+        {/* You can place your large SVG background pattern here if needed */}
       </div>
 
       {/* Main content layout */}
@@ -47,6 +26,7 @@ export default function Index() {
             <div className="absolute top-[160px] left-4 w-[240px] h-[320px] max-w-full">
               <Image src="/left.png" alt="Finance Dashboard" layout="fill" objectFit="contain" className="rounded-[10px]" />
             </div>
+            {/* FIX: The card and its internal elements have been resized to fit correctly */}
             <div
               className="absolute top-[280px] left-[90px] w-[220px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center"
             >
@@ -90,7 +70,7 @@ export default function Index() {
                 <span className="text-sm font-medium text-black">Smart Finance, smart living</span>
             </div>
 
-            <h1 className="w-full text-black text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tighter max-w-3xl px-4">
+            <h1 className="w-full text-black text-3xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight tracking-tighter max-w-3xl px-4">
               We're here to help you achieve financial success
             </h1>
           </div>
@@ -118,13 +98,13 @@ export default function Index() {
                     <span className="text-xs text-gray-700">All packs in one place</span>
                   </div>
                   <h3 className="text-black text-lg font-semibold mb-2">Buy Subscription</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed.</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida.</p>
                 </div>
-                <div className="mt-1 self-end">
-                  <button className="bg-gray-900 hover:bg-gray-800 text-white border border-gray-200 text-sm font-medium px-4 py-1.5 transition-all duration-200 flex items-center gap-2">
+                <div className="mt-4 self-start">
+                  <button className="bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 flex items-center gap-2">
                     Learn More
-                    <svg className="w-3 h-3" viewBox="0 0 24 24">
-                      <path d="none" stroke="url(#paint0_linear)" strokeWidth="0" stroke-linecap="round" stroke="currentColor" d="M9 18 L15 12 L9 6" strokeWidth="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
                 </div>
