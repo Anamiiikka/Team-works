@@ -5,6 +5,7 @@ import AboutUs from '@/components/AboutUs';
 import Services from '@/components/Services';
 import Trusted from '@/components/Trusted';
 import Opportunity from '@/components/Opportunity';
+import Footer from '@/components/Footer';
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutUs />
       <Services />
       <Opportunity />
+      <Footer/>
      
     </>
   );
