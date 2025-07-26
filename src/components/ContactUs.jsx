@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { Phone, Mail, Send, ChevronDown } from 'lucide-react';
+import { Phone, Mail, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -190,7 +190,7 @@ const ContactSection = () => {
                   <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full group-hover:bg-white transition-all duration-300" style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}>
-                    <Send className="w-5 h-5" style={{ color: '#036DA9' }} />
+                    <ArrowUpRight className="w-5 h-5" style={{ color: '#036DA9' }} />
                   </div>
                 </button>
               </div>
