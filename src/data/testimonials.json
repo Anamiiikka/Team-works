@@ -1,0 +1,62 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Esther Howard",
+      "position": "Team Manager",
+      "avatar": "EH",
+      "testimonial": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Esther Howard",
+      "position": "Team Manager", 
+      "avatar": "EH",
+      "testimonial": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "John Smith",
+      "position": "Product Designer",
+      "avatar": "JS",
+      "testimonial": "The quality of service exceeded our expectations. The team's attention to detail and professionalism made all the difference in our project.",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "name": "Sarah Johnson",
+      "position": "Marketing Director",
+      "avatar": "SJ",
+      "testimonial": "Outstanding work! The team delivered beyond our expectations and helped us achieve our goals faster than we thought possible.",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "name": "Michael Chen",
+      "position": "CEO",
+      "avatar": "MC",
+      "testimonial": "Professional, reliable, and innovative. This partnership has been instrumental in scaling our business operations.",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "name": "Emily Davis",
+      "position": "Operations Manager",
+      "avatar": "ED",
+      "testimonial": "The level of expertise and customer service provided was exceptional. Highly recommend their services to anyone looking for quality solutions.",
+      "rating": 4
+    }
+  ],
+  "pageContent": {
+    "sectionLabel": "Testimonial",
+    "mainHeading": "What our clients say about our services",
+    "floatingAvatars": [
+      { "initials": "AK", "position": { "top": "1rem", "right": "2rem" } },
+      { "initials": "MJ", "position": { "top": "3rem", "left": "3rem" } },
+      { "initials": "LK", "position": { "bottom": "2rem", "right": "4rem" } },
+      { "initials": "RP", "position": { "bottom": "1rem", "left": "2rem" } }
+    ]
+  }
+}
