@@ -1,11 +1,18 @@
 'use client';
-import { Facebook, Twitter, Linkedin, Youtube, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Youtube, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-blue-500" style={{ backgroundImage: `url('/bg.png')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <div className="container mx-auto px-6 py-8">
+    <footer
+      className="relative border-t border-blue-500 bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: "url('/footer.png')",
+        backgroundColor: "#000", // fallback for transparent or invisible areas
+        minHeight: "300px",      // ensures image shows up
+      }}
+    >
+      <div className="container mx-auto px-6 py-8 bg-transparent">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
           
           {/* Left side - Logo and Social Icons */}
@@ -21,18 +28,11 @@ export default function Footer() {
             
             {/* Social Icons */}
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 border border-gray-600 rounded flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 border border-gray-600 rounded flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 border border-gray-600 rounded flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 border border-gray-600 rounded flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-colors">
-                <Youtube size={20} />
-              </a>
+              {[Facebook, Twitter, Linkedin, Youtube].map((Icon, index) => (
+                <a key={index} href="#" className="w-10 h-10 border border-gray-600 rounded flex items-center justify-center text-blue-400 hover:bg-blue-500 hover:text-white transition-colors">
+                  <Icon size={20} />
+                </a>
+              ))}
             </div>
           </div>
 
@@ -43,27 +43,26 @@ export default function Footer() {
               Research collective's<br />
               newsletter
             </h3>
-            <div className="flex rounded-full overflow-hidden border border-gray-600 w-full max-w-xs">
+            <div className="relative w-full max-w-xs">
               <input
                 type="email"
                 placeholder="Enter email"
-                className="border-0 rounded-none bg-black/50 text-white placeholder:text-white focus:ring-0 focus:outline-none flex-1 px-6 py-3 text-base "
+                className="w-full bg-transparent border border-gray-600 rounded-full py-3 pl-6 pr-20 text-white placeholder:text-gray-400 focus:ring-blue-500 focus:border-blue-500"
               />
               <button 
-                className="rounded-none px-6 py-3 border-0 flex items-center justify-center transition-all duration-300 hover:shadow-lg"
+                className="absolute top-1/2 right-2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300"
                 style={{
                   background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
-                  boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
                 }}
               >
-                <ArrowRight size={24} className="text-white" />
+                <ChevronRight size={20} className="text-white" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Navigation Links */}
-        <nav className="mt-8 pt-6 ">
+        <nav className="mt-8 pt-6">
           <div className="flex flex-wrap justify-between lg:justify-between gap-8 text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <a href="#" className="hover:text-white transition-colors">Services</a>
