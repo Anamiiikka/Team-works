@@ -31,21 +31,21 @@ export default function Index() {
         <main className="relative z-10 lg:grid lg:grid-cols-[280px_minmax(auto,744px)_280px] lg:gap-x-4 xl:gap-x-8 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
           
           {/* Left Decorative Column */}
-          <div className="hidden lg:block h-full">
+          <div className="hidden lg:block h-full relative z-30">
             <div className="sticky top-24 pt-20">
               <div className="absolute top-[160px] left-4 w-[240px] h-[320px] max-w-full">
                 <Image src="/left.png" alt="Finance Dashboard" layout="fill" objectFit="contain" className="rounded-[10px]" />
               </div>
               {/* FIX: The card and its internal elements have been resized to fit correctly */}
               <div
-                className="absolute top-[280px] left-[90px] w-[220px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center"
+                className="absolute top-[300px] left-[170px] w-[240px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center"
               >
                 <Image 
                   src="/right.png" // Using a placeholder for the testimonial image
                   alt="User Testimonial"
                   width={60}
                   height={60}
-                  className="rounded-full mb-2"
+                  className="w-[60px] h-[60px] rounded-full mb-2 object-cover"
                 />
                 <h3 className="text-black text-sm font-bold mb-2">
                   Excellent
@@ -93,16 +93,53 @@ export default function Index() {
             </div>
 
             {/* Middle Container with Two Cards - Shifted Downward */}
-            <div className="w-full max-w-3xl rounded-2xl border border-white/20 bg-white/50 shadow-2xl p-2.5 mb-10 mt-16 backdrop-blur-md">
-              <div className="relative flex flex-col md:flex-row gap-5 h-full">
-                <div className="flex-1 rounded-xl bg-gradient-to-br from-[#5FB5E5] to-[#2E8BC0] shadow-lg text-white p-5 flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:z-20 min-h-[240px]">
-                  <div>
-                    <div className="bg-white/20 text-xs px-2 py-0.5 rounded-full inline-block mb-3">Best Offer</div>
-                    <h3 className="text-xl font-semibold mb-2">Cash Flow Management</h3>
-                    <p className="text-white/80 text-sm leading-relaxed">Track and optimize your cash flow with real-time insights.</p>
+            <div className="relative w-full max-w-3xl rounded-2xl border border-white/20 bg-white/50 shadow-2xl p-2.5 mb-10 mt-16 backdrop-blur-md z-20">
+              <div className="relative grid grid-cols-1 md:grid-cols-2 gap-5 h-full">
+                <div className="rounded-xl bg-gradient-to-br from-[#5FB5E5] to-[#2E8BC0] shadow-lg text-white flex flex-col transition-transform duration-300 hover:scale-105 min-h-[240px] relative overflow-hidden">
+                  {/* Best Offer Chip */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-auto whitespace-nowrap">
+                    <div className="bg-gray-800 text-white text-sm font-semibold px-6 py-2" style={{
+                      clipPath: 'polygon(0 0, 100% 0, 90% 100%, 10% 100%)'
+                    }}>
+                      Best Offer
+                    </div>
+                  </div>
+
+                  {/* Bokeh/Dot Pattern Overlay */}
+                  <div className="absolute inset-0 z-0 opacity-50" style={{
+                    backgroundImage: `
+                      radial-gradient(circle at 80% 20%, #6EE7B7 0px, #6EE7B7 4px, transparent 4px),
+                      radial-gradient(circle at 25% 35%, #A7F3D0 0px, #A7F3D0 3px, transparent 3px),
+                      radial-gradient(circle at 70% 80%, #6EE7B7 0px, #6EE7B7 5px, transparent 5px),
+                      radial-gradient(circle at 40% 60%, #A7F3D0 0px, #A7F3D0 2px, transparent 2px),
+                      radial-gradient(circle at 90% 50%, #6EE7B7 0px, #6EE7B7 6px, transparent 6px),
+                      radial-gradient(circle at 10% 85%, #A7F3D0 0px, #A7F3D0 4px, transparent 4px),
+                      radial-gradient(circle at 50% 50%, #6EE7B7 0px, #6EE7B7 8px, transparent 8px)
+                    `,
+                    backgroundSize: '100% 100%',
+                  }}></div>
+
+                  <div className="relative z-10 flex flex-col h-full p-5 pt-12">
+                    <div className="flex-grow">
+                      <div className="text-left">
+                        <ul className="space-y-1 text-sm my-4">
+                          <li>Yearly</li>
+                          <li>Save 50%</li>
+                          <li>Get 7 Days free</li>
+                        </ul>
+                        <div className="my-4">
+                          <span className="bg-[#3B82F6] text-white text-sm font-semibold px-4 py-2 rounded-lg">
+                            Cash flow management
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-left">
+                      <p className="text-2xl font-bold">Rs6000 Yearly</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex-1 rounded-xl bg-white/90 backdrop-blur-lg shadow-lg border border-white/20 p-5 flex flex-col justify-between transition-transform duration-300 hover:scale-105 hover:z-20 min-h-[240px]">
+                <div className="rounded-xl bg-white/90 backdrop-blur-lg shadow-lg border border-white/20 p-5 flex flex-col justify-between transition-transform duration-300 hover:scale-105 min-h-[240px]">
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <span className="text-xs text-gray-700">All packs in one place</span>
@@ -129,7 +166,7 @@ export default function Index() {
               <div className="absolute top-[120px] right-4 w-[240px] h-[320px] max-w-full">
                  <Image src="/right.png" alt="Analyze Performance" layout="fill" objectFit="contain" className="rounded-[10px]" />
               </div>
-              <div className="absolute top-[280px] right-[100px] w-[200px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center">
+              <div className="absolute top-[340px] right-[150px] w-[200px] p-4 rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center z-10">
                 <h3 className="text-black text-center text-lg font-medium leading-snug mb-2">
                   Watch your business grow
                 </h3>
