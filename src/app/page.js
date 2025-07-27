@@ -20,12 +20,12 @@ export default function Home() {
       <Hero />
       <Trusted />
       <AboutUs />
-      <Testimonials/>
-      <WhoWeAre />
+      {/* <Testimonials/> */}
+      {/* <WhoWeAre /> */}
       <Services />
-      <FAQ />
+      {/* <FAQ /> */}
       <Opportunity />
-      <ContactUs />
+      {/* <ContactUs /> */}
       <Footer/>
 
      
