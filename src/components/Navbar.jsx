@@ -28,8 +28,8 @@ export default function Navbar() {
               <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
               <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
               <Link href="/services" className="hover:text-blue-600 transition-colors">Services</Link>
-              <Link href="/client" className="hover:text-blue-600 transition-colors">Client</Link>
-              <Link href="/contact" className="hover:text-blue-600 transition-colors">Contact us</Link>
+              <Link href="/testimonials" className="hover:text-blue-600 transition-colors">Client</Link>
+              <Link href="/contact-us" className="hover:text-blue-600 transition-colors">Contact us</Link>
             </div>
           </div>
 
@@ -78,10 +78,10 @@ export default function Navbar() {
           <div className="px-4 pt-2 pb-6 space-y-4">
             <div className="space-y-1">
               <Link href="/" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-              <Link href="/about" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+              <Link href="/about-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
               <Link href="/services" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
-              <Link href="/client" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
-              <Link href="/contact" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
+              <Link href="/testimonials" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
+              <Link href="/contact-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
             </div>
             <div className="pt-4 border-t border-gray-200/50 space-y-3">
               <button className="w-full py-3 px-5 text-gray-700 hover:text-gray-900 font-medium text-base border border-gray-200/50 rounded-lg hover:bg-gray-50/80 backdrop-blur-sm">Sign In</button>

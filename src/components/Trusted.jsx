@@ -4,9 +4,10 @@ const logos = [
   { name: 'Notion', src: '/notion.png' },
   { name: 'Slack', src: '/slack.png' },
   { name: 'Loom', src: '/loom.png' },
+   { name: 'Notion', src: '/notion.png' },
   { name: 'Afterpay', src: '/afterpay.png' },
   { name: 'monday.com', src: '/monday.png' },
-  { name: 'Notion', src: '/notion.png' },
+ 
 ];
 
 const Trusted = () => {

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "./Navbar"; 
 
 export default function Index() {
@@ -115,9 +116,11 @@ export default function Index() {
 
             {/* CTA Buttons */}
             <div className="flex justify-center mt-3 sm:mt-5 lg:mt-8 mb-4 sm:mb-6 lg:mb-12">
-              <button className="text-white font-medium text-xs sm:text-sm lg:text-base px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3 rounded-full shadow-lg transition-transform hover:-translate-y-0.5" style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}>
-                  Get a Demo
-              </button>
+              <Link href="/contact-us">
+                <button className="text-white font-medium text-xs sm:text-sm lg:text-base px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 lg:py-3 rounded-full shadow-lg transition-transform hover:-translate-y-0.5" style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}>
+                    Get a Demo
+                </button>
+              </Link>
             </div>
 
             {/* RESPONSIVE Cards Container */}
@@ -172,12 +175,14 @@ export default function Index() {
                     <p className="text-gray-600 text-[8px] sm:text-[9px] lg:text-sm leading-relaxed">Lorem ipsum dolor sit amet consectetur.</p>
                   </div>
                   <div className="mt-2 sm:mt-3 lg:mt-4 self-start">
-                    <button className="bg-gray-900 hover:bg-gray-800 text-white text-[8px] sm:text-[9px] lg:text-sm font-medium px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-full transition-colors duration-200 flex items-center gap-1 sm:gap-1.5 lg:gap-2">
-                      Learn More
-                      <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none">
-                        <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
+                    <Link href="/contact-us">
+                      <button className="bg-gray-900 hover:bg-gray-800 text-white text-[8px] sm:text-[9px] lg:text-sm font-medium px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-full transition-colors duration-200 flex items-center gap-1 sm:gap-1.5 lg:gap-2">
+                        Learn More
+                        <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-4 lg:h-4" viewBox="0 0 24 24" fill="none">
+                          <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </button>
+                    </Link>
                   </div>
                   
                 </div>

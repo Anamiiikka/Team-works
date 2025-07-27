@@ -65,10 +65,10 @@ export default function Footer() {
         <nav className="mt-8 pt-6">
           <div className="flex flex-wrap justify-between lg:justify-between gap-8 text-gray-300">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <a href="#" className="hover:text-white transition-colors">Services</a>
-            <a href="#" className="hover:text-white transition-colors">About us</a>
-            <a href="#" className="hover:text-white transition-colors">Reviews</a>
-            <a href="#" className="hover:text-white transition-colors">Contact us</a>
+            <a href="/services" className="hover:text-white transition-colors">Services</a>
+            <a href="/about-us" className="hover:text-white transition-colors">About us</a>
+            <a href="/testimonials" className="hover:text-white transition-colors">Reviews</a>
+            <a href="/contact-us" className="hover:text-white transition-colors">Contact us</a>
           </div>
         </nav>
 
