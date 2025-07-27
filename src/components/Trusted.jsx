@@ -1,12 +1,12 @@
 import React from 'react';
 
 const logos = [
-  { name: 'Notion', src: '/notion.svg' },
-  { name: 'Slack', src: '/slack.svg' },
-  { name: 'Loom', src: '/loom.svg' },
-  { name: 'Afterpay', src: '/afterpay.svg' },
-  { name: 'monday.com', src: '/monday.svg' },
-  { name: 'Notion', src: '/notion-alt.svg' },
+  { name: 'Notion', src: '/notion.png' },
+  { name: 'Slack', src: '/slack.png' },
+  { name: 'Loom', src: '/loom.png' },
+  { name: 'Afterpay', src: '/afterpay.png' },
+  { name: 'monday.com', src: '/monday.png' },
+  { name: 'Notion', src: '/notion.png' },
 ];
 
 const Trusted = () => {
@@ -29,11 +29,10 @@ const Trusted = () => {
                 }}
               >
                 <div
-                  className="bg-gradient-to-b from-white to-blue-100 rounded-full w-full h-full flex items-center justify-center shadow-md"
+                  className="bg-gradient-to-b from-white to-blue-100 rounded-full w-full h-full flex items-center justify-center shadow-md px-4"
                 >
-                  <span className="text-xl font-semibold text-gray-700">{logo.name}</span>
-                  {/* In a real app, you'd use an <img /> tag with the logo src */}
-                  {/* <img src={logo.src} alt={logo.name} className="h-8" /> */}
+                  <img src={logo.src} alt={logo.name} className="h-8 w-8 object-contain mr-3 flex-shrink-0" />
+                  <span className="text-lg font-bold text-black">{logo.name}</span>
                 </div>
               </div>
             ))}
