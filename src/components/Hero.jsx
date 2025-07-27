@@ -55,7 +55,15 @@ export default function Index() {
               
               {/* Left Main Image Card - Responsive with exact mobile specs */}
               <div className="left-main-card absolute top-[100px] sm:top-[130px] lg:top-[160px] left-0 sm:left-2 lg:left-4 w-[80px] h-[120px] sm:w-[120px] sm:h-[180px] lg:w-[240px] lg:h-[320px] max-w-full">
-                <Image src="/left.png" alt="Finance Dashboard" layout="fill" objectFit="contain" className="rounded-[6px] sm:rounded-[8px] lg:rounded-[10px]" />
+                <Image 
+                  src="/left.png" 
+                  alt="Finance Dashboard" 
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 120px, 240px"
+                  style={{ objectFit: 'contain' }}
+                  className="rounded-[6px] sm:rounded-[8px] lg:rounded-[10px]" 
+                />
               </div>
               
               {/* Left Testimonial Card - Responsive with exact mobile specs */}
@@ -157,7 +165,7 @@ export default function Index() {
                 {/* Card 2: Buy Subscription - RESPONSIVE */}
                 <div className="rounded-lg sm:rounded-xl bg-white/90 backdrop-blur-lg shadow-lg border border-white/20 p-2 sm:p-3 lg:p-5 flex flex-col justify-between transition-transform duration-300 hover:scale-105 min-h-[100px] sm:min-h-[140px] lg:min-h-[240px] relative">
                   <div>
-                    <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2 lg:mb-3 ml-6 sm:ml-8 lg:ml-9">
+                    <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2 lg:mb-3">
                       <span className="text-[7px] sm:text-[9px] lg:text-xs text-gray-700">All packs in one place</span>
                     </div>
                     <h3 className="text-black text-[10px] sm:text-xs lg:text-lg font-semibold mb-1 lg:mb-2">Buy Subscription</h3>
@@ -171,16 +179,7 @@ export default function Index() {
                       </svg>
                     </button>
                   </div>
-                  {/* Credit Card Image - RESPONSIVE */}
-                  <div className="absolute top-2 sm:top-3 lg:top-4 left-2 sm:left-3 lg:left-4">
-                    <Image 
-                      src="/Credit Card Rectangle.png" 
-                      alt="Credit Card" 
-                      width={20} 
-                      height={10} 
-                      className="w-3 h-auto sm:w-4 sm:h-auto lg:w-5 lg:h-auto object-contain opacity-80"
-                    />
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -213,7 +212,14 @@ export default function Index() {
               
               {/* Right Main Image Card - Responsive with exact mobile specs */}
               <div className="right-main-card absolute top-[80px] sm:top-[100px] lg:top-[120px] right-0 sm:right-2 lg:right-4 w-[80px] h-[120px] sm:w-[120px] sm:h-[180px] lg:w-[240px] lg:h-[320px] max-w-full">
-                 <Image src="/right.png" alt="Analyze Performance" layout="fill" objectFit="contain" className="rounded-[6px] sm:rounded-[8px] lg:rounded-[10px]" />
+                 <Image 
+                   src="/right.png" 
+                   alt="Analyze Performance" 
+                   fill
+                   sizes="(max-width: 640px) 80px, (max-width: 768px) 120px, 240px"
+                   style={{ objectFit: 'contain' }}
+                   className="rounded-[6px] sm:rounded-[8px] lg:rounded-[10px]" 
+                 />
               </div>
               
               {/* Right Pie Chart Card - Responsive with exact mobile specs */}

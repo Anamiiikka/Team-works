@@ -44,7 +44,14 @@ const Testimonials = () => {
         }}
       >
         <div className="relative w-full h-full">
-          <Image src="/map.png" fill objectFit="contain" alt="Map" className="opacity-40" />
+          <Image 
+            src="/map.png" 
+            fill 
+            sizes="949px"
+            style={{ objectFit: 'contain' }}
+            alt="Map" 
+            className="opacity-40" 
+          />
         </div>
       </div>
 
@@ -67,7 +74,14 @@ const Testimonials = () => {
               style={{ ...avatar.style, position: 'absolute' }}
             >
               <div className="relative w-full h-full">
-                <Image src={avatar.src} alt={avatar.alt} fill objectFit="cover" className="rounded-full" />
+                <Image 
+                  src={avatar.src} 
+                  alt={avatar.alt} 
+                  fill 
+                  sizes="(max-width: 640px) 63px, (max-width: 768px) 75px, 95px"
+                  style={{ objectFit: 'cover' }}
+                  className="rounded-full" 
+                />
               </div>
             </div>
           ))}
