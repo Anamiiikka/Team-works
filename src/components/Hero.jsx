@@ -100,7 +100,7 @@ export default function Index() {
                   <span className="text-[10px] sm:text-xs lg:text-sm font-medium text-black">Smart Finance, smart living</span>
               </div>
 
-              <h1 className="w-full text-black text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-bold leading-tight tracking-tighter max-w-3xl px-2 sm:px-4">
+              <h1 className="w-full text-black text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold leading-tight tracking-tighter max-w-3xl px-2 sm:px-4">
                 We're here to help you achieve financial success
               </h1>
             </div>
