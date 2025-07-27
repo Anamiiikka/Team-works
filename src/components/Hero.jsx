@@ -30,15 +30,36 @@ export default function Index() {
         {/* Main content layout - NOW FULLY RESPONSIVE */}
         <main className="relative z-10 grid grid-cols-[25%_auto_25%] sm:grid-cols-[20%_auto_20%] md:grid-cols-[22%_auto_22%] lg:grid-cols-[280px_minmax(auto,744px)_280px] gap-x-2 sm:gap-x-3 lg:gap-x-4 xl:gap-x-8 px-2 sm:px-4 lg:px-8 max-w-[1400px] mx-auto">
           
-          {/* Left Decorative Column - NOW RESPONSIVE */}
+          {/* Left Decorative Column - MOBILE SPECS + DESKTOP PRESERVED */}
           <div className="h-full relative z-30">
             <div className="sticky top-16 sm:top-20 lg:top-24 pt-12 sm:pt-16 lg:pt-20">
-              <div className="absolute top-[100px] sm:top-[130px] lg:top-[160px] left-0 sm:left-2 lg:left-4 w-[80px] h-[120px] sm:w-[120px] sm:h-[180px] lg:w-[240px] lg:h-[320px] max-w-full">
+              {/* Mobile-specific styles */}
+              <style jsx>{`
+                @media (max-width: 640px) {
+                  .left-main-card {
+                    width: 102.75px !important;
+                    height: 125.92px !important;
+                    top: 100px !important;
+                    left: 9.1px !important;
+                    border-radius: 10px !important;
+                  }
+                  .left-testimonial-card {
+                    width: 93.92px !important;
+                    height: 101.74px !important;
+                    top: 220px !important;
+                    left: 20.19px !important;
+                    padding: 8px !important;
+                  }
+                }
+              `}</style>
+              
+              {/* Left Main Image Card - Responsive with exact mobile specs */}
+              <div className="left-main-card absolute top-[100px] sm:top-[130px] lg:top-[160px] left-0 sm:left-2 lg:left-4 w-[80px] h-[120px] sm:w-[120px] sm:h-[180px] lg:w-[240px] lg:h-[320px] max-w-full">
                 <Image src="/left.png" alt="Finance Dashboard" layout="fill" objectFit="contain" className="rounded-[6px] sm:rounded-[8px] lg:rounded-[10px]" />
               </div>
-              <div
-                className="absolute top-[220px] sm:top-[280px] lg:top-[300px] left-[40px] sm:left-[100px] lg:left-[170px] w-[120px] sm:w-[160px] lg:w-[240px] p-2 sm:p-3 lg:p-4 rounded-lg sm:rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center"
-              >
+              
+              {/* Left Testimonial Card - Responsive with exact mobile specs */}
+              <div className="left-testimonial-card absolute top-[220px] sm:top-[280px] lg:top-[300px] left-[40px] sm:left-[100px] lg:left-[170px] w-[120px] sm:w-[160px] lg:w-[240px] p-2 sm:p-3 lg:p-4 rounded-lg sm:rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center text-center">
                 <Image 
                   src="/right.png"
                   alt="User Testimonial"
@@ -123,7 +144,7 @@ export default function Index() {
                         </ul>
                         <div className="my-1 sm:my-2 lg:my-4">
                           <span className="bg-[#3B82F6] text-white text-[7px] sm:text-[9px] lg:text-sm font-semibold px-1.5 sm:px-2 lg:px-4 py-0.5 sm:py-1 lg:py-2 rounded-md sm:rounded-lg">
-                            Cash flow
+                            Cash flow management
                           </span>
                         </div>
                       </div>
@@ -165,13 +186,38 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Right Decorative Column - NOW RESPONSIVE */}
+          {/* Right Decorative Column - MOBILE SPECS + DESKTOP PRESERVED */}
           <div className="h-full">
             <div className="sticky top-16 sm:top-20 lg:top-24 pt-12 sm:pt-16 lg:pt-20">
-              <div className="absolute top-[80px] sm:top-[100px] lg:top-[120px] right-0 sm:right-2 lg:right-4 w-[80px] h-[120px] sm:w-[120px] sm:h-[180px] lg:w-[240px] lg:h-[320px] max-w-full">
+              {/* Mobile-specific styles */}
+              <style jsx>{`
+                @media (max-width: 640px) {
+                  .right-main-card {
+                    width: 102.75px !important;
+                    height: 125.92px !important;
+                    top: 80px !important;
+                    right: 9.1px !important;
+                    left: auto !important;
+                    border-radius: 10px !important;
+                  }
+                  .right-chart-card {
+                    width: 91.13px !important;
+                    height: 114.84px !important;
+                    top: 200px !important;
+                    right: 20.19px !important;
+                    left: auto !important;
+                    padding: 8px !important;
+                  }
+                }
+              `}</style>
+              
+              {/* Right Main Image Card - Responsive with exact mobile specs */}
+              <div className="right-main-card absolute top-[80px] sm:top-[100px] lg:top-[120px] right-0 sm:right-2 lg:right-4 w-[80px] h-[120px] sm:w-[120px] sm:h-[180px] lg:w-[240px] lg:h-[320px] max-w-full">
                  <Image src="/right.png" alt="Analyze Performance" layout="fill" objectFit="contain" className="rounded-[6px] sm:rounded-[8px] lg:rounded-[10px]" />
               </div>
-              <div className="absolute top-[200px] sm:top-[260px] lg:top-[340px] right-[30px] sm:right-[80px] lg:right-[150px] w-[100px] sm:w-[130px] lg:w-[200px] p-2 sm:p-3 lg:p-4 rounded-lg sm:rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center z-10">
+              
+              {/* Right Pie Chart Card - Responsive with exact mobile specs */}
+              <div className="right-chart-card absolute top-[200px] sm:top-[260px] lg:top-[340px] right-[30px] sm:right-[80px] lg:right-[150px] w-[100px] sm:w-[130px] lg:w-[200px] p-2 sm:p-3 lg:p-4 rounded-lg sm:rounded-xl border border-white/20 bg-white/80 shadow-2xl backdrop-blur-md max-w-full flex flex-col items-center z-10">
                 <h3 className="text-black text-center text-[8px] sm:text-[10px] lg:text-lg font-medium leading-snug mb-1 lg:mb-2">
                   Watch your business grow
                 </h3>
