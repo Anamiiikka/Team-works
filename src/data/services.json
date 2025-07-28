@@ -3,30 +3,44 @@
     {
       "id": 1,
       "title": "Debt Syndication",
-      "description": "We specialize in structuring and arranging debt financing solutions to support business growth, expansion, and restructuring. Our strategic relationships with banks, NBFCs, and financial institutions allow us to offer customized funding solutions, including",
+      "description": "We specialize in structuring and arranging debt financing solutions to support business growth, expansion, and restructuring. Our strong relationships with banks, NBFCs, and financial institutions allow us to offer customized funding solutions, including Term Loans, Structured Finance, External Commercial Borrowings (ECBs), and Asset-Based Lending.",
       "icon": "/money-bag.png",
       "alt": "Debt Syndication"
     },
     {
       "id": 2,
-      "title": "Project Financing",
-      "description": "We provide end-to-end project financing solutions, ensuring that businesses secure the required capital for infrastructure, industrial, and business expansion projects.",
+      "title": "Working Capital Management",
+      "description": "Efficient working capital management is crucial for business sustainability and growth. Our experts assist in optimizing cash flow, enhancing liquidity, and ensuring seamless business operations by offering Fund-Based & Non-Fund-Based Facilities, Invoice & Receivables Financing, Cash Flow Optimization Strategies, Supply Chain Financing, and Trade Finance Solutions.",
       "icon": "/closure.png",
-      "alt": "Project Financing"
+      "alt": "Working Capital Management"
     },
     {
       "id": 3,
-      "title": "Venture Capital",
-      "description": "We help startups and small businesses raise venture capital and secure funding for growth and expansion. Our services includeVenture Capital & Angel Investment Advisory MSME Business Loans & Credit",
+      "title": "Project Financing",
+      "description": "We provide end-to-end project financing solutions, ensuring that businesses secure the required capital for infrastructure, industrial, and business expansion projects. Our services include Feasibility Studies & Financial Modeling, Debt & Equity Structuring, Government Incentives & Subsidies Advisory, and Private Equity & Venture Capital Funding.",
       "icon": "/venture.png",
-      "alt": "Venture Capital"
+      "alt": "Project Financing"
     },
     {
       "id": 4,
       "title": "Capital Advisory",
-      "description": "Strategic capital structuring is essential for maximizing growth potential. We assist in evaluating capital requirements and structuring financial instruments that align with business objectives",
+      "description": "Strategic capital structuring is essential for maximizing growth potential. We assist in evaluating capital requirements and structuring financial instruments that align with business objectives. Our expertise covers Equity Financing, Convertible Instruments, Private Placement, and Capital Restructuring.",
       "icon": "/capital-venture.png",
       "alt": "Capital Advisory"
+    },
+    {
+      "id": 5,
+      "title": "Business Restructuring & Turnaround Advisory",
+      "description": "For businesses facing financial distress, we offer comprehensive restructuring solutions to restore stability and profitability. Our services include Debt Restructuring & Refinancing, Financial Risk Assessment, Asset Monetization Strategies, and Insolvency & Bankruptcy Advisory.",
+      "icon": "/organization.png",
+      "alt": "Business Restructuring"
+    },
+    {
+      "id": 6,
+      "title": "Venture Capital & MSME Funding",
+      "description": "We help startups and small businesses raise venture capital and secure funding for growth and expansion. Our services include Venture Capital & Angel Investment Advisory, MSME Business Loans & Credit Facilitation, Government-Backed Loan Assistance, and Startup & Growth-Stage Fundraising.",
+      "icon": "/consultant.png",
+      "alt": "Venture Capital & MSME Funding"
     }
   ]
 }
