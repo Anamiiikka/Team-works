@@ -1,0 +1,50 @@
+{
+  "General": [
+    {
+      "id": 1,
+      "category": "General",
+      "question": "Lorem ipsum dolor sit amet consectetur Netus?",
+      "answer": "Lorem ipsum dolor sit amet consectetur. Amet molestie aenean pellentesque turpis est ornare. Mattis congue turpis cursus volutpat mauris ac facilisi."
+    },
+    {
+      "id": 2,
+      "category": "General",
+      "question": "Do you provide ongoing support?",
+      "answer": "Yes, we provide comprehensive ongoing support to ensure your project continues to run smoothly and meets your evolving needs."
+    },
+    {
+      "id": 3,
+      "category": "General",
+      "question": "Do you provide ongoing support?",
+      "answer": "Yes, we provide comprehensive ongoing support to ensure your project continues to run smoothly and meets your evolving needs."
+    }
+  ],
+  "Features": [
+    {
+      "id": 4,
+      "category": "Features",
+      "question": "What features are included in the basic plan?",
+      "answer": "Our basic plan includes all essential features needed to get started with your project, including core functionality and basic support."
+    },
+    {
+      "id": 5,
+      "category": "Features",
+      "question": "Can I upgrade my plan later?",
+      "answer": "Yes, you can upgrade your plan at any time to access additional features and enhanced support options."
+    }
+  ],
+  "Services": [
+    {
+      "id": 6,
+      "category": "Services",
+      "question": "Do you provide ongoing support?",
+      "answer": "Yes, we provide comprehensive ongoing support including maintenance, updates, and technical assistance for all our services."
+    },
+    {
+      "id": 7,
+      "category": "Services",
+      "question": "What services do you offer?",
+      "answer": "We offer a wide range of services including web development, mobile applications, consulting, and digital transformation solutions."
+    }
+  ]
+}
