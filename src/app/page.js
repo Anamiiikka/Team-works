@@ -20,9 +20,9 @@ export default function Home() {
       <Hero />
       <Trusted />
       <AboutUs />
-      <Testimonials/>
       <WhoWeAre />
       <Services />
+      <Testimonials/>
       <FAQ />
       <Opportunity />
       <ContactUs />

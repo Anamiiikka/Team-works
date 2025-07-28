@@ -8,25 +8,37 @@ export default function Hero() {
     <div className="w-full min-h-screen bg-gray-100 p-0 lg:p-7">
       <div 
         className="relative mx-auto rounded-none lg:rounded-3xl overflow-hidden min-h-screen lg:w-[1300px] lg:h-[885px]"
-        style={{ background: '#036DA9' }}
+        style={{ background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)' }}
       >
         {/* Navbar is now responsive via CSS */}
         <Navbar />
         
         {/* Mobile Layout - visible by default, hidden on lg+ */}
-        <div className="lg:hidden px-4 py-6 text-center text-white space-y-6">
+        <div className="lg:hidden px-2 py-6 text-center text-white space-y-6">
           {/* Mobile Heading */}
-          <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-            We're here to helping
-            <br />
-            <span className="text-white">Grow </span>
-            <span style={{ color: '#5292E4' }}>Business</span>
-            <br />
-            Success
+          <h1 className="font-bold leading-tight px-1"
+              style={{
+                fontFamily: 'Inter',
+                fontWeight: 600,
+                fontSize: 'clamp(32px, 8vw, 48px)',
+                lineHeight: 'clamp(40px, 9vw, 56px)',
+                letterSpacing: '-2%',
+                textAlign: 'center'
+              }}>
+            <span className="block text-white mb-1">We're here to helping</span>
+            <span className="block">
+              <span className="text-white">Grow </span>
+              <span style={{ 
+                color: '#7BB4FF',
+                fontSize: 'clamp(36px, 9vw, 54px)',
+                fontWeight: 700
+              }}>Business</span>
+            </span>
+            <span className="block text-white mt-1">Success</span>
           </h1>
 
           {/* Mobile Paragraph */}
-          <p className="text-white/90 text-base leading-relaxed max-w-md mx-auto">
+          <p className="text-white/90 text-base leading-relaxed max-w-full mx-auto px-1">
             Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nunc aliquet et ipsum dolor sit amet consectetur.
           </p>
 
@@ -45,7 +57,7 @@ export default function Hero() {
           </Link>
 
           {/* Mobile Image */}
-          <div className="mt-8 relative max-w-sm mx-auto">
+          <div className="mt-8 relative max-w-full mx-auto px-1">
             <Image 
               src="/finman.png" 
               alt="Professional consultant"
@@ -68,13 +80,26 @@ export default function Hero() {
               top: '205px',
               left: '58px',
               opacity: 1,
-              fontSize: '4rem',
+              fontFamily: 'Inter',
+              fontWeight: 600,
+              fontStyle: 'normal',
+              fontSize: '75px',
+              lineHeight: '94px',
+              letterSpacing: '-4%',
               zIndex: 15
             }}
           >
             We're here to helping
             <br />
-            <span className="text-white">Grow </span><span style={{ color: '#5292E4' }}>Business</span>
+            <span className="text-white">Grow </span><span style={{ 
+              color: '#7BB4FF',
+              fontFamily: 'Inter',
+              fontWeight: 600,
+              fontStyle: 'normal',
+              fontSize: '89px',
+              lineHeight: '94px',
+              letterSpacing: '-4%'
+            }}>Business</span>
             <br />
             Success
           </h1>
@@ -138,7 +163,12 @@ export default function Hero() {
               top: '498px',
               left: '62px',
               opacity: 1,
-              fontSize: '18px',
+              fontFamily: 'Inter',
+              fontWeight: 400,
+              fontStyle: 'normal',
+              fontSize: '22px',
+              lineHeight: '33px',
+              letterSpacing: '0%',
               zIndex: 15
             }}
           >
