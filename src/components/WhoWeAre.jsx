@@ -296,7 +296,14 @@ const WhoWeAre = () => {
 
             {/* Desktop: Horizontal scroll layout */}
             <div className="hidden lg:block relative w-full overflow-hidden">
-              <div className="flex gap-8 animate-infinite-scroll">
+              <div 
+                className="flex gap-8 animate-infinite-scroll"
+                style={{
+                  animationPlayState: 'running'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
+                onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
+              >
                 {/* Render cards from JSON data */}
                 {whoWeAreData.cards.map(card => renderCard(card))}
                 
