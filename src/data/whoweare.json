@@ -1,0 +1,34 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "title": "Professional Guidance",
+      "description": "We are a one-stop shop for all your loan requirements. With extensive experience in the financial sector, we understand exactly what suits your needs.",
+      "icon": "/consultant.png",
+      "iconSize": {
+        "width": "71px",
+        "height": "71px"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Tailored Loan Solutions",
+      "description": "At Teamwork Inc., our team of seasoned professionals and advisors takes the time to understand your business thoroughly.",
+      "icon": "/organization.png",
+      "iconSize": {
+        "width": "56px",
+        "height": "56px"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Secure & Reliable",
+      "description": "Your financial security is our top priority. We ensure all transactions and data are protected with industry-leading security measures.",
+      "icon": "/consultant.png",
+      "iconSize": {
+        "width": "71px",
+        "height": "71px"
+      }
+    }
+  ]
+}

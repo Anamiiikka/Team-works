@@ -1,0 +1,32 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "title": "Debt Syndication",
+      "description": "We specialize in structuring and arranging debt financing solutions to support business growth, expansion, and restructuring. Our strategic relationships with banks, NBFCs, and financial institutions allow us to offer customized funding solutions, including",
+      "icon": "/money-bag.png",
+      "alt": "Debt Syndication"
+    },
+    {
+      "id": 2,
+      "title": "Project Financing",
+      "description": "We provide end-to-end project financing solutions, ensuring that businesses secure the required capital for infrastructure, industrial, and business expansion projects.",
+      "icon": "/closure.png",
+      "alt": "Project Financing"
+    },
+    {
+      "id": 3,
+      "title": "Venture Capital",
+      "description": "We help startups and small businesses raise venture capital and secure funding for growth and expansion. Our services includeVenture Capital & Angel Investment Advisory MSME Business Loans & Credit",
+      "icon": "/venture.png",
+      "alt": "Venture Capital"
+    },
+    {
+      "id": 4,
+      "title": "Capital Advisory",
+      "description": "Strategic capital structuring is essential for maximizing growth potential. We assist in evaluating capital requirements and structuring financial instruments that align with business objectives",
+      "icon": "/capital-venture.png",
+      "alt": "Capital Advisory"
+    }
+  ]
+}

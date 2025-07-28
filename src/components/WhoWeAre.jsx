@@ -1,7 +1,70 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import whoWeAreData from '../data/whoweare.json';
 
 const WhoWeAre = () => {
+  // Function to render a card
+  const renderCard = (card) => (
+    <div key={card.id} className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
+         style={{ 
+           width: '383px', 
+           height: '373px',
+           backgroundColor: '#066FAB',
+           borderWidth: '1px',
+           borderColor: '#066FAB'
+         }}>
+      <div className="rounded-full flex items-center justify-center mb-4" style={{ 
+        width: '84px',
+        height: '84px',
+        background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
+        opacity: 1
+      }}>
+        <img src={card.icon} alt={card.title} style={{ width: card.iconSize.width, height: card.iconSize.height }} />
+      </div>
+      
+      <h3 className="font-semibold mb-3" style={{
+        width: '330px',
+        height: '43px',
+        fontFamily: 'Inter',
+        fontWeight: 600,
+        fontSize: '30px',
+        lineHeight: '33px',
+        letterSpacing: '0%',
+        opacity: 1,
+        color: '#FFFFFF'
+      }}>{card.title}</h3>
+      
+      <p className="text-blue-100 mb-4 leading-relaxed" style={{
+        width: '353px',
+        height: '120px',
+        opacity: 1,
+        overflow: 'hidden'
+      }}>
+        {card.description}
+      </p>
+      
+      <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
+        width: 'auto',
+        height: '33px',
+        fontFamily: 'Inter',
+        fontWeight: 600,
+        fontSize: '19px',
+        lineHeight: '33px',
+        letterSpacing: '0%',
+        opacity: 1,
+        left: '32px',
+        borderBottom: '1px solid white',
+        borderWidth: '0 0 1px 0',
+        paddingBottom: '1px',
+        textAlign: 'left',
+        background: 'none',
+        textDecoration: 'none',
+        cursor: 'pointer'
+      }}>
+        Read More
+      </button>
+    </div>
+  );
   return (
     <div className="min-h-screen px-8 py-16" style={{ backgroundColor: '#f6f5ef' }}>
       <div className="max-w-7xl mx-auto">
@@ -121,369 +184,11 @@ const WhoWeAre = () => {
           {/* Flowing Blue Cards Container */}
           <div className="relative w-full overflow-hidden">
             <div className="flex gap-8 animate-infinite-scroll">
-              {/* Professional Guidance Card */}
-              <div className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
-                   style={{ 
-                     width: '383px', 
-                     height: '373px',
-                     backgroundColor: '#066FAB',
-                     borderWidth: '1px',
-                     borderColor: '#066FAB'
-                   }}>
-                <div className="rounded-full flex items-center justify-center mb-4" style={{ 
-                  width: '84px',
-                  height: '84px',
-                  background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
-                  opacity: 1
-                }}>
-                  <img src="/consultant.png" alt="Professional Guidance" style={{ width: '71px', height: '71px' }} />
-                </div>
-                
-                <h3 className="font-semibold mb-3" style={{
-                  width: '330px',
-                  height: '43px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '30px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  color: '#FFFFFF'
-                }}>Professional Guidance</h3>
-                
-                <p className="text-blue-100 mb-4 leading-relaxed" style={{
-                  width: '353px',
-                  height: '120px',
-                  opacity: 1,
-                  overflow: 'hidden'
-                }}>
-                  We are a one-stop shop for all your loan requirements. With extensive experience in the financial sector, we understand exactly what suits your needs.
-                </p>
-                
-                <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
-                  width: 'auto',
-                  height: '33px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '19px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  left: '32px',
-                  borderBottom: '1px solid white',
-                  borderWidth: '0 0 1px 0',
-                  paddingBottom: '1px',
-                  textAlign: 'left',
-                  background: 'none',
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}>
-                  Read More
-                </button>
-              </div>
-
-              {/* Tailored Loan Solutions Card */}
-              <div className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
-                   style={{ 
-                     width: '383px', 
-                     height: '373px',
-                     backgroundColor: '#066FAB',
-                     borderWidth: '1px',
-                     borderColor: '#066FAB'
-                   }}>
-                <div className="rounded-full flex items-center justify-center mb-4" style={{ 
-                  width: '84px',
-                  height: '84px',
-                  background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
-                  opacity: 1
-                }}>
-                  <img src="/organization.png" alt="Tailored Loan Solutions" style={{ width: '56px', height: '56px' }} />
-                </div>
-                
-                <h3 className="font-semibold mb-3" style={{
-                  width: '330px',
-                  height: '43px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '30px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  color: '#FFFFFF'
-                }}>Tailored Loan Solutions</h3>
-                
-                <p className="text-blue-100 mb-4 leading-relaxed" style={{
-                  width: '353px',
-                  height: '120px',
-                  opacity: 1,
-                  overflow: 'hidden'
-                }}>
-                  At Teamwork Inc., our team of seasoned professionals and advisors takes the time to understand your business thoroughly.
-                </p>
-                
-                <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
-                  width: 'auto',
-                  height: '33px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '19px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  left: '32px',
-                  borderBottom: '1px solid white',
-                  borderWidth: '0 0 1px 0',
-                  paddingBottom: '1px',
-                  textAlign: 'left',
-                  background: 'none',
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}>
-                  Read More
-                </button>
-              </div>
-
-              {/* Secure & Reliable Card */}
-              <div className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
-                   style={{ 
-                     width: '383px', 
-                     height: '373px',
-                     backgroundColor: '#066FAB',
-                     borderWidth: '1px',
-                     borderColor: '#066FAB'
-                   }}>
-                <div className="rounded-full flex items-center justify-center mb-4" style={{ 
-                  width: '84px',
-                  height: '84px',
-                  background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
-                  opacity: 1
-                }}>
-                  <img src="/consultant.png" alt="Secure & Reliable" style={{ width: '71px', height: '71px' }} />
-                </div>
-                
-                <h3 className="font-semibold mb-3" style={{
-                  width: '330px',
-                  height: '43px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '30px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  color: '#FFFFFF'
-                }}>Secure & Reliable</h3>
-                
-                <p className="text-blue-100 mb-4 leading-relaxed" style={{
-                  width: '353px',
-                  height: '120px',
-                  opacity: 1,
-                  overflow: 'hidden'
-                }}>
-                  Your financial security is our top priority. We ensure all transactions and data are protected with industry-leading security measures.
-                </p>
-                
-                <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
-                  width: 'auto',
-                  height: '33px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '19px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  left: '32px',
-                  borderBottom: '1px solid white',
-                  borderWidth: '0 0 1px 0',
-                  paddingBottom: '1px',
-                  textAlign: 'left',
-                  background: 'none',
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}>
-                  Read More
-                </button>
-              </div>
-
+              {/* Render cards from JSON data */}
+              {whoWeAreData.cards.map(card => renderCard(card))}
+              
               {/* Duplicate cards for continuous animation */}
-              <div className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
-                   style={{ 
-                     width: '383px', 
-                     height: '373px',
-                     backgroundColor: '#066FAB',
-                     borderWidth: '1px',
-                     borderColor: '#066FAB'
-                   }}>
-                <div className="rounded-full flex items-center justify-center mb-4" style={{ 
-                  width: '84px',
-                  height: '84px',
-                  background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
-                  opacity: 1
-                }}>
-                  <img src="/consultant.png" alt="Professional Guidance" style={{ width: '71px', height: '71px' }} />
-                </div>
-                
-                <h3 className="font-semibold mb-3" style={{
-                  width: '330px',
-                  height: '43px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '30px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  color: '#FFFFFF'
-                }}>Professional Guidance</h3>
-                
-                <p className="text-blue-100 mb-4 leading-relaxed" style={{
-                  width: '353px',
-                  height: '120px',
-                  opacity: 1,
-                  overflow: 'hidden'
-                }}>
-                  We are a one-stop shop for all your loan requirements. With extensive experience in the financial sector.
-                </p>
-                
-                <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
-                  width: 'auto',
-                  height: '33px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '19px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  left: '32px',
-                  borderBottom: '1px solid white',
-                  borderWidth: '0 0 1px 0',
-                  paddingBottom: '1px',
-                  textAlign: 'left',
-                  background: 'none',
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}>
-                  Read More
-                </button>
-              </div>
-
-              <div className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
-                   style={{ 
-                     width: '383px', 
-                     height: '373px',
-                     backgroundColor: '#066FAB',
-                     borderWidth: '1px',
-                     borderColor: '#066FAB'
-                   }}>
-                <div className="rounded-full flex items-center justify-center mb-4" style={{ 
-                  width: '84px',
-                  height: '84px',
-                  background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
-                  opacity: 1
-                }}>
-                  <img src="/organization.png" alt="Tailored Loan Solutions" style={{ width: '56px', height: '56px' }} />
-                </div>
-                
-                <h3 className="font-semibold mb-3" style={{
-                  width: '330px',
-                  height: '43px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '30px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  color: '#FFFFFF'
-                }}>Tailored Loan Solutions</h3>
-                
-                <p className="text-blue-100 mb-4 leading-relaxed" style={{
-                  width: '353px',
-                  height: '120px',
-                  opacity: 1,
-                  overflow: 'hidden'
-                }}>
-                  At Teamwork Inc., our team of seasoned professionals and advisors takes the time to understand your business thoroughly.
-                </p>
-                
-                <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
-                  width: 'auto',
-                  height: '33px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '19px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  left: '32px',
-                  borderBottom: '1px solid white',
-                  borderWidth: '0 0 1px 0',
-                  paddingBottom: '1px',
-                  textAlign: 'left',
-                  background: 'none',
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}>
-                  Read More
-                </button>
-              </div>
-
-              <div className="flex-shrink-0 rounded-4xl p-8 text-white border relative" 
-                   style={{ 
-                     width: '383px', 
-                     height: '373px',
-                     backgroundColor: '#066FAB',
-                     borderWidth: '1px',
-                     borderColor: '#066FAB'
-                   }}>
-                <div className="rounded-full flex items-center justify-center mb-4" style={{ 
-                  width: '84px',
-                  height: '84px',
-                  background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)',
-                  opacity: 1
-                }}>
-                  <img src="/consultant.png" alt="Secure & Reliable" style={{ width: '71px', height: '71px' }} />
-                </div>
-                
-                <h3 className="font-semibold mb-3" style={{
-                  width: '330px',
-                  height: '43px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '30px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  color: '#FFFFFF'
-                }}>Secure & Reliable</h3>
-                
-                <p className="text-blue-100 mb-4 leading-relaxed" style={{
-                  width: '353px',
-                  height: '120px',
-                  opacity: 1,
-                  overflow: 'hidden'
-                }}>
-                  Your financial security is our top priority. We ensure all transactions and data are protected with industry-leading security measures.
-                </p>
-                
-                <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8" style={{
-                  width: 'auto',
-                  height: '33px',
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '19px',
-                  lineHeight: '33px',
-                  letterSpacing: '0%',
-                  opacity: 1,
-                  left: '32px',
-                  borderBottom: '1px solid white',
-                  borderWidth: '0 0 1px 0',
-                  paddingBottom: '1px',
-                  textAlign: 'left',
-                  background: 'none',
-                  textDecoration: 'none',
-                  cursor: 'pointer'
-                }}>
-                  Read More
-                </button>
-              </div>
+              {whoWeAreData.cards.map(card => renderCard({...card, id: `${card.id}-duplicate`}))}
             </div>
           </div>
         </div>
