@@ -111,7 +111,7 @@ export default function Navbar() {
                   {/* Desktop Navigation Links */}
                   <div className="hidden lg:flex items-center space-x-10 text-gray-700 font-medium text-base">
                     <Link href="/" className="hover:text-blue-600 transition-colors font-bold">Home</Link>
-                    <Link href="/about" className="hover:text-blue-600 transition-colors font-bold">About</Link>
+                    <Link href="/about-us" className="hover:text-blue-600 transition-colors font-bold">About</Link>
                     <Link href="/services" className="hover:text-blue-600 transition-colors font-bold">Services</Link>
                     <Link href="/testimonials" className="hover:text-blue-600 transition-colors font-bold">Client</Link>
                     <Link href="/contact-us" className="hover:text-blue-600 transition-colors font-bold">Contact us</Link>
