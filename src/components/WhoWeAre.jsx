@@ -47,7 +47,7 @@ const WhoWeAre = () => {
     </div>
   );
   return (
-    <div className="min-h-screen px-4 md:px-8 py-8 md:py-16 bg-[#f6f5ef] relative overflow-hidden">
+    <div className="px-4 md:px-8 py-8 md:py-16 bg-[#f6f5ef] relative overflow-hidden">
       {/* Abstract Geometric Background Elements - Inspired by AboutUs */}
       <div className="absolute inset-0 pointer-events-none opacity-60">
         {/* Top area geometric elements */}

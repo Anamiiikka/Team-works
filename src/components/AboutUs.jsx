@@ -3,7 +3,7 @@ import { ArrowRight, Users } from 'lucide-react';
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
+    <div className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
       {/* Abstract Geometric Background Elements - Inspired by Services */}
       <div className="absolute inset-0 pointer-events-none opacity-60">
         {/* Top area geometric elements */}
