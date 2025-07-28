@@ -58,11 +58,11 @@ export default function Navbar() {
               {/* Mobile Menu Dropdown */}
               {isMobileMenuOpen && (
                 <div className="pb-4 space-y-2">
-                  <Link href="/" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-                  <Link href="/about" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-                  <Link href="/services" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
-                  <Link href="/testimonials" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
-                  <Link href="/contact-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
+                  <Link href="/" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+                  <Link href="/about" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+                  <Link href="/services" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+                  <Link href="/testimonials" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
+                  <Link href="/contact-us" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
                   
                   <div className="pt-3 border-t border-gray-200">
                     <Link href="/contact-us">
@@ -110,11 +110,11 @@ export default function Navbar() {
 
                   {/* Desktop Navigation Links */}
                   <div className="hidden lg:flex items-center space-x-10 text-gray-700 font-medium text-base">
-                    <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-                    <Link href="/about" className="hover:text-blue-600 transition-colors">About</Link>
-                    <Link href="/services" className="hover:text-blue-600 transition-colors">Services</Link>
-                    <Link href="/testimonials" className="hover:text-blue-600 transition-colors">Client</Link>
-                    <Link href="/contact-us" className="hover:text-blue-600 transition-colors">Contact us</Link>
+                    <Link href="/" className="hover:text-blue-600 transition-colors font-bold">Home</Link>
+                    <Link href="/about" className="hover:text-blue-600 transition-colors font-bold">About</Link>
+                    <Link href="/services" className="hover:text-blue-600 transition-colors font-bold">Services</Link>
+                    <Link href="/testimonials" className="hover:text-blue-600 transition-colors font-bold">Client</Link>
+                    <Link href="/contact-us" className="hover:text-blue-600 transition-colors font-bold">Contact us</Link>
                   </div>
                 </div>
 
@@ -161,11 +161,11 @@ export default function Navbar() {
               <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-white/20 shadow-lg" style={{ borderRadius: '0 0 100px 100px' }}>
                 <div className="px-6 pt-2 pb-6 space-y-4">
                   <div className="space-y-1">
-                    <Link href="/" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-                    <Link href="/about-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-                    <Link href="/services" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
-                    <Link href="/testimonials" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
-                    <Link href="/contact-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
+                    <Link href="/" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+                    <Link href="/about-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+                    <Link href="/services" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+                    <Link href="/testimonials" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
+                    <Link href="/contact-us" className="block py-2 px-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50/80 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
                   </div>
                   <div className="pt-4 border-t border-gray-200/50">
                     <Link href="/contact-us">
