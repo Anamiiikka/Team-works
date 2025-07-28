@@ -65,7 +65,6 @@ const Testimonials = () => {
           />
         </div>
       </div>
-
       {/* Floating Avatars */}
       <div className={`absolute inset-0 z-30 pointer-events-none ${isMobile ? 'hidden' : 'block'}`}>
         <div
@@ -98,12 +97,11 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-
       <div className="relative z-20 max-w-7xl mx-auto">
         {/* Header */}
         {isMobile ? (
           // Mobile Header
-          <div className="mb-8">
+          (<div className="mb-8">
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-4">
                 <div className="relative">
@@ -125,10 +123,10 @@ const Testimonials = () => {
                 What our clients say about our services
               </h2>
             </div>
-          </div>
+          </div>)
         ) : (
           // Desktop Header (Original)
-          <div className="mb-16">
+          (<div className="mb-16">
             <div className="lg:col-span-1">
               <div className="flex items-center gap-2 mb-6">
                 <div className="relative">
@@ -150,13 +148,13 @@ const Testimonials = () => {
                 What our clients say<br /> about our services
               </h2>
             </div>
-          </div>
+          </div>)
         )}
 
         {/* Testimonial Carousel */}
         {isMobile ? (
           // Mobile Carousel
-          <div className="relative z-20 overflow-hidden max-w-[95vw] mx-auto">
+          (<div className="relative z-20 overflow-hidden max-w-[95vw] mx-auto">
             <div className="flex animate-infinite-scroll">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-[280px] sm:w-[400px] md:w-[500px] flex-shrink-0 px-2 sm:px-3 relative pt-6">
@@ -183,10 +181,10 @@ const Testimonials = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div>)
         ) : (
           // Desktop Carousel (Original)
-          <div className="relative z-20 overflow-hidden max-w-[90vw] mx-auto">
+          (<div className="relative z-20 overflow-hidden max-w-[90vw] mx-auto">
             <div className="flex animate-infinite-scroll">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-[672px] flex-shrink-0 px-4 relative pt-10">
@@ -217,7 +215,7 @@ const Testimonials = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div>)
         )}
       </div>
     </section>

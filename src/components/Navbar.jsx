@@ -52,7 +52,7 @@ export default function Navbar() {
                 <Link href="/contact-us" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
                 
                 <div className="pt-3 border-t border-gray-200">
-                  <Link href="/contact-us">
+                  <Link href="/contact-us" legacyBehavior>
                     <button 
                       className="w-full py-3 px-5 text-white rounded-lg font-medium text-base" 
                       style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
@@ -67,7 +67,6 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
-
       {/* Desktop Navbar - Hidden on mobile, shown on lg+ */}
       <div 
         className="hidden lg:block absolute z-50"
@@ -85,7 +84,7 @@ export default function Navbar() {
               {/* LEFT SIDE: Logo and Navigation Links */}
               <div className="flex items-center gap-x-12">
                 {/* Logo */}
-                <Link href="/" className="flex-shrink-0">
+                <Link href="/" className="flex-shrink-0" >
                   <img 
                     src="/logo.png" 
                     alt="Team Works Inc"
@@ -105,7 +104,7 @@ export default function Navbar() {
 
               {/* RIGHT SIDE: Free Consultation Button */}
               <div className="flex items-center">
-                <Link href="/contact-us">
+                <Link href="/contact-us" >
                   <button className="text-white font-medium text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200" style={{
                     background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)'
                   }}>

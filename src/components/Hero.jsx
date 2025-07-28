@@ -80,36 +80,36 @@ export default function Hero() {
           </h1>
 
           {/* Let's talk with us button with absolute positioning */}
-          <Link href="/contact-us" legacyBehavior>
-            <a 
-              className="absolute flex items-center justify-center gap-3 text-white font-medium transition-all duration-200"
-              style={{
-                width: '290px',
-                height: '83px',
-                top: '780px',
-                left: '58px',
-                borderRadius: '240px',
-                opacity: 1,
-                background: '#5292E4',
-                zIndex: 15
-              }}
-            >
-              <span 
-                className="text-white"
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 500,
-                  fontStyle: 'normal',
-                  fontSize: '23px',
-                  lineHeight: '20px',
-                  letterSpacing: '0%',
-                  verticalAlign: 'middle',
-                }}
-              >
-                Let's talk with us
-              </span>
-            </a>
-          </Link>
+       <Link
+  href="/contact-us"
+  className="absolute flex items-center justify-start gap-3 text-white font-medium transition-all duration-200 px-6"
+  style={{
+    width: '290px',
+    height: '83px',
+    top: '780px',
+    left: '58px',
+    borderRadius: '240px',
+    opacity: 1,
+    background: '#5292E4',
+    zIndex: 15
+  }}
+>
+  <span 
+    className="text-white"
+    style={{
+      fontFamily: 'Inter',
+      fontWeight: 500,
+      fontStyle: 'normal',
+      fontSize: '23px',
+      lineHeight: '20px',
+      letterSpacing: '0%',
+      verticalAlign: 'middle',
+    }}
+  >
+    Let's talk with us
+  </span>
+</Link>
+
 
           {/* Arrow div with absolute positioning */}
           <div 
