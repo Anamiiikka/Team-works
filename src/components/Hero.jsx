@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./Navbar"; 
+import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -50,18 +51,17 @@ export default function Hero() {
             </p>
 
             {/* Mobile CTA Button */}
-            <Link href="/contact-us">
-              <button 
-                className="inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-8 py-4 rounded-full"
-                style={{ background: '#5292E4' }}
-              >
-                <span>Let's talk with us</span>
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </button>
+            <Link 
+              href="/contact-us"
+              className="inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-8 py-4 rounded-full"
+              style={{ background: '#5292E4' }}
+            >
+              <span>Let's talk with us</span>
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center" style={{ transform: 'rotate(-40deg)' }}>
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
             </Link>
 
             {/* Mobile Image */}
