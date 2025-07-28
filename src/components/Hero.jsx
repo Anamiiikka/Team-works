@@ -47,8 +47,8 @@ export default function Hero() {
           {/* Mobile Image */}
           <div className="mt-8 relative max-w-sm mx-auto">
             <Image 
-              src="/financeimg.avif" 
-              alt="Finance professional"
+              src="/finman.png" 
+              alt="Professional consultant"
               width={400}
               height={500}
               className="w-full h-auto object-cover rounded-2xl"
@@ -147,19 +147,19 @@ export default function Hero() {
 
           {/* Right Content - Finance Image */}
           <div className="absolute" style={{
-            width: '674px',
-            height: '944px',
-            top: '101px',
-            left: '649px',
+            width: '580px',
+            height: '750px',
+            top: '120px',
+            left: '660px',
             opacity: 1,
             zIndex: 5
           }}>
             <Image 
-              src="/financeimg.avif" 
-              alt="Finance professional"
-              width={674}
-              height={944}
-              className="w-full h-full object-cover object-center"
+              src="/finman.png" 
+              alt="Professional consultant"
+              width={580}
+              height={750}
+              className="w-full h-full object-contain object-center"
               priority
             />
           </div>
