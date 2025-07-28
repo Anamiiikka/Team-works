@@ -65,7 +65,9 @@ export default function Hero() {
                 width={400}
                 height={500}
                 className="w-full h-auto object-cover rounded-2xl"
-                priority
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIvPgo8L3N2Zz4K"
               />
             </div>
           </div>
@@ -190,7 +192,9 @@ export default function Hero() {
                 width={580}
                 height={750}
                 className="w-full h-full object-contain object-center"
-                priority
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTgwIiBoZWlnaHQ9Ijc1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ0cmFuc3BhcmVudCIvPgo8L3N2Zz4K"
               />
             </div>
           </div>
