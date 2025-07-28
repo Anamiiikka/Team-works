@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Start with mobile-first
 
   useEffect(() => {
     const checkScreenSize = () => {

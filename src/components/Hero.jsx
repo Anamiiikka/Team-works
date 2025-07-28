@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 
 export default function Hero() {
   const [hoveredButton, setHoveredButton] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Start with mobile-first
 
   useEffect(() => {
     const checkScreenSize = () => {
