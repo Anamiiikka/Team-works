@@ -207,7 +207,13 @@ const Services = () => {
 
           {/* Right Side - Description - Hidden on mobile, shown on desktop */}
           <div className="hidden lg:block lg:col-span-2 lg:justify-self-end" style={{ width: '580px', height: '207px' }}>
-            <p style={{ color: '#6C7278', fontSize: '22px', lineHeight: '33px' }} className="font-normal">
+            <p style={{ 
+              color: '#6C7278', 
+              fontSize: '22px', 
+              lineHeight: '33px',
+              textAlign: 'justify',
+              textJustify: 'inter-word'
+            }} className="font-normal text-justify">
               Lorem ipsum dolor sit amet consectetur. Dolor pulvinar sed dui gravida ligula nuncaliquet et.Ipsum dolor sit amet consectetur. Dolor pulvinar sed d.
             </p>
           </div>
@@ -215,7 +221,13 @@ const Services = () => {
 
         {/* Mobile Description */}
         <div className="lg:hidden text-center mb-8 px-4">
-          <p style={{ color: '#6C7278', fontSize: '16px', lineHeight: '24px' }} className="font-normal">
+          <p style={{ 
+            color: '#6C7278', 
+            fontSize: '16px', 
+            lineHeight: '24px',
+            textAlign: 'justify',
+            textJustify: 'inter-word'
+          }} className="font-normal text-justify">
             Lorem ipsum dolor sit amet consectetur. At proin magnis volutpat suspendisse quis. Massa metus nec rhoncus massa dictum fermentum amet ultricies.Lorem ipsum dolor sit amet consectetur. At proin magnis volutpat
           </p>
         </div>
