@@ -48,3 +48,10 @@ html, body {
 .animate-infinite-scroll {
   animation: infinite-scroll 20s linear infinite;
 }
+
+/* Responsive animation for mobile */
+@media (max-width: 640px) {
+  .animate-infinite-scroll {
+    animation: infinite-scroll 30s linear infinite;
+  }
+}

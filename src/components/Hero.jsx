@@ -124,29 +124,27 @@ export default function Hero() {
               {/* Team Avatar and CTA Button */}
               <div className="flex items-center gap-6">
                 {/* Team Avatar - removed */}
-
                 {/* CTA Button - now positioned absolutely above */}
               </div>
             </div>
 
-            {/* Right Content - Woman Image */}
-            <div className="relative lg:justify-self-end">
-              <div className="relative">
-                {/* Main Woman Image */}
-                <div className="relative z-20">
-                  <Image 
-                    src="/left.png" 
-                    alt="Professional business woman"
-                    width={674}
-                    height={944}
-                    className="w-full max-w-md mx-auto object-cover"
-                    priority
-                  />
-                </div>
-
-                {/* Floating Development Badge */}
-                
-              </div>
+            {/* Right Content - Finance Image */}
+            <div className="absolute" style={{
+              width: '674px',
+              height: '944px',
+              top: '101px',
+              left: '649px',
+              opacity: 1,
+              zIndex: 5
+            }}>
+              <Image 
+                src="/financeimg.avif" 
+                alt="Finance professional"
+                width={674}
+                height={944}
+                className="w-full h-full object-cover object-center"
+                priority
+              />
             </div>
           </div>
         </div>
