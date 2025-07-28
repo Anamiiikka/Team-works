@@ -110,7 +110,11 @@ const WhoWeAre = () => {
             <div className="relative z-10 bg-white rounded-4xl p-8 shadow-lg" style={{ 
               width: '543px',
               height: '463px',
-              opacity: 1
+              opacity: 1,
+              backgroundImage: 'url(/activeclients.jpeg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat'
             }}>
               {/* Profile images */}
               <div className="flex -space-x-3 mb-6">
