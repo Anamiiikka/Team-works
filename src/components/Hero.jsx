@@ -90,7 +90,7 @@ export default function Hero() {
               top: '743px',
               left: '270px',
               opacity: 1,
-              transform: 'rotate(-45 deg)'
+              transform: 'rotate(-40deg)'
             }}
           >
             <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,30 +135,17 @@ export default function Hero() {
                 {/* Main Woman Image */}
                 <div className="relative z-20">
                   <Image 
-                    src="/business-woman.jpg" 
+                    src="/left.png" 
                     alt="Professional business woman"
-                    width={500}
-                    height={600}
+                    width={674}
+                    height={944}
                     className="w-full max-w-md mx-auto object-cover"
                     priority
                   />
                 </div>
 
                 {/* Floating Development Badge */}
-                <div className="absolute top-20 right-0 z-30 bg-white rounded-full p-4 shadow-lg">
-                  <div className="w-20 h-20 relative">
-                    <svg className="w-full h-full" viewBox="0 0 100 100">
-                      <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="2"/>
-                      <circle cx="50" cy="50" r="40" fill="none" stroke="#3b82f6" strokeWidth="2" strokeDasharray="251" strokeDashoffset="60"/>
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="text-xs font-semibold text-gray-800">DEVELOPMENT</div>
-                        <div className="text-xs text-gray-600">DESIGN</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
