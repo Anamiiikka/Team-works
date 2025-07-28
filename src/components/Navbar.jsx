@@ -46,7 +46,7 @@ export default function Navbar() {
             {isMobileMenuOpen && (
               <div className="pb-4 space-y-2">
                 <Link href="/" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-                <Link href="/about" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+                <Link href="/about-us" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
                 <Link href="/services" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
                 <Link href="/testimonials" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
                 <Link href="/contact-us" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
@@ -95,7 +95,7 @@ export default function Navbar() {
                 {/* Desktop Navigation Links */}
                 <div className="hidden lg:flex items-center space-x-10 text-gray-700 font-medium text-base">
                   <Link href="/" className="hover:text-blue-600 transition-colors font-bold">Home</Link>
-                  <Link href="/about" className="hover:text-blue-600 transition-colors font-bold">About</Link>
+                  <Link href="/about-us" className="hover:text-blue-600 transition-colors font-bold">About</Link>
                   <Link href="/services" className="hover:text-blue-600 transition-colors font-bold">Services</Link>
                   <Link href="/testimonials" className="hover:text-blue-600 transition-colors font-bold">Client</Link>
                   <Link href="/contact-us" className="hover:text-blue-600 transition-colors font-bold">Contact us</Link>
