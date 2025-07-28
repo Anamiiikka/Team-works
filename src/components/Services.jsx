@@ -16,7 +16,7 @@ const Services = () => {
   };
   // Function to render a service card
   const renderServiceCard = (service) => (
-    <div key={service.id} className="relative pt-12">
+    <div key={service.id} className="flex-shrink-0 relative pt-12" style={{ width: '300px' }}>
       <div className="absolute top-4 left-1/2 -translate-x-1/2">
         <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white">
           <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)' }}>
@@ -35,13 +35,13 @@ const Services = () => {
           style={{
             fontFamily: 'Inter',
             fontWeight: 600,
-            fontSize: '29px',
-            lineHeight: '30px',
+            fontSize: '20px',
+            lineHeight: '24px',
             letterSpacing: '0%',
             textAlign: 'center',
             opacity: 1,
             color: '#1F2937',
-            marginBottom: '16px'
+            marginBottom: '12px'
           }}
         >
           {service.title}
@@ -50,8 +50,8 @@ const Services = () => {
           style={{
             fontFamily: 'Inter',
             fontWeight: 500,
-            fontSize: '14px',
-            lineHeight: '23px',
+            fontSize: '12px',
+            lineHeight: '18px',
             letterSpacing: '0%',
             textAlign: 'center',
             opacity: 1,
@@ -271,13 +271,13 @@ const Services = () => {
                   style={{
                     fontFamily: 'Inter',
                     fontWeight: 600,
-                    fontSize: '24px',
-                    lineHeight: '30px',
+                    fontSize: '20px',
+                    lineHeight: '24px',
                     letterSpacing: '0%',
                     textAlign: 'center',
                     opacity: 1,
                     color: '#1F2937',
-                    marginBottom: '16px'
+                    marginBottom: '12px'
                   }}
                 >
                   {servicesData.services[currentServiceIndex].title}
@@ -286,8 +286,8 @@ const Services = () => {
                   style={{
                     fontFamily: 'Inter',
                     fontWeight: 500,
-                    fontSize: '14px',
-                    lineHeight: '20px',
+                    fontSize: '12px',
+                    lineHeight: '16px',
                     letterSpacing: '0%',
                     textAlign: 'center',
                     opacity: 1,
@@ -316,9 +316,14 @@ const Services = () => {
         </div>
 
         {/* Desktop: Services Grid */}
-        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 mb-16">
-          {/* Render services from JSON data */}
-          {servicesData.services.map(service => renderServiceCard(service))}
+        <div className="hidden lg:block relative w-full overflow-hidden mb-16">
+          <div className="flex gap-8 animate-infinite-scroll">
+            {/* Render services from JSON data */}
+            {servicesData.services.map(service => renderServiceCard(service))}
+            
+            {/* Duplicate services for continuous animation */}
+            {servicesData.services.map(service => renderServiceCard({...service, id: `${service.id}-duplicate`}))}
+          </div>
         </div>
 
         {/* Bottom CTA Section */}
