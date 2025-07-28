@@ -93,11 +93,11 @@ export default function Navbar() {
           }}
         >
           <nav className="relative w-full h-full bg-white shadow-lg border border-gray-100" style={{ borderRadius: '100px' }}>
-            {/* Use full width and height for content */}
+      
             <div className="w-full h-full px-8 lg:px-12">
               <div className="flex h-full items-center justify-between">
 
-                {/* LEFT SIDE: Logo and Navigation Links */}
+              
                 <div className="flex items-center gap-x-12">
                   {/* Logo */}
                   <Link href="/" className="flex-shrink-0">
@@ -118,7 +118,7 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* RIGHT SIDE: Free Consultation Button and Mobile Menu Toggle */}
+               
                 <div className="flex items-center">
                   {/* Desktop Free Consultation Button */}
                   <div className="hidden lg:flex items-center">

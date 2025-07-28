@@ -8,8 +8,8 @@ export default function Footer() {
       className="relative border-t border-blue-500 bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: "url('/footer.png')",
-        backgroundColor: "#000", // fallback for transparent or invisible areas
-        minHeight: "300px",      // ensures image shows up
+        backgroundColor: "#000", 
+        minHeight: "300px",      
       }}
     >
       <div className="container mx-auto px-6 py-8 bg-transparent">

@@ -10,7 +10,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     const originals = testimonialData.testimonials;
-    setTestimonials([...originals, ...originals]); // Duplicate for infinite scroll
+    setTestimonials([...originals, ...originals]); 
     
     // Check if screen is mobile/tablet
     const checkScreenSize = () => {

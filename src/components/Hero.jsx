@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "./Navbar"; 
-import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const [hoveredButton, setHoveredButton] = useState(null);
@@ -131,7 +130,7 @@ export default function Hero() {
               </button>
             </Link>
 
-            {/* Let's talk with us text with absolute positioning */}
+            
             <span 
               className="absolute text-white"
               style={{
@@ -192,13 +191,12 @@ export default function Hero() {
               {/* Left Content */}
               <div className="text-white space-y-8">
                 <div className="space-y-6" style={{ marginTop: '487px' }}>
-                  {/* Heading and paragraph are now positioned absolutely above */}
+                
                 </div>
 
-                {/* Team Avatar and CTA Button */}
+              
                 <div className="flex items-center gap-6">
-                  {/* Team Avatar - removed */}
-                  {/* CTA Button - now positioned absolutely above */}
+                 
                 </div>
               </div>
 
