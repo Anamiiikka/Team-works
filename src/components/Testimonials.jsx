@@ -166,7 +166,7 @@ const Testimonials = () => {
                   </div>
                   <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col" style={{ minHeight: '250px' }}>
                     {/* Blue Profile Section - Mobile */}
-                    <div className="p-4 text-white flex flex-col justify-center items-center w-full relative" style={{ backgroundColor: '#5292E4' }}>
+                    <div className="p-4 text-white flex flex-col justify-center items-center w-full relative" style={{ backgroundColor: '#066FAB' }}>
                       <h3 className="text-lg font-bold text-center">{testimonial.name}</h3>
                       <p className="text-blue-100 text-sm text-center mt-1">{testimonial.position}</p>
                     </div>
@@ -196,7 +196,7 @@ const Testimonials = () => {
                   </div>
                   <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex" style={{ minHeight: '466px' }}>
                     {/* Blue Profile Section */}
-                    <div className="p-8 text-white flex flex-col justify-center items-center w-2/5 relative" style={{ backgroundColor: '#5292E4' }}>
+                    <div className="p-8 text-white flex flex-col justify-center items-center w-2/5 relative" style={{ backgroundColor: '#066FAB' }}>
                       <div
                         className="absolute bottom-0 left-0 w-full h-1/3 bg-black opacity-10"
                         style={{ clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%)' }}
