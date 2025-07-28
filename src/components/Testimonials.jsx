@@ -117,32 +117,32 @@ const Testimonials = () => {
         </div>
 
         {/* Testimonial Carousel */}
-        <div className="relative z-20 overflow-hidden w-full">
-          <div className="flex animate-infinite-scroll lg:animate-infinite-scroll">
+        <div className="relative z-20 overflow-hidden max-w-[90vw] mx-auto">
+          <div className="flex animate-infinite-scroll">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="w-full sm:w-[500px] lg:w-[672px] flex-shrink-0 px-2 sm:px-4 relative pt-6 sm:pt-10">
-                <div className="absolute top-0 left-1/2 sm:left-[55%] -translate-x-1/2 z-10">
-                    <div className="p-3 sm:p-4 rounded-md relative" style={{backgroundColor: '#A9C4E9'}}>
-                        <Quote className="w-6 h-6 sm:w-8 sm:h-8" style={{color: '#036DA9'}}/>
-                        <div className="absolute bottom-[-8px] sm:bottom-[-10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] sm:border-l-[10px] border-l-transparent border-r-[8px] sm:border-r-[10px] border-r-transparent border-t-[8px] sm:border-t-[10px]" style={{borderTopColor: '#A9C4E9'}}></div>
+              <div key={index} className="w-[672px] flex-shrink-0 px-4 relative pt-10">
+                <div className="absolute top-0 left-[55%] -translate-x-1/2 z-10">
+                    <div className="p-4 rounded-md relative" style={{backgroundColor: '#A9C4E9'}}>
+                        <Quote className="w-8 h-8" style={{color: '#036DA9'}}/>
+                        <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px]" style={{borderTopColor: '#A9C4E9'}}></div>
                     </div>
                 </div>
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col sm:flex-row" style={{ minHeight: '300px', '@media (min-width: 640px)': { minHeight: '466px' } }}>
+                <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex" style={{ minHeight: '466px' }}>
                   {/* Blue Profile Section */}
-                  <div className="p-6 sm:p-8 text-white flex flex-col justify-center items-center w-full sm:w-2/5 relative" style={{ backgroundColor: '#5292E4' }}>
+                  <div className="p-8 text-white flex flex-col justify-center items-center w-2/5 relative" style={{ backgroundColor: '#5292E4' }}>
                     <div
-                      className="absolute bottom-0 left-0 w-full h-1/3 bg-black opacity-10 hidden sm:block"
+                      className="absolute bottom-0 left-0 w-full h-1/3 bg-black opacity-10"
                       style={{ clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%)' }}
                     ></div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-center">{testimonial.name}</h3>
-                    <p className="text-blue-100 text-sm sm:text-md text-center mt-2">{testimonial.position}</p>
+                    <h3 className="text-2xl font-bold text-center">{testimonial.name}</h3>
+                    <p className="text-blue-100 text-md text-center mt-2">{testimonial.position}</p>
                   </div>
                   {/* Testimonial Content */}
-                  <div className="flex-1 p-6 sm:p-10 flex flex-col justify-center">
-                    <div className="flex mb-4 sm:mb-5 justify-center sm:justify-start">
+                  <div className="flex-1 p-10 flex flex-col justify-center">
+                    <div className="flex mb-5">
                       {renderStars(testimonial.rating)}
                     </div>
-                    <p className="text-gray-500 text-base sm:text-lg leading-relaxed text-center sm:text-left">{testimonial.testimonial}</p>
+                    <p className="text-gray-500 text-lg leading-relaxed">{testimonial.testimonial}</p>
                   </div>
                 </div>
               </div>
