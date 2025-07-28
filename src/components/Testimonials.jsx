@@ -155,7 +155,11 @@ const Testimonials = () => {
         {isMobile ? (
           // Mobile Carousel
           (<div className="relative z-20 overflow-hidden max-w-[95vw] mx-auto">
-            <div className="flex animate-infinite-scroll">
+            <div 
+              className="flex animate-infinite-scroll"
+              onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
+              onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
+            >
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-[280px] sm:w-[400px] md:w-[500px] flex-shrink-0 px-2 sm:px-3 relative pt-6">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10">
@@ -185,7 +189,11 @@ const Testimonials = () => {
         ) : (
           // Desktop Carousel (Original)
           (<div className="relative z-20 overflow-hidden max-w-[90vw] mx-auto">
-            <div className="flex animate-infinite-scroll">
+            <div 
+              className="flex animate-infinite-scroll"
+              onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
+              onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
+            >
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-[672px] flex-shrink-0 px-4 relative pt-10">
                   <div className="absolute top-0 left-[55%] -translate-x-1/2 z-10">

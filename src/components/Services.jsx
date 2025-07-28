@@ -317,7 +317,11 @@ const Services = () => {
 
         {/* Desktop: Services Grid */}
         <div className="hidden lg:block relative w-full overflow-hidden mb-16">
-          <div className="flex gap-8 animate-infinite-scroll">
+          <div 
+            className="flex gap-8 animate-infinite-scroll"
+            onMouseEnter={(e) => e.currentTarget.style.animationPlayState = 'paused'}
+            onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
+          >
             {/* Render services from JSON data */}
             {servicesData.services.map(service => renderServiceCard(service))}
             
