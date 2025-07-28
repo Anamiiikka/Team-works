@@ -39,7 +39,8 @@ export default function FAQ() {
           </div>
           
           <h2 className="font-semibold text-gray-900" style={{
-            width: '401px',
+            width: '100%',
+            maxWidth: '401px',
             height: '78px',
             opacity: 1,
             fontFamily: 'Inter',
