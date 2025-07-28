@@ -1,8 +1,59 @@
 import React from 'react';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import servicesData from '../data/services.json';
 
 const Services = () => {
+  // Function to render a service card
+  const renderServiceCard = (service) => (
+    <div key={service.id} className="relative pt-12">
+      <div className="absolute top-4 left-1/2 -translate-x-1/2">
+        <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white">
+          <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)' }}>
+            <Image 
+              src={service.icon} 
+              alt={service.alt} 
+              width={48} 
+              height={48}
+              className="object-contain"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full">
+        <h3 
+          style={{
+            fontFamily: 'Inter',
+            fontWeight: 600,
+            fontSize: '29px',
+            lineHeight: '30px',
+            letterSpacing: '0%',
+            textAlign: 'center',
+            opacity: 1,
+            color: '#1F2937',
+            marginBottom: '16px'
+          }}
+        >
+          {service.title}
+        </h3>
+        <p 
+          style={{
+            fontFamily: 'Inter',
+            fontWeight: 500,
+            fontSize: '14px',
+            lineHeight: '23px',
+            letterSpacing: '0%',
+            textAlign: 'center',
+            opacity: 1,
+            color: '#6B7280'
+          }}
+          className="px-2"
+        >
+          {service.description}
+        </p>
+      </div>
+    </div>
+  );
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#F6F5EF' }}>
       <div className="max-w-7xl mx-auto">
@@ -47,201 +98,8 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 mb-16">
-          {/* Debt Syndication */}
-          <div className="relative pt-12">
-            <div className="absolute top-4 left-1/2 -translate-x-1/2">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)' }}>
-                    <Image 
-                      src="/money-bag.png" 
-                      alt="Debt Syndication" 
-                      width={48} 
-                      height={48}
-                      className="object-contain"
-                    />
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full">
-              <h3 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '29px',
-                  lineHeight: '30px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#1F2937',
-                  marginBottom: '16px'
-                }}
-              >
-                Debt Syndication
-              </h3>
-              <p 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 500,
-                  fontSize: '14px',
-                  lineHeight: '23px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#6B7280'
-                }}
-                className="px-2"
-              >
-                We specialize in structuring and arranging debt financing solutions to support business growth, expansion, and restructuring. Our strategic relationships with banks, NBFCs, and financial institutions allow us to offer customized funding solutions, including
-              </p>
-            </div>
-          </div>
-
-          {/* Project Financing */}
-          <div className="relative pt-12">
-            <div className="absolute top-4 left-1/2 -translate-x-1/2">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white">
-                    <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)' }}>
-                        <Image 
-                          src="/closure.png" 
-                          alt="Project Financing" 
-                          width={48} 
-                          height={48}
-                          className="object-contain"
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full">
-              <h3 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '29px',
-                  lineHeight: '30px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#1F2937',
-                  marginBottom: '16px'
-                }}
-              >
-                Project Financing
-              </h3>
-              <p 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 500,
-                  fontSize: '14px',
-                  lineHeight: '23px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#6B7280'
-                }}
-                className="px-2"
-              >
-                We provide end-to-end project financing solutions, ensuring that businesses secure the required capital for infrastructure, industrial, and business expansion projects.
-              </p>
-            </div>
-          </div>
-
-          {/* Venture Capital */}
-          <div className="relative pt-12">
-            <div className="absolute top-4 left-1/2 -translate-x-1/2">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white">
-                    <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)' }}>
-                        <Image 
-                          src="/venture.png" 
-                          alt="Venture Capital" 
-                          width={48} 
-                          height={48}
-                          className="object-contain"
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full">
-              <h3 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '29px',
-                  lineHeight: '30px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#1F2937',
-                  marginBottom: '16px'
-                }}
-              >
-                Venture Capital
-              </h3>
-              <p 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 500,
-                  fontSize: '14px',
-                  lineHeight: '23px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#6B7280'
-                }}
-                className="px-2"
-              >
-                We help startups and small businesses raise venture capital and secure funding for growth and expansion. Our services includeVenture Capital & Angel Investment Advisory MSME Business Loans & Credit
-              </p>
-            </div>
-          </div>
-
-          {/* Capital Advisory */}
-          <div className="relative pt-12">
-            <div className="absolute top-4 left-1/2 -translate-x-1/2">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center bg-white">
-                    <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(180deg, #AAC5EA 0%, #2C87BB 100%)' }}>
-                        <Image 
-                          src="/capital-venture.png" 
-                          alt="Capital Advisory" 
-                          width={48} 
-                          height={48}
-                          className="object-contain"
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full">
-              <h3 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 600,
-                  fontSize: '29px',
-                  lineHeight: '30px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#1F2937',
-                  marginBottom: '16px'
-                }}
-              >
-                Capital Advisory
-              </h3>
-              <p 
-                style={{
-                  fontFamily: 'Inter',
-                  fontWeight: 500,
-                  fontSize: '14px',
-                  lineHeight: '23px',
-                  letterSpacing: '0%',
-                  textAlign: 'center',
-                  opacity: 1,
-                  color: '#6B7280'
-                }}
-                className="px-2"
-              >
-                Strategic capital structuring is essential for maximizing growth potential. We assist in evaluating capital requirements and structuring financial instruments that align with business objectives
-              </p>
-            </div>
-          </div>
+          {/* Render services from JSON data */}
+          {servicesData.services.map(service => renderServiceCard(service))}
         </div>
 
         {/* Bottom CTA Section */}
