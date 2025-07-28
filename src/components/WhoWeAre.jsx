@@ -178,7 +178,7 @@ const WhoWeAre = () => {
               </div>
             </div>
 
-            <div className="relative z-10 bg-white rounded-2xl lg:rounded-4xl p-6 lg:p-8 shadow-lg w-full lg:w-[543px] lg:h-[463px] min-h-[350px] bg-cover bg-center bg-no-repeat"
+            <div className="relative z-10 bg-white rounded-2xl lg:rounded-4xl p-6 lg:p-8 pb-20 md:pb-24 shadow-lg w-full lg:w-[543px] lg:h-[463px] min-h-[350px] bg-cover bg-center bg-no-repeat"
                  style={{ backgroundImage: 'url(/activeclients.jpeg)' }}>
               {/* Profile images */}
               <div className="flex -space-x-2 md:-space-x-3 mb-4 md:mb-6">
@@ -213,7 +213,7 @@ const WhoWeAre = () => {
               </div>
 
               <div className="text-4xl md:text-6xl font-bold mb-6 md:mb-8 text-[#1A202C]">120M Active</div>
-              <div className="text-4xl md:text-6xl font-bold mb-12 md:mb-12 text-[#1A202C]">Clients</div>
+              <div className="text-4xl md:text-6xl font-bold mb-8 md:mb-12 text-[#1A202C]">Clients</div>
 
               <button className="text-white rounded-full flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 hover:shadow-lg hover:scale-105 w-[213px] md:w-[281.89px] h-[53px] md:h-[83.89px] absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-gradient-to-r from-[#5292E4] to-[#036DA9] border-0 cursor-pointer font-medium"
                       style={{ 

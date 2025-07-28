@@ -115,14 +115,16 @@ const AboutUs = () => {
             </div>
             
             {/* Description text */}
-            <div className="font-normal px-4 lg:px-0 max-w-full lg:max-w-[682px]"
+            <div className="font-normal px-4 lg:px-0 max-w-full lg:max-w-[682px] text-justify"
                  style={{ 
                    fontFamily: 'Inter',
                    fontWeight: 400,
                    fontSize: 'clamp(16px, 2.5vw, 28px)',
                    lineHeight: 'clamp(24px, 3.5vw, 42px)',
                    letterSpacing: '0%',
-                   color: '#6C7278'
+                   color: '#6C7278',
+                   textAlign: 'justify',
+                   textJustify: 'inter-word'
                  }}>
               Team Work Advisors Pvt Ltd is a premier investment banking and financial advisory firm with a deep-rooted expertise in debt syndication, working capital management, and capital advisory. With over 15 years of industry experience, our team brings unparalleled insights and strategic solutions tailored to meet the evolving financial needs of businesses. Having worked with leading financial institutions and Banks, we possess the expertise to navigate complex financial landscapes and drive business success.
             </div>
