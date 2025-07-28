@@ -3,48 +3,54 @@
     {
       "id": 1,
       "category": "General",
-      "question": "Lorem ipsum dolor sit amet consectetur Netus?",
-      "answer": "Lorem ipsum dolor sit amet consectetur. Amet molestie aenean pellentesque turpis est ornare. Mattis congue turpis cursus volutpat mauris ac facilisi."
+      "question": "What services does Team Works Advisors Pvt Ltd offer?",
+      "answer": "Team Works Advisors provides comprehensive services including investment banking, strategic financial advisory, mergers & acquisitions (M&A), capital raising, debt syndication, and business restructuring. We cater to startups, mid-sized companies, and large corporates across India."
     },
     {
       "id": 2,
       "category": "General",
-      "question": "Do you provide ongoing support?",
-      "answer": "Yes, we provide comprehensive ongoing support to ensure your project continues to run smoothly and meets your evolving needs."
+      "question": "Who can benefit from your advisory services?",
+      "answer": "Our services are tailored for Indian entrepreneurs, SMEs, corporates, family-owned businesses, and institutional investors seeking professional guidance in financial growth, strategic investments, or business transformation."
     },
     {
       "id": 3,
       "category": "General",
-      "question": "Do you provide ongoing support?",
-      "answer": "Yes, we provide comprehensive ongoing support to ensure your project continues to run smoothly and meets your evolving needs."
-    }
-  ],
-  "Features": [
-    {
-      "id": 4,
-      "category": "Features",
-      "question": "What features are included in the basic plan?",
-      "answer": "Our basic plan includes all essential features needed to get started with your project, including core functionality and basic support."
+      "question": "Do you specialize in any particular industries?",
+      "answer": "Yes. While we serve businesses across sectors, we have deep expertise in industries such as real estate, healthcare, manufacturing, infrastructure, technology, and fintech."
     },
     {
-      "id": 5,
-      "category": "Features",
-      "question": "Can I upgrade my plan later?",
-      "answer": "Yes, you can upgrade your plan at any time to access additional features and enhanced support options."
+      "id": 4,
+      "category": "General",
+      "question": "Is Team Works Advisors only focused on clients within India?",
+      "answer": "Yes. Our expertise and network are deeply rooted in the Indian market. We work exclusively with Indian businesses to provide localized insights and actionable financial solutions."
     }
   ],
   "Services": [
     {
-      "id": 6,
+      "id": 5,
       "category": "Services",
-      "question": "Do you provide ongoing support?",
-      "answer": "Yes, we provide comprehensive ongoing support including maintenance, updates, and technical assistance for all our services."
+      "question": "How does Team Works Advisors support during M&A transactions?",
+      "answer": "We provide end-to-end support including valuation, deal structuring, due diligence, negotiation, regulatory compliance, and post-deal integration to ensure successful mergers or acquisitions."
     },
     {
-      "id": 7,
+      "id": 6,
       "category": "Services",
-      "question": "What services do you offer?",
-      "answer": "We offer a wide range of services including web development, mobile applications, consulting, and digital transformation solutions."
+      "question": "What is your process for raising funds for startups or businesses?",
+      "answer": "We analyze your business model, financials, and market potential, prepare investment-ready documents (pitch decks, IMs, financial projections), identify the right investors, and help you secure funds through equity or debt channels."
+    }
+  ],
+  "Contact": [
+    {
+      "id": 7,
+      "category": "Contact",
+      "question": "How do I initiate a consultation with your team?",
+      "answer": "You can reach us through our official website's contact form, email us at or call our office directly. A senior advisor will follow up to understand your needs and recommend the best next steps."
+    },
+    {
+      "id": 8,
+      "category": "Contact",
+      "question": "Why should I choose Team Works Advisors over others?",
+      "answer": "Our strength lies in our local market intelligence, sector-specific insights, personalized approach, and a strong track record of delivering value-driven results for Indian clients. We don't just advise—we partner in your growth journey."
     }
   ]
 }

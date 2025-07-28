@@ -4,91 +4,86 @@ import { ArrowRight, Users } from 'lucide-react';
 const AboutUs = () => {
   return (
     <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
-      {/* Background Geometric Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* Top left geometric shapes - Hidden on mobile to avoid text overlap */}
-        <div className="hidden lg:block absolute top-16 left-8 w-20 h-20 opacity-40">
-          <div className="w-full h-full border-2 border-gray-600 rounded-full"></div>
-        </div>
-        <div className="hidden lg:block absolute top-8 left-64 w-6 h-6 border border-gray-600 opacity-50 transform rotate-12"></div>
-        <div className="hidden lg:block absolute top-24 left-16 w-4 h-4 bg-gray-600 opacity-48 rounded-full"></div>
+      {/* Abstract Geometric Background Elements - Inspired by Services */}
+      <div className="absolute inset-0 pointer-events-none opacity-60">
+        {/* Top area geometric elements */}
+        <div className="absolute top-12 left-16 w-18 h-18 border border-blue-300/50 rounded-full"></div>
+        <div className="absolute top-8 right-24 w-10 h-10 bg-blue-200/45 transform rotate-45"></div>
+        <div className="absolute top-28 right-12 w-5 h-5 bg-blue-400/50 rounded-full"></div>
+        <div className="absolute top-6 left-32 w-3 h-3 border border-blue-200/55 transform rotate-45"></div>
+        <div className="absolute top-16 right-40 w-7 h-7 bg-blue-100/45 rounded-full"></div>
+        <div className="absolute top-36 left-48 w-2 h-10 bg-blue-300/40 rounded-full transform rotate-30"></div>
+        <div className="absolute top-44 right-64 w-5 h-5 border-2 border-blue-400/45 transform rotate-45"></div>
+        <div className="absolute top-4 left-52 w-4 h-4 bg-blue-200/50 transform rotate-15"></div>
+        <div className="absolute top-22 right-56 w-6 h-6 border border-blue-300/45 rounded-full"></div>
+        <div className="absolute top-40 left-60 w-8 h-8 bg-blue-100/40 transform rotate-45"></div>
         
-        {/* Top center area - Limited on mobile */}
-        <div className="hidden lg:block absolute top-36 left-2/3 w-5 h-5 bg-gray-600 opacity-50 rounded-full"></div>
-        <div className="hidden lg:block absolute top-28 left-1/3 w-3 h-3 border border-gray-600 opacity-55"></div>
+        {/* Header area abstract shapes */}
+        <div className="absolute top-20 left-1/4 w-2 h-16 bg-blue-300/40 rounded-full transform rotate-12"></div>
+        <div className="absolute top-32 right-1/3 w-6 h-6 border-2 border-blue-200/55 transform rotate-45"></div>
+        <div className="absolute top-14 left-1/3 w-4 h-4 bg-blue-200/50 transform rotate-12"></div>
+        <div className="absolute top-38 right-1/4 w-1 h-12 bg-blue-400/45 rounded-full transform rotate-45"></div>
+        <div className="absolute top-48 left-2/5 w-8 h-8 border border-blue-300/50 rounded-full"></div>
         
-        {/* Top right area - Hidden on mobile to avoid text overlap */}
-        <div className="hidden lg:block absolute top-20 right-16 w-16 h-16 border-2 border-gray-600 opacity-40 transform rotate-45"></div>
-        <div className="hidden lg:block absolute top-48 right-32 w-8 h-8 bg-gray-500 opacity-45 rounded-full"></div>
-        <div className="hidden lg:block absolute top-12 right-48 w-4 h-4 border border-gray-600 opacity-50"></div>
+        {/* Content area enhancements - positioned to avoid text overlap */}
+        <div className="absolute top-1/2 left-8 w-12 h-12 border border-blue-300/45 rounded-full"></div>
+        <div className="absolute top-2/3 right-16 w-8 h-8 bg-blue-100/50 transform rotate-12"></div>
+        <div className="absolute top-1/2 left-24 w-2 h-2 bg-blue-300/60 rounded-full"></div>
+        <div className="absolute top-3/5 right-32 w-5 h-5 border border-blue-200/50 transform rotate-45"></div>
+        <div className="absolute top-1/2 right-48 w-10 h-10 border-2 border-blue-100/45 transform rotate-30"></div>
+        <div className="absolute top-2/5 left-56 w-3 h-3 bg-blue-200/55 transform rotate-45"></div>
         
-        {/* Left side vertical elements - Positioned to avoid content area */}
-        <div className="absolute top-1/3 left-4 w-18 h-18 border border-gray-500 opacity-55 rounded-full"></div>
-        <div className="hidden lg:block absolute top-1/2 left-12 w-6 h-6 bg-gray-600 opacity-45 transform rotate-45"></div>
+        {/* Middle area additional elements */}
+        <div className="absolute top-1/3 left-12 w-11 h-11 border border-blue-200/45 rounded-full"></div>
+        <div className="absolute top-2/5 right-20 w-6 h-6 bg-blue-300/50 transform rotate-45"></div>
+        <div className="absolute top-1/2 left-64 w-4 h-4 border-2 border-blue-400/55 rounded-full"></div>
+        <div className="absolute top-3/5 right-72 w-2 h-11 bg-blue-200/45 rounded-full transform rotate-25"></div>
+        <div className="absolute top-2/3 left-72 w-7 h-7 bg-blue-100/50 transform rotate-30"></div>
         
-        {/* Right side vertical elements - Positioned to avoid content area */}
-        <div className="absolute top-1/4 right-8 w-16 h-16 border border-gray-500 opacity-55 transform rotate-45"></div>
-        <div className="absolute top-1/2 right-4 w-7 h-7 bg-gray-600 opacity-60 rounded-full"></div>
+        {/* Bottom area geometric pattern */}
+        <div className="absolute bottom-20 left-1/4 w-12 h-12 border-2 border-blue-200/50 transform rotate-45"></div>
+        <div className="absolute bottom-32 right-1/4 w-3 h-14 bg-blue-300/45 rounded-full transform rotate-25"></div>
+        <div className="absolute bottom-28 left-1/5 w-5 h-5 bg-blue-400/50 rounded-full"></div>
+        <div className="absolute bottom-16 right-1/5 w-7 h-7 border border-blue-200/55 transform rotate-45"></div>
+        <div className="absolute bottom-36 left-1/3 w-2 h-10 bg-blue-300/45 rounded-full transform rotate-40"></div>
+        <div className="absolute bottom-24 right-1/3 w-8 h-8 border-2 border-blue-100/50 rounded-full"></div>
+        <div className="absolute bottom-12 left-2/5 w-4 h-4 bg-blue-200/55 transform rotate-15"></div>
+        <div className="absolute bottom-40 right-2/5 w-1 h-6 bg-blue-400/50 rounded-full transform rotate-60"></div>
         
-        {/* Center area geometric elements - Hidden on mobile/tablet to avoid overlap */}
-        <div className="hidden xl:block absolute top-1/2 left-1/4 w-24 h-24 border border-gray-500 opacity-38 transform rotate-12"></div>
-        <div className="hidden lg:block absolute top-2/5 left-1/3 w-8 h-8 border-2 border-gray-600 opacity-40 rounded-full"></div>
-        <div className="hidden xl:block absolute top-1/2 left-1/2 w-14 h-14 border border-gray-500 opacity-38 transform rotate-12"></div>
+        {/* Large background circles for depth */}
+        <div className="absolute -top-20 -right-20 w-32 h-32 border border-blue-200/40 rounded-full"></div>
+        <div className="absolute top-1/3 -left-12 w-28 h-28 bg-gradient-to-br from-blue-100/25 to-transparent rounded-full"></div>
+        <div className="absolute -bottom-16 -right-8 w-24 h-24 border border-blue-100/45 rounded-full"></div>
+        <div className="absolute top-1/4 -left-8 w-20 h-20 border border-blue-200/40 rounded-full"></div>
+        <div className="absolute -top-16 left-1/3 w-30 h-30 bg-gradient-to-bl from-blue-50/20 to-transparent rounded-full"></div>
         
-        {/* Additional mid-section elements - Minimal for mobile */}
-        <div className="hidden lg:block absolute top-1/3 left-2/5 w-4 h-4 bg-gray-600 opacity-50 rounded-full"></div>
-        <div className="hidden lg:block absolute top-1/2 left-3/5 w-5 h-5 bg-gray-400 opacity-46 transform rotate-12"></div>
+        {/* Abstract scattered dots */}
+        <div className="absolute top-40 left-3/4 w-1 h-1 bg-blue-400/60 rounded-full"></div>
+        <div className="absolute top-60 left-1/6 w-1 h-1 bg-blue-300/55 rounded-full"></div>
+        <div className="absolute bottom-40 left-2/3 w-1 h-1 bg-blue-200/50 rounded-full"></div>
+        <div className="absolute top-52 right-1/6 w-1 h-1 bg-blue-400/55 rounded-full"></div>
+        <div className="absolute top-72 left-1/3 w-1 h-1 bg-blue-300/60 rounded-full"></div>
+        <div className="absolute bottom-52 right-2/3 w-1 h-1 bg-blue-200/55 rounded-full"></div>
+        <div className="absolute top-80 right-1/4 w-1 h-1 bg-blue-400/50 rounded-full"></div>
+        <div className="absolute bottom-60 left-1/4 w-1 h-1 bg-blue-300/55 rounded-full"></div>
         
-        {/* Bottom area decorative elements - Safe positioning */}
-        <div className="absolute bottom-32 left-16 w-14 h-14 border-2 border-gray-600 opacity-60 rounded-full"></div>
-        <div className="hidden lg:block absolute bottom-48 left-48 w-8 h-8 bg-gray-500 opacity-45 transform rotate-45"></div>
-        <div className="hidden lg:block absolute bottom-20 left-80 w-6 h-6 border border-gray-600 opacity-50 transform rotate-12"></div>
-        <div className="absolute bottom-40 left-24 w-10 h-10 bg-gray-400 opacity-60 transform rotate-45"></div>
-        <div className="hidden lg:block absolute bottom-28 left-64 w-4 h-4 border border-gray-600 opacity-48"></div>
+        {/* Connecting lines for modern tech feel */}
+        <div className="absolute top-24 left-1/2 w-20 h-0.5 bg-blue-200/45 transform rotate-15"></div>
+        <div className="absolute bottom-1/3 right-1/2 w-14 h-0.5 bg-blue-300/40 transform -rotate-12"></div>
+        <div className="absolute top-1/3 left-1/3 w-16 h-0.5 bg-blue-400/45 transform rotate-30"></div>
+        <div className="absolute bottom-1/2 right-1/3 w-12 h-0.5 bg-blue-200/40 transform -rotate-25"></div>
+        <div className="absolute top-2/3 left-2/3 w-10 h-0.5 bg-blue-300/45 transform rotate-45"></div>
+        <div className="absolute bottom-2/3 right-2/3 w-18 h-0.5 bg-blue-400/40 transform -rotate-35"></div>
         
-        {/* Bottom center elements */}
-        <div className="hidden md:block absolute bottom-36 left-1/2 w-12 h-12 border border-gray-500 opacity-60 rounded-full"></div>
-        <div className="hidden lg:block absolute bottom-16 left-2/5 w-6 h-6 bg-gray-600 opacity-46 transform rotate-45"></div>
-        <div className="hidden lg:block absolute bottom-24 left-3/5 w-3 h-3 border border-gray-600 opacity-52"></div>
-        
-        {/* Bottom right geometric patterns */}
-        <div className="absolute bottom-24 right-20 w-18 h-18 border border-gray-500 opacity-60 transform rotate-45"></div>
-        <div className="absolute bottom-40 right-40 w-12 h-12 bg-gray-400 opacity-60 rounded-full"></div>
-        <div className="hidden lg:block absolute bottom-16 right-64 w-4 h-4 border border-gray-600 opacity-48"></div>
-        <div className="absolute bottom-32 right-8 w-8 h-8 bg-gray-500 opacity-60 transform rotate-12"></div>
-        
-        {/* Additional scattered elements for richness - Reduced on mobile */}
-        <div className="hidden lg:block absolute top-64 left-1/3 w-3 h-3 bg-gray-600 opacity-50 rounded-full"></div>
-        <div className="hidden lg:block absolute top-80 right-1/3 w-5 h-5 border border-gray-500 opacity-45 transform rotate-45"></div>
-        <div className="hidden lg:block absolute bottom-64 left-2/3 w-7 h-7 bg-gray-500 opacity-42 transform rotate-12"></div>
-        <div className="hidden lg:block absolute top-72 left-1/5 w-4 h-4 border border-gray-600 opacity-48"></div>
-        <div className="hidden lg:block absolute top-88 right-1/5 w-6 h-6 bg-gray-400 opacity-44 rounded-full"></div>
-        <div className="hidden lg:block absolute bottom-72 right-1/3 w-5 h-5 border border-gray-500 opacity-46 transform rotate-45"></div>
-        
-        {/* Corner accent elements - Always visible but subtle */}
-        <div className="absolute top-4 left-4 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        <div className="absolute top-4 right-4 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        <div className="absolute bottom-4 left-4 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        <div className="absolute bottom-4 right-4 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        
-        {/* Subtle dotted patterns - Safe positioning for mobile */}
-        <div className="hidden md:block absolute top-1/4 left-1/2 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        <div className="absolute top-5/6 right-3/4 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        <div className="hidden md:block absolute top-1/6 left-3/4 w-2 h-2 bg-gray-600 opacity-55 rounded-full"></div>
-        
-        {/* Diagonal line elements - Hidden on smaller screens */}
-        <div className="hidden lg:block absolute top-20 left-1/4 w-16 h-1 bg-gray-500 opacity-38 transform rotate-45"></div>
-        <div className="hidden lg:block absolute bottom-20 right-1/4 w-20 h-1 bg-gray-500 opacity-38 transform rotate-45"></div>
-        <div className="hidden xl:block absolute top-1/2 left-1/6 w-12 h-1 bg-gray-600 opacity-42 transform rotate-12"></div>
-        <div className="hidden xl:block absolute top-1/3 right-1/6 w-14 h-1 bg-gray-600 opacity-42 transform rotate-45"></div>
-        
-        {/* Complex geometric patterns - Desktop only */}
-        <div className="hidden lg:block absolute top-1/4 left-1/8 w-8 h-8 border border-gray-500 opacity-40 transform rotate-45">
-          <div className="absolute top-1/2 left-1/2 w-2 h-2 bg-gray-600 opacity-50 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-        </div>
-        <div className="hidden lg:block absolute bottom-1/4 right-1/8 w-10 h-10 border border-gray-500 opacity-40 transform rotate-12">
-          <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-gray-600 opacity-48 transform -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
-        </div>
+        {/* Additional geometric variety */}
+        <div className="absolute top-1/4 right-1/5 w-5 h-5 border border-blue-200/50 transform rotate-45"></div>
+        <div className="absolute bottom-1/4 left-1/5 w-6 h-1 bg-blue-300/45 rounded-full transform rotate-30"></div>
+        <div className="absolute top-1/5 left-3/5 w-6 h-6 border-2 border-blue-400/50 transform rotate-60"></div>
+        <div className="absolute bottom-1/5 right-3/5 w-3 h-6 bg-blue-200/45 rounded-full transform rotate-45"></div>
+        <div className="absolute top-3/4 left-1/6 w-4 h-4 bg-blue-300/55 transform rotate-30"></div>
+        <div className="absolute bottom-3/4 right-1/6 w-5 h-1 bg-blue-400/45 rounded-full transform rotate-15"></div>
+        <div className="absolute top-4/5 right-4/5 w-6 h-6 border border-blue-200/50 rounded-full"></div>
+        <div className="absolute bottom-4/5 left-4/5 w-2 h-8 bg-blue-300/50 rounded-full transform rotate-50"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
