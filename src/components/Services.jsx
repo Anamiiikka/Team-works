@@ -210,7 +210,7 @@ const Services = () => {
                    height: '67px'
                  }}>
               {/* Left side with spark and circle */}
-              <div className="flex items-center flex-shrink-0">
+              <div className="flex items-center gap-3 flex-shrink-0">
                 {/* Circle with spark icon */}
                 <div className="w-[42px] h-[42px] rounded-full bg-white flex items-center justify-center flex-shrink-0 relative">
                   {/* Spark icon */}
@@ -227,8 +227,8 @@ const Services = () => {
                 </div>
               </div>
               
-              {/* Text - taking full available space, no gap with arrow */}
-              <span className="text-white font-medium flex-1 text-center ml-3" 
+              {/* Text - taking full available space */}
+              <span className="text-white font-medium flex-1 text-center" 
                     style={{
                       fontSize: '17px',
                       lineHeight: '20px'
@@ -236,12 +236,14 @@ const Services = () => {
                 Know all Services
               </span>
               
-              {/* Arrow - directly adjacent to text */}
-              <ArrowRight className="text-white flex-shrink-0" 
-                         style={{
-                           width: '24.92px',
-                           height: '24.92px'
-                         }} />
+              {/* Arrow - no gap */}
+              <div className="flex-shrink-0">
+                <ArrowRight className="text-white" 
+                           style={{
+                             width: '24.92px',
+                             height: '24.92px'
+                           }} />
+              </div>
             </div>
           </div>
 
