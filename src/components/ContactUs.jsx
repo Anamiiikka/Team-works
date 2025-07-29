@@ -11,6 +11,8 @@ const ContactSection = () => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
   const services = [
     'Web Development',
@@ -37,16 +39,58 @@ const ContactSection = () => {
     setIsDropdownOpen(false);
   };
 
-  const handleSubmit = () => {
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      service: '',
-      message: ''
-    });
+  const handleSubmit = async () => {
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.service || !formData.message) {
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          industry: formData.service, // Map service to industry
+          message: formData.message,
+          requestFrom: 'Contact Us Page', // Static value to identify source
+          isSubscribed: true // Default to true for newsletter subscription
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form on success
+        setFormData({
+          name: '',
+          email: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        console.error('API Error:', result.error);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Network Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      
+      // Clear status message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    }
   };
 
   return (
@@ -112,6 +156,18 @@ const ContactSection = () => {
 
             {/* Form */}
             <div className="space-y-6">
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
+                  Thank you! Your message has been sent successfully. We'll get back to you soon.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+                  There was an error sending your message. Please check all required fields and try again.
+                </div>
+              )}
+
               {/* Name and Email Row */}
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
@@ -120,8 +176,9 @@ const ContactSection = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Name"
+                    placeholder="Full Name*"
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500"
+                    required
                   />
                 </div>
                 <div className="relative">
@@ -130,8 +187,9 @@ const ContactSection = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Email"
+                    placeholder="Email*"
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 pr-12"
+                    required
                   />
                   <Mail className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 </div>
@@ -144,7 +202,7 @@ const ContactSection = () => {
                   className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-left flex items-center justify-between"
                 >
                   <span className={formData.service ? 'text-gray-900' : 'text-gray-500'}>
-                    {formData.service || 'Choose our services'}
+                    {formData.service || 'Choose our services*'}
                   </span>
                   <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -170,9 +228,10 @@ const ContactSection = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Write a Message"
+                  placeholder="Write a Message*"
                   rows={6}
                   className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 resize-none"
+                  required
                 />
               </div>
 
@@ -180,13 +239,16 @@ const ContactSection = () => {
               <div className="pt-4">
                 <button
                   onClick={handleSubmit}
-                  className="text-white font-medium px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+                  disabled={isSubmitting}
+                  className={`text-white font-medium px-8 py-4 rounded-full flex items-center gap-3 transition-all duration-300 hover:shadow-lg hover:scale-105 group ${
+                    isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                  }`}
                   style={{
                     background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
                     boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
                   }}
                 >
-                  Send a message
+                  {isSubmitting ? 'Sending...' : 'Send a message'}
                   <div className="bg-white/90 backdrop-blur-sm p-2 rounded-full group-hover:bg-white transition-all duration-300" style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}>
