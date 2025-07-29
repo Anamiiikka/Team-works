@@ -1,6 +1,8 @@
+
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import jobsData from '../data/jobs.json';
 
 const JobListings = () => {
@@ -52,37 +54,49 @@ const JobListings = () => {
 
   if (showApplicationForm && selectedJob) {
     return (
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" style={{ background: '#F6F5EF' }}>
-        {/* Background Elements */}
-        <div className="absolute inset-0 pointer-events-none opacity-60">
-          <div className="absolute top-8 left-12 w-16 h-16 border border-blue-300/50 rounded-full"></div>
-          <div className="absolute top-4 right-20 w-8 h-8 bg-blue-200/45 transform rotate-45"></div>
-          <div className="absolute top-20 right-8 w-4 h-4 bg-blue-400/50 rounded-full"></div>
-          <div className="absolute bottom-16 left-1/5 w-10 h-10 border-2 border-blue-200/50 transform rotate-45"></div>
-          <div className="absolute bottom-24 right-1/5 w-2 h-12 bg-blue-300/45 rounded-full transform rotate-25"></div>
-        </div>
-
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" 
+               style={{ background: '#F6F5EF' }}>
+        
         <div className="max-w-4xl mx-auto relative z-10">
           {/* Header */}
           <div className="text-center mb-8">
             <button 
               onClick={() => setShowApplicationForm(false)}
-              className="mb-4 text-blue-600 hover:text-blue-800 font-medium"
+              className="mb-4 text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200"
+              style={{
+                fontFamily: 'Inter',
+                fontWeight: 500,
+                fontStyle: 'normal'
+              }}
             >
               ← Back to Jobs
             </button>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2"
+                style={{
+                  fontFamily: 'Inter',
+                  fontWeight: 600,
+                  fontStyle: 'normal'
+                }}>
               Apply for {selectedJob.title}
             </h1>
-            <p className="text-gray-600">{selectedJob.department} • {selectedJob.location}</p>
+            <p className="text-gray-700"
+               style={{
+                 fontFamily: 'Inter',
+                 fontWeight: 400,
+                 fontStyle: 'normal'
+               }}>
+              {selectedJob.department} • {selectedJob.location}
+            </p>
           </div>
 
           {/* Application Form */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8"
+               style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}>
             <form onSubmit={handleSubmitApplication} className="space-y-6">
               {/* Full Name */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2"
+                       style={{ fontFamily: 'Inter', fontWeight: 500 }}>
                   Full Name *
                 </label>
                 <input
@@ -92,14 +106,16 @@ const JobListings = () => {
                   required
                   value={applicationData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
                   placeholder="Enter your full name"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2"
+                       style={{ fontFamily: 'Inter', fontWeight: 500 }}>
                   Email Address *
                 </label>
                 <input
@@ -109,14 +125,16 @@ const JobListings = () => {
                   required
                   value={applicationData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
                   placeholder="Enter your email address"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2"
+                       style={{ fontFamily: 'Inter', fontWeight: 500 }}>
                   Phone Number *
                 </label>
                 <input
@@ -126,14 +144,16 @@ const JobListings = () => {
                   required
                   value={applicationData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
                   placeholder="Enter your phone number"
                 />
               </div>
 
               {/* Resume Upload */}
               <div>
-                <label htmlFor="resume" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="resume" className="block text-sm font-medium text-gray-700 mb-2"
+                       style={{ fontFamily: 'Inter', fontWeight: 500 }}>
                   Upload Resume *
                 </label>
                 <input
@@ -143,9 +163,11 @@ const JobListings = () => {
                   required
                   onChange={handleFileChange}
                   accept=".pdf,.doc,.docx"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
                 />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-500 mt-1"
+                   style={{ fontFamily: 'Inter', fontWeight: 400 }}>
                   Please upload your resume in PDF, DOC, or DOCX format (max 5MB)
                 </p>
               </div>
@@ -155,16 +177,33 @@ const JobListings = () => {
                 <button
                   type="button"
                   onClick={() => setShowApplicationForm(false)}
-                  className="flex-1 py-3 px-6 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-300"
+                  className="flex-1 py-3 px-6 border border-gray-300 text-gray-700 rounded-full hover:bg-gray-50 transition-colors duration-300"
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 500,
+                    fontStyle: 'normal'
+                  }}
                 >
                   Cancel
                 </button>
-                <button
+                <Link
+                  href="/contact-us"
                   type="submit"
-                  className="flex-1 py-3 px-6 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg"
+                  className="flex-1 inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-6 py-3 rounded-full"
+                  style={{ 
+                    background: '#5292E4',
+                    fontFamily: 'Inter',
+                    fontWeight: 500,
+                    fontStyle: 'normal'
+                  }}
                 >
-                  Submit Application
-                </button>
+                  <span>Submit Application</span>
+                  <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center" style={{ transform: 'rotate(-40deg)' }}>
+                    <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </Link>
               </div>
             </form>
           </div>
@@ -174,29 +213,26 @@ const JobListings = () => {
   }
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" style={{ background: '#F6F5EF' }}>
-      {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none opacity-60">
-        <div className="absolute top-8 left-12 w-16 h-16 border border-blue-300/50 rounded-full"></div>
-        <div className="absolute top-4 right-20 w-8 h-8 bg-blue-200/45 transform rotate-45"></div>
-        <div className="absolute top-20 right-8 w-4 h-4 bg-blue-400/50 rounded-full"></div>
-        <div className="absolute top-2 left-28 w-2 h-2 border border-blue-200/55 transform rotate-45"></div>
-        <div className="absolute top-12 right-32 w-6 h-6 bg-blue-100/45 rounded-full"></div>
-        <div className="absolute top-28 left-40 w-1 h-8 bg-blue-300/40 rounded-full transform rotate-30"></div>
-        <div className="absolute bottom-16 left-1/5 w-10 h-10 border-2 border-blue-200/50 transform rotate-45"></div>
-        <div className="absolute bottom-24 right-1/5 w-2 h-12 bg-blue-300/45 rounded-full transform rotate-25"></div>
-        <div className="absolute bottom-20 left-1/6 w-4 h-4 bg-blue-400/50 rounded-full"></div>
-        <div className="absolute -top-16 -right-16 w-24 h-24 border border-blue-200/40 rounded-full"></div>
-        <div className="absolute top-1/4 -left-8 w-20 h-20 bg-gradient-to-br from-blue-100/25 to-transparent rounded-full"></div>
-      </div>
-
+    <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" 
+             style={{ background: '#F6F5EF' }}>
+      
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+              style={{
+                fontFamily: 'Inter',
+                fontWeight: 600,
+                fontStyle: 'normal'
+              }}>
             Current Job Openings
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto"
+             style={{
+               fontFamily: 'Inter',
+               fontWeight: 400,
+               fontStyle: 'normal'
+             }}>
             Join our team and be part of a leading financial advisory firm. 
             Explore exciting career opportunities and grow with us.
           </p>
@@ -207,20 +243,32 @@ const JobListings = () => {
           {jobsData.jobs.map((job) => (
             <div 
               key={job.id}
-              className="bg-white rounded-2xl shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-lg p-6 md:p-8 hover:shadow-xl transition-all duration-300"
+              style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
             >
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-900">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900"
+                        style={{
+                          fontFamily: 'Inter',
+                          fontWeight: 600,
+                          fontStyle: 'normal'
+                        }}>
                       {job.title}
                     </h3>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                    <span className="px-3 py-1 text-white text-sm font-medium rounded-full"
+                          style={{ 
+                            background: '#7BB4FF',
+                            fontFamily: 'Inter',
+                            fontWeight: 500
+                          }}>
                       {job.type}
                     </span>
                   </div>
                   
-                  <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-4">
+                  <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-4"
+                       style={{ fontFamily: 'Inter', fontWeight: 400 }}>
                     <div className="flex items-center gap-1">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-6a1 1 0 00-1-1H9a1 1 0 00-1 1v6a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 8a1 1 0 011-1h4a1 1 0 011 1v4H7v-4z" clipRule="evenodd" />
@@ -241,23 +289,46 @@ const JobListings = () => {
                     </div>
                   </div>
                   
-                  <p className="text-gray-600 mb-4 line-clamp-2">
+                  <p className="text-gray-700 mb-4 line-clamp-2"
+                     style={{
+                       fontFamily: 'Inter',
+                       fontWeight: 400,
+                       fontStyle: 'normal'
+                     }}>
                     {job.description}
                   </p>
                   
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500"
+                     style={{ fontFamily: 'Inter', fontWeight: 400 }}>
                     Posted on {formatDate(job.postedDate)}
                   </p>
                 </div>
                 
                 <div className="flex flex-col gap-3 lg:flex-shrink-0">
-                  <button
+                  <Link
+                    href="/contact-us"
                     onClick={() => handleApplyNow(job)}
-                    className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-lg"
+                    className="inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-8 py-4 rounded-full"
+                    style={{ 
+                      background: '#5292E4',
+                      fontFamily: 'Inter',
+                      fontWeight: 500,
+                      fontStyle: 'normal'
+                    }}
                   >
-                    Apply Now
-                  </button>
-                  <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-300">
+                    <span>Apply Now</span>
+                    <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center" style={{ transform: 'rotate(-40deg)' }}>
+                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </Link>
+                  <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-50 transition-colors duration-300"
+                          style={{
+                            fontFamily: 'Inter',
+                            fontWeight: 500,
+                            fontStyle: 'normal'
+                          }}>
                     View Details
                   </button>
                 </div>
@@ -268,14 +339,41 @@ const JobListings = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Don't see the right role?</h3>
-            <p className="text-blue-100 mb-6">
+          <div className="bg-white rounded-2xl shadow-lg p-8"
+               style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}>
+            <h3 className="text-2xl font-bold mb-4 text-gray-900"
+                style={{
+                  fontFamily: 'Inter',
+                  fontWeight: 600,
+                  fontStyle: 'normal'
+                }}>
+              Don't see the right role?
+            </h3>
+            <p className="text-gray-700 mb-6"
+               style={{
+                 fontFamily: 'Inter',
+                 fontWeight: 400,
+                 fontStyle: 'normal'
+               }}>
               We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.
             </p>
-            <button className="bg-white text-blue-800 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300">
-              Send Resume
-            </button>
+            <Link
+              href="/contact-us"
+              className="inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-8 py-4 rounded-full"
+              style={{ 
+                background: '#5292E4',
+                fontFamily: 'Inter',
+                fontWeight: 500,
+                fontStyle: 'normal'
+              }}
+            >
+              <span>Send Resume</span>
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center" style={{ transform: 'rotate(-40deg)' }}>
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
