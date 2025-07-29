@@ -134,7 +134,7 @@ const JobListings = () => {
                     onClick={() => handleApplyNow(job)}
                     className="inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-8 py-4 rounded-full hover:opacity-90"
                     style={{ 
-                      background: '#5292E4',
+                      background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
                       fontFamily: 'Inter',
                       fontWeight: 500,
                       fontStyle: 'normal'
