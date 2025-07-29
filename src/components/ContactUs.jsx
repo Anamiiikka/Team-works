@@ -15,12 +15,12 @@ const ContactSection = () => {
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
   const services = [
-    'Web Development',
-    'Mobile App Development',
-    'UI/UX Design',
-    'Digital Marketing',
-    'SEO Services',
-    'Consulting'
+    ' Debt Syndication',
+    ' Working Capital Management',
+    ' Project Financing',
+    'Capital Advisory',
+ ' Business Restructuring & Turnaround Advisory',
+   
   ];
 
   const handleInputChange = (e) => {
