@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';
-import { Users, Briefcase, Target, UserCog, FileText } from 'lucide-react';
+import { Users, Briefcase, Target, UserCog, FileText, Upload } from 'lucide-react';
 
 // A reusable component for the stat cards on the dashboard
 const StatCard = ({ title, value, icon: Icon, colorClass, loading }) => (
@@ -123,6 +123,7 @@ export default function CmsDashboard() {
                         </div>
                     </div>
                 </Link>
+                
                 <Link href="/cms/careers">
                     <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
                         <FileText className="w-8 h-8 text-rose-600" />
@@ -132,6 +133,18 @@ export default function CmsDashboard() {
                         </div>
                     </div>
                 </Link>
+
+                {(currentUser?.role === 'Employee' || currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+                    <Link href="/cms/uploads">
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                            <Upload className="w-8 h-8 text-blue-600" />
+                            <div>
+                                <h3 className="font-bold text-lg text-gray-900">File Uploads</h3>
+                                <p className="text-gray-500 text-sm">View and manage uploaded files and documents.</p>
+                            </div>
+                        </div>
+                    </Link>
+                )}
             </div>
         </div>
       </div>

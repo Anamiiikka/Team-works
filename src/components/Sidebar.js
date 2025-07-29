@@ -52,6 +52,16 @@ export default function Sidebar() {
               </Link>
             </li>
 
+            {/* Conditionally render the Uploads link */}
+            {/* It will appear for Employee, Admin, and SuperAdmin users */}
+            {(currentUser?.role === 'Employee' || currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <li className="mb-4">
+                <Link href="/cms/uploads" className="block py-2 px-4 rounded hover:bg-gray-700">
+                  Uploads
+                </Link>
+              </li>
+            )}
+
             {/* Conditionally render the User Management link */}
             {/* It will only appear if the user's role is 'Admin' or 'SuperAdmin' */}
             {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
