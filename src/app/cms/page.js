@@ -68,7 +68,7 @@ export default function CmsDashboard() {
             Welcome back, {currentUser?.name || 'User'}!
           </h1>
           <p className="text-gray-500 mt-1">
-            Here’s a quick summary of your application's activity.
+             Here&apos;s a quick summary of your application&apos;s activity.
           </p>
         </div>
 
