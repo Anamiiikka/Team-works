@@ -134,6 +134,18 @@ export default function CmsDashboard() {
                     </div>
                 </Link>
 
+                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+                    <Link href="/cms/jobs">
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                            <Briefcase className="w-8 h-8 text-emerald-600" />
+                            <div>
+                                <h3 className="font-bold text-lg text-gray-900">Job Management</h3>
+                                <p className="text-gray-500 text-sm">Create, edit, and manage job postings.</p>
+                            </div>
+                        </div>
+                    </Link>
+                )}
+
                 {(currentUser?.role === 'Employee' || currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
                     <Link href="/cms/uploads">
                         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">

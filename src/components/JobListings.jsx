@@ -182,6 +182,9 @@ const JobListings = () => {
                         }}>
                       {job.title}
                     </h3>
+                    <span className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-mono">
+                      {job.jobId}
+                    </span>
                     <span className="px-3 py-1 text-white text-sm font-medium rounded-full"
                           style={{ 
                             background: '#7BB4FF',

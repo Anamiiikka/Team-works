@@ -86,6 +86,7 @@ export default function JobManagement() {
   const [showForm, setShowForm] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
   const [formData, setFormData] = useState({
+    jobId: '',
     title: '',
     department: '',
     location: '',
@@ -163,6 +164,7 @@ export default function JobManagement() {
 
   const resetForm = () => {
     setFormData({
+      jobId: '',
       title: '',
       department: '',
       location: '',
@@ -235,6 +237,7 @@ export default function JobManagement() {
 
   const handleEdit = (job) => {
     setFormData({
+      jobId: job.jobId || '',
       title: job.title,
       department: job.department,
       location: job.location,
@@ -327,14 +330,14 @@ export default function JobManagement() {
                 placeholder="Search jobs..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
               />
             </div>
             
             <select
               value={selectedDepartment}
               onChange={(e) => handleDepartmentFilter(e.target.value)}
-              className="px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+              className="px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
             >
               <option value="">All Departments</option>
               {departments.map(dept => (
@@ -345,7 +348,7 @@ export default function JobManagement() {
             <select
               value={activeFilter}
               onChange={(e) => handleActiveFilter(e.target.value)}
-              className="px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+              className="px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
             >
               <option value="">All Status</option>
               <option value="true">Active</option>
@@ -355,7 +358,7 @@ export default function JobManagement() {
             <select
               value={sortOrder}
               onChange={(e) => handleSortChange(e.target.value)}
-              className="px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+              className="px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
             >
               <option value="-postedDate">Date (Newest First)</option>
               <option value="postedDate">Date (Oldest First)</option>
@@ -384,6 +387,20 @@ export default function JobManagement() {
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Job ID *</label>
+                  <input
+                    type="text"
+                    name="jobId"
+                    value={formData.jobId}
+                    onChange={handleInputChange}
+                    placeholder="e.g., JOB-001, DEV-2024-01"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
+                    required
+                  />
+                  <p className="text-xs text-gray-500 mt-1">Enter a unique identifier for this job posting</p>
+                </div>
+                
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Job Title *</label>
@@ -392,7 +409,7 @@ export default function JobManagement() {
                       name="title"
                       value={formData.title}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                       required
                     />
                   </div>
@@ -404,7 +421,7 @@ export default function JobManagement() {
                       name="department"
                       value={formData.department}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                       required
                     />
                   </div>
@@ -418,7 +435,7 @@ export default function JobManagement() {
                       name="location"
                       value={formData.location}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                       required
                     />
                   </div>
@@ -429,7 +446,7 @@ export default function JobManagement() {
                       name="type"
                       value={formData.type}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                       required
                     >
                       <option value="Full-time">Full-time</option>
@@ -447,7 +464,7 @@ export default function JobManagement() {
                       value={formData.experience}
                       onChange={handleInputChange}
                       placeholder="e.g., 2-3 years"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                       required
                     />
                   </div>
@@ -460,7 +477,7 @@ export default function JobManagement() {
                     value={formData.description}
                     onChange={handleInputChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                     required
                   />
                 </div>
@@ -473,7 +490,7 @@ export default function JobManagement() {
                         type="text"
                         value={req}
                         onChange={(e) => handleArrayInputChange(index, 'requirements', e.target.value)}
-                        className="flex-1 px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                        className="flex-1 px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                         placeholder="Enter requirement"
                       />
                       {formData.requirements.length > 1 && (
@@ -504,7 +521,7 @@ export default function JobManagement() {
                         type="text"
                         value={resp}
                         onChange={(e) => handleArrayInputChange(index, 'responsibilities', e.target.value)}
-                        className="flex-1 px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                        className="flex-1 px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                         placeholder="Enter responsibility"
                       />
                       {formData.responsibilities.length > 1 && (
@@ -599,6 +616,7 @@ export default function JobManagement() {
                     background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
                   }}>
                     <tr>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Job ID</th>
                       <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Job Title</th>
                       <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Department</th>
                       <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Location</th>
@@ -611,6 +629,11 @@ export default function JobManagement() {
                   <tbody className="bg-white divide-y divide-gray-100">
                     {jobs.map((job, index) => (
                       <tr key={job._id} className={`transition-colors duration-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50`}>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900">
+                          <span className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-mono">
+                            {job.jobId || 'N/A'}
+                          </span>
+                        </td>
                         <td className="py-4 px-6 text-sm font-medium text-gray-900">{job.title}</td>
                         <td className="py-4 px-6 text-sm text-gray-700">{job.department}</td>
                         <td className="py-4 px-6 text-sm text-gray-700">{job.location}</td>
@@ -667,6 +690,11 @@ export default function JobManagement() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-start">
                       <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-mono">
+                            {job.jobId || 'N/A'}
+                          </span>
+                        </div>
                         <h3 className="font-semibold text-lg text-gray-900 truncate">{job.title}</h3>
                         <p className="text-sm text-gray-500">{job.department} • {job.location}</p>
                       </div>

@@ -17,6 +17,7 @@ export async function GET(request) {
     
     if (search) {
       query.$or = [
+        { jobId: { $regex: search, $options: 'i' } },
         { title: { $regex: search, $options: 'i' } },
         { location: { $regex: search, $options: 'i' } },
         { description: { $regex: search, $options: 'i' } }
@@ -28,7 +29,7 @@ export async function GET(request) {
     }
 
     const jobs = await Job.find(query)
-      .select('title department location type experience description requirements responsibilities postedDate')
+      .select('jobId title department location type experience description requirements responsibilities postedDate')
       .sort({ postedDate: -1 });
 
     // Get departments for filter

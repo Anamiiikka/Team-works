@@ -1,6 +1,13 @@
 import mongoose from 'mongoose';
 
 const JobSchema = new mongoose.Schema({
+  jobId: {
+    type: String,
+    required: [true, 'Job ID is required'],
+    unique: true,
+    trim: true,
+    maxlength: [20, 'Job ID cannot exceed 20 characters']
+  },
   title: {
     type: String,
     required: [true, 'Job title is required'],
@@ -66,6 +73,9 @@ const JobSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
+
+// Create indexes for better performance and ensure unique constraint
+JobSchema.index({ jobId: 1 }, { unique: true });
 
 // Update the updatedAt field before saving
 JobSchema.pre('save', function(next) {

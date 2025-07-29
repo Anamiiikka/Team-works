@@ -177,7 +177,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Full Name*"
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 text-gray-900"
                     required
                   />
                 </div>
@@ -188,7 +188,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email*"
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 pr-12"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 pr-12 text-gray-900"
                     required
                   />
                   <Mail className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -230,7 +230,7 @@ const ContactSection = () => {
                   onChange={handleInputChange}
                   placeholder="Write a Message*"
                   rows={6}
-                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 resize-none"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500 resize-none text-gray-900"
                   required
                 />
               </div>

@@ -59,6 +59,7 @@ export async function GET(request) {
     
     if (search) {
       query.$or = [
+        { jobId: { $regex: search, $options: 'i' } },
         { title: { $regex: search, $options: 'i' } },
         { location: { $regex: search, $options: 'i' } },
         { description: { $regex: search, $options: 'i' } }
@@ -123,6 +124,7 @@ export async function POST(request) {
 
     const body = await request.json();
     const {
+      jobId,
       title,
       department,
       location,
@@ -135,9 +137,18 @@ export async function POST(request) {
     } = body;
 
     // Validation
-    if (!title || !department || !location || !type || !experience || !description) {
+    if (!jobId || !title || !department || !location || !type || !experience || !description) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields (jobId, title, department, location, type, experience, description)' },
+        { status: 400 }
+      );
+    }
+
+    // Check if jobId already exists
+    const existingJob = await Job.findOne({ jobId });
+    if (existingJob) {
+      return NextResponse.json(
+        { error: 'Job ID already exists. Please use a unique Job ID.' },
         { status: 400 }
       );
     }
@@ -157,6 +168,7 @@ export async function POST(request) {
     }
 
     const newJob = new Job({
+      jobId,
       title,
       department,
       location,
@@ -182,6 +194,27 @@ export async function POST(request) {
     if (error.code === 401 || error.code === 403) {
       return NextResponse.json({ error: error.message }, { status: error.code });
     }
+    
+    // Handle MongoDB duplicate key error
+    if (error.code === 11000 || error.codeName === 'DuplicateKey') {
+      const field = Object.keys(error.keyPattern || {})[0];
+      if (field === 'jobId') {
+        return NextResponse.json(
+          { error: 'Job ID already exists. Please use a unique Job ID.' },
+          { status: 400 }
+        );
+      }
+    }
+    
+    // Handle validation errors
+    if (error.name === 'ValidationError') {
+      const validationErrors = Object.values(error.errors).map(err => err.message);
+      return NextResponse.json(
+        { error: `Validation error: ${validationErrors.join(', ')}` },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json(
       { error: 'Failed to create job' },
       { status: 500 }
@@ -204,6 +237,7 @@ export async function PUT(request) {
     const body = await request.json();
     const {
       id,
+      jobId,
       title,
       department,
       location,
@@ -230,7 +264,19 @@ export async function PUT(request) {
       );
     }
 
+    // Check if jobId is being updated and if it conflicts with existing jobs
+    if (jobId && jobId !== job.jobId) {
+      const existingJob = await Job.findOne({ jobId });
+      if (existingJob) {
+        return NextResponse.json(
+          { error: 'Job ID already exists. Please use a unique Job ID.' },
+          { status: 400 }
+        );
+      }
+    }
+
     // Update job
+    job.jobId = jobId || job.jobId;
     job.title = title || job.title;
     job.department = department || job.department;
     job.location = location || job.location;
@@ -254,6 +300,27 @@ export async function PUT(request) {
     if (error.code === 401 || error.code === 403) {
       return NextResponse.json({ error: error.message }, { status: error.code });
     }
+    
+    // Handle MongoDB duplicate key error
+    if (error.code === 11000 || error.codeName === 'DuplicateKey') {
+      const field = Object.keys(error.keyPattern || {})[0];
+      if (field === 'jobId') {
+        return NextResponse.json(
+          { error: 'Job ID already exists. Please use a unique Job ID.' },
+          { status: 400 }
+        );
+      }
+    }
+    
+    // Handle validation errors
+    if (error.name === 'ValidationError') {
+      const validationErrors = Object.values(error.errors).map(err => err.message);
+      return NextResponse.json(
+        { error: `Validation error: ${validationErrors.join(', ')}` },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json(
       { error: 'Failed to update job' },
       { status: 500 }
