@@ -4,10 +4,13 @@ import { useState } from 'react';
 const ApplicationForm = ({ selectedJob, onClose }) => {
   const [applicationData, setApplicationData] = useState({
     name: '',
-    email: '',
-    phone: '',
+    age: '',
+    experience: '',
     resume: null
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,13 +27,62 @@ const ApplicationForm = ({ selectedJob, onClose }) => {
     }));
   };
 
-  const handleSubmitApplication = (e) => {
+  const handleSubmitApplication = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Application submitted:', applicationData);
-    alert('Application submitted successfully!');
-    onClose();
-    setApplicationData({ name: '', email: '', phone: '', resume: null });
+    
+    // Validate required fields
+    if (!applicationData.name || !applicationData.age || !applicationData.experience || !applicationData.resume) {
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('name', applicationData.name);
+      formData.append('age', applicationData.age);
+      formData.append('experience', applicationData.experience);
+      formData.append('resume', applicationData.resume);
+      formData.append('jobId', selectedJob.id || selectedJob._id || 'default-job-id');
+
+      const response = await fetch('/api/join-team', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form on success
+        setApplicationData({
+          name: '',
+          age: '',
+          experience: '',
+          resume: null
+        });
+        
+        // Close form after showing success message for 2 seconds
+        setTimeout(() => {
+          onClose();
+        }, 2000);
+      } else {
+        console.error('API Error:', result.error);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Network Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      
+      // Clear status message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    }
   };
 
   return (
@@ -72,6 +124,19 @@ const ApplicationForm = ({ selectedJob, onClose }) => {
         {/* Application Form */}
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8"
              style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}>
+          
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
+            <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
+              Thank you! Your application has been submitted successfully. We'll review it and get back to you soon.
+            </div>
+          )}
+          {submitStatus === 'error' && (
+            <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">
+              There was an error submitting your application. Please check all required fields and try again.
+            </div>
+          )}
+
           <form onSubmit={handleSubmitApplication} className="space-y-6">
             {/* Full Name */}
             <div>
@@ -94,39 +159,43 @@ const ApplicationForm = ({ selectedJob, onClose }) => {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2"
+              <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-2"
                      style={{ fontFamily: 'Inter', fontWeight: 500 }}>
-                Email Address *
+                Age *
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
+                type="number"
+                id="age"
+                name="age"
                 required
-                value={applicationData.email}
+                min="18"
+                max="100"
+                value={applicationData.age}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 style={{ fontFamily: 'Inter', fontWeight: 400 }}
-                placeholder="Enter your email address"
+                placeholder="Enter your age"
               />
             </div>
 
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2"
+              <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-2"
                      style={{ fontFamily: 'Inter', fontWeight: 500 }}>
-                Phone Number *
+                Years of Experience *
               </label>
               <input
-                type="tel"
-                id="phone"
-                name="phone"
+                type="number"
+                id="experience"
+                name="experience"
                 required
-                value={applicationData.phone}
+                min="0"
+                max="50"
+                value={applicationData.experience}
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 style={{ fontFamily: 'Inter', fontWeight: 400 }}
-                placeholder="Enter your phone number"
+                placeholder="Enter years of experience"
               />
             </div>
 
@@ -168,7 +237,10 @@ const ApplicationForm = ({ selectedJob, onClose }) => {
               </button>
               <button
                 type="submit"
-                className="flex-1 inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-6 py-3 rounded-full hover:opacity-90"
+                disabled={isSubmitting}
+                className={`flex-1 inline-flex items-center justify-center gap-3 text-white font-medium transition-all duration-200 px-6 py-3 rounded-full hover:opacity-90 ${
+                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
+                }`}
                 style={{ 
                   background: '#5292E4',
                   fontFamily: 'Inter',
@@ -176,7 +248,7 @@ const ApplicationForm = ({ selectedJob, onClose }) => {
                   fontStyle: 'normal'
                 }}
               >
-                <span>Submit Application</span>
+                <span>{isSubmitting ? 'Submitting...' : 'Submit Application'}</span>
                 <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center" style={{ transform: 'rotate(-40deg)' }}>
                   <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
