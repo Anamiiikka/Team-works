@@ -31,7 +31,9 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="flex flex-col w-64 h-screen bg-gray-800 text-white p-4">
+    <aside className="flex flex-col w-64 h-screen text-white p-4" style={{
+      background: 'linear-gradient(180deg, #3A7BD5 0%, #024A7A 100%)'
+    }}>
       <div>
         <h2 className="text-xl font-bold mb-6 text-center">CMS</h2>
         <nav>

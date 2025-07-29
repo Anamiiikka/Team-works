@@ -6,7 +6,7 @@ export default function CmsLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen" style={{ background: '#f6f5ef' }}>
       {/* Mobile sidebar overlay */}
       {sidebarOpen && (
         <div 
