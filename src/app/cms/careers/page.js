@@ -139,71 +139,157 @@ export default function Careers() {
   };
 
   return (
-    <div className="p-3 sm:p-4 lg:p-6 bg-gray-100 min-h-screen">
+    <div className="p-3 sm:p-4 lg:p-6 min-h-screen" style={{
+      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+      fontFamily: 'Inter'
+    }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-4 sm:mb-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">Career Applicants</h2>
-          <div className="space-y-3 sm:space-y-0 sm:flex sm:flex-wrap sm:gap-3 lg:justify-end">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-2">
-              <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="p-2 border rounded text-sm text-gray-600 bg-white" placeholder="Start Date" />
-              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="p-2 border rounded text-sm text-gray-600 bg-white" placeholder="End Date" />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
-              <select value={sortOrder} onChange={(e) => handleSortChange(e.target.value)} className="p-2 border rounded text-sm text-gray-600 bg-white">
-                <option value="-submittedAt">Date (Newest First)</option>
-                <option value="submittedAt">Date (Oldest First)</option>
-                <option value="name">Name (A-Z)</option>
-                <option value="-name">Name (Z-A)</option>
-              </select>
-              <button onClick={handleExportToExcel} className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm font-medium">Download Current Page</button>
-              <button onClick={handleExportAllToExcel} disabled={isExportingAll} className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm font-medium disabled:bg-gray-400">{isExportingAll ? 'Exporting...' : 'Download All Records'}</button>
+          <div className="bg-white rounded-2xl p-6 shadow-lg" style={{
+            background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+          }}>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Career Applicants</h2>
+          </div>
+          
+          <div className="mt-6 bg-white rounded-2xl p-6 shadow-lg">
+            <div className="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:gap-4 lg:justify-end">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <input 
+                  type="date" 
+                  value={startDate} 
+                  onChange={(e) => setStartDate(e.target.value)} 
+                  className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all" 
+                  placeholder="Start Date" 
+                />
+                <input 
+                  type="date" 
+                  value={endDate} 
+                  onChange={(e) => setEndDate(e.target.value)} 
+                  className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all" 
+                  placeholder="End Date" 
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <select 
+                  value={sortOrder} 
+                  onChange={(e) => handleSortChange(e.target.value)} 
+                  className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                >
+                  <option value="-submittedAt">Date (Newest First)</option>
+                  <option value="submittedAt">Date (Oldest First)</option>
+                  <option value="name">Name (A-Z)</option>
+                  <option value="-name">Name (Z-A)</option>
+                </select>
+                <button 
+                  onClick={handleExportToExcel} 
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  Download Current Page
+                </button>
+                <button 
+                  onClick={handleExportAllToExcel} 
+                  disabled={isExportingAll} 
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  style={{
+                    background: isExportingAll ? '#9ca3af' : 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: isExportingAll ? 'none' : '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  {isExportingAll ? 'Exporting...' : 'Download All Records'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {error ? (
-          <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-4">
-            <p className="text-red-600 text-sm">Error: {error}</p>
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-red-500">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-red-800 font-medium">Error: {error}</p>
+              </div>
+            </div>
           </div>
         ) : applicants.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <p className="text-gray-600">No applicants available</p>
+          <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+            <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full mb-4" style={{
+              background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+            }}>
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">No applicants available</h3>
+            <p className="text-gray-600">There are currently no job applications to display.</p>
           </div>
         ) : (
           <>
-            <div className="hidden lg:block bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="hidden lg:block bg-white shadow-lg rounded-2xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead style={{
+                    background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+                  }}>
                     <tr>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Experience</th>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job ID</th>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted</th>
-                      <th className="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Name</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Age</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Experience</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Resume</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Job ID</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Submitted</th>
+                      <th className="py-4 px-6 text-left text-xs font-semibold text-white uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {applicants.map((applicant) => (
-                      <tr key={applicant._id} className="hover:bg-gray-50">
-                        <td className="py-4 px-6 text-sm text-gray-900">{applicant.name}</td>
-                        <td className="py-4 px-6 text-sm text-gray-900">{applicant.age}</td>
-                        <td className="py-4 px-6 text-sm text-gray-900">{applicant.experience}</td>
+                  <tbody className="bg-white divide-y divide-gray-100">
+                    {applicants.map((applicant, index) => (
+                      <tr key={applicant._id} className={`transition-colors duration-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50`}>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900">{applicant.name}</td>
+                        <td className="py-4 px-6 text-sm text-gray-700">{applicant.age}</td>
+                        <td className="py-4 px-6 text-sm text-gray-700">{applicant.experience}</td>
                         <td className="py-4 px-6 text-sm">
                           {applicant.resumeUrl ? (
                             <div className="flex items-center space-x-3">
-                              <a href={applicant.resumeUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800" title="View Resume"><Eye className="w-5 h-5" /></a>
-                              <button onClick={() => handleDownloadResume(applicant.resumeUrl, applicant.name)} className="text-blue-600 hover:text-blue-800" title="Download Resume"><Download className="w-5 h-5" /></button>
+                              <a 
+                                href={applicant.resumeUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg transition-all duration-200" 
+                                title="View Resume"
+                              >
+                                <Eye className="w-5 h-5" />
+                              </a>
+                              <button 
+                                onClick={() => handleDownloadResume(applicant.resumeUrl, applicant.name)} 
+                                className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg transition-all duration-200" 
+                                title="Download Resume"
+                              >
+                                <Download className="w-5 h-5" />
+                              </button>
                             </div>
-                          ) : (<span className="text-gray-500">N/A</span>)}
+                          ) : (
+                            <span className="text-gray-500 italic">N/A</span>
+                          )}
                         </td>
-                        <td className="py-4 px-6 text-sm text-gray-900">{applicant.jobId}</td>
-                        <td className="py-4 px-6 text-sm text-gray-900">{new Date(applicant.submittedAt).toLocaleString()}</td>
+                        <td className="py-4 px-6 text-sm text-gray-700">{applicant.jobId}</td>
+                        <td className="py-4 px-6 text-sm text-gray-700">{new Date(applicant.submittedAt).toLocaleString()}</td>
                         <td className="py-4 px-6 text-sm">
                           {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
-                            <button onClick={() => handleDeleteApplicant(applicant._id)} className="p-2 text-red-600 hover:text-red-800" title="Delete Applicant"><Trash2 className="w-5 h-5" /></button>
+                            <button 
+                              onClick={() => handleDeleteApplicant(applicant._id)} 
+                              className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200" 
+                              title="Delete Applicant"
+                            >
+                              <Trash2 className="w-5 h-5" />
+                            </button>
                           )}
                         </td>
                       </tr>
@@ -215,8 +301,66 @@ export default function Careers() {
 
             <div className="lg:hidden space-y-4">
               {applicants.map((applicant) => (
-                <div key={applicant._id} className="bg-white rounded-lg shadow-md p-4">
-                  {/* ... Mobile view card ... */}
+                <div key={applicant._id} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="font-semibold text-lg text-gray-900">{applicant.name}</h3>
+                    <span className="px-3 py-1 text-xs font-medium text-white rounded-full" style={{
+                      background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)'
+                    }}>
+                      ID: {applicant.jobId}
+                    </span>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <p className="text-sm font-medium text-gray-500">Age</p>
+                      <p className="text-gray-900">{applicant.age}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500">Experience</p>
+                      <p className="text-gray-900">{applicant.experience} years</p>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm font-medium text-gray-500 mb-2">Submitted</p>
+                    <p className="text-gray-900">{new Date(applicant.submittedAt).toLocaleString()}</p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 justify-between items-center">
+                    {applicant.resumeUrl ? (
+                      <div className="flex space-x-2">
+                        <a 
+                          href={applicant.resumeUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                        >
+                          <Eye className="w-4 h-4 mr-1" />
+                          View
+                        </a>
+                        <button 
+                          onClick={() => handleDownloadResume(applicant.resumeUrl, applicant.name)} 
+                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                        >
+                          <Download className="w-4 h-4 mr-1" />
+                          Download
+                        </button>
+                      </div>
+                    ) : (
+                      <span className="text-gray-500 italic text-sm">No resume available</span>
+                    )}
+                    
+                    {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+                      <button 
+                        onClick={() => handleDeleteApplicant(applicant._id)} 
+                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4 mr-1" />
+                        Delete
+                      </button>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -224,11 +368,33 @@ export default function Careers() {
         )}
 
         {applicants.length > 0 && (
-          <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <span className="text-gray-700 text-sm">Page {currentPage} of {totalPages}</span>
-            <div className="flex gap-2">
-              <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} className="px-4 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-300 hover:bg-blue-700 transition-colors text-sm">Previous</button>
-              <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} className="px-4 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-300 hover:bg-blue-700 transition-colors text-sm">Next</button>
+          <div className="mt-6 bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span className="text-gray-700 font-medium">Page {currentPage} of {totalPages}</span>
+              <div className="flex gap-3">
+                <button 
+                  onClick={() => handlePageChange(currentPage - 1)} 
+                  disabled={currentPage === 1} 
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: currentPage === 1 ? '#d1d5db' : 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)',
+                    boxShadow: currentPage === 1 ? 'none' : '0 4px 16px rgba(2, 74, 122, 0.3)'
+                  }}
+                >
+                  Previous
+                </button>
+                <button 
+                  onClick={() => handlePageChange(currentPage + 1)} 
+                  disabled={currentPage === totalPages} 
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: currentPage === totalPages ? '#d1d5db' : 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)',
+                    boxShadow: currentPage === totalPages ? 'none' : '0 4px 16px rgba(2, 74, 122, 0.3)'
+                  }}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         )}

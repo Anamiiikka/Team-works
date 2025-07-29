@@ -162,106 +162,142 @@ export default function Leads() {
   };
 
   return (
-    <div className="p-3 sm:p-4 lg:p-6 bg-gray-100 min-h-screen">
+    <div className="p-3 sm:p-4 lg:p-6 min-h-screen" style={{
+      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+      fontFamily: 'Inter'
+    }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-4 sm:mb-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">Lead Submissions</h2>
+          <div className="bg-white rounded-2xl p-6 shadow-lg" style={{
+            background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+          }}>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Lead Submissions</h2>
+          </div>
           
           {/* Filters and Export - Mobile First */}
-          <div className="space-y-3 sm:space-y-0 sm:flex sm:flex-wrap sm:gap-3 lg:justify-end">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-2">
-              <input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="p-2 border rounded text-sm text-gray-600 bg-white"
-                placeholder="Start Date"
-              />
-              <input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="p-2 border rounded text-sm text-gray-600 bg-white"
-                placeholder="End Date"
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
-              <select
-                value={sortOrder}
-                onChange={(e) => handleSortChange(e.target.value)}
-                className="p-2 border rounded text-sm text-gray-600 bg-white"
-              >
-                <option value="-submittedAt">Date (Newest First)</option>
-                <option value="submittedAt">Date (Oldest First)</option>
-                <option value="name">Name (A-Z)</option>
-                <option value="-name">Name (Z-A)</option>
-              </select>
-              <button
-                onClick={handleExportToExcel}
-                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm font-medium"
-              >
-                Download Current Page
-              </button>
-              <button
-                onClick={handleExportAllToExcel}
-                disabled={isExportingAll}
-                className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm font-medium disabled:bg-gray-300"
-              >
-                {isExportingAll ? 'Exporting...' : 'Download All Records'}
-              </button>
+          <div className="mt-6 bg-white rounded-2xl p-6 shadow-lg">
+            <div className="space-y-4 sm:space-y-0 sm:flex sm:flex-wrap sm:gap-4 lg:justify-end">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                  placeholder="Start Date"
+                />
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                  placeholder="End Date"
+                />
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <select
+                  value={sortOrder}
+                  onChange={(e) => handleSortChange(e.target.value)}
+                  className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                >
+                  <option value="-submittedAt">Date (Newest First)</option>
+                  <option value="submittedAt">Date (Oldest First)</option>
+                  <option value="name">Name (A-Z)</option>
+                  <option value="-name">Name (Z-A)</option>
+                </select>
+                <button
+                  onClick={handleExportToExcel}
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  Download Current Page
+                </button>
+                <button
+                  onClick={handleExportAllToExcel}
+                  disabled={isExportingAll}
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  style={{
+                    background: isExportingAll ? '#9ca3af' : 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: isExportingAll ? 'none' : '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  {isExportingAll ? 'Exporting...' : 'Download All Records'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Error or No Data States */}
         {error ? (
-          <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-4">
-            <p className="text-red-600 text-sm">Error: {error}</p>
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-red-500">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-red-800 font-medium">Error: {error}</p>
+              </div>
+            </div>
           </div>
         ) : leads.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <p className="text-gray-600">No leads available</p>
+          <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+            <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full mb-4" style={{
+              background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+            }}>
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">No leads available</h3>
+            <p className="text-gray-600">There are currently no lead submissions to display.</p>
           </div>
         ) : (
           <>
             {/* Desktop Table */}
-            <div className="hidden lg:block bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="hidden lg:block bg-white shadow-lg rounded-2xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead style={{
+                    background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+                  }}>
                     <tr>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Industry</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Request From</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted At</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Name</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Email</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Industry</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Message</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Request From</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Submitted At</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {leads.map((lead) => (
-                      <tr key={lead._id} className="hover:bg-gray-50">
-                        <td className="py-4 px-4 text-sm text-gray-900">{lead.name}</td>
-                        <td className="py-4 px-4 text-sm text-gray-900 break-all">
-                          <a href={`mailto:${lead.email}`} className="text-blue-600 hover:text-blue-800">
+                  <tbody className="bg-white divide-y divide-gray-100">
+                    {leads.map((lead, index) => (
+                      <tr key={lead._id} className={`transition-colors duration-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50`}>
+                        <td className="py-4 px-4 text-sm font-medium text-gray-900">{lead.name}</td>
+                        <td className="py-4 px-4 text-sm text-gray-700 break-all">
+                          <a href={`mailto:${lead.email}`} className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">
                             {lead.email}
                           </a>
                         </td>
-                        <td className="py-4 px-4 text-sm text-gray-900">{lead.industry}</td>
-                        <td className="py-4 px-4 text-sm text-gray-900 max-w-xs truncate" title={lead.message}>
+                        <td className="py-4 px-4 text-sm text-gray-700">{lead.industry}</td>
+                        <td className="py-4 px-4 text-sm text-gray-700 max-w-xs truncate" title={lead.message}>
                           {lead.message}
                         </td>
-                        <td className="py-4 px-4 text-sm text-gray-900">{lead.requestFrom}</td>
-                        <td className="py-4 px-4 text-sm text-gray-900">
+                        <td className="py-4 px-4 text-sm text-gray-700">{lead.requestFrom}</td>
+                        <td className="py-4 px-4 text-sm text-gray-700">
                           {lead.submittedAt ? new Date(lead.submittedAt).toLocaleString() : 'N/A'}
                         </td>
                         <td className="py-4 px-4 text-sm">
                           <button
                             onClick={() => handleDeleteLead(lead._id)}
                             disabled={currentUser?.role === 'Employee'}
-                            className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm disabled:bg-gray-400 disabled:cursor-not-allowed"
+                            className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                             title={currentUser?.role === 'Employee' ? 'Deletion not allowed' : 'Delete Lead'}
                           >
                             <Trash2 className="w-5 h-5" />
@@ -277,16 +313,16 @@ export default function Leads() {
             {/* Mobile Cards */}
             <div className="lg:hidden space-y-4">
               {leads.map((lead) => (
-                <div key={lead._id} className="bg-white rounded-lg shadow-md p-4">
-                  <div className="space-y-3">
+                <div key={lead._id} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  <div className="space-y-4">
                     <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-medium text-gray-900">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-lg text-gray-900 truncate">
                           {lead.name}
                         </h3>
                         <a 
                           href={`mailto:${lead.email}`} 
-                          className="text-blue-600 hover:text-blue-800 text-sm break-all"
+                          className="text-blue-600 hover:text-blue-800 hover:underline text-sm break-all transition-colors"
                         >
                           {lead.email}
                         </a>
@@ -294,34 +330,37 @@ export default function Leads() {
                       <button
                         onClick={() => handleDeleteLead(lead._id)}
                         disabled={currentUser?.role === 'Employee'}
-                        className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm flex-shrink-0 disabled:bg-gray-400 disabled:cursor-not-allowed"
+                        className="ml-3 p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200 flex-shrink-0 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                         title={currentUser?.role === 'Employee' ? 'Deletion not allowed' : 'Delete Lead'}
                       >
                         <Trash2 className="w-5 h-5" />
                       </button>
                     </div>
                     
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <span className="text-gray-500">Industry:</span>
-                        <span className="ml-2 text-gray-900">{lead.industry}</span>
+                        <p className="text-sm font-medium text-gray-500">Industry</p>
+                        <p className="text-gray-900 font-medium">{lead.industry}</p>
                       </div>
                       <div>
-                        <span className="text-gray-500">Request From:</span>
-                        <span className="ml-2 text-gray-900">{lead.requestFrom}</span>
-                      </div>
-                      <div className="sm:col-span-2">
-                        <span className="text-gray-500">Submitted:</span>
-                        <span className="ml-2 text-gray-900">
-                          {lead.submittedAt ? new Date(lead.submittedAt).toLocaleString() : 'N/A'}
-                        </span>
+                        <p className="text-sm font-medium text-gray-500">Request From</p>
+                        <p className="text-gray-900 font-medium">{lead.requestFrom}</p>
                       </div>
                     </div>
+                    
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-2">Submitted</p>
+                      <p className="text-gray-900">
+                        {lead.submittedAt ? new Date(lead.submittedAt).toLocaleString() : 'N/A'}
+                      </p>
+                    </div>
 
-                    <div className="text-sm">
-                      <span className="text-gray-500">Message:</span>
-                      <div className="mt-1 p-2 bg-gray-50 rounded text-gray-900">
-                        {lead.message}
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-2">Message</p>
+                      <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                        <p className="text-gray-900 text-sm leading-relaxed">
+                          {lead.message}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -333,25 +372,35 @@ export default function Leads() {
 
         {/* Pagination */}
         {leads.length > 0 && (
-          <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <span className="text-gray-700 text-sm">
-              Page {currentPage} of {totalPages}
-            </span>
-            <div className="flex gap-2">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-300 hover:bg-blue-700 transition-colors text-sm"
-              >
-                Previous
-              </button>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-300 hover:bg-blue-700 transition-colors text-sm"
-              >
-                Next
-              </button>
+          <div className="mt-6 bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span className="text-gray-700 font-medium">
+                Page {currentPage} of {totalPages}
+              </span>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: currentPage === 1 ? '#d1d5db' : 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)',
+                    boxShadow: currentPage === 1 ? 'none' : '0 4px 16px rgba(2, 74, 122, 0.3)'
+                  }}
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: currentPage === totalPages ? '#d1d5db' : 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)',
+                    boxShadow: currentPage === totalPages ? 'none' : '0 4px 16px rgba(2, 74, 122, 0.3)'
+                  }}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         )}
