@@ -85,10 +85,8 @@ export default function Leads() {
 
   const handleExportToExcel = () => {
     const dataToExport = leads.map(lead => ({
-      'First Name': lead.firstName,
-      'Last Name': lead.lastName,
+      Name: lead.name,
       Email: lead.email,
-      Company: lead.company || 'N/A',
       Industry: lead.industry,
       Message: lead.message,
       'Request From': lead.requestFrom,
@@ -125,10 +123,8 @@ export default function Leads() {
       }
 
       const dataToExport = allLeads.map(lead => ({
-        'First Name': lead.firstName,
-        'Last Name': lead.lastName,
+        Name: lead.name,
         Email: lead.email,
-        Company: lead.company || 'N/A',
         Industry: lead.industry,
         Message: lead.message,
         'Request From': lead.requestFrom,
@@ -198,10 +194,8 @@ export default function Leads() {
               >
                 <option value="-submittedAt">Date (Newest First)</option>
                 <option value="submittedAt">Date (Oldest First)</option>
-                <option value="firstName">First Name (A-Z)</option>
-                <option value="-firstName">First Name (Z-A)</option>
-                <option value="lastName">Last Name (A-Z)</option>
-                <option value="-lastName">Last Name (Z-A)</option>
+                <option value="name">Name (A-Z)</option>
+                <option value="-name">Name (Z-A)</option>
               </select>
               <button
                 onClick={handleExportToExcel}
@@ -237,10 +231,8 @@ export default function Leads() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">First Name</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Name</th>
+                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                       <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
                       <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Industry</th>
                       <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
                       <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Request From</th>
@@ -251,14 +243,12 @@ export default function Leads() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {leads.map((lead) => (
                       <tr key={lead._id} className="hover:bg-gray-50">
-                        <td className="py-4 px-4 text-sm text-gray-900">{lead.firstName}</td>
-                        <td className="py-4 px-4 text-sm text-gray-900">{lead.lastName}</td>
+                        <td className="py-4 px-4 text-sm text-gray-900">{lead.name}</td>
                         <td className="py-4 px-4 text-sm text-gray-900 break-all">
                           <a href={`mailto:${lead.email}`} className="text-blue-600 hover:text-blue-800">
                             {lead.email}
                           </a>
                         </td>
-                        <td className="py-4 px-4 text-sm text-gray-900">{lead.company || 'N/A'}</td>
                         <td className="py-4 px-4 text-sm text-gray-900">{lead.industry}</td>
                         <td className="py-4 px-4 text-sm text-gray-900 max-w-xs truncate" title={lead.message}>
                           {lead.message}
@@ -292,7 +282,7 @@ export default function Leads() {
                     <div className="flex justify-between items-start">
                       <div>
                         <h3 className="font-medium text-gray-900">
-                          {lead.firstName} {lead.lastName}
+                          {lead.name}
                         </h3>
                         <a 
                           href={`mailto:${lead.email}`} 
@@ -313,10 +303,6 @@ export default function Leads() {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                       <div>
-                        <span className="text-gray-500">Company:</span>
-                        <span className="ml-2 text-gray-900">{lead.company || 'N/A'}</span>
-                      </div>
-                      <div>
                         <span className="text-gray-500">Industry:</span>
                         <span className="ml-2 text-gray-900">{lead.industry}</span>
                       </div>
@@ -324,7 +310,7 @@ export default function Leads() {
                         <span className="text-gray-500">Request From:</span>
                         <span className="ml-2 text-gray-900">{lead.requestFrom}</span>
                       </div>
-                      <div>
+                      <div className="sm:col-span-2">
                         <span className="text-gray-500">Submitted:</span>
                         <span className="ml-2 text-gray-900">
                           {lead.submittedAt ? new Date(lead.submittedAt).toLocaleString() : 'N/A'}
