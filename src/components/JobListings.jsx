@@ -1,14 +1,48 @@
 
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import jobsData from '../data/jobs.json';
 import ApplicationForm from './ApplicationForm';
 
 const JobListings = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [showApplicationForm, setShowApplicationForm] = useState(false);
+  const [jobs, setJobs] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDepartment, setSelectedDepartment] = useState('');
+
+  // Fetch jobs from API
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        const url = new URL('/api/public/jobs', window.location.origin);
+        if (searchTerm) url.searchParams.append('search', searchTerm);
+        if (selectedDepartment) url.searchParams.append('department', selectedDepartment);
+        
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Failed to fetch jobs');
+        }
+        
+        const data = await response.json();
+        setJobs(data.jobs || []);
+        setDepartments(data.departments || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
+  }, [searchTerm, selectedDepartment]);
 
   const handleApplyNow = (job) => {
     setSelectedJob(job);
@@ -37,6 +71,31 @@ const JobListings = () => {
     );
   }
 
+  if (loading) {
+    return (
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" 
+               style={{ background: '#F6F5EF' }}>
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600" style={{ fontFamily: 'Inter' }}>Loading job opportunities...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" 
+               style={{ background: '#F6F5EF' }}>
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg">
+            <p style={{ fontFamily: 'Inter' }}>Error loading jobs: {error}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative overflow-hidden" 
              style={{ background: '#F6F5EF' }}>
@@ -52,7 +111,7 @@ const JobListings = () => {
               }}>
             Current Job Openings
           </h1>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto"
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8"
              style={{
                fontFamily: 'Inter',
                fontWeight: 400,
@@ -61,13 +120,54 @@ const JobListings = () => {
             Join our team and be part of a leading financial advisory firm. 
             Explore exciting career opportunities and grow with us.
           </p>
+
+          {/* Filters */}
+          <div className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
+            <input
+              type="text"
+              placeholder="Search jobs..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              style={{ fontFamily: 'Inter' }}
+            />
+            <select
+              value={selectedDepartment}
+              onChange={(e) => setSelectedDepartment(e.target.value)}
+              className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              style={{ fontFamily: 'Inter' }}
+            >
+              <option value="">All Departments</option>
+              {departments.map(dept => (
+                <option key={dept} value={dept}>{dept}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Job Listings Grid */}
-        <div className="grid gap-6 md:gap-8">
-          {jobsData.jobs.map((job) => (
+        {jobs.length === 0 ? (
+          <div className="text-center py-12">
+            <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+              <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m-8 0V6a2 2 0 00-2 2v6" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2" style={{ fontFamily: 'Inter' }}>
+              No job openings found
+            </h3>
+            <p className="text-gray-600" style={{ fontFamily: 'Inter' }}>
+              {searchTerm || selectedDepartment 
+                ? 'Try adjusting your search criteria or check back later for new opportunities.'
+                : 'We don\'t have any open positions at the moment. Check back later for new opportunities.'
+              }
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-6 md:gap-8">
+            {jobs.map((job) => (
             <div 
-              key={job.id}
+              key={job._id}
               className="bg-white rounded-2xl shadow-lg p-6 md:p-8 hover:shadow-xl transition-all duration-300"
               style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
             >
@@ -151,7 +251,8 @@ const JobListings = () => {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   );

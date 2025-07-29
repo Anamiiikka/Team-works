@@ -45,7 +45,7 @@ const ApplicationForm = ({ selectedJob, onClose }) => {
       formData.append('age', applicationData.age);
       formData.append('experience', applicationData.experience);
       formData.append('resume', applicationData.resume);
-      formData.append('jobId', selectedJob.id || selectedJob._id || 'default-job-id');
+      formData.append('jobId', selectedJob._id || selectedJob.id || 'default-job-id');
 
       const response = await fetch('/api/join-team', {
         method: 'POST',

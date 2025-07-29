@@ -75,6 +75,16 @@ export default function Sidebar() {
                 </Link>
               </li>
             )}
+
+            {/* Conditionally render the Job Management link */}
+            {/* It will only appear if the user's role is 'Admin' or 'SuperAdmin' */}
+            {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <li className="mb-4">
+                <Link href="/cms/jobs" className="block py-2 px-4 rounded hover:text-white hover:bg-blue-50/10 transition-colors">
+                  Job Management
+                </Link>
+              </li>
+            )}
             
           </ul>
         </nav>
