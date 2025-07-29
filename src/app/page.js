@@ -16,19 +16,28 @@ import Testimonials from '@/components/Testimonials';
 export default function Home() {
   return (
     <>
-    
-      <Hero />
+      <section id="home">
+        <Hero />
+      </section>
       <Trusted />
-      <AboutUs />
-      <WhoWeAre />
-      <Services />
-      <Testimonials/>
+      <section id="about">
+        <AboutUs />
+        <WhoWeAre />
+      </section>
+      <section id="services">
+        <Services />
+      </section>
+      <section id="testimonials">
+        <Testimonials/>
+      </section>
       <FAQ />
-      <Opportunity />
-      <ContactUs />
+      <section id="career">
+        <Opportunity />
+      </section>
+      <section id="contact">
+        <ContactUs />
+      </section>
       <Footer/>
-
-     
     </>
   );
 }

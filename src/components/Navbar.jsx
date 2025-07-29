@@ -1,9 +1,48 @@
 'use client'
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Handle scrolling to section on page load if there's a hash in URL
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const sectionId = hash.substring(1); // Remove the '#'
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start' 
+          });
+        }
+      }, 100); // Small delay to ensure page is loaded
+    }
+  }, []);
+
+  const scrollToSection = (sectionId) => {
+    // Check if we're on the home page
+    if (window.location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start' 
+        });
+        setIsMobileMenuOpen(false); // Close mobile menu after clicking
+      }
+    } else {
+      // If we're on a different page, navigate to home page with hash
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    scrollToSection(sectionId);
+  };
 
   return (
     <>
@@ -45,23 +84,51 @@ export default function Navbar() {
             {/* Mobile Menu Dropdown */}
             {isMobileMenuOpen && (
               <div className="pb-4 space-y-2">
-                <Link href="/" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
-                <Link href="/about-us" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
-                <Link href="/services" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
-                <Link href="/testimonials" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Client</Link>
-                <Link href="/opportunity" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Career</Link>
-                <Link href="/contact-us" className="block py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium font-bold" onClick={() => setIsMobileMenuOpen(false)}>Contact us</Link>
+                <button 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  onClick={(e) => handleNavClick(e, 'home')}
+                >
+                  Home
+                </button>
+                <button 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  onClick={(e) => handleNavClick(e, 'about')}
+                >
+                  About
+                </button>
+                <button 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  onClick={(e) => handleNavClick(e, 'services')}
+                >
+                  Services
+                </button>
+                <button 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  onClick={(e) => handleNavClick(e, 'testimonials')}
+                >
+                  Client
+                </button>
+                <button 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  onClick={(e) => handleNavClick(e, 'career')}
+                >
+                  Career
+                </button>
+                <button 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  onClick={(e) => handleNavClick(e, 'contact')}
+                >
+                  Contact us
+                </button>
                 
                 <div className="pt-3 border-t border-gray-200">
-                  <Link href="/contact-us" legacyBehavior>
-                    <button 
-                      className="w-full py-3 px-5 text-white rounded-lg font-medium text-base" 
-                      style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Free Consultation
-                    </button>
-                  </Link>
+                  <button 
+                    className="w-full py-3 px-5 text-white rounded-lg font-medium text-base" 
+                    style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
+                    onClick={(e) => handleNavClick(e, 'contact')}
+                  >
+                    Free Consultation
+                  </button>
                 </div>
               </div>
             )}
@@ -95,24 +162,54 @@ export default function Navbar() {
 
                 {/* Desktop Navigation Links */}
                 <div className="hidden lg:flex items-center space-x-10 text-gray-700 font-medium text-base">
-                  <Link href="/" className="hover:text-blue-600 transition-colors font-bold">Home</Link>
-                  <Link href="/about-us" className="hover:text-blue-600 transition-colors font-bold">About</Link>
-                  <Link href="/services" className="hover:text-blue-600 transition-colors font-bold">Services</Link>
-                  <Link href="/testimonials" className="hover:text-blue-600 transition-colors font-bold">Client</Link>
-                  <Link href="/opportunity" className="hover:text-blue-600 transition-colors font-bold">Career</Link>
-                  <Link href="/contact-us" className="hover:text-blue-600 transition-colors font-bold">Contact us</Link>
+                  <button 
+                    className="hover:text-blue-600 transition-colors font-bold" 
+                    onClick={(e) => handleNavClick(e, 'home')}
+                  >
+                    Home
+                  </button>
+                  <button 
+                    className="hover:text-blue-600 transition-colors font-bold" 
+                    onClick={(e) => handleNavClick(e, 'about')}
+                  >
+                    About
+                  </button>
+                  <button 
+                    className="hover:text-blue-600 transition-colors font-bold" 
+                    onClick={(e) => handleNavClick(e, 'services')}
+                  >
+                    Services
+                  </button>
+                  <button 
+                    className="hover:text-blue-600 transition-colors font-bold" 
+                    onClick={(e) => handleNavClick(e, 'testimonials')}
+                  >
+                    Client
+                  </button>
+                  <button 
+                    className="hover:text-blue-600 transition-colors font-bold" 
+                    onClick={(e) => handleNavClick(e, 'career')}
+                  >
+                    Career
+                  </button>
+                  <button 
+                    className="hover:text-blue-600 transition-colors font-bold" 
+                    onClick={(e) => handleNavClick(e, 'contact')}
+                  >
+                    Contact us
+                  </button>
                 </div>
               </div>
 
               {/* RIGHT SIDE: Free Consultation Button */}
               <div className="flex items-center">
-                <Link href="/contact-us" >
-                  <button className="text-white font-medium text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200" style={{
-                    background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)'
-                  }}>
-                    Free Consultation
-                  </button>
-                </Link>
+                <button 
+                  className="text-white font-medium text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200" 
+                  style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
+                  onClick={(e) => handleNavClick(e, 'contact')}
+                >
+                  Free Consultation
+                </button>
               </div>
             </div>
           </div>
