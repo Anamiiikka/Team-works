@@ -210,35 +210,54 @@ export default function Uploads() {
   };
 
   return (
-    <div className="p-3 sm:p-4 lg:p-6 bg-gray-100 min-h-screen">
+    <div className="p-3 sm:p-4 lg:p-6 min-h-screen" style={{
+      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+      fontFamily: 'Inter'
+    }}>
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">File Uploads</h2>
-          
-          {canUpload && (
-            <button
-              onClick={() => setShowUploadForm(!showUploadForm)}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
-            >
-              <Plus className="w-4 h-4" />
-              Upload File
-            </button>
-          )}
+        <div className="mb-4 sm:mb-6">
+          <div className="bg-white rounded-2xl p-6 shadow-lg" style={{
+            background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+          }}>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">File Uploads</h2>
+              
+              {canUpload && (
+                <button
+                  onClick={() => setShowUploadForm(!showUploadForm)}
+                  className="flex items-center gap-2 px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  <Plus className="w-4 h-4" />
+                  Upload File
+                </button>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Upload Form */}
         {showUploadForm && canUpload && (
-          <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">Upload New File</h3>
             
             {uploadStatus === 'success' && (
-              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-4">
+              <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
                 File uploaded successfully!
               </div>
             )}
             {uploadStatus === 'error' && (
-              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-4">
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 Error uploading file. Please check all required fields and try again.
               </div>
             )}
@@ -254,7 +273,7 @@ export default function Uploads() {
                     name="title"
                     value={uploadData.title}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                     placeholder="Enter file title"
                     required
                   />
@@ -268,7 +287,7 @@ export default function Uploads() {
                     name="visibilityLevel"
                     value={uploadData.visibilityLevel}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                     required
                   >
                     <option value="Employee">Employee</option>
@@ -288,7 +307,7 @@ export default function Uploads() {
                   value={uploadData.description}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                   placeholder="Enter file description (optional)"
                 />
               </div>
@@ -300,24 +319,28 @@ export default function Uploads() {
                 <input
                   type="file"
                   onChange={handleFileChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                   required
                 />
-                <p className="text-sm text-gray-500 mt-1">Maximum file size: 10MB</p>
+                <p className="text-sm text-gray-500 mt-2">Maximum file size: 10MB</p>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 pt-2">
                 <button
                   type="submit"
                   disabled={isUploading}
-                  className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: isUploading ? '#9ca3af' : 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: isUploading ? 'none' : '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
                 >
                   {isUploading ? 'Uploading...' : 'Upload File'}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowUploadForm(false)}
-                  className="px-6 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400 transition-colors text-sm font-medium"
+                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-all duration-300 font-medium"
                 >
                   Cancel
                 </button>
@@ -327,11 +350,11 @@ export default function Uploads() {
         )}
 
         {/* Filters */}
-        <div className="mb-4">
+        <div className="mb-6 bg-white rounded-2xl p-6 shadow-lg">
           <select
             value={sortOrder}
             onChange={(e) => handleSortChange(e.target.value)}
-            className="p-2 border rounded text-sm text-gray-600 bg-white"
+            className="p-3 border border-gray-200 rounded-xl text-sm text-gray-600 bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
           >
             <option value="-uploadedAt">Date (Newest First)</option>
             <option value="uploadedAt">Date (Oldest First)</option>
@@ -342,49 +365,65 @@ export default function Uploads() {
 
         {/* Error or No Data States */}
         {error ? (
-          <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-4">
-            <p className="text-red-600 text-sm">Error: {error}</p>
+          <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-red-500">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-red-800 font-medium">Error: {error}</p>
+              </div>
+            </div>
           </div>
         ) : uploads.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-md p-8 text-center">
-            <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600">No files available</p>
+          <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+            <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full mb-4" style={{
+              background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+            }}>
+              <Upload className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">No files available</h3>
+            <p className="text-gray-600">There are currently no files uploaded to display.</p>
           </div>
         ) : (
           <>
             {/* Desktop Table */}
-            <div className="hidden lg:block bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="hidden lg:block bg-white shadow-lg rounded-2xl overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead style={{
+                    background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)'
+                  }}>
                     <tr>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Size</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Visibility</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Uploaded By</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Upload Date</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">File</th>
-                      <th className="py-3 px-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Title</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Description</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Size</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Visibility</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Uploaded By</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Upload Date</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">File</th>
+                      <th className="py-4 px-4 text-left text-xs font-semibold text-white uppercase tracking-wider">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {uploads.map((upload) => (
-                      <tr key={upload._id} className="hover:bg-gray-50">
-                        <td className="py-4 px-4 text-sm text-gray-900 font-medium">{upload.title}</td>
-                        <td className="py-4 px-4 text-sm text-gray-900 max-w-xs truncate" title={upload.description}>
+                  <tbody className="bg-white divide-y divide-gray-100">
+                    {uploads.map((upload, index) => (
+                      <tr key={upload._id} className={`transition-colors duration-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50`}>
+                        <td className="py-4 px-4 text-sm font-medium text-gray-900">{upload.title}</td>
+                        <td className="py-4 px-4 text-sm text-gray-700 max-w-xs truncate" title={upload.description}>
                           {upload.description || 'No description'}
                         </td>
-                        <td className="py-4 px-4 text-sm text-gray-900">{formatFileSize(upload.fileSize)}</td>
+                        <td className="py-4 px-4 text-sm text-gray-700">{formatFileSize(upload.fileSize)}</td>
                         <td className="py-4 px-4 text-sm">
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getVisibilityBadgeColor(upload.visibilityLevel)}`}>
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${getVisibilityBadgeColor(upload.visibilityLevel)}`}>
                             {upload.visibilityLevel}
                           </span>
                         </td>
-                        <td className="py-4 px-4 text-sm text-gray-900">
+                        <td className="py-4 px-4 text-sm text-gray-700">
                           {upload.uploadedBy ? upload.uploadedBy.name : 'Unknown'}
                         </td>
-                        <td className="py-4 px-4 text-sm text-gray-900">
+                        <td className="py-4 px-4 text-sm text-gray-700">
                           {upload.uploadedAt ? new Date(upload.uploadedAt).toLocaleString() : 'N/A'}
                         </td>
                         <td className="py-4 px-4 text-sm">
@@ -394,28 +433,28 @@ export default function Uploads() {
                                 href={upload.fileUrl} 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                className="text-blue-600 hover:text-blue-800" 
+                                className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg transition-all duration-200" 
                                 title="View File"
                               >
                                 <Eye className="w-5 h-5" />
                               </a>
                               <button 
                                 onClick={() => handleDownloadFile(upload.fileUrl, upload.title)} 
-                                className="text-blue-600 hover:text-blue-800" 
+                                className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg transition-all duration-200" 
                                 title="Download File"
                               >
                                 <Download className="w-5 h-5" />
                               </button>
                             </div>
                           ) : (
-                            <span className="text-gray-500">N/A</span>
+                            <span className="text-gray-500 italic">N/A</span>
                           )}
                         </td>
                         <td className="py-4 px-4 text-sm">
                           {canUpload && (
                             <button
                               onClick={() => handleDeleteUpload(upload._id)}
-                              className="text-red-600 hover:text-red-800"
+                              className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200"
                               title="Delete File"
                             >
                               <Trash2 className="w-5 h-5" />
@@ -432,38 +471,40 @@ export default function Uploads() {
             {/* Mobile Cards */}
             <div className="lg:hidden space-y-4">
               {uploads.map((upload) => (
-                <div key={upload._id} className="bg-white rounded-lg shadow-md p-4">
-                  <div className="space-y-3">
+                <div key={upload._id} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  <div className="space-y-4">
                     <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="font-medium text-gray-900">{upload.title}</h3>
-                        <p className="text-sm text-gray-500">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-lg text-gray-900 truncate">{upload.title}</h3>
+                        <p className="text-sm text-gray-500 mt-1">
                           Uploaded by: {upload.uploadedBy ? upload.uploadedBy.name : 'Unknown'}
                         </p>
                       </div>
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${getVisibilityBadgeColor(upload.visibilityLevel)}`}>
+                      <span className={`ml-3 px-3 py-1 rounded-full text-xs font-medium flex-shrink-0 ${getVisibilityBadgeColor(upload.visibilityLevel)}`}>
                         {upload.visibilityLevel}
                       </span>
                     </div>
                     
-                    <div className="grid grid-cols-1 gap-3 text-sm">
+                    <div className="grid grid-cols-1 gap-3">
                       <div>
-                        <span className="text-gray-500">File Size:</span>
-                        <span className="ml-2 text-gray-900">{formatFileSize(upload.fileSize)}</span>
+                        <p className="text-sm font-medium text-gray-500">File Size</p>
+                        <p className="text-gray-900 font-medium">{formatFileSize(upload.fileSize)}</p>
                       </div>
                       <div>
-                        <span className="text-gray-500">Upload Date:</span>
-                        <span className="ml-2 text-gray-900">
+                        <p className="text-sm font-medium text-gray-500">Upload Date</p>
+                        <p className="text-gray-900">
                           {upload.uploadedAt ? new Date(upload.uploadedAt).toLocaleString() : 'N/A'}
-                        </span>
+                        </p>
                       </div>
                     </div>
 
                     {upload.description && (
-                      <div className="text-sm">
-                        <span className="text-gray-500">Description:</span>
-                        <div className="mt-1 p-2 bg-gray-50 rounded text-gray-900">
-                          {upload.description}
+                      <div>
+                        <p className="text-sm font-medium text-gray-500 mb-2">Description</p>
+                        <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                          <p className="text-gray-900 text-sm leading-relaxed">
+                            {upload.description}
+                          </p>
                         </div>
                       </div>
                     )}
@@ -475,30 +516,42 @@ export default function Uploads() {
                             href={upload.fileUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm"
+                            className="flex-1 flex items-center justify-center gap-2 px-3 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                            style={{
+                              background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                              boxShadow: '0 4px 12px rgba(82, 146, 228, 0.3)'
+                            }}
                           >
                             <Eye className="w-4 h-4" />
                             View
                           </a>
                           <button
                             onClick={() => handleDownloadFile(upload.fileUrl, upload.title)}
-                            className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors text-sm"
+                            className="flex-1 flex items-center justify-center gap-2 px-3 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                            style={{
+                              background: 'linear-gradient(90deg, #059669 0%, #047857 100%)',
+                              boxShadow: '0 4px 12px rgba(5, 150, 105, 0.3)'
+                            }}
                           >
                             <Download className="w-4 h-4" />
                             Download
                           </button>
                         </>
                       ) : (
-                        <span className="text-gray-500">No file available</span>
+                        <span className="text-gray-500 italic text-center py-3">No file available</span>
                       )}
                     </div>
 
                     {/* Admin Actions - Separate section */}
                     {canUpload && (
-                      <div className="pt-2 border-t border-gray-200">
+                      <div className="pt-4 border-t border-gray-200">
                         <button
                           onClick={() => handleDeleteUpload(upload._id)}
-                          className="w-full flex items-center justify-center gap-2 px-3 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm"
+                          className="w-full flex items-center justify-center gap-2 px-4 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                          style={{
+                            background: 'linear-gradient(90deg, #dc2626 0%, #b91c1c 100%)',
+                            boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
+                          }}
                         >
                           <Trash2 className="w-4 h-4" />
                           Delete File
@@ -514,25 +567,35 @@ export default function Uploads() {
 
         {/* Pagination */}
         {uploads.length > 0 && (
-          <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <span className="text-gray-700 text-sm">
-              Page {currentPage} of {totalPages}
-            </span>
-            <div className="flex gap-2">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-300 hover:bg-blue-700 transition-colors text-sm"
-              >
-                Previous
-              </button>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md disabled:bg-gray-300 hover:bg-blue-700 transition-colors text-sm"
-              >
-                Next
-              </button>
+          <div className="mt-6 bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+              <span className="text-gray-700 font-medium">
+                Page {currentPage} of {totalPages}
+              </span>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: currentPage === 1 ? '#d1d5db' : 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)',
+                    boxShadow: currentPage === 1 ? 'none' : '0 4px 16px rgba(2, 74, 122, 0.3)'
+                  }}
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: currentPage === totalPages ? '#d1d5db' : 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)',
+                    boxShadow: currentPage === totalPages ? 'none' : '0 4px 16px rgba(2, 74, 122, 0.3)'
+                  }}
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         )}
