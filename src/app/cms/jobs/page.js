@@ -1,4 +1,3 @@
-// app/cms/jobs/page.js
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -177,14 +176,20 @@ export default function JobManagement() {
     });
     setEditingJob(null);
     setShowForm(false);
+    setError(null);
   };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+    if (name === 'jobId' && value.length > 20) {
+      setError('Job ID cannot exceed 20 characters');
+      return;
+    }
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    setError(null); // Clear error on input change
   };
 
   const handleArrayInputChange = (index, field, value) => {
@@ -210,26 +215,29 @@ export default function JobManagement() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.jobId.trim()) {
+      setError('Job ID is required');
+      return;
+    }
+    console.log('Submitting formData:', formData); // Debug log
     try {
       setLoading(true);
-      
-      // Filter out empty requirements and responsibilities
       const cleanedData = {
         ...formData,
         requirements: formData.requirements.filter(req => req.trim()),
         responsibilities: formData.responsibilities.filter(resp => resp.trim())
       };
-
+      console.log('Cleaned data being sent:', cleanedData); // Debug log
       if (editingJob) {
         await updateJob({ ...cleanedData, id: editingJob._id });
       } else {
         await createJob(cleanedData);
       }
-      
       resetForm();
       fetchJobs();
     } catch (err) {
-      setError(err.message);
+      console.error('Submit error:', err); // Debug log
+      setError(err.message || 'An error occurred while saving the job');
     } finally {
       setLoading(false);
     }
@@ -250,6 +258,7 @@ export default function JobManagement() {
     });
     setEditingJob(job);
     setShowForm(true);
+    setError(null);
   };
 
   const handleDelete = async (id) => {
@@ -373,7 +382,7 @@ export default function JobManagement() {
           <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-4 border-red-500">
             <div className="flex items-center">
               <XCircle className="w-6 h-6 text-red-500 mr-3" />
-              <p className="text-red-800 font-medium">Error: {error}</p>
+              <p className="text-red-800 font-medium">{error}</p>
             </div>
           </div>
         )}
@@ -397,8 +406,9 @@ export default function JobManagement() {
                     placeholder="e.g., JOB-001, DEV-2024-01"
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all text-gray-900"
                     required
+                    maxLength={20}
                   />
-                  <p className="text-xs text-gray-500 mt-1">Enter a unique identifier for this job posting</p>
+                  <p className="text-xs text-gray-500 mt-1">Enter a unique identifier for this job posting (max 20 characters)</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-4">

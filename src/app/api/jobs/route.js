@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
+import mongoose from 'mongoose';
 import Job from '@/app/models/Job';
 import User from '@/app/models/User';
 import { cookies } from 'next/headers';
@@ -16,20 +17,20 @@ const getJwtSecret = () => {
 
 // Helper to verify token and return payload
 async function verifyAuthAndGetPayload() {
-    const cookieStore = await cookies();
-    const tokenCookie = cookieStore.get('token');
-    if (!tokenCookie) {
-        throw { code: 401, message: 'Authentication token not found.' };
+  const cookieStore = await cookies();
+  const tokenCookie = cookieStore.get('token');
+  if (!tokenCookie) {
+    throw { code: 401, message: 'Authentication token not found.' };
+  }
+  try {
+    const { payload } = await jwtVerify(tokenCookie.value, getJwtSecret());
+    return payload;
+  } catch (err) {
+    if (err.code === 'ERR_JWT_EXPIRED') {
+      throw { code: 401, message: 'Session expired. Please log in again.' };
     }
-    try {
-        const { payload } = await jwtVerify(tokenCookie.value, getJwtSecret());
-        return payload;
-    } catch (err) {
-        if (err.code === 'ERR_JWT_EXPIRED') {
-            throw { code: 401, message: 'Session expired. Please log in again.' };
-        }
-        throw { code: 401, message: 'Invalid authentication token.' };
-    }
+    throw { code: 401, message: 'Invalid authentication token.' };
+  }
 }
 
 // GET - Fetch jobs with pagination and filtering
@@ -37,7 +38,6 @@ export async function GET(request) {
   try {
     const payload = await verifyAuthAndGetPayload();
     
-    // Only Admin and SuperAdmin can manage jobs
     if (!['Admin', 'SuperAdmin'].includes(payload.role)) {
       return NextResponse.json({ error: 'Forbidden: You do not have sufficient permissions.' }, { status: 403 });
     }
@@ -54,7 +54,6 @@ export async function GET(request) {
 
     const skip = (page - 1) * limit;
 
-    // Build query
     let query = {};
     
     if (search) {
@@ -80,10 +79,11 @@ export async function GET(request) {
       .skip(skip)
       .limit(limit);
 
+    console.log('Fetched jobs:', jobs.map(job => ({ _id: job._id, jobId: job.jobId })));
+
     const total = await Job.countDocuments(query);
     const totalPages = Math.ceil(total / limit);
 
-    // Get departments for filter
     const departments = await Job.distinct('department');
 
     return NextResponse.json({
@@ -104,7 +104,7 @@ export async function GET(request) {
       return NextResponse.json({ error: error.message }, { status: error.code });
     }
     return NextResponse.json(
-      { error: 'Failed to fetch jobs' },
+      { error: 'Failed to fetch jobs: ' + error.message },
       { status: 500 }
     );
   }
@@ -115,7 +115,6 @@ export async function POST(request) {
   try {
     const payload = await verifyAuthAndGetPayload();
     
-    // Only Admin and SuperAdmin can create jobs
     if (!['Admin', 'SuperAdmin'].includes(payload.role)) {
       return NextResponse.json({ error: 'Forbidden: You do not have sufficient permissions.' }, { status: 403 });
     }
@@ -123,6 +122,7 @@ export async function POST(request) {
     await connectToDatabase();
 
     const body = await request.json();
+    console.log('POST request body:', body);
     const {
       jobId,
       title,
@@ -137,15 +137,41 @@ export async function POST(request) {
     } = body;
 
     // Validation
-    if (!jobId || !title || !department || !location || !type || !experience || !description) {
+    if (!jobId || !jobId.trim()) {
       return NextResponse.json(
-        { error: 'Missing required fields (jobId, title, department, location, type, experience, description)' },
+        { error: 'Job ID is required and cannot be empty' },
+        { status: 400 }
+      );
+    }
+    if (jobId.length > 20) {
+      return NextResponse.json(
+        { error: 'Job ID cannot exceed 20 characters' },
+        { status: 400 }
+      );
+    }
+    if (!title || !department || !location || !type || !experience || !description) {
+      return NextResponse.json(
+        { error: 'Missing required fields (title, department, location, type, experience, description)' },
+        { status: 400 }
+      );
+    }
+
+    if (!requirements || !Array.isArray(requirements) || requirements.filter(req => req.trim()).length === 0) {
+      return NextResponse.json(
+        { error: 'At least one non-empty requirement is needed' },
+        { status: 400 }
+      );
+    }
+
+    if (!responsibilities || !Array.isArray(responsibilities) || responsibilities.filter(resp => resp.trim()).length === 0) {
+      return NextResponse.json(
+        { error: 'At least one non-empty responsibility is needed' },
         { status: 400 }
       );
     }
 
     // Check if jobId already exists
-    const existingJob = await Job.findOne({ jobId });
+    const existingJob = await Job.findOne({ jobId: jobId.trim() });
     if (existingJob) {
       return NextResponse.json(
         { error: 'Job ID already exists. Please use a unique Job ID.' },
@@ -153,40 +179,34 @@ export async function POST(request) {
       );
     }
 
-    if (!requirements || !Array.isArray(requirements) || requirements.length === 0) {
-      return NextResponse.json(
-        { error: 'At least one requirement is needed' },
-        { status: 400 }
-      );
-    }
-
-    if (!responsibilities || !Array.isArray(responsibilities) || responsibilities.length === 0) {
-      return NextResponse.json(
-        { error: 'At least one responsibility is needed' },
-        { status: 400 }
-      );
-    }
-
-    const newJob = new Job({
-      jobId,
-      title,
-      department,
-      location,
+    // Create new job document
+    const jobData = {
+      jobId: jobId.trim(),
+      title: title.trim(),
+      department: department.trim(),
+      location: location.trim(),
       type,
-      experience,
-      description,
+      experience: experience.trim(),
+      description: description.trim(),
       requirements: requirements.filter(req => req.trim()),
       responsibilities: responsibilities.filter(resp => resp.trim()),
       isActive: isActive !== undefined ? isActive : true,
-      createdBy: payload.userId
-    });
+      createdBy: new mongoose.Types.ObjectId(payload.userId),
+      postedDate: new Date(),
+      updatedAt: new Date()
+    };
 
-    await newJob.save();
-    await newJob.populate('createdBy', 'name email');
+    console.log('Job data for creation:', jobData);
+
+    // Use create instead of new/save to bypass potential schema issues
+    const savedJob = await Job.create(jobData);
+    console.log('Saved job before populate:', savedJob);
+    await savedJob.populate('createdBy', 'name email');
+    console.log('Saved job after populate:', savedJob);
 
     return NextResponse.json({
       message: 'Job created successfully',
-      job: newJob
+      job: savedJob
     }, { status: 201 });
 
   } catch (error) {
@@ -195,7 +215,6 @@ export async function POST(request) {
       return NextResponse.json({ error: error.message }, { status: error.code });
     }
     
-    // Handle MongoDB duplicate key error
     if (error.code === 11000 || error.codeName === 'DuplicateKey') {
       const field = Object.keys(error.keyPattern || {})[0];
       if (field === 'jobId') {
@@ -206,7 +225,6 @@ export async function POST(request) {
       }
     }
     
-    // Handle validation errors
     if (error.name === 'ValidationError') {
       const validationErrors = Object.values(error.errors).map(err => err.message);
       return NextResponse.json(
@@ -216,7 +234,7 @@ export async function POST(request) {
     }
     
     return NextResponse.json(
-      { error: 'Failed to create job' },
+      { error: 'Failed to create job: ' + error.message },
       { status: 500 }
     );
   }
@@ -227,7 +245,6 @@ export async function PUT(request) {
   try {
     const payload = await verifyAuthAndGetPayload();
     
-    // Only Admin and SuperAdmin can update jobs
     if (!['Admin', 'SuperAdmin'].includes(payload.role)) {
       return NextResponse.json({ error: 'Forbidden: You do not have sufficient permissions.' }, { status: 403 });
     }
@@ -235,6 +252,7 @@ export async function PUT(request) {
     await connectToDatabase();
 
     const body = await request.json();
+    console.log('PUT request body:', body);
     const {
       id,
       jobId,
@@ -251,7 +269,7 @@ export async function PUT(request) {
 
     if (!id) {
       return NextResponse.json(
-        { error: 'Job ID is required' },
+        { error: 'Job ID (_id) is required' },
         { status: 400 }
       );
     }
@@ -264,10 +282,15 @@ export async function PUT(request) {
       );
     }
 
-    // Check if jobId is being updated and if it conflicts with existing jobs
-    if (jobId && jobId !== job.jobId) {
-      const existingJob = await Job.findOne({ jobId });
-      if (existingJob) {
+    if (jobId && jobId.trim() !== job.jobId) {
+      if (jobId.length > 20) {
+        return NextResponse.json(
+          { error: 'Job ID cannot exceed 20 characters' },
+          { status: 400 }
+        );
+      }
+      const existingJob = await Job.findOne({ jobId: jobId.trim() });
+      if (existingJob && existingJob._id.toString() !== id) {
         return NextResponse.json(
           { error: 'Job ID already exists. Please use a unique Job ID.' },
           { status: 400 }
@@ -275,24 +298,28 @@ export async function PUT(request) {
       }
     }
 
-    // Update job
-    job.jobId = jobId || job.jobId;
-    job.title = title || job.title;
-    job.department = department || job.department;
-    job.location = location || job.location;
+    // Update fields
+    job.jobId = jobId ? jobId.trim() : job.jobId;
+    job.title = title ? title.trim() : job.title;
+    job.department = department ? department.trim() : job.department;
+    job.location = location ? location.trim() : job.location;
     job.type = type || job.type;
-    job.experience = experience || job.experience;
-    job.description = description || job.description;
-    job.requirements = requirements || job.requirements;
-    job.responsibilities = responsibilities || job.responsibilities;
+    job.experience = experience ? experience.trim() : job.experience;
+    job.description = description ? description.trim() : job.description;
+    job.requirements = requirements && Array.isArray(requirements) ? requirements.filter(req => req.trim()) : job.requirements;
+    job.responsibilities = responsibilities && Array.isArray(responsibilities) ? responsibilities.filter(resp => resp.trim()) : job.responsibilities;
     job.isActive = isActive !== undefined ? isActive : job.isActive;
+    job.updatedAt = new Date();
 
-    await job.save();
-    await job.populate('createdBy', 'name email');
+    console.log('Job before update:', job);
+    const updatedJob = await job.save();
+    console.log('Updated job before populate:', updatedJob);
+    await updatedJob.populate('createdBy', 'name email');
+    console.log('Updated job after populate:', updatedJob);
 
     return NextResponse.json({
       message: 'Job updated successfully',
-      job
+      job: updatedJob
     });
 
   } catch (error) {
@@ -301,7 +328,6 @@ export async function PUT(request) {
       return NextResponse.json({ error: error.message }, { status: error.code });
     }
     
-    // Handle MongoDB duplicate key error
     if (error.code === 11000 || error.codeName === 'DuplicateKey') {
       const field = Object.keys(error.keyPattern || {})[0];
       if (field === 'jobId') {
@@ -312,7 +338,6 @@ export async function PUT(request) {
       }
     }
     
-    // Handle validation errors
     if (error.name === 'ValidationError') {
       const validationErrors = Object.values(error.errors).map(err => err.message);
       return NextResponse.json(
@@ -322,7 +347,7 @@ export async function PUT(request) {
     }
     
     return NextResponse.json(
-      { error: 'Failed to update job' },
+      { error: 'Failed to update job: ' + error.message },
       { status: 500 }
     );
   }
@@ -333,7 +358,6 @@ export async function DELETE(request) {
   try {
     const payload = await verifyAuthAndGetPayload();
     
-    // Only Admin and SuperAdmin can delete jobs
     if (!['Admin', 'SuperAdmin'].includes(payload.role)) {
       return NextResponse.json({ error: 'Forbidden: You do not have sufficient permissions.' }, { status: 403 });
     }
@@ -370,7 +394,7 @@ export async function DELETE(request) {
       return NextResponse.json({ error: error.message }, { status: error.code });
     }
     return NextResponse.json(
-      { error: 'Failed to delete job' },
+      { error: 'Failed to delete job: ' + error.message },
       { status: 500 }
     );
   }
