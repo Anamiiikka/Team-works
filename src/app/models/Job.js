@@ -1,5 +1,10 @@
 import mongoose from 'mongoose';
 
+// Clear any cached Job model to prevent schema conflicts
+if (mongoose.models.Job) {
+  delete mongoose.models.Job;
+}
+
 const JobSchema = new mongoose.Schema({
   jobId: {
     type: String,
@@ -77,12 +82,16 @@ const JobSchema = new mongoose.Schema({
 // Create indexes for better performance and ensure unique constraint
 JobSchema.index({ jobId: 1 }, { unique: true });
 
-// Update the updatedAt field before saving
+// Pre-save hook for validation and logging
 JobSchema.pre('save', function(next) {
+  if (!this.jobId || !this.jobId.trim()) {
+    return next(new Error('Job ID is required and cannot be empty'));
+  }
   this.updatedAt = Date.now();
+  console.log('Saving job with jobId:', this.jobId);
   next();
 });
 
-const Job = mongoose.models.Job || mongoose.model('Job', JobSchema);
+const Job = mongoose.model('Job', JobSchema);
 
 export default Job;
