@@ -1,5 +1,6 @@
 'use client';
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Opportunity() {
   return (
@@ -149,25 +150,27 @@ export default function Opportunity() {
               </p>
 
               {/* Get Started Button */}
-              <button className="inline-flex items-center gap-2 md:gap-3 bg-black text-white py-2 md:py-3 pr-4 md:pr-6 pl-1 md:pl-2 rounded-full text-sm md:text-base font-medium hover:bg-gray-800 transition-colors duration-300 shadow-lg">
-                <div 
-                  className="bg-white rounded-full flex items-center justify-center"
-                  style={{
-                    width: 'clamp(32px, 5vw, 40px)',
-                    height: 'clamp(32px, 5vw, 40px)',
-                    opacity: 1
-                  }}
-                >
-                  <svg 
-                    className="w-4 h-4 md:w-5 md:h-5 text-black transform -rotate-45" 
-                    fill="currentColor" 
-                    viewBox="0 0 24 24"
+              <Link href="/opportunity">
+                <button className="inline-flex items-center gap-2 md:gap-3 bg-black text-white py-2 md:py-3 pr-4 md:pr-6 pl-1 md:pl-2 rounded-full text-sm md:text-base font-medium hover:bg-gray-800 transition-colors duration-300 shadow-lg">
+                  <div 
+                    className="bg-white rounded-full flex items-center justify-center"
+                    style={{
+                      width: 'clamp(32px, 5vw, 40px)',
+                      height: 'clamp(32px, 5vw, 40px)',
+                      opacity: 1
+                    }}
                   >
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                  </svg>
-                </div>
-                Get Started
-              </button>
+                    <svg 
+                      className="w-4 h-4 md:w-5 md:h-5 text-black transform -rotate-45" 
+                      fill="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                  </div>
+                  Get Started
+                </button>
+              </Link>
             </div>
           </div>
 
