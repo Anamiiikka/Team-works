@@ -114,24 +114,14 @@ const CreateUserForm = ({ currentUser, onUserCreated, onCancel }) => {
     );
 };
 
-// Updated function with better contrast colors for desktop table
+// Back to your original colors with better text contrast
 const getRoleBadgeColor = (role) => {
     const colors = {
-        'SuperAdmin': 'bg-red-600 text-white font-semibold',
-        'Admin': 'bg-orange-600 text-white font-semibold',
-        'Employee': 'bg-blue-600 text-white font-semibold'
+        'SuperAdmin': 'bg-red-100 text-red-900 font-semibold',
+        'Admin': 'bg-orange-100 text-orange-900 font-semibold',
+        'Employee': 'bg-blue-100 text-blue-900 font-semibold'
     };
-    return colors[role] || 'bg-gray-600 text-white font-semibold';
-};
-
-// Function for mobile cards (lighter backgrounds)
-const getRoleBadgeColorMobile = (role) => {
-    const colors = {
-        'SuperAdmin': 'bg-red-100 text-red-800 font-semibold',
-        'Admin': 'bg-orange-100 text-orange-800 font-semibold',
-        'Employee': 'bg-blue-100 text-blue-800 font-semibold'
-    };
-    return colors[role] || 'bg-gray-100 text-gray-800 font-semibold';
+    return colors[role] || 'bg-gray-100 text-gray-900 font-semibold';
 };
 
 export default function UserManagementPage() {
@@ -307,12 +297,12 @@ export default function UserManagementPage() {
                                                 <td className="py-4 px-4 text-sm font-medium text-gray-900">{user.name || 'N/A'}</td>
                                                 <td className="py-4 px-4 text-sm text-gray-700">{user.email}</td>
                                                 <td className="py-4 px-4 text-sm">
-                                                    <span className={`px-3 py-2 rounded-full text-xs ${getRoleBadgeColor(user.role)}`}>
+                                                    <span className={`px-3 py-1 rounded-full text-xs ${getRoleBadgeColor(user.role)}`}>
                                                         {user.role || 'Not Assigned'}
                                                     </span>
                                                 </td>
                                                 <td className="py-4 px-4 text-sm">
-                                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${user.isVerified ? 'bg-green-600 text-white' : 'bg-yellow-600 text-white'}`}>
+                                                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${user.isVerified ? 'bg-green-100 text-green-900' : 'bg-yellow-100 text-yellow-900'}`}>
                                                         {user.isVerified ? 'Verified' : 'Pending'}
                                                     </span>
                                                 </td>
@@ -367,10 +357,10 @@ export default function UserManagementPage() {
                                                 </p>
                                             </div>
                                             <div className="flex flex-col gap-2 ml-3">
-                                                <span className={`px-3 py-1 rounded-full text-xs flex-shrink-0 ${getRoleBadgeColorMobile(user.role)}`}>
+                                                <span className={`px-3 py-1 rounded-full text-xs flex-shrink-0 ${getRoleBadgeColor(user.role)}`}>
                                                     {user.role || 'Not Assigned'}
                                                 </span>
-                                                <span className={`px-3 py-1 rounded-full text-xs font-medium flex-shrink-0 ${user.isVerified ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                                                <span className={`px-3 py-1 rounded-full text-xs font-semibold flex-shrink-0 ${user.isVerified ? 'bg-green-100 text-green-900' : 'bg-yellow-100 text-yellow-900'}`}>
                                                     {user.isVerified ? (
                                                         <span className="flex items-center gap-1">
                                                             <CheckCircle className="w-3 h-3" />
