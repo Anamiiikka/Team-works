@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react';
-import { ArrowRight, Users, X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 import Link from 'next/link';
 
 const AboutUs = ({ showFounders = false }) => {
@@ -191,25 +191,9 @@ Passionate about empowering businesses with financial clarity, I am committed to
               Team Work Advisors Pvt Ltd is a premier investment banking and financial advisory firm with a deep-rooted expertise in debt syndication, working capital management, and capital advisory. With over 15 years of industry experience, our team brings unparalleled insights and strategic solutions tailored to meet the evolving financial needs of businesses. Having worked with leading financial institutions and Banks, we possess the expertise to navigate complex financial landscapes and drive business success.
             </div>
             
-            {/* Learn more button */}
-            <div className="flex justify-center lg:justify-start">
-              {showFounders ? (
-                <button 
-                  onClick={() => setShowFoundersModal(true)}
-                  className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" 
-                  style={{
-                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
-                    boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
-                  }}
-                >
-                  Learn more
-                  <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
-                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-                  }}>
-                    <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
-                  </div>
-                </button>
-              ) : (
+            {/* Learn more button - Only shown on home page */}
+            {!showFounders && (
+              <div className="flex justify-center lg:justify-start">
                 <Link href="/about-us">
                   <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" style={{
                     background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
@@ -223,8 +207,8 @@ Passionate about empowering businesses with financial clarity, I am committed to
                     </div>
                   </button>
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           {/* Overlapping Images - Mobile: Second, Desktop: First */}
@@ -362,8 +346,8 @@ Passionate about empowering businesses with financial clarity, I am committed to
         </>
       )}
 
-      {/* Founders Modal */}
-      {showFoundersModal && (
+      {/* Founders Modal - Only shown on home page */}
+      {showFoundersModal && !showFounders && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl max-w-4xl max-h-[90vh] overflow-y-auto relative">
             <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center rounded-t-2xl">
@@ -397,44 +381,46 @@ Passionate about empowering businesses with financial clarity, I am committed to
         </div>
       )}
 
-      {/* CTA Section */}
-      <div className="max-w-7xl mx-auto relative z-10 mt-16 text-center">
-        <h2 className="font-bold text-gray-900 leading-tight px-4 lg:px-0"
-            style={{
-              fontSize: 'clamp(24px, 4vw, 36px)',
-              lineHeight: 'clamp(32px, 5vw, 44px)'
-            }}>
-          Ready to Grow Your Business?
-        </h2>
-        <p className="font-normal px-4 lg:px-0 max-w-full lg:max-w-[682px] mx-auto mt-4 text-justify"
-           style={{ 
-             fontFamily: 'Inter',
-             fontWeight: 400,
-             fontSize: 'clamp(16px, 2.5vw, 20px)',
-             lineHeight: 'clamp(24px, 3.5vw, 28px)',
-             letterSpacing: '0%',
-             color: '#6C7278',
-             textAlign: 'justify',
-             textJustify: 'inter-word'
-           }}>
-          Contact us today to explore how Team Work Advisors can help you achieve your financial goals with tailored solutions and expert guidance.
-        </p>
-        <div className="flex justify-center mt-6">
-          <Link href="/contact-us">
-            <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" style={{
-              background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
-              boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
-            }}>
-              Get in Touch
-              <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+      {/* CTA Section - Only shown on about-us page */}
+      {showFounders && (
+        <div className="max-w-7xl mx-auto relative z-10 mt-16 text-center">
+          <h2 className="font-bold text-gray-900 leading-tight px-4 lg:px-0"
+              style={{
+                fontSize: 'clamp(24px, 4vw, 36px)',
+                lineHeight: 'clamp(32px, 5vw, 44px)'
               }}>
-                <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
-              </div>
-            </button>
-          </Link>
+            Ready to Grow Your Business?
+          </h2>
+          <p className="font-normal px-4 lg:px-0 max-w-full lg:max-w-[682px] mx-auto mt-4 text-justify"
+             style={{ 
+               fontFamily: 'Inter',
+               fontWeight: 400,
+               fontSize: 'clamp(16px, 2.5vw, 20px)',
+               lineHeight: 'clamp(24px, 3.5vw, 28px)',
+               letterSpacing: '0%',
+               color: '#6C7278',
+               textAlign: 'justify',
+               textJustify: 'inter-word'
+             }}>
+            Contact us today to explore how Team Work Advisors can help you achieve your financial goals with tailored solutions and expert guidance.
+          </p>
+          <div className="flex justify-center mt-6">
+            <Link href="/contact-us">
+              <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" style={{
+                background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
+              }}>
+                Get in Touch
+                <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }}>
+                  <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
+                </div>
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
