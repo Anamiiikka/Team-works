@@ -278,6 +278,38 @@ export default function JobManagement() {
     }
   };
 
+  const handleToggleActive = async (job) => {
+    try {
+      setLoading(true);
+      const updatedJob = { ...job, isActive: !job.isActive, id: job._id };
+      await updateJob(updatedJob);
+      fetchJobs();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleBulkActiveToggle = async (makeActive) => {
+    const action = makeActive ? 'activate' : 'deactivate';
+    if (window.confirm(`Are you sure you want to ${action} all jobs?`)) {
+      try {
+        setLoading(true);
+        // Update all jobs one by one
+        const updatePromises = jobs.map(job => 
+          updateJob({ ...job, isActive: makeActive, id: job._id })
+        );
+        await Promise.all(updatePromises);
+        fetchJobs();
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
   if (error && (error.includes('Forbidden') || error.includes('permissions') || error.includes('401') || error.includes('403'))) {
     return (
       <div className="p-6 min-h-screen" style={{
@@ -314,17 +346,47 @@ export default function JobManagement() {
           }}>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <h2 className="text-2xl sm:text-3xl font-bold text-white">Job Management</h2>
-              <button
-                onClick={() => setShowForm(true)}
-                className="flex items-center gap-2 px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
-                style={{
-                  background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
-                  boxShadow: '0 4px 16px rgba(82, 146, 228, 0.3)'
-                }}
-              >
-                <Plus className="w-4 h-4" />
-                Add New Job
-              </button>
+              <div className="flex flex-wrap gap-3">
+                {jobs.length > 0 && (
+                  <>
+                    <button
+                      onClick={() => handleBulkActiveToggle(true)}
+                      disabled={loading}
+                      className="flex items-center gap-2 px-4 py-2 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                      style={{
+                        background: 'linear-gradient(90deg, #059669 0%, #047857 100%)',
+                        boxShadow: '0 4px 12px rgba(5, 150, 105, 0.3)'
+                      }}
+                    >
+                      <CheckCircle className="w-4 h-4" />
+                      Activate All
+                    </button>
+                    <button
+                      onClick={() => handleBulkActiveToggle(false)}
+                      disabled={loading}
+                      className="flex items-center gap-2 px-4 py-2 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                      style={{
+                        background: 'linear-gradient(90deg, #dc2626 0%, #b91c1c 100%)',
+                        boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
+                      }}
+                    >
+                      <XCircle className="w-4 h-4" />
+                      Deactivate All
+                    </button>
+                  </>
+                )}
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="flex items-center gap-2 px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                  style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 4px 16px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  <Plus className="w-4 h-4" />
+                  Add New Job
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -678,6 +740,17 @@ export default function JobManagement() {
                               <Edit2 className="w-4 h-4" />
                             </button>
                             <button
+                              onClick={() => handleToggleActive(job)}
+                              className={`p-2 rounded-lg transition-all duration-200 ${
+                                job.isActive 
+                                  ? 'text-green-600 hover:text-green-800 hover:bg-green-100' 
+                                  : 'text-red-600 hover:text-red-800 hover:bg-red-100'
+                              }`}
+                              title={job.isActive ? 'Active - Click to Deactivate' : 'Inactive - Click to Activate'}
+                            >
+                              {job.isActive ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                            </button>
+                            <button
                               onClick={() => handleDelete(job._id)}
                               className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200"
                               title="Delete Job"
@@ -747,6 +820,21 @@ export default function JobManagement() {
                       >
                         <Edit2 className="w-4 h-4" />
                         Edit
+                      </button>
+                      <button
+                        onClick={() => handleToggleActive(job)}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                        style={{
+                          background: job.isActive 
+                            ? 'linear-gradient(90deg, #059669 0%, #047857 100%)' 
+                            : 'linear-gradient(90deg, #dc2626 0%, #b91c1c 100%)',
+                          boxShadow: job.isActive 
+                            ? '0 4px 12px rgba(5, 150, 105, 0.3)' 
+                            : '0 4px 12px rgba(220, 38, 38, 0.3)'
+                        }}
+                      >
+                        {job.isActive ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
+                        {job.isActive ? 'Active' : 'Inactive'}
                       </button>
                       <button
                         onClick={() => handleDelete(job._id)}
