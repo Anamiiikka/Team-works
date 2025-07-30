@@ -244,7 +244,7 @@ export default function Uploads() {
         {/* Upload Form */}
         {showUploadForm && canUpload && (
           <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Upload New File</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Upload New File</h3>
             
             {uploadStatus === 'success' && (
               <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl mb-4 flex items-center">
@@ -266,7 +266,7 @@ export default function Uploads() {
             <form onSubmit={handleUploadSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
                     Title *
                   </label>
                   <input
@@ -274,35 +274,35 @@ export default function Uploads() {
                     name="title"
                     value={uploadData.title}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                     placeholder="Enter file title"
                     required
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-gray-900 mb-2">
                     Visibility Level *
                   </label>
                   <select
                     name="visibilityLevel"
                     value={uploadData.visibilityLevel}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                     required
                   >
                     <option value="Employee">Employee Level</option>
                     <option value="Admin">Admin Level</option>
                     <option value="SuperAdmin">SuperAdmin Level</option>
                   </select>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className="text-sm text-gray-700 mt-2 font-medium">
                     Choose who can view this file: Employee (all users), Admin (admins and above), SuperAdmin (superadmins only)
                   </p>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
                   Description
                 </label>
                 <textarea
@@ -310,22 +310,22 @@ export default function Uploads() {
                   value={uploadData.description}
                   onChange={handleInputChange}
                   rows={3}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                   placeholder="Enter file description (optional)"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-900 mb-2">
                   File *
                 </label>
                 <input
                   type="file"
                   onChange={handleFileChange}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                   required
                 />
-                <p className="text-sm text-gray-500 mt-2">Maximum file size: 10MB</p>
+                <p className="text-sm text-gray-700 mt-2 font-medium">Maximum file size: 10MB</p>
               </div>
 
               <div className="flex gap-3 pt-2">
@@ -343,7 +343,7 @@ export default function Uploads() {
                 <button
                   type="button"
                   onClick={() => setShowUploadForm(false)}
-                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl hover:bg-gray-300 transition-all duration-300 font-medium"
+                  className="px-6 py-3 bg-gray-200 text-gray-800 rounded-xl hover:bg-gray-300 transition-all duration-300 font-medium"
                 >
                   Cancel
                 </button>
