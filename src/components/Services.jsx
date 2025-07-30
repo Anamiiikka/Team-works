@@ -1,6 +1,7 @@
 'use client';
  import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import servicesData from '../data/services.json';
 
@@ -334,47 +335,49 @@ const Services = () => {
         <div className="relative">
           {/* Mobile CTA Button */}
           <div className="lg:hidden">
-            <div className="w-full max-w-[401px] mx-auto rounded-full px-6 py-4 flex items-center relative" 
-                 style={{ 
-                   background: 'linear-gradient(to right, #5292E4, #036DA9)',
-                   height: '67px'
-                 }}>
-              {/* Left side with spark and circle */}
-              <div className="flex items-center gap-3 flex-shrink-0">
-                {/* Circle with spark icon */}
-                <div className="w-[42px] h-[42px] rounded-full bg-white flex items-center justify-center flex-shrink-0 relative">
-                  {/* Spark icon */}
-                  <svg width="17" height="26" viewBox="0 0 17 26" fill="none" xmlns="http://www.w3.org/2000/svg"
-                       className="absolute">
-                    <defs>
-                      <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style={{stopColor: '#6AF2A2', stopOpacity: 1}} />
-                        <stop offset="100%" style={{stopColor: '#2F9E5F', stopOpacity: 1}} />
-                      </linearGradient>
-                    </defs>
-                    <path d="M8.5 3L4 14h4.5v9l4.5-11H8.5V3z" fill="url(#grad1)"/>
-                  </svg>
+            <Link href="/services">
+              <div className="w-full max-w-[401px] mx-auto rounded-full px-6 py-4 flex items-center relative cursor-pointer hover:opacity-90 transition-opacity duration-200" 
+                   style={{ 
+                     background: 'linear-gradient(to right, #5292E4, #036DA9)',
+                     height: '67px'
+                   }}>
+                {/* Left side with spark and circle */}
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  {/* Circle with spark icon */}
+                  <div className="w-[42px] h-[42px] rounded-full bg-white flex items-center justify-center flex-shrink-0 relative">
+                    {/* Spark icon */}
+                    <svg width="17" height="26" viewBox="0 0 17 26" fill="none" xmlns="http://www.w3.org/2000/svg"
+                         className="absolute">
+                      <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" style={{stopColor: '#6AF2A2', stopOpacity: 1}} />
+                          <stop offset="100%" style={{stopColor: '#2F9E5F', stopOpacity: 1}} />
+                        </linearGradient>
+                      </defs>
+                      <path d="M8.5 3L4 14h4.5v9l4.5-11H8.5V3z" fill="url(#grad1)"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                {/* Text - taking full available space */}
+                <span className="text-white font-medium flex-1 text-center" 
+                      style={{
+                        fontSize: '17px',
+                        lineHeight: '20px'
+                      }}>
+                  Know all Services
+                </span>
+                
+                {/* Arrow - no gap */}
+                <div className="flex-shrink-0">
+                  <ArrowRight className="text-white" 
+                             style={{
+                               width: '24.92px',
+                               height: '24.92px'
+                             }} />
                 </div>
               </div>
-              
-              {/* Text - taking full available space */}
-              <span className="text-white font-medium flex-1 text-center" 
-                    style={{
-                      fontSize: '17px',
-                      lineHeight: '20px'
-                    }}>
-                Know all Services
-              </span>
-              
-              {/* Arrow - no gap */}
-              <div className="flex-shrink-0">
-                <ArrowRight className="text-white" 
-                           style={{
-                             width: '24.92px',
-                             height: '24.92px'
-                           }} />
-              </div>
-            </div>
+            </Link>
           </div>
 
           {/* Desktop CTA Button */}
@@ -394,10 +397,12 @@ const Services = () => {
               </div>
               <div className="text-white flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
                 <span className="text-lg sm:text-xl font-medium">We strive to lead the way in the business</span>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <span className="text-lg sm:text-xl font-medium underline">know all services</span>
-                  <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
-                </div>
+                <Link href="/services">
+                  <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity duration-200">
+                    <span className="text-lg sm:text-xl font-medium underline">know all services</span>
+                    <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                  </div>
+                </Link>
               </div>
             </div>
 

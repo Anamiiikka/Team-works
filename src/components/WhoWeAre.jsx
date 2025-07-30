@@ -1,10 +1,35 @@
 'use client';
 import React, { useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import Link from 'next/link';
 import whoWeAreData from '../data/whoweare.json';
 
 const WhoWeAre = () => {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const cardContents = [
+    {
+      heading: "Financial Expertise That Inspires Confidence",
+      description: "With over 15 years of hands-on experience in investment banking and financial advisory, Team Work Advisors Pvt Ltd brings a deep understanding of India's financial landscape. Our expertise spans across debt syndication, capital advisory, and working capital optimization. We have successfully guided numerous businesses through complex financing challenges—whether it's navigating credit cycles, structuring external commercial borrowings (ECBs), or enabling long-term capital planning. Our clients value the strategic depth we bring to every engagement."
+    },
+    {
+      heading: "Access to Unmatched Financial Networks",
+      description: "We maintain strong and trusted relationships with top-tier banks, NBFCs, and financial institutions—giving our clients priority access to the best financial products and terms available. These connections allow us to structure and syndicate financing options that are not just available, but aligned with the specific needs of your business. Whether it's asset-based lending, project finance, or venture capital infusion, we ensure the most suitable partners are brought to the table to fund your ambition."
+    },
+    {
+      heading: "Comprehensive Solutions, Singular Focus", 
+      description: "Our firm operates with a unified focus—your business success. We offer a complete suite of financial services under one roof: debt restructuring, equity advisory, project financing, MSME credit facilitation, and turnaround consulting. From feasibility studies and government incentives to private placements and capital restructuring, we bring a holistic approach that simplifies decision-making and accelerates execution. Whether you are scaling, diversifying, or stabilizing, we are with you at every step."
+    },
+    {
+      heading: "Strategic Thinking Backed by Data",
+      description: "We don't believe in off-the-shelf solutions. Our approach is grounded in detailed financial assessments, custom modeling, and market benchmarking to uncover the most viable financing paths for your business. We analyze industry trends, regulatory impacts, and internal risk factors before recommending any course of action. This insight-driven methodology ensures not just capital acquisition—but strategic financial alignment that drives sustainable growth."
+    },
+    {
+      heading: "Precision Execution, Lasting Partnership",
+      description: "From underwriting to execution, our internal processes are built for efficiency, accuracy, and results. Each proposal we present to lenders or investors is meticulously curated to reflect the true potential of your business. But our engagement doesn't stop at fund disbursement—we provide continuous financial advisory, risk monitoring, and restructuring support as needed. We don't just deliver funding; we build long-term relationships rooted in trust, performance, and shared success."
+    }
+  ];
 
   const nextCard = () => {
     setCurrentCardIndex((prev) => (prev + 1) % whoWeAreData.cards.length);
@@ -14,38 +39,69 @@ const WhoWeAre = () => {
     setCurrentCardIndex((prev) => (prev - 1 + whoWeAreData.cards.length) % whoWeAreData.cards.length);
   };
 
+  const toggleCardExpansion = (cardId) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [cardId]: !prev[cardId]
+    }));
+  };
+
   // Function to render a card
-  const renderCard = (card) => (
-    <div 
-      key={card.id} 
-      className="flex-shrink-0 rounded-4xl p-8 text-white border relative bg-[#066FAB] border-[#066FAB]"
-      style={{ width: '383px', height: '373px' }}
-    >
-      <div className="w-[84px] h-[84px] rounded-full flex items-center justify-center mb-4 bg-gradient-to-b from-[#AAC5EA] to-[#2C87BB]">
-        <img 
-          src={card.icon} 
-          alt={card.title} 
-          className="object-contain"
-          style={{ 
-            width: parseInt(card.iconSize.width), 
-            height: parseInt(card.iconSize.height) 
-          }} 
-        />
+  const renderCard = (card, cardIndex) => {
+    const isExpanded = expandedCards[card.id];
+    const cardContent = cardContents[cardIndex % cardContents.length];
+    const shortDescription = cardContent.description.substring(0, 150) + "...";
+    
+    return (
+      <div 
+        key={card.id} 
+        className={`flex-shrink-0 rounded-4xl p-8 text-white border relative bg-[#066FAB] border-[#066FAB] transition-all duration-300 ${
+          isExpanded ? 'h-auto min-h-[500px]' : ''
+        }`}
+        style={{ width: '383px', height: isExpanded ? 'auto' : '373px' }}
+      >
+        <div className="w-[84px] h-[84px] rounded-full flex items-center justify-center mb-4 bg-gradient-to-b from-[#AAC5EA] to-[#2C87BB]">
+          <img 
+            src={card.icon} 
+            alt={card.title} 
+            className="object-contain"
+            style={{ 
+              width: parseInt(card.iconSize.width), 
+              height: parseInt(card.iconSize.height) 
+            }} 
+          />
+        </div>
+        
+        <h3 className="font-semibold mb-3 text-white font-inter text-[30px] leading-[33px] tracking-normal w-[330px] min-h-[43px] overflow-visible">
+          {card.title}
+        </h3>
+        
+        <div className="text-blue-100 mb-16 leading-relaxed">
+          {isExpanded ? (
+            <div className="space-y-4 text-sm leading-6 mb-12">
+              <h4 className="text-white font-semibold text-lg mb-2">
+                {cardContent.heading}
+              </h4>
+              <p className="text-blue-100">
+                {cardContent.description}
+              </p>
+            </div>
+          ) : (
+            <p className="w-[353px] h-[120px] overflow-hidden text-sm">
+              {shortDescription}
+            </p>
+          )}
+        </div>
+        
+        <button 
+          onClick={() => toggleCardExpansion(card.id)}
+          className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8 left-8 font-inter text-[19px] leading-[33px] tracking-normal border-b border-white pb-0.5 bg-transparent cursor-pointer"
+        >
+          {isExpanded ? 'Show Less' : 'Read More'}
+        </button>
       </div>
-      
-      <h3 className="font-semibold mb-3 text-white font-inter text-[30px] leading-[33px] tracking-normal w-[330px] min-h-[43px] overflow-visible">
-        {card.title}
-      </h3>
-      
-      <p className="text-blue-100 mb-4 leading-relaxed w-[353px] h-[120px] overflow-hidden">
-        {card.description}
-      </p>
-      
-      <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-8 left-8 font-inter text-[19px] leading-[33px] tracking-normal border-b border-white pb-0.5 bg-transparent cursor-pointer">
-        Read More
-      </button>
-    </div>
-  );
+    );
+  };
   return (
     <div className="px-4 md:px-8 py-8 md:py-16 bg-[#f6f5ef] relative overflow-hidden">
       {/* Abstract Geometric Background Elements - Inspired by AboutUs */}
@@ -215,20 +271,22 @@ const WhoWeAre = () => {
               <div className="text-4xl md:text-6xl font-bold mb-6 md:mb-8 text-[#1A202C]">120M Active</div>
               <div className="text-4xl md:text-6xl font-bold mb-8 md:mb-12 text-[#1A202C]">Clients</div>
 
-              <button className="text-white rounded-full flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 hover:shadow-lg hover:scale-105 w-[213px] md:w-[281.89px] h-[53px] md:h-[83.89px] absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-gradient-to-r from-[#5292E4] to-[#036DA9] border-0 cursor-pointer font-medium"
-                      style={{ 
-                        boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)',
-                        borderRadius: '100px'
-                      }}>
-                <span className="whitespace-nowrap flex items-center justify-center text-center w-[136px] md:w-[183px] h-5 font-medium font-inter align-middle text-[17px] md:text-[23px] leading-5 md:leading-5"
-                      style={{ letterSpacing: '0%' }}>
-                  Let's talk with us
-                </span>
-                <div className="w-[47.24px] h-[47.24px] md:w-[59.83px] md:h-[59.83px] bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-300 hover:rotate-12"
-                     style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)' }}>
-                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transform rotate-[-45deg] text-[#036DA9]" />
-                </div>
-              </button>
+              <Link href="/contact-us">
+                <button className="text-white rounded-full flex items-center justify-center gap-2 md:gap-3 transition-all duration-300 hover:shadow-lg hover:scale-105 w-[213px] md:w-[281.89px] h-[53px] md:h-[83.89px] absolute bottom-6 left-6 md:bottom-8 md:left-8 bg-gradient-to-r from-[#5292E4] to-[#036DA9] border-0 cursor-pointer font-medium"
+                        style={{ 
+                          boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)',
+                          borderRadius: '100px'
+                        }}>
+                  <span className="whitespace-nowrap flex items-center justify-center text-center w-[136px] md:w-[183px] h-5 font-medium font-inter align-middle text-[17px] md:text-[23px] leading-5 md:leading-5"
+                        style={{ letterSpacing: '0%' }}>
+                    Let's talk with us
+                  </span>
+                  <div className="w-[47.24px] h-[47.24px] md:w-[59.83px] md:h-[59.83px] bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-transform duration-300 hover:rotate-12"
+                       style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)' }}>
+                    <ArrowRight className="w-5 h-5 md:w-6 md:h-6 transform rotate-[-45deg] text-[#036DA9]" />
+                  </div>
+                </button>
+              </Link>
             </div>
           </div>
 
@@ -253,7 +311,9 @@ const WhoWeAre = () => {
 
               {/* Single Card Display */}
               <div className="px-6">
-                <div className="rounded-2xl p-6 text-white border relative w-full transition-all duration-300 min-h-[300px] bg-[#066FAB] border-[#066FAB]">
+                <div className={`rounded-2xl p-6 text-white border relative w-full transition-all duration-300 bg-[#066FAB] border-[#066FAB] ${
+                  expandedCards[`mobile-${currentCardIndex}`] ? 'min-h-[600px]' : 'min-h-[300px]'
+                }`}>
                   <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-b from-[#AAC5EA] to-[#2C87BB]">
                     <img 
                       src={whoWeAreData.cards[currentCardIndex].icon} 
@@ -270,12 +330,28 @@ const WhoWeAre = () => {
                     {whoWeAreData.cards[currentCardIndex].title}
                   </h3>
                   
-                  <p className="text-blue-100 mb-6 leading-5 text-sm">
-                    {whoWeAreData.cards[currentCardIndex].description}
-                  </p>
+                  <div className="text-blue-100 mb-16">
+                    {expandedCards[`mobile-${currentCardIndex}`] ? (
+                      <div className="space-y-4 text-sm leading-6 mb-12">
+                        <h4 className="text-white font-semibold text-lg mb-2">
+                          {cardContents[currentCardIndex].heading}
+                        </h4>
+                        <p className="text-blue-100">
+                          {cardContents[currentCardIndex].description}
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="leading-5 text-sm">
+                        {cardContents[currentCardIndex].description.substring(0, 150) + "..."}
+                      </p>
+                    )}
+                  </div>
                   
-                  <button className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-6 left-6 font-inter text-base leading-6 tracking-normal border-b border-white pb-0.5 bg-transparent cursor-pointer">
-                    Read More
+                  <button 
+                    onClick={() => toggleCardExpansion(`mobile-${currentCardIndex}`)}
+                    className="text-white font-semibold hover:text-blue-200 transition-colors absolute bottom-6 left-6 font-inter text-base leading-6 tracking-normal border-b border-white pb-0.5 bg-transparent cursor-pointer"
+                  >
+                    {expandedCards[`mobile-${currentCardIndex}`] ? 'Show Less' : 'Read More'}
                   </button>
                 </div>
               </div>
@@ -305,10 +381,10 @@ const WhoWeAre = () => {
                 onMouseLeave={(e) => e.currentTarget.style.animationPlayState = 'running'}
               >
                 {/* Render cards from JSON data */}
-                {whoWeAreData.cards.map(card => renderCard(card))}
+                {whoWeAreData.cards.map((card, index) => renderCard(card, index))}
                 
                 {/* Duplicate cards for continuous animation */}
-                {whoWeAreData.cards.map(card => renderCard({...card, id: `${card.id}-duplicate`}))}
+                {whoWeAreData.cards.map((card, index) => renderCard({...card, id: `${card.id}-duplicate`}, index))}
               </div>
             </div>
           </div>

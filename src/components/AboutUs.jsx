@@ -33,11 +33,11 @@ Passionate about empowering businesses with financial clarity, I am committed to
   };
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+    <div className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden " style={{ 
       backgroundColor: '#F6F5EF',
       backgroundImage: 'url(/tribg.png)',
       backgroundSize: 'auto 60%',
-      backgroundPosition: '0% 90%',
+      backgroundPosition: '-15% 80%',
       backgroundRepeat: 'no-repeat'
     }}>
       {/* Abstract Geometric Background Elements - Inspired by Services */}
@@ -139,9 +139,35 @@ Passionate about empowering businesses with financial clarity, I am committed to
               </div>
             </div>
             
+            {/* Additional tribg.png background between header and main heading */}
+            <div className="relative h-20 mb-4" style={{ 
+              backgroundImage: 'url(/tribg.png)',
+              backgroundSize: 'auto 80%',
+              backgroundPosition: 'center right',
+              backgroundRepeat: 'no-repeat'
+            }}></div>
+            
             {/* Main heading */}
-            <div>
-              <h1 className="font-bold text-gray-900 leading-tight px-4 lg:px-0"
+            <div className="relative flex items-center justify-start" style={{minHeight: '120px', overflow: 'visible'}}>
+              {/* Enlarged and shifted tribg.png image on the left of heading */}
+              <img 
+                src="/tribg.png" 
+                alt="Decorative graphic" 
+                style={{
+                  width: '400px',
+                  height: '400px',
+                  objectFit: 'contain',
+                  marginRight: '24px',
+                  opacity: 1,
+                  zIndex: 10,
+                  position: 'absolute',
+                  left: '-400px',
+                  top: '80%',
+                  transform: 'translateY(-50%)',
+                  pointerEvents: 'none'
+                }}
+              />
+              <h1 className="font-bold text-gray-900 leading-tight px-4 lg:px-0 relative z-20"
                   style={{
                     fontSize: 'clamp(28px, 5vw, 48px)',
                     lineHeight: 'clamp(36px, 6vw, 58px)'
