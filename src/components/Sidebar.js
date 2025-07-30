@@ -45,16 +45,22 @@ export default function Sidebar() {
                 Dashboard
               </Link>
             </li>
-            <li className="mb-4">
-              <Link href="/cms/careers" className="block py-2 px-4 rounded hover:text-white hover:bg-blue-50/10 transition-colors">
-                Careers
-              </Link>
-            </li>
-            <li className="mb-4">
-              <Link href="/cms/leads" className="block py-2 px-4 rounded hover:text-white hover:bg-blue-50/10 transition-colors">
-                Leads
-              </Link>
-            </li>
+            {/* Conditionally render the Careers and Leads links */}
+            {/* They will only appear if the user's role is 'Admin' or 'SuperAdmin' */}
+            {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <>
+                <li className="mb-4">
+                  <Link href="/cms/careers" className="block py-2 px-4 rounded hover:text-white hover:bg-blue-50/10 transition-colors">
+                    Careers
+                  </Link>
+                </li>
+                <li className="mb-4">
+                  <Link href="/cms/leads" className="block py-2 px-4 rounded hover:text-white hover:bg-blue-50/10 transition-colors">
+                    Leads
+                  </Link>
+                </li>
+              </>
+            )}
 
             {/* Conditionally render the Uploads link */}
             {/* It will appear for Employee, Admin, and SuperAdmin users */}

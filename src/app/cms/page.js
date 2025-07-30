@@ -74,20 +74,24 @@ export default function CmsDashboard() {
 
         {/* === Stats Cards Section === */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <StatCard
-            title="Total Leads"
-            value={stats.leads}
-            loading={statsLoading}
-            icon={Target}
-            colorClass="bg-blue-100 text-blue-600"
-          />
-          <StatCard
-            title="Active Careers"
-            value={stats.careers}
-            loading={statsLoading}
-            icon={Briefcase}
-            colorClass="bg-green-100 text-green-600"
-          />
+          {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+            <StatCard
+              title="Total Leads"
+              value={stats.leads}
+              loading={statsLoading}
+              icon={Target}
+              colorClass="bg-blue-100 text-blue-600"
+            />
+          )}
+          {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+            <StatCard
+              title="Active Careers"
+              value={stats.careers}
+              loading={statsLoading}
+              icon={Briefcase}
+              colorClass="bg-green-100 text-green-600"
+            />
+          )}
           <StatCard
             title="Verified Users"
             value={stats.users}
@@ -114,25 +118,29 @@ export default function CmsDashboard() {
                     </Link>
                 )}
 
-                <Link href="/cms/leads">
-                    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                        <FileText className="w-8 h-8 text-rose-600" />
-                        <div>
-                            <h3 className="font-bold text-lg text-gray-900">View Leads</h3>
-                            <p className="text-gray-500 text-sm">Review and export all lead submissions.</p>
+                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+                    <Link href="/cms/leads">
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                            <FileText className="w-8 h-8 text-rose-600" />
+                            <div>
+                                <h3 className="font-bold text-lg text-gray-900">View Leads</h3>
+                                <p className="text-gray-500 text-sm">Review and export all lead submissions.</p>
+                            </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                )}
                 
-                <Link href="/cms/careers">
-                    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                        <FileText className="w-8 h-8 text-rose-600" />
-                        <div>
-                            <h3 className="font-bold text-lg text-gray-900">View Applicants</h3>
-                            <p className="text-gray-500 text-sm">Review and export all applicant submissions.</p>
+                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+                    <Link href="/cms/careers">
+                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                            <FileText className="w-8 h-8 text-rose-600" />
+                            <div>
+                                <h3 className="font-bold text-lg text-gray-900">View Applicants</h3>
+                                <p className="text-gray-500 text-sm">Review and export all applicant submissions.</p>
+                            </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>
+                )}
 
                 {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
                     <Link href="/cms/jobs">

@@ -45,7 +45,7 @@ async function deleteLead(id) {
 }
 
 export default function Leads() {
-  const { user: currentUser } = useAuth(); // Get current user's role
+  const { user: currentUser, loading: authLoading } = useAuth(); // Get current user's role
   const [leads, setLeads] = useState([]);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -66,13 +66,49 @@ export default function Leads() {
         setError(err.message);
       }
     }
-    // Only fetch data if the user is logged in
-    if(currentUser) {
-        fetchData();
+    // Only fetch data if the user is logged in and has permission
+    if(currentUser && (currentUser.role === 'Admin' || currentUser.role === 'SuperAdmin')) {
+      fetchData();
     }
   }, [currentPage, sortOrder, startDate, endDate, currentUser]);
 
-  const handlePageChange = (page) => {
+  // Check if user has permission to access this page
+  if (authLoading) {
+    return (
+      <div className="p-6 min-h-screen" style={{
+        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+        fontFamily: 'Inter'
+      }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Loading...</h2>
+            <p className="text-gray-600">Checking permissions...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!currentUser || currentUser.role === 'Employee') {
+    return (
+      <div className="p-6 min-h-screen" style={{
+        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+        fontFamily: 'Inter'
+      }}>
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg p-12 text-center border-l-4 border-red-500">
+            <svg className="w-16 h-16 text-red-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+            </svg>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Access Denied</h2>
+            <p className="text-gray-600 mb-4">You don&apos;t have permission to view leads. Only Admins and Super Admins can access this section.</p>
+            <p className="text-sm text-gray-500">Current role: {currentUser?.role || 'None'}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }  const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
