@@ -33,11 +33,10 @@ const Testimonials = () => {
 
   if (!testimonials.length) return null;
 
-  const avatarsOnMap = [
-    { src: '/p2.png', alt: 'Client', style: { top: '5%', left: '15%', width: '93px', height: '95px' } },
-    { src: '/p4.png', alt: 'Client', style: { top: '15%', left: '40%', width: '63px', height: '64px' } },
-    { src: '/p1.png', alt: 'Client', style: { top: '10%', right: '20%', width: '75px', height: '76px' } },
-    { src: '/p3.png', alt: 'Client', style: { top: '25%', right: '10%', width: '63px', height: '64px' } },
+  const mapPlaces = [
+    { name: 'Delhi', style: { top: '28%', left: '45%' } },
+    { name: 'Lucknow', style: { top: '35%', left: '52%' } },
+    { name: 'Arunachal Pradesh', style: { top: '30%', right: '10%' } },
   ];
 
   return (
@@ -65,8 +64,8 @@ const Testimonials = () => {
           />
         </div>
       </div>
-      {/* Floating Avatars */}
-      <div className={`absolute inset-0 z-30 pointer-events-none ${isMobile ? 'hidden' : 'block'}`}>
+      {/* Place Names on Map */}
+      <div className={`absolute inset-0 z-10 pointer-events-none ${isMobile ? 'hidden' : 'block'}`}>
         <div
           className="absolute"
           style={{
@@ -77,21 +76,14 @@ const Testimonials = () => {
             transform: 'translate(-20%, -50%)',
           }}
         >
-          {avatarsOnMap.map((avatar, index) => (
+          {mapPlaces.map((place, index) => (
             <div
               key={index}
-              className="absolute rounded-full shadow-lg"
-              style={{ ...avatar.style, position: 'absolute' }}
+              className="absolute"
+              style={{ ...place.style, position: 'absolute' }}
             >
-              <div className="relative w-full h-full">
-                <Image 
-                  src={avatar.src} 
-                  alt={avatar.alt} 
-                  fill 
-                  sizes="(max-width: 640px) 63px, (max-width: 768px) 75px, 95px"
-                  style={{ objectFit: 'cover' }}
-                  className="rounded-full" 
-                />
+              <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg border border-blue-200">
+                <span className="text-sm font-semibold text-blue-900">{place.name}</span>
               </div>
             </div>
           ))}
