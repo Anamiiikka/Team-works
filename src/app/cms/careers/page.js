@@ -7,13 +7,14 @@ import { saveAs } from 'file-saver';
 import { Eye, Download, Trash2 } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
-async function getApplicants(page = 1, sort = '-submittedAt', startDate = '', endDate = '') {
+async function getApplicants(page = 1, sort = '-submittedAt', startDate = '', endDate = '', fetchAll = false) {
   const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/api/careers`);
-  url.searchParams.append('page', page);
-  url.searchParams.append('limit', '10');
+  url.searchParams.append('page', fetchAll ? '1' : page);
+  url.searchParams.append('limit', fetchAll ? '1000' : '10'); // Use a large limit for fetchAll
   url.searchParams.append('sort', sort);
   if (startDate) url.searchParams.append('startDate', startDate);
   if (endDate) url.searchParams.append('endDate', endDate);
+  if (fetchAll) url.searchParams.append('all', 'true');
   
   const res = await fetch(url, { cache: 'no-store', credentials: 'include' });
   if (!res.ok) {
@@ -33,6 +34,24 @@ export default function Careers() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [isExportingAll, setIsExportingAll] = useState(false);
+
+  // Fetch data when dependencies change
+  useEffect(() => {
+    async function fetchData() {
+      if (authLoading) return; // Wait for auth to load
+      if (!currentUser) return; // Wait for user
+      
+      try {
+        setError(null);
+        const data = await getApplicants(currentPage, sortOrder, startDate, endDate);
+        setApplicants(data.applicants || []);
+        setTotalPages(data.pagination?.totalPages || 1);
+      } catch (err) {
+        setError(err.message);
+      }
+    }
+    fetchData();
+  }, [currentPage, sortOrder, startDate, endDate, currentUser, authLoading]);
 
   // Check if user has permission to access this page
   if (authLoading) {
@@ -64,7 +83,7 @@ export default function Careers() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
             </svg>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Access Denied</h2>
-            <p className="text-gray-600 mb-4">You don't have permission to view career applicants. Only Admins and Super Admins can access this section.</p>
+            <p className="text-gray-600 mb-4">You don&apos;t have permission to view career applicants. Only Admins and Super Admins can access this section.</p>
             <p className="text-sm text-gray-500">Current role: {currentUser?.role || 'None'}</p>
           </div>
         </div>
@@ -102,31 +121,31 @@ export default function Careers() {
   };
 
   const handleExportAllToExcel = async () => {
-      setIsExportingAll(true);
-      try {
-          const data = await getApplicants(1, sortOrder, startDate, endDate, true); // Assuming 'all=true' fetches all
-          const allApplicants = data.applicants || [];
-          
-          const dataToExport = allApplicants.map(applicant => ({
-              Name: applicant.name,
-              Age: applicant.age,
-              'Experience (Years)': applicant.experience,
-              'Resume URL': applicant.resumeUrl || 'N/A',
-              'Job ID': applicant.jobId,
-              'Submitted At': applicant.submittedAt ? new Date(applicant.submittedAt).toLocaleString() : 'N/A',
-          }));
+    setIsExportingAll(true);
+    try {
+      const data = await getApplicants(1, sortOrder, startDate, endDate, true); // Pass fetchAll=true
+      const allApplicants = data.applicants || [];
+      
+      const dataToExport = allApplicants.map(applicant => ({
+        Name: applicant.name,
+        Age: applicant.age,
+        'Experience (Years)': applicant.experience,
+        'Resume URL': applicant.resumeUrl || 'N/A',
+        'Job ID': applicant.jobId,
+        'Submitted At': applicant.submittedAt ? new Date(applicant.submittedAt).toLocaleString() : 'N/A',
+      }));
 
-          const worksheet = XLSX.utils.json_to_sheet(dataToExport);
-          const workbook = XLSX.utils.book_new();
-          XLSX.utils.book_append_sheet(workbook, worksheet, 'Applicants');
-          const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-          const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-          saveAs(blob, 'Applicants_AllRecords.xlsx');
-      } catch(err) {
-          setError(err.message);
-      } finally {
-          setIsExportingAll(false);
-      }
+      const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Applicants');
+      const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+      const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      saveAs(blob, 'Applicants_AllRecords.xlsx');
+    } catch(err) {
+      setError(err.message);
+    } finally {
+      setIsExportingAll(false);
+    }
   };
 
   const handleDownloadResume = async (resumeUrl, applicantName) => {
@@ -144,10 +163,10 @@ export default function Careers() {
   const handleDeleteApplicant = async (id) => {
     if (window.confirm('Are you sure you want to delete this applicant?')) {
       try {
-        const res = await fetch(`/api/careers`, { // Target the main route
+        const res = await fetch(`/api/careers`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id }), // Send the ID in the body
+          body: JSON.stringify({ id }),
           credentials: 'include',
         });
         if (!res.ok) {
