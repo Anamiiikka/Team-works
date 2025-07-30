@@ -33,7 +33,7 @@ async function connectToDatabase() {
   }
 }
 
-// POST handler - Upload file (SuperAdmin and Admin only)
+// POST handler - Upload file (SuperAdmin, Admin, and Employee)
 export async function POST(request) {
   try {
     const cookieStore = await cookies();
@@ -44,8 +44,8 @@ export async function POST(request) {
     
     const { payload } = await jwtVerify(tokenCookie.value, getJwtSecret());
     
-    if (!['SuperAdmin', 'Admin'].includes(payload.role)) {
-        return NextResponse.json({ error: 'Forbidden: Only SuperAdmin and Admin can upload files.' }, { status: 403 });
+    if (!['SuperAdmin', 'Admin', 'Employee'].includes(payload.role)) {
+        return NextResponse.json({ error: 'Forbidden: Authentication required.' }, { status: 403 });
     }
 
     await connectToDatabase();

@@ -67,7 +67,8 @@ export default function Uploads() {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
 
-  const canUpload = currentUser && ['SuperAdmin', 'Admin'].includes(currentUser.role);
+  const canUpload = currentUser && ['SuperAdmin', 'Admin', 'Employee'].includes(currentUser.role);
+  const canDelete = currentUser && ['SuperAdmin', 'Admin'].includes(currentUser.role);
 
   useEffect(() => {
     async function fetchData() {
@@ -290,11 +291,13 @@ export default function Uploads() {
                     className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 focus:bg-white focus:border-blue-500 focus:outline-none transition-all"
                     required
                   >
-                    <option value="Employee">Employee</option>
-                    <option value="Admin">Admin</option>
-                    <option value="SuperAdmin">SuperAdmin</option>
-                    <option value="Public">Public</option>
+                    <option value="Employee">Employee Level</option>
+                    <option value="Admin">Admin Level</option>
+                    <option value="SuperAdmin">SuperAdmin Level</option>
                   </select>
+                  <p className="text-sm text-gray-500 mt-2">
+                    Choose who can view this file: Employee (all users), Admin (admins and above), SuperAdmin (superadmins only)
+                  </p>
                 </div>
               </div>
 
@@ -451,7 +454,7 @@ export default function Uploads() {
                           )}
                         </td>
                         <td className="py-4 px-4 text-sm">
-                          {canUpload && (
+                          {canDelete && (
                             <button
                               onClick={() => handleDeleteUpload(upload._id)}
                               className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200"
@@ -543,7 +546,7 @@ export default function Uploads() {
                     </div>
 
                     {/* Admin Actions - Separate section */}
-                    {canUpload && (
+                    {canDelete && (
                       <div className="pt-4 border-t border-gray-200">
                         <button
                           onClick={() => handleDeleteUpload(upload._id)}
