@@ -1,7 +1,37 @@
-import React from 'react';
-import { ArrowRight, Users } from 'lucide-react';
+'use client'
+import React, { useState } from 'react';
+import { ArrowRight, Users, X } from 'lucide-react';
+import Link from 'next/link';
 
-const AboutUs = () => {
+const AboutUs = ({ showFounders = false }) => {
+  const [showFoundersModal, setShowFoundersModal] = useState(false);
+
+  const foundersData = {
+    title: "About the Founders",
+    founders: [
+      {
+        name: "Mr. Rishi Arora",
+        title: "Founder & Director, Team Work Advisors Pvt Ltd",
+        description: `Mr. Rishi Arora is a seasoned finance professional with over 23 years of expertise in finance, accounting, compliance, and mergers & acquisitions (M&A) across diverse industries. A qualified Chartered Accountant (CA) and a Doctorate (Ph.D.) in Income Tax, he possesses deep domain knowledge in corporate finance, taxation, and strategic advisory.
+
+As the Founder & Director of Team Work Advisors Pvt Ltd, Mr. Arora has been instrumental in establishing the firm as a leading financial advisory company, providing debt syndication, working capital management, capital advisory, and transaction structuring services. Under his leadership, Team Work Advisors has successfully assisted businesses in optimizing financial performance, securing funding, and navigating complex regulatory landscapes.
+
+Throughout his career, Mr. Arora has played a key role in advising businesses on financial restructuring, M&A transactions, regulatory compliance, and tax planning, helping clients achieve sustainable growth and operational efficiency. His expertise spans multiple sectors, including manufacturing, technology, banking, healthcare, and infrastructure, making him a trusted advisor to corporations and entrepreneurs.
+
+With a vision to drive financial excellence and strategic business growth, Mr. Arora continues to lead Team Work Advisors in delivering innovative financial solutions, risk management strategies, and value-driven advisory services to businesses across industries.`
+      },
+      {
+        name: "Kundan Kumar Singh",
+        title: "Investment Banking Consultant | Debt Syndication | Working Capital Management | Capital Advisory",
+        description: `With over 19 years of experience in banking and finance, I specialize in debt syndication, working capital management, and capital advisory. Currently leading Team Work Advisors Pvt Ltd, I provide strategic financial solutions to businesses, helping them optimize capital structures and secure funding for sustainable growth.
+
+My career journey includes key roles at Standard Chartered Bank and HSBC Bank Business Banking, where I gained deep expertise in structuring financial solutions for diverse industries. My approach combines analytical rigor with a client-centric mindset, ensuring tailored financial strategies that drive long-term success.
+
+Passionate about empowering businesses with financial clarity, I am committed to delivering results-driven advisory services in the ever-evolving investment banking landscape.`
+      }
+    ]
+  };
+
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
       {/* Abstract Geometric Background Elements - Inspired by Services */}
@@ -131,17 +161,37 @@ const AboutUs = () => {
             
             {/* Learn more button */}
             <div className="flex justify-center lg:justify-start">
-              <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" style={{
-                background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
-                boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
-              }}>
-                Learn more
-                <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-                }}>
-                  <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
-                </div>
-              </button>
+              {showFounders ? (
+                <button 
+                  onClick={() => setShowFoundersModal(true)}
+                  className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" 
+                  style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
+                  }}
+                >
+                  Learn more
+                  <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                  }}>
+                    <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
+                  </div>
+                </button>
+              ) : (
+                <Link href="/about-us">
+                  <button className="text-white font-medium pl-6 pr-2 py-3 rounded-full flex items-center justify-between transition-all duration-300 hover:shadow-lg hover:scale-105" style={{
+                    background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                    boxShadow: '0 8px 32px rgba(82, 146, 228, 0.3)'
+                  }}>
+                    Learn more
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2.5 ml-4 transition-transform duration-300 hover:rotate-12" style={{
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                    }}>
+                      <ArrowRight className="w-4 h-4 transform rotate-[-45deg]" style={{ color: '#036DA9' }} />
+                    </div>
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -177,6 +227,143 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
+      {/* Founders Section - Show when showFounders is true */}
+      {showFounders && (
+        <>
+          {foundersData.founders.map((founder, index) => (
+            <div key={index} className="max-w-7xl mx-auto relative z-10 mt-16">
+              <div className={`flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 0 ? '' : 'lg:grid-flow-col-dense'}`}>
+                
+                {/* Founder Content */}
+                <div className={`${index % 2 === 0 ? 'order-1 lg:order-2' : 'order-1 lg:order-1'} space-y-6 lg:space-y-8 text-center lg:text-left`}>
+                  {/* Header */}
+                  <div className="relative">
+                    <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                      <div className="relative">
+                        <div className="w-0 h-0 border-l-[20px] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent" style={{ borderLeftColor: '#036DA9' }}></div>
+                        <div className="absolute -right-3 top-0 w-0 h-0 border-l-[20px] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent" style={{ borderLeftColor: '#AAC5EA' }}></div>
+                      </div>
+                      <span className="font-medium ml-2" style={{ color: '#000000' }}>
+                        {index === 0 ? 'Founder & Director' : 'Investment Banking Consultant'}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Founder Name */}
+                  <div>
+                    <h1 className="font-bold text-gray-900 leading-tight px-4 lg:px-0"
+                        style={{
+                          fontSize: 'clamp(28px, 5vw, 48px)',
+                          lineHeight: 'clamp(36px, 6vw, 58px)'
+                        }}>
+                      {founder.name}
+                    </h1>
+                  </div>
+                  
+                  {/* Founder Title */}
+                  <div className="font-semibold px-4 lg:px-0 max-w-full lg:max-w-[682px]"
+                       style={{ 
+                         fontFamily: 'Inter',
+                         fontWeight: 600,
+                         fontSize: 'clamp(18px, 2.8vw, 24px)',
+                         lineHeight: 'clamp(26px, 3.8vw, 32px)',
+                         letterSpacing: '0%',
+                         color: '#036DA9',
+                       }}>
+                    {founder.title}
+                  </div>
+                  
+                  {/* Founder Description */}
+                  <div className="font-normal px-4 lg:px-0 max-w-full lg:max-w-[682px] text-justify"
+                       style={{ 
+                         fontFamily: 'Inter',
+                         fontWeight: 400,
+                         fontSize: 'clamp(16px, 2.5vw, 28px)',
+                         lineHeight: 'clamp(24px, 3.5vw, 42px)',
+                         letterSpacing: '0%',
+                         color: '#6C7278',
+                         textAlign: 'justify',
+                         textJustify: 'inter-word'
+                       }}>
+                    {founder.description}
+                  </div>
+                </div>
+
+                {/* Founder Image Placeholder */}
+                <div className={`${index % 2 === 0 ? 'order-2 lg:order-1' : 'order-2 lg:order-2'} relative h-80 md:h-96 lg:h-[500px] w-full max-w-sm md:max-w-md lg:max-w-none mx-auto`}>
+                  {/* Main founder image */}
+                  <div className="absolute top-0 left-0 w-64 h-64 md:w-80 md:h-80 lg:w-100 lg:h-100 rounded-2xl shadow-xl z-10 border-1 border-white bg-white" style={{ padding: '2px' }}>
+                    <div className="w-full h-full rounded-xl bg-gray-200 flex items-center justify-center">
+                      <span className="text-gray-500 text-lg font-medium">
+                        {founder.name} Image
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Secondary decorative element */}
+                  <div className="absolute top-40 right-2 w-48 h-52 md:top-48 md:right-3 md:w-60 md:h-64 lg:top-54 lg:right-4 lg:w-78 lg:h-84 rounded-2xl lg:rounded-4xl shadow-xl z-20" style={{ padding: '2px' }}>
+                    <div className="w-full h-full rounded-xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                      <span className="text-blue-600 text-sm font-medium text-center px-4">
+                        Professional Experience<br/>{index === 0 ? '23+ Years' : '19+ Years'}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {/* Achievement badge */}
+                  <div className="absolute bottom-8 right-38 md:bottom-12 md:right-16 lg:top-88 lg:left-50 z-30">
+                    <div className="bg-white rounded-full p-4 shadow-lg border border-blue-200">
+                      <div className="text-center">
+                        <div className="text-blue-600 font-bold text-lg">
+                          {index === 0 ? 'CA, Ph.D.' : 'Banking Expert'}
+                        </div>
+                        <div className="text-gray-600 text-sm">
+                          {index === 0 ? 'Finance Leader' : 'Debt Specialist'}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </>
+      )}
+
+      {/* Founders Modal */}
+      {showFoundersModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl max-h-[90vh] overflow-y-auto relative">
+            <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center rounded-t-2xl">
+              <h2 className="font-bold text-2xl lg:text-3xl text-gray-900">
+                {foundersData.title}
+              </h2>
+              <button 
+                onClick={() => setShowFoundersModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+            
+            <div className="p-6 space-y-8">
+              {foundersData.founders.map((founder, index) => (
+                <div key={index} className="border-b border-gray-100 last:border-b-0 pb-8 last:pb-0">
+                  <h3 className="font-bold text-xl lg:text-2xl text-gray-900 mb-2">
+                    {founder.name}
+                  </h3>
+                  <h4 className="font-semibold text-lg text-blue-600 mb-4">
+                    {founder.title}
+                  </h4>
+                  <div className="text-gray-700 leading-relaxed whitespace-pre-line">
+                    {founder.description}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

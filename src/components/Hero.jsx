@@ -10,7 +10,6 @@ export default function Hero() {
         className="relative mx-auto rounded-none lg:rounded-3xl overflow-hidden lg:w-[1300px] py-10 lg:py-20"
         style={{ background: 'linear-gradient(90deg, #024A7A 0%, #3A6FB8 100%)' }}
       >
-        {/* Navbar is now responsive via CSS */}
         <Navbar />
         
         <div className="relative z-10">
