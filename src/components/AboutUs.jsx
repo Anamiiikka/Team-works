@@ -33,7 +33,13 @@ Passionate about empowering businesses with financial clarity, I am committed to
   };
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
+    <div className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ 
+      backgroundColor: '#F6F5EF',
+      backgroundImage: 'url(/tribg.png)',
+      backgroundSize: 'auto 60%',
+      backgroundPosition: '0% 90%',
+      backgroundRepeat: 'no-repeat'
+    }}>
       {/* Abstract Geometric Background Elements - Inspired by Services */}
       <div className="absolute inset-0 pointer-events-none opacity-60">
         {/* Top area geometric elements */}
