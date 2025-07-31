@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Users, Briefcase, Target, UserCog, FileText, Upload } from 'lucide-react';
 
@@ -22,8 +23,16 @@ const StatCard = ({ title, value, icon: Icon, colorClass, loading }) => (
 
 export default function CmsDashboard() {
   const { user: currentUser, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [stats, setStats] = useState({ leads: 0, careers: 0, users: 0 });
   const [statsLoading, setStatsLoading] = useState(true);
+
+  // Redirect to login if user is not authenticated
+  useEffect(() => {
+    if (!authLoading && !currentUser) {
+      router.push('/auth/login');
+    }
+  }, [authLoading, currentUser, router]);
 
   // Fetch dashboard stats when the component mounts
   useEffect(() => {
@@ -51,8 +60,23 @@ export default function CmsDashboard() {
   // Display a loading state while the user session is being fetched
   if (authLoading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-500">Loading Dashboard...</p>
+      <div className="flex items-center justify-center h-screen bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-500 font-medium">Loading Dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is not authenticated, show a brief loading state before redirect
+  if (!currentUser) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-500 font-medium">Redirecting to login...</p>
+        </div>
       </div>
     );
   }
