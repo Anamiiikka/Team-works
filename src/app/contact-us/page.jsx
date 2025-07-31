@@ -14,7 +14,7 @@ const ContactUs = () => {
         className="relative h-[352px] w-full flex items-center overflow-hidden"
         style={{
           marginTop: '130px',
-          backgroundImage: 'url(/handshake.avif)',
+          backgroundImage: 'url(/handtwo.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center center',
           backgroundRepeat: 'no-repeat',
@@ -200,10 +200,10 @@ const ContactUs = () => {
         </div>
 
         {/* Newsletter Subscription Card */}
-        <div className="bg-white rounded-2xl shadow-lg p-12 border border-gray-100 max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center">
             {/* Newsletter Heading */}
-            <h2 className="text-4xl font-bold text-black mb-2">
+            <h2 className="text-5xl font-bold text-black mb-2">
               Get <span style={{ color: '#036DA9' }}>Updated</span> News
             </h2>
             
@@ -233,67 +233,6 @@ const ContactUs = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Head Office Section */}
-        <div className="mt-16">
-          <div 
-            className="relative bg-blue-600 rounded-2xl overflow-hidden shadow-lg"
-            style={{ background: '#036DA9' }}
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[300px]">
-              {/* Left Side - Head Office Info */}
-              <div className="p-12 flex flex-col justify-center text-white">
-                <h3 className="text-3xl font-bold mb-6">HEAD OFFICE</h3>
-                <div className="space-y-2 mb-8 text-lg">
-                  <p>B-25, 3rd Floor, B</p>
-                  <p>Block Sector - 2,</p>
-                  <p>Noida, Uttar</p>
-                  <p>Pradesh</p>
-                </div>
-                <button className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-200 w-fit">
-                  CONTACT US
-                </button>
-              </div>
-
-              {/* Right Side - Map and Timeline */}
-              <div className="relative">
-                {/* Map Section */}
-                <div className="h-full relative">
-                  <iframe
-                    src="https://maps.google.com/maps?q=B-25,+3rd+Floor,+B+Block,+Sector+2,+Noida,+Uttar+Pradesh&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0, minHeight: '300px' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                  
-                  {/* Timeline Badge */}
-                  <div className="absolute top-4 right-4 bg-white rounded-lg p-4 shadow-lg">
-                    <div className="text-center">
-                      <div className="text-4xl font-bold text-blue-600 mb-1">2018</div>
-                      <div className="text-sm font-medium text-gray-600">STARTED</div>
-                      <button className="mt-2 bg-blue-600 text-white px-4 py-1 rounded text-xs hover:bg-blue-700 transition-colors">
-                        READ STORY
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Badge */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
-              <div 
-                className="bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium"
-                style={{ background: '#024A7A' }}
-              >
-                1345 × 456
               </div>
             </div>
           </div>
