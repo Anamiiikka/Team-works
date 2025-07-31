@@ -1,4 +1,3 @@
-// app/cms/page.js
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -37,7 +36,7 @@ export default function CmsDashboard() {
         setStats(data);
       } catch (error) {
         console.error('Dashboard stats error:', error);
-        // You can set an error state here to display a message on the dashboard if needed
+        // Optionally handle error UI here
       } finally {
         setStatsLoading(false);
       }
@@ -103,69 +102,83 @@ export default function CmsDashboard() {
 
         {/* === Quick Actions Section === */}
         <div className="mt-10">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
-                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
-                    <Link href="/cms/admin/users">
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                            <UserCog className="w-8 h-8 text-indigo-600" />
-                            <div>
-                                <h3 className="font-bold text-lg text-gray-900">Manage Users</h3>
-                                <p className="text-gray-500 text-sm">Create, delete, or update user roles.</p>
-                            </div>
-                        </div>
-                    </Link>
-                )}
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">Quick Actions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
-                    <Link href="/cms/leads">
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                            <FileText className="w-8 h-8 text-rose-600" />
-                            <div>
-                                <h3 className="font-bold text-lg text-gray-900">View Leads</h3>
-                                <p className="text-gray-500 text-sm">Review and export all lead submissions.</p>
-                            </div>
-                        </div>
-                    </Link>
-                )}
-                
-                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
-                    <Link href="/cms/careers">
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                            <FileText className="w-8 h-8 text-rose-600" />
-                            <div>
-                                <h3 className="font-bold text-lg text-gray-900">View Applicants</h3>
-                                <p className="text-gray-500 text-sm">Review and export all applicant submissions.</p>
-                            </div>
-                        </div>
-                    </Link>
-                )}
+            {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <Link href="/cms/admin/users">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                  <UserCog className="w-8 h-8 text-indigo-600" />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">Manage Users</h3>
+                    <p className="text-gray-500 text-sm">Create, delete, or update user roles.</p>
+                  </div>
+                </div>
+              </Link>
+            )}
 
-                {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
-                    <Link href="/cms/jobs">
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                            <Briefcase className="w-8 h-8 text-emerald-600" />
-                            <div>
-                                <h3 className="font-bold text-lg text-gray-900">Job Management</h3>
-                                <p className="text-gray-500 text-sm">Create, edit, and manage job postings.</p>
-                            </div>
-                        </div>
-                    </Link>
-                )}
+            {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <Link href="/cms/leads">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                  <FileText className="w-8 h-8 text-rose-600" />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">View Leads</h3>
+                    <p className="text-gray-500 text-sm">Review and export all lead submissions.</p>
+                  </div>
+                </div>
+              </Link>
+            )}
 
-                {(currentUser?.role === 'Employee' || currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
-                    <Link href="/cms/uploads">
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
-                            <Upload className="w-8 h-8 text-blue-600" />
-                            <div>
-                                <h3 className="font-bold text-lg text-gray-900">File Uploads</h3>
-                                <p className="text-gray-500 text-sm">View and manage uploaded files and documents.</p>
-                            </div>
-                        </div>
-                    </Link>
-                )}
-            </div>
+            {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <Link href="/cms/careers">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                  <FileText className="w-8 h-8 text-rose-600" />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">View Applicants</h3>
+                    <p className="text-gray-500 text-sm">Review and export all applicant submissions.</p>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {(currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <Link href="/cms/jobs">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                  <Briefcase className="w-8 h-8 text-emerald-600" />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">Job Management</h3>
+                    <p className="text-gray-500 text-sm">Create, edit, and manage job postings.</p>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {(currentUser?.role === 'Employee' || currentUser?.role === 'Admin' || currentUser?.role === 'SuperAdmin') && (
+              <Link href="/cms/uploads">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                  <Upload className="w-8 h-8 text-blue-600" />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">File Uploads</h3>
+                    <p className="text-gray-500 text-sm">View and manage uploaded files and documents.</p>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {/* === Reset Password Tile (Visible for all logged-in users) === */}
+            {currentUser && (
+              <Link href="/cms/reset-password">
+                <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center gap-4 cursor-pointer">
+                  <Users className="w-8 h-8 text-pink-600" />
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900">Reset Password</h3>
+                    <p className="text-gray-500 text-sm">Change your account password securely.</p>
+                  </div>
+                </div>
+              </Link>
+            )}
+
+          </div>
         </div>
       </div>
     </div>
