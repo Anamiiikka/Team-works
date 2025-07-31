@@ -13,7 +13,7 @@ const getJwtSecret = () => {
   return new TextEncoder().encode(secret);
 };
 
-// PUT handler - To update a user's role (no changes here)
+// PUT handler - To update a user's role
 export async function PUT(request, { params }) {
   try {
     const cookieStore = await cookies();
@@ -29,7 +29,8 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ message: 'Forbidden. Insufficient permissions.' }, { status: 403 });
     }
 
-    const { id } = params;
+    // FIXED: Await params before accessing its properties
+    const { id } = await params;
     const { role: newRole } = await request.json();
 
     if (!['SuperAdmin', 'Admin', 'Employee'].includes(newRole)) {
@@ -58,7 +59,7 @@ export async function PUT(request, { params }) {
   }
 }
 
-// DELETE handler - To permanently remove a user (UPDATED)
+// DELETE handler - To permanently remove a user
 export async function DELETE(request, { params }) {
     try {
         const cookieStore = await cookies();
@@ -76,7 +77,8 @@ export async function DELETE(request, { params }) {
             return NextResponse.json({ message: 'Forbidden: Insufficient permissions.' }, { status: 403 });
         }
         
-        const { id: userIdToDelete } = params;
+        // FIXED: Await params before accessing its properties
+        const { id: userIdToDelete } = await params;
         
         // 2. Prevent users from deleting themselves
         if (requestorId === userIdToDelete) {
@@ -109,4 +111,4 @@ export async function DELETE(request, { params }) {
         console.error('Failed to delete user:', error);
         return NextResponse.json({ message: 'Server error while deleting user.' }, { status: 500 });
     }
-}
+} 

@@ -3,7 +3,163 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { PlusCircle, XCircle, Trash2, User, Mail, Shield, CheckCircle, Clock } from 'lucide-react';
+import { PlusCircle, XCircle, Trash2, User, Mail, Shield, CheckCircle, Clock, Key, Eye, EyeOff } from 'lucide-react';
+
+// --- Password Edit Modal Component ---
+const PasswordEditModal = ({ user, currentUser, onClose, onPasswordUpdated }) => {
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const handlePasswordUpdate = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        if (!newPassword || !confirmPassword) {
+            setError('Both password fields are required.');
+            return;
+        }
+
+        if (newPassword.length < 6) {
+            setError('Password must be at least 6 characters long.');
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        setLoading(true);
+        try {
+            const res = await fetch(`/api/cms/users/${user._id}/password`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: newPassword }),
+                credentials: 'include',
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.message || 'Failed to update password.');
+            }
+
+            onPasswordUpdated();
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                        <Key className="w-5 h-5" />
+                        Change Password
+                    </h2>
+                    <button
+                        onClick={onClose}
+                        className="text-gray-400 hover:text-gray-600 transition-colors"
+                    >
+                        <XCircle className="w-6 h-6" />
+                    </button>
+                </div>
+
+                <div className="mb-4 p-3 bg-blue-50 rounded-xl">
+                    <p className="text-sm text-blue-800">
+                        <strong>User:</strong> {user.name} ({user.email})
+                    </p>
+                </div>
+
+                <form onSubmit={handlePasswordUpdate} className="space-y-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            New Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                value={newPassword}
+                                onChange={(e) => setNewPassword(e.target.value)}
+                                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-all"
+                                placeholder="Enter new password"
+                                required
+                                minLength="6"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            >
+                                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Confirm Password
+                        </label>
+                        <div className="relative">
+                            <input
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-all"
+                                placeholder="Confirm new password"
+                                required
+                                minLength="6"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            >
+                                {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                            </button>
+                        </div>
+                    </div>
+
+                    {error && (
+                        <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl flex items-center">
+                            <svg className="w-5 h-5 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {error}
+                        </div>
+                    )}
+
+                    <div className="flex flex-col sm:flex-row items-center gap-3 pt-4">
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full sm:w-auto px-6 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100"
+                            style={{
+                                background: loading ? '#9ca3af' : 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                                boxShadow: loading ? 'none' : '0 4px 16px rgba(82, 146, 228, 0.3)'
+                            }}
+                        >
+                            {loading ? 'Updating...' : 'Update Password'}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="w-full sm:w-auto px-6 py-3 bg-gray-200 text-gray-800 rounded-xl hover:bg-gray-300 transition-all duration-300 font-medium"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    );
+};
 
 // --- New Component for the User Creation Form ---
 const CreateUserForm = ({ currentUser, onUserCreated, onCancel }) => {
@@ -130,6 +286,7 @@ export default function UserManagementPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [showCreateForm, setShowCreateForm] = useState(false);
+    const [passwordEditUser, setPasswordEditUser] = useState(null);
 
     const fetchUsers = async () => {
         setLoading(true);
@@ -176,6 +333,29 @@ export default function UserManagementPage() {
                 setError(err.message);
             }
         }
+    };
+
+    const canEditPassword = (user) => {
+        if (currentUser?.role === 'SuperAdmin') {
+            return true; // SuperAdmin can edit all passwords
+        }
+        
+        if (currentUser?.role === 'Admin') {
+            return user.role === 'Employee'; // Admin can only edit Employee passwords
+        }
+        
+        return false;
+    };
+
+    const handlePasswordEdit = (user) => {
+        setPasswordEditUser(user);
+    };
+
+    const handlePasswordUpdated = () => {
+        setPasswordEditUser(null);
+        setError('');
+        // Optionally show success message
+        alert('Password updated successfully!');
     };
 
     if (authLoading || loading) {
@@ -263,6 +443,16 @@ export default function UserManagementPage() {
                     />
                 )}
 
+                {/* Password Edit Modal */}
+                {passwordEditUser && (
+                    <PasswordEditModal
+                        user={passwordEditUser}
+                        currentUser={currentUser}
+                        onClose={() => setPasswordEditUser(null)}
+                        onPasswordUpdated={handlePasswordUpdated}
+                    />
+                )}
+
                 {/* Users Display */}
                 {users.length === 0 ? (
                     <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
@@ -319,6 +509,17 @@ export default function UserManagementPage() {
                                                             <option value="Admin">Admin</option>
                                                             {currentUser?.role === 'SuperAdmin' && <option value="SuperAdmin">SuperAdmin</option>}
                                                         </select>
+                                                        
+                                                        {canEditPassword(user) && (
+                                                            <button
+                                                                onClick={() => handlePasswordEdit(user)}
+                                                                className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-100 rounded-lg transition-all duration-200"
+                                                                title="Change Password"
+                                                            >
+                                                                <Key className="w-5 h-5"/>
+                                                            </button>
+                                                        )}
+                                                        
                                                         <button 
                                                             onClick={() => handleDeleteUser(user._id)}
                                                             className="p-2 text-red-600 hover:text-red-800 hover:bg-red-100 rounded-lg transition-all duration-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:bg-transparent"
@@ -393,8 +594,22 @@ export default function UserManagementPage() {
                                             </div>
                                         </div>
 
-                                        {/* Delete Action */}
-                                        <div className="pt-4 border-t border-gray-200">
+                                        {/* Actions */}
+                                        <div className="pt-4 border-t border-gray-200 space-y-3">
+                                            {canEditPassword(user) && (
+                                                <button
+                                                    onClick={() => handlePasswordEdit(user)}
+                                                    className="w-full flex items-center justify-center gap-2 px-4 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                                                    style={{
+                                                        background: 'linear-gradient(90deg, #5292E4 0%, #036DA9 100%)',
+                                                        boxShadow: '0 4px 12px rgba(82, 146, 228, 0.3)'
+                                                    }}
+                                                >
+                                                    <Key className="w-4 h-4" />
+                                                    Change Password
+                                                </button>
+                                            )}
+                                            
                                             <button 
                                                 onClick={() => handleDeleteUser(user._id)}
                                                 className="w-full flex items-center justify-center gap-2 px-4 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:bg-gray-300 disabled:cursor-not-allowed disabled:hover:scale-100"
