@@ -21,6 +21,15 @@ const ContactUs = () => {
           backgroundAttachment: 'scroll'
         }}
       >
+        {/* Partial Gradient Overlay - Only on left side */}
+        <div 
+          className="absolute inset-y-0 left-0 z-0"
+          style={{
+            width: '60%',
+            background: 'linear-gradient(to right, rgba(3, 109, 169, 0.85) 0%, rgba(3, 109, 169, 0.6) 70%, transparent 100%)'
+          }}
+        ></div>
+        
         {/* Content Container */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-8">
           <div className="text-white">
@@ -49,6 +58,7 @@ const ContactUs = () => {
             </div>
             <span className="font-medium ml-2" style={{ color: '#000000' }}>Our Contact</span>
           </div>
+          
           {/* Get in Touch Card */}
           <div className="bg-white rounded-2xl shadow-lg p-12 border border-gray-100">
             <div className="text-center mb-12">
