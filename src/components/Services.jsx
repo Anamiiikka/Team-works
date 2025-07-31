@@ -1,5 +1,5 @@
 'use client';
- import { useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -7,6 +7,7 @@ import servicesData from '../data/services.json';
 
 const Services = () => {
   const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+  const [expandedDescriptions, setExpandedDescriptions] = useState({});
 
   const nextService = () => {
     setCurrentServiceIndex((prev) => (prev + 1) % servicesData.services.length);
@@ -15,6 +16,14 @@ const Services = () => {
   const prevService = () => {
     setCurrentServiceIndex((prev) => (prev - 1 + servicesData.services.length) % servicesData.services.length);
   };
+
+  const toggleDescription = (serviceId) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [serviceId]: !prev[serviceId],
+    }));
+  };
+
   // Function to render a service card
   const renderServiceCard = (service) => (
     <div key={service.id} className="flex-shrink-0 relative pt-12" style={{ width: '300px' }}>
@@ -31,13 +40,13 @@ const Services = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full">
+      <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full flex flex-col">
         <h3 
           style={{
             fontFamily: 'Inter',
             fontWeight: 600,
-            fontSize: '20px',
-            lineHeight: '24px',
+            fontSize: '28px', // Increased from 20px
+            lineHeight: '28px', // Adjusted for larger font
             letterSpacing: '0%',
             textAlign: 'center',
             opacity: 1,
@@ -47,24 +56,37 @@ const Services = () => {
         >
           {service.title}
         </h3>
-        <p 
-          style={{
-            fontFamily: 'Inter',
-            fontWeight: 500,
-            fontSize: '12px',
-            lineHeight: '18px',
-            letterSpacing: '0%',
-            textAlign: 'center',
-            opacity: 1,
-            color: '#6B7280'
-          }}
-          className="px-2"
-        >
-          {service.description}
-        </p>
+        <div className="flex-1">
+          <p 
+            style={{
+              fontFamily: 'Inter',
+              fontWeight: 500,
+              fontSize: '14px', // Increased from 12px
+              lineHeight: '20px', // Adjusted for larger font
+              letterSpacing: '0%',
+              textAlign: 'center',
+              opacity: 1,
+              color: '#6B7280'
+            }}
+            className="px-2"
+          >
+            {expandedDescriptions[service.id] 
+              ? service.description 
+              : `${service.description.substring(0, 100)}${service.description.length > 100 ? '...' : ''}`}
+          </p>
+          {service.description.length > 100 && (
+            <button
+              onClick={() => toggleDescription(service.id)}
+              className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
+            >
+              {expandedDescriptions[service.id] ? 'Read Less' : 'Read More'}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
+
   return (
     <section className="py-8 md:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
       {/* Abstract Geometric Background Elements */}
@@ -267,13 +289,13 @@ const Services = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg min-h-[300px] flex flex-col justify-center">
+              <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg min-h-[300px] flex flex-col">
                 <h3 
                   style={{
                     fontFamily: 'Inter',
                     fontWeight: 600,
-                    fontSize: '20px',
-                    lineHeight: '24px',
+                    fontSize: '24px', // Increased from 20px
+                    lineHeight: '28px', // Adjusted for larger font
                     letterSpacing: '0%',
                     textAlign: 'center',
                     opacity: 1,
@@ -283,21 +305,33 @@ const Services = () => {
                 >
                   {servicesData.services[currentServiceIndex].title}
                 </h3>
-                <p 
-                  style={{
-                    fontFamily: 'Inter',
-                    fontWeight: 500,
-                    fontSize: '12px',
-                    lineHeight: '16px',
-                    letterSpacing: '0%',
-                    textAlign: 'center',
-                    opacity: 1,
-                    color: '#6B7280'
-                  }}
-                  className="px-2"
-                >
-                  {servicesData.services[currentServiceIndex].description}
-                </p>
+                <div className="flex-1">
+                  <p 
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 500,
+                      fontSize: '14px', // Increased from 12px
+                      lineHeight: '20px', // Adjusted for larger font
+                      letterSpacing: '0%',
+                      textAlign: 'center',
+                      opacity: 1,
+                      color: '#6B7280'
+                    }}
+                    className="px-2"
+                  >
+                    {expandedDescriptions[servicesData.services[currentServiceIndex].id] 
+                      ? servicesData.services[currentServiceIndex].description 
+                      : `${servicesData.services[currentServiceIndex].description.substring(0, 100)}${servicesData.services[currentServiceIndex].description.length > 100 ? '...' : ''}`}
+                  </p>
+                  {servicesData.services[currentServiceIndex].description.length > 100 && (
+                    <button
+                      onClick={() => toggleDescription(servicesData.services[currentServiceIndex].id)}
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-2"
+                    >
+                      {expandedDescriptions[servicesData.services[currentServiceIndex].id] ? 'Read Less' : 'Read More'}
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
