@@ -3,9 +3,9 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { PlusCircle, XCircle, Trash2, User, Mail, Shield, CheckCircle, Clock, Key, Eye, EyeOff } from 'lucide-react';
+import { PlusCircle, XCircle, Trash2, User, Mail, Shield, CheckCircle, Clock, Key, Eye, EyeOff, AlertTriangle } from 'lucide-react';
 
-// --- Password Edit Modal Component ---
+// Password Edit Modal Component (keeping the same as before)
 const PasswordEditModal = ({ user, currentUser, onClose, onPasswordUpdated }) => {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -161,7 +161,7 @@ const PasswordEditModal = ({ user, currentUser, onClose, onPasswordUpdated }) =>
     );
 };
 
-// --- New Component for the User Creation Form ---
+// Create User Form Component (keeping the same as before)
 const CreateUserForm = ({ currentUser, onUserCreated, onCancel }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -270,7 +270,6 @@ const CreateUserForm = ({ currentUser, onUserCreated, onCancel }) => {
     );
 };
 
-// Back to your original colors with better text contrast
 const getRoleBadgeColor = (role) => {
     const colors = {
         'SuperAdmin': 'bg-red-100 text-red-900 font-semibold',
@@ -335,15 +334,28 @@ export default function UserManagementPage() {
         }
     };
 
+    const handleDismissForgotPassword = async (userId) => {
+        try {
+            const res = await fetch(`/api/cms/users/${userId}/dismiss-forgot-password`, {
+                method: 'PUT',
+                credentials: 'include',
+            });
+            if (!res.ok) {
+                throw new Error('Failed to dismiss forgot password request.');
+            }
+            fetchUsers();
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+
     const canEditPassword = (user) => {
         if (currentUser?.role === 'SuperAdmin') {
-            return true; // SuperAdmin can edit all passwords
+            return true;
         }
-        
         if (currentUser?.role === 'Admin') {
-            return user.role === 'Employee'; // Admin can only edit Employee passwords
+            return user.role === 'Employee';
         }
-        
         return false;
     };
 
@@ -352,11 +364,20 @@ export default function UserManagementPage() {
     };
 
     const handlePasswordUpdated = () => {
-        setPasswordEditUser(null);
-        setError('');
-        // Optionally show success message
-        alert('Password updated successfully!');
-    };
+    setPasswordEditUser(null);
+    setError('');
+    
+    // Show success message that includes clearing forgot password request
+    const user = passwordEditUser;
+    let successMessage = 'Password updated successfully!';
+    
+    if (user && user.forgotPasswordRequest?.isActive) {
+        successMessage += ' The password reset request has been automatically cleared.';
+    }
+    
+    alert(successMessage);
+    fetchUsers(); // Refresh to show cleared forgot password notification
+};
 
     if (authLoading || loading) {
         return (
@@ -484,7 +505,24 @@ export default function UserManagementPage() {
                                     <tbody className="bg-white divide-y divide-gray-100">
                                         {users.map((user, index) => (
                                             <tr key={user._id} className={`transition-colors duration-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} hover:bg-blue-50`}>
-                                                <td className="py-4 px-4 text-sm font-medium text-gray-900">{user.name || 'N/A'}</td>
+                                                <td className="py-4 px-4 text-sm">
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="font-medium text-gray-900">{user.name || 'N/A'}</span>
+                                                        {user.forgotPasswordRequest?.isActive && (
+                                                            <div className="flex items-center gap-1">
+                                                                <AlertTriangle className="w-4 h-4 text-orange-500" />
+                                                                <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-semibold">
+                                                                    Password Reset Requested
+                                                                </span>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    {user.forgotPasswordRequest?.isActive && (
+                                                        <div className="mt-1 text-xs text-gray-500">
+                                                            Requested: {new Date(user.forgotPasswordRequest.requestedAt).toLocaleDateString()}
+                                                        </div>
+                                                    )}
+                                                </td>
                                                 <td className="py-4 px-4 text-sm text-gray-700">{user.email}</td>
                                                 <td className="py-4 px-4 text-sm">
                                                     <span className={`px-3 py-1 rounded-full text-xs ${getRoleBadgeColor(user.role)}`}>
@@ -497,7 +535,7 @@ export default function UserManagementPage() {
                                                     </span>
                                                 </td>
                                                 <td className="py-4 px-4 text-sm">
-                                                    <div className="flex items-center gap-2">
+                                                    <div className="flex items-center gap-2 flex-wrap">
                                                         <select 
                                                             defaultValue={user.role || ''} 
                                                             onChange={(e) => handleRoleChange(user._id, e.target.value)} 
@@ -517,6 +555,16 @@ export default function UserManagementPage() {
                                                                 title="Change Password"
                                                             >
                                                                 <Key className="w-5 h-5"/>
+                                                            </button>
+                                                        )}
+
+                                                        {user.forgotPasswordRequest?.isActive && (
+                                                            <button
+                                                                onClick={() => handleDismissForgotPassword(user._id)}
+                                                                className="p-2 text-orange-600 hover:text-orange-800 hover:bg-orange-100 rounded-lg transition-all duration-200"
+                                                                title="Dismiss Password Reset Request"
+                                                            >
+                                                                <XCircle className="w-5 h-5"/>
                                                             </button>
                                                         )}
                                                         
@@ -548,11 +596,26 @@ export default function UserManagementPage() {
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-start">
                                             <div className="flex-1 min-w-0">
-                                                <h3 className="font-semibold text-lg text-gray-900 truncate flex items-center gap-2">
-                                                    <User className="w-5 h-5 text-gray-500" />
-                                                    {user.name || 'N/A'}
-                                                </h3>
-                                                <p className="text-sm text-gray-500 mt-1 flex items-center gap-2">
+                                                <div className="flex items-center gap-2 mb-2">
+                                                    <h3 className="font-semibold text-lg text-gray-900 flex items-center gap-2">
+                                                        <User className="w-5 h-5 text-gray-500" />
+                                                        {user.name || 'N/A'}
+                                                    </h3>
+                                                    {user.forgotPasswordRequest?.isActive && (
+                                                        <AlertTriangle className="w-5 h-5 text-orange-500" />
+                                                    )}
+                                                </div>
+                                                {user.forgotPasswordRequest?.isActive && (
+                                                    <div className="mb-2 p-2 bg-orange-50 rounded-lg">
+                                                        <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-semibold">
+                                                            Password Reset Requested
+                                                        </span>
+                                                        <div className="text-xs text-gray-500 mt-1">
+                                                            {new Date(user.forgotPasswordRequest.requestedAt).toLocaleDateString()}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                <p className="text-sm text-gray-500 flex items-center gap-2">
                                                     <Mail className="w-4 h-4" />
                                                     {user.email}
                                                 </p>
@@ -607,6 +670,20 @@ export default function UserManagementPage() {
                                                 >
                                                     <Key className="w-4 h-4" />
                                                     Change Password
+                                                </button>
+                                            )}
+
+                                            {user.forgotPasswordRequest?.isActive && (
+                                                <button
+                                                    onClick={() => handleDismissForgotPassword(user._id)}
+                                                    className="w-full flex items-center justify-center gap-2 px-4 py-3 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+                                                    style={{
+                                                        background: 'linear-gradient(90deg, #f59e0b 0%, #d97706 100%)',
+                                                        boxShadow: '0 4px 12px rgba(245, 158, 11, 0.3)'
+                                                    }}
+                                                >
+                                                    <XCircle className="w-4 h-4" />
+                                                    Dismiss Reset Request
                                                 </button>
                                             )}
                                             

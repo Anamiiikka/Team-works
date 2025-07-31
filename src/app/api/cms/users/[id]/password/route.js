@@ -32,7 +32,6 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ message: 'Forbidden. Insufficient permissions.' }, { status: 403 });
     }
 
-    // FIXED: Await params before accessing its properties
     const { id: targetUserId } = await params;
     const { password: newPassword } = await request.json();
 
@@ -63,9 +62,11 @@ export async function PUT(request, { params }) {
     const saltRounds = 12;
     const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
-    // 4. Update the user's password
+    // 4. Update the user's password AND clear forgot password request
     await User.findByIdAndUpdate(targetUserId, { 
-      password: hashedPassword 
+      password: hashedPassword,
+      // Clear the forgot password request when password is reset
+      $unset: { forgotPasswordRequest: 1 }
     });
 
     return NextResponse.json({ 

@@ -25,6 +25,12 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  // NEW FIELDS FOR FORGOT PASSWORD
+  forgotPasswordRequest: {
+    isActive: { type: Boolean, default: false },
+    requestedAt: { type: Date },
+    message: { type: String }
+  }
 }, { timestamps: true });
 
 // Hash password before saving
