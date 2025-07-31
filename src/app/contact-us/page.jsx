@@ -344,15 +344,7 @@ const ContactUs = () => {
                   ></iframe>
                   
                   {/* Timeline Badge */}
-                  <div className="absolute top-2 md:top-4 right-2 md:right-4 bg-white rounded-lg p-2 md:p-4 shadow-lg">
-                    <div className="text-center">
-                      <div className="text-2xl md:text-4xl font-bold text-blue-600 mb-1">2018</div>
-                      <div className="text-xs md:text-sm font-medium text-gray-600">STARTED</div>
-                      <button className="mt-1 md:mt-2 bg-blue-600 text-white px-2 md:px-4 py-1 rounded text-xs hover:bg-blue-700 transition-colors">
-                        READ STORY
-                      </button>
-                    </div>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -363,7 +355,7 @@ const ContactUs = () => {
                 className="bg-blue-700 text-white px-3 md:px-4 py-1 md:py-2 rounded text-xs md:text-sm font-medium"
                 style={{ background: '#024A7A' }}
               >
-                1345 × 456
+                
               </div>
             </div>
           </div>
