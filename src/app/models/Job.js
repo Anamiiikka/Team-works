@@ -62,6 +62,12 @@ const JobSchema = new mongoose.Schema({
     type: Boolean,
     default: true
   },
+  // NEW FIELD FOR PORTAL LISTING
+  isListedOnPortal: {
+    type: Boolean,
+    default: true,
+    index: true // Add index for better query performance
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -81,6 +87,9 @@ const JobSchema = new mongoose.Schema({
 
 // Create indexes for better performance and ensure unique constraint
 JobSchema.index({ jobId: 1 }, { unique: true });
+JobSchema.index({ isActive: 1, isListedOnPortal: 1 }); // Compound index for filtering
+JobSchema.index({ department: 1 }); // Index for department filtering
+JobSchema.index({ postedDate: -1 }); // Index for sorting by date
 
 // Pre-save hook for validation and logging
 JobSchema.pre('save', function(next) {
@@ -88,9 +97,36 @@ JobSchema.pre('save', function(next) {
     return next(new Error('Job ID is required and cannot be empty'));
   }
   this.updatedAt = Date.now();
-  console.log('Saving job with jobId:', this.jobId);
+  console.log('Saving job with jobId:', this.jobId, 'Portal Listed:', this.isListedOnPortal);
   next();
 });
+
+// Virtual field to check if job is publicly visible
+JobSchema.virtual('isPubliclyVisible').get(function() {
+  return this.isActive && this.isListedOnPortal;
+});
+
+// Static method to get portal-listed jobs
+JobSchema.statics.getPortalJobs = function(filters = {}) {
+  return this.find({
+    isActive: true,
+    isListedOnPortal: true,
+    ...filters
+  }).sort({ postedDate: -1 });
+};
+
+// Static method to toggle portal listing for all jobs
+JobSchema.statics.togglePortalListing = function(shouldList = true) {
+  return this.updateMany(
+    {},
+    { 
+      $set: { 
+        isListedOnPortal: shouldList,
+        updatedAt: new Date()
+      }
+    }
+  );
+};
 
 const Job = mongoose.model('Job', JobSchema);
 
