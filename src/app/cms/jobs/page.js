@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Plus, Edit2, Trash2, Eye, Search, Filter, CheckCircle, XCircle } from 'lucide-react';
+import { Plus, Edit2, Trash2, Eye, Search, Filter, CheckCircle, XCircle, Globe, EyeOff } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
 async function getJobs(page = 1, sort = '-postedDate', search = '', department = '', isActive = '') {
@@ -70,6 +70,22 @@ async function deleteJob(id) {
   return res.json();
 }
 
+// New function to toggle portal listing
+async function togglePortalListing(action) {
+  const res = await fetch('/api/jobs/portal-toggle', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action }),
+    credentials: 'include'
+  });
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.error || 'Failed to toggle portal listing');
+  }
+  return res.json();
+}
+
 export default function JobManagement() {
   const { user: currentUser, loading: authLoading } = useAuth();
   const [jobs, setJobs] = useState([]);
@@ -84,6 +100,7 @@ export default function JobManagement() {
   const [activeFilter, setActiveFilter] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
+  const [portalListing, setPortalListing] = useState(true); // New state for portal listing
   const [formData, setFormData] = useState({
     jobId: '',
     title: '',
@@ -105,6 +122,11 @@ export default function JobManagement() {
       setJobs(data.jobs || []);
       setDepartments(data.departments || []);
       setTotalPages(data.pagination?.totalPages || 1);
+      
+      // Check if there are any jobs listed on portal (assuming jobs with isListedOnPortal: true)
+      // For now, we'll set it based on whether there are active jobs
+      const hasListedJobs = data.jobs?.some(job => job.isListedOnPortal !== false);
+      setPortalListing(hasListedJobs);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -189,7 +211,7 @@ export default function JobManagement() {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
-    setError(null); // Clear error on input change
+    setError(null);
   };
 
   const handleArrayInputChange = (index, field, value) => {
@@ -219,7 +241,7 @@ export default function JobManagement() {
       setError('Job ID is required');
       return;
     }
-    console.log('Submitting formData:', formData); // Debug log
+    console.log('Submitting formData:', formData);
     try {
       setLoading(true);
       const cleanedData = {
@@ -227,7 +249,7 @@ export default function JobManagement() {
         requirements: formData.requirements.filter(req => req.trim()),
         responsibilities: formData.responsibilities.filter(resp => resp.trim())
       };
-      console.log('Cleaned data being sent:', cleanedData); // Debug log
+      console.log('Cleaned data being sent:', cleanedData);
       if (editingJob) {
         await updateJob({ ...cleanedData, id: editingJob._id });
       } else {
@@ -236,7 +258,7 @@ export default function JobManagement() {
       resetForm();
       fetchJobs();
     } catch (err) {
-      console.error('Submit error:', err); // Debug log
+      console.error('Submit error:', err);
       setError(err.message || 'An error occurred while saving the job');
     } finally {
       setLoading(false);
@@ -291,17 +313,19 @@ export default function JobManagement() {
     }
   };
 
-  const handleBulkActiveToggle = async (makeActive) => {
-    const action = makeActive ? 'activate' : 'deactivate';
-    if (window.confirm(`Are you sure you want to ${action} all jobs?`)) {
+  // New function to handle portal listing toggle
+  const handlePortalToggle = async () => {
+    const action = portalListing ? 'delist' : 'list';
+    const confirmMessage = portalListing 
+      ? 'Are you sure you want to delist all jobs from the portal? This will hide them from public view.' 
+      : 'Are you sure you want to list all active jobs on the portal? This will make them visible to the public.';
+    
+    if (window.confirm(confirmMessage)) {
       try {
         setLoading(true);
-        // Update all jobs one by one
-        const updatePromises = jobs.map(job => 
-          updateJob({ ...job, isActive: makeActive, id: job._id })
-        );
-        await Promise.all(updatePromises);
-        fetchJobs();
+        await togglePortalListing(action);
+        setPortalListing(!portalListing);
+        fetchJobs(); // Refresh to get updated data
       } catch (err) {
         setError(err.message);
       } finally {
@@ -348,32 +372,22 @@ export default function JobManagement() {
               <h2 className="text-2xl sm:text-3xl font-bold text-white">Job Management</h2>
               <div className="flex flex-wrap gap-3">
                 {jobs.length > 0 && (
-                  <>
-                    <button
-                      onClick={() => handleBulkActiveToggle(true)}
-                      disabled={loading}
-                      className="flex items-center gap-2 px-4 py-2 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                      style={{
-                        background: 'linear-gradient(90deg, #059669 0%, #047857 100%)',
-                        boxShadow: '0 4px 12px rgba(5, 150, 105, 0.3)'
-                      }}
-                    >
-                      <CheckCircle className="w-4 h-4" />
-                      Activate All
-                    </button>
-                    <button
-                      onClick={() => handleBulkActiveToggle(false)}
-                      disabled={loading}
-                      className="flex items-center gap-2 px-4 py-2 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                      style={{
-                        background: 'linear-gradient(90deg, #dc2626 0%, #b91c1c 100%)',
-                        boxShadow: '0 4px 12px rgba(220, 38, 38, 0.3)'
-                      }}
-                    >
-                      <XCircle className="w-4 h-4" />
-                      Deactivate All
-                    </button>
-                  </>
+                  <button
+                    onClick={handlePortalToggle}
+                    disabled={loading}
+                    className="flex items-center gap-2 px-4 py-2 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                    style={{
+                      background: portalListing 
+                        ? 'linear-gradient(90deg, #dc2626 0%, #b91c1c 100%)'
+                        : 'linear-gradient(90deg, #059669 0%, #047857 100%)',
+                      boxShadow: portalListing 
+                        ? '0 4px 12px rgba(220, 38, 38, 0.3)'
+                        : '0 4px 12px rgba(5, 150, 105, 0.3)'
+                    }}
+                  >
+                    {portalListing ? <EyeOff className="w-4 h-4" /> : <Globe className="w-4 h-4" />}
+                    {portalListing ? 'Delist from Portal' : 'List on Portal'}
+                  </button>
                 )}
                 <button
                   onClick={() => setShowForm(true)}
@@ -449,7 +463,31 @@ export default function JobManagement() {
           </div>
         )}
 
-        {/* Job Form Modal */}
+        {/* Portal Listing Status Banner */}
+        {jobs.length > 0 && (
+          <div className="mb-6 bg-white rounded-2xl p-4 shadow-lg border-l-4" style={{
+            borderLeftColor: portalListing ? '#059669' : '#dc2626'
+          }}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                {portalListing ? <Globe className="w-5 h-5 text-green-600" /> : <EyeOff className="w-5 h-5 text-red-600" />}
+                <div>
+                  <p className={`font-medium ${portalListing ? 'text-green-800' : 'text-red-800'}`}>
+                    Jobs are currently {portalListing ? 'listed on' : 'delisted from'} the portal
+                  </p>
+                  <p className={`text-sm ${portalListing ? 'text-green-600' : 'text-red-600'}`}>
+                    {portalListing 
+                      ? 'Active jobs are visible to the public on your careers page'
+                      : 'Jobs are hidden from public view on your careers page'
+                    }
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Job Form Modal - keeping the same as before */}
         {showForm && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl p-6 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
@@ -652,7 +690,7 @@ export default function JobManagement() {
           </div>
         )}
 
-        {/* Jobs List */}
+        {/* Jobs List - keeping the same as before but continuing with the rest */}
         {loading ? (
           <div className="bg-white rounded-2xl shadow-lg p-12 text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
@@ -766,7 +804,7 @@ export default function JobManagement() {
               </div>
             </div>
 
-            {/* Mobile Cards */}
+            {/* Mobile Cards - keeping the same as before */}
             <div className="lg:hidden space-y-4">
               {jobs.map((job) => (
                 <div key={job._id} className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300">

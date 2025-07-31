@@ -12,8 +12,11 @@ export async function GET(request) {
     const department = searchParams.get('department') || '';
     const search = searchParams.get('search') || '';
 
-    // Build query - only show active jobs
-    let query = { isActive: true };
+    // Build query - only show jobs that are both active AND listed on portal
+    let query = { 
+      isActive: true,
+      isListedOnPortal: true  // This is the key addition
+    };
     
     if (search) {
       query.$or = [
@@ -32,8 +35,11 @@ export async function GET(request) {
       .select('jobId title department location type experience description requirements responsibilities postedDate')
       .sort({ postedDate: -1 });
 
-    // Get departments for filter
-    const departments = await Job.distinct('department', { isActive: true });
+    // Get departments for filter - only from jobs that are active and listed on portal
+    const departments = await Job.distinct('department', { 
+      isActive: true,
+      isListedOnPortal: true 
+    });
 
     return NextResponse.json({
       jobs,
