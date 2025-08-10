@@ -8,7 +8,9 @@ export default function Top({
   locationTitle = "",
   description = "Lorem ipsum dolor sit amet consectetur. Ullamcorper puruse et sit rhoncus sed imperdiet eget. Varius mattis tortor magna vitae magna.",
   buttonText = "Get Started",
-  buttonLink = "/opportunity"
+  buttonLink = "/opportunity",
+  showDescription = false,
+  showButton = false
 }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -57,15 +59,15 @@ export default function Top({
       <>
         {/* Mobile Navbar - Hidden on lg+ screens */}
         <div className="w-full px-4 py-3 lg:hidden">
-          <nav className="bg-white shadow-lg border border-gray-100 rounded-3xl">
-            <div className="px-4 lg:px-6">
-              <div className="flex h-16 items-center justify-between">
+          <nav className="bg-white shadow-lg border border-gray-100 rounded-2xl sm:rounded-3xl">
+            <div className="px-4 sm:px-6">
+              <div className="flex h-14 sm:h-16 items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0">
                   <img 
                     src="/logo.png" 
                     alt="Team Works Inc"
-                    className="h-8 w-auto"
+                    className="h-7 sm:h-8 w-auto"
                   />
                 </Link>
 
@@ -76,7 +78,7 @@ export default function Top({
                   className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 rounded-lg"
                 >
                   <svg 
-                    className="w-6 h-6" 
+                    className="w-5 h-5 sm:w-6 sm:h-6" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -92,47 +94,47 @@ export default function Top({
 
               {/* Mobile Menu Dropdown */}
               {isMobileMenuOpen && (
-                <div className="pb-4 space-y-2">
+                <div className="pb-3 sm:pb-4 space-y-1 sm:space-y-2">
                   <button 
-                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold text-sm sm:text-base" 
                     onClick={(e) => handleNavClick(e, 'home')}
                   >
                     Home
                   </button>
                   <button 
-                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold text-sm sm:text-base" 
                     onClick={(e) => handleNavClick(e, 'about')}
                   >
                     About
                   </button>
                   <button 
-                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold text-sm sm:text-base" 
                     onClick={(e) => handleNavClick(e, 'services')}
                   >
                     Services
                   </button>
                   <button 
-                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold text-sm sm:text-base" 
                     onClick={(e) => handleNavClick(e, 'testimonials')}
                   >
                     Client
                   </button>
                   <button 
-                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold text-sm sm:text-base" 
                     onClick={(e) => handleNavClick(e, 'career')}
                   >
                     Career
                   </button>
                   <button 
-                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                    className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold text-sm sm:text-base" 
                     onClick={(e) => handleNavClick(e, 'contact')}
                   >
                     Contact us
                   </button>
                   
-                  <div className="pt-3 border-t border-gray-200">
+                  <div className="pt-2 sm:pt-3 border-t border-gray-200">
                     <button 
-                      className="w-full py-3 px-5 text-white rounded-lg font-medium text-base" 
+                      className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-white rounded-lg font-medium text-sm sm:text-base" 
                       style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
                       onClick={(e) => handleNavClick(e, 'contact')}
                     >
@@ -147,7 +149,7 @@ export default function Top({
       </>
 
       {/* Main Hero Section */}
-      <div className="px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16 relative">
         {/* Abstract Geometric Background Elements */}
         <div className="absolute inset-0 pointer-events-none opacity-60">
           {/* Top area geometric elements */}
@@ -219,36 +221,21 @@ export default function Top({
           <div className="absolute bottom-3/4 right-1/8 w-4 h-1 bg-blue-400/45 rounded-full transform rotate-15"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-[1348px] mx-auto relative z-10">
           {/* Main Container with Gradient Background */}
           <div 
-            className="mx-auto shadow-lg relative"
+            className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[390px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-lg"
             style={{
-              width: '100%',
-              maxWidth: '100%',
-              height: '290px',
-              marginTop: '15px',
-              borderRadius: '32px',
-              opacity: 1,
               background: 'radial-gradient(54.49% 161.07% at 44.25% 37.5%, #A4C7FD 0%, #036DA9 91.19%)',
-              overflow: 'hidden',
             }}
           >
             {/* Desktop Navbar - Positioned inside the blue container */}
             <div 
-              className="hidden lg:block absolute z-50"
-              style={{
-                width: '100%',
-                height: '91px',
-                top: '0px',
-                left: '0px',
-                opacity: 1
-              }}
+              className="hidden lg:block absolute z-50 w-full h-[91px] top-0 left-0"
             >
               <nav 
-                className="relative w-full h-full" 
+                className="relative w-full h-full bg-transparent" 
                 style={{ 
-                  background: 'transparent',
                   borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
                 }}
               >
@@ -339,18 +326,13 @@ export default function Top({
                     <div className="flex items-center gap-2">
                       <Link href="/auth/login">
                         <button 
-                          className="text-white hover:text-blue-200 transition-colors"
+                          className="px-4 py-2 text-white hover:text-blue-200 transition-colors rounded-full"
                           style={{
-                            width: '70px',
-                            height: '28px',
-                            borderRadius: '30px',
-                            gap: '10px',
                             fontFamily: 'Inter',
                             fontWeight: 600,
                             fontSize: '16px',
                             lineHeight: '22px',
-                            letterSpacing: '0%',
-                            verticalAlign: 'middle'
+                            letterSpacing: '0%'
                           }}
                         >
                           Sign In
@@ -358,20 +340,14 @@ export default function Top({
                       </Link>
                       <Link href="/auth/signup">
                         <button 
-                          className="text-white transition-all duration-200 hover:shadow-lg"
+                          className="px-4 py-2 text-white transition-all duration-200 hover:shadow-lg rounded-full"
                           style={{
-                            width: '77px',
-                            height: '28px',
-                            borderRadius: '100px',
-                            borderWidth: '1px',
-                            gap: '8px',
                             background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)',
                             fontFamily: 'Inter',
                             fontWeight: 600,
                             fontSize: '16px',
                             lineHeight: '22px',
-                            letterSpacing: '0%',
-                            verticalAlign: 'middle'
+                            letterSpacing: '0%'
                           }}
                         >
                           Sign Up
@@ -419,20 +395,18 @@ export default function Top({
             </div>
 
             {/* Central Content */}
-            <div className="absolute inset-0 flex items-center justify-center px-4" style={{ paddingTop: '120px', borderRadius: '32px', overflow: 'hidden' }}>
+            <div className="absolute inset-0 flex items-center justify-center px-4">
               <div className="text-center text-black z-20 flex flex-col items-center max-w-full">
                 {/* Location Title (Breadcrumb) */}
                 {locationTitle && (
                   <div
+                    className="text-lg sm:text-xl mb-3 sm:mb-4"
                     style={{
                       fontFamily: 'Inter',
                       fontWeight: 600,
-                      fontSize: '20px',
-                      lineHeight: '24px',
                       letterSpacing: '0%',
                       textAlign: 'center',
                       color: '#000000',
-                      marginBottom: '16px',
                       opacity: 1
                     }}
                   >
@@ -440,7 +414,7 @@ export default function Top({
                   </div>
                 )}
                 <h2 
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-4 md:mb-6"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-4 md:mb-6 px-2"
                   style={{
                     fontFamily: 'Inter',
                     letterSpacing: '-2%',
@@ -450,11 +424,50 @@ export default function Top({
                 >
                   {title}
                 </h2>
+                
+                {showDescription && (
+                  <p 
+                    className="text-sm sm:text-base md:text-lg font-medium mb-6 md:mb-8 px-2"
+                    style={{
+                      fontFamily: 'Inter',
+                      letterSpacing: '0%',
+                      maxWidth: '562px',
+                      opacity: 1
+                    }}
+                  >
+                    {description}
+                  </p>
+                )}
+
+                {/* Get Started Button */}
+                {showButton && (
+                  <Link href={buttonLink}>
+                    <button className="inline-flex items-center gap-2 md:gap-3 bg-black text-white py-2 md:py-3 pr-4 md:pr-6 pl-1 md:pl-2 rounded-full text-sm md:text-base font-medium hover:bg-gray-800 transition-colors duration-300 shadow-lg">
+                      <div 
+                        className="bg-white rounded-full flex items-center justify-center"
+                        style={{
+                          width: 'clamp(32px, 5vw, 40px)',
+                          height: 'clamp(32px, 5vw, 40px)',
+                          opacity: 1
+                        }}
+                      >
+                        <svg 
+                          className="w-4 h-4 md:w-5 md:h-5 text-black transform -rotate-45" 
+                          fill="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                      </div>
+                      {buttonText}
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: '32px', overflow: 'hidden' }}>
+            <div className="absolute inset-0 pointer-events-none">
               {/* Abstract shapes for visual enhancement - hidden on small screens */}
               <div className="hidden md:block absolute top-6 lg:top-10 left-1/4 w-12 lg:w-20 h-12 lg:h-20 bg-white/10 rounded-full blur-xl"></div>
               <div className="hidden md:block absolute bottom-6 lg:bottom-10 right-1/4 w-20 lg:w-32 h-20 lg:h-32 bg-white/5 rounded-full blur-2xl"></div>
