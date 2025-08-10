@@ -22,18 +22,18 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-2xl p-6 pt-20 text-center shadow-lg h-full min-h-[400px]">
+      <div className="bg-white rounded-2xl p-8 pt-20 text-center shadow-lg h-full min-h-[450px]">
         <h3 
           style={{
             fontFamily: 'Inter',
             fontWeight: 600,
-            fontSize: '20px',
-            lineHeight: '24px',
+            fontSize: '24px',
+            lineHeight: '30px',
             letterSpacing: '0%',
             textAlign: 'center',
             opacity: 1,
             color: '#1F2937',
-            marginBottom: '12px'
+            marginBottom: '16px'
           }}
         >
           {service.title}
@@ -42,8 +42,8 @@ export default function ServicesPage() {
           style={{
             fontFamily: 'Inter',
             fontWeight: 500,
-            fontSize: '14px',
-            lineHeight: '20px',
+            fontSize: '16px',
+            lineHeight: '24px',
             letterSpacing: '0%',
             textAlign: 'center',
             opacity: 1,
@@ -66,7 +66,7 @@ export default function ServicesPage() {
       />
 
       {/* Services Content Section */}
-      <section className="py-4 md:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden -mt-6 md:-mt-8" style={{ backgroundColor: '#F6F5EF' }}>
+      <section className="py-4 md:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden -mt-12 md:-mt-16" style={{ backgroundColor: '#F6F5EF' }}>
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
