@@ -52,7 +52,7 @@ export default function Top({
   };
 
   return (
-    <section className="w-full relative overflow-hidden" style={{ background: '#F6F5EF' }}>
+    <section className="w-full relative overflow-hidden px-4 md:px-6 lg:px-8" style={{ background: '#F6F5EF' }}>
       {/* Navbar Section */}
       <>
         {/* Mobile Navbar - Hidden on lg+ screens */}
@@ -219,18 +219,19 @@ export default function Top({
           <div className="absolute bottom-3/4 right-1/8 w-4 h-1 bg-blue-400/45 rounded-full transform rotate-15"></div>
         </div>
 
-        <div className="max-w-[1348px] mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           {/* Main Container with Gradient Background */}
           <div 
-            className="mx-auto overflow-hidden"
+            className="mx-auto shadow-lg relative"
             style={{
-              maxWidth: '1349px',
               width: '100%',
-              height: '275px',
-              marginTop: '33px',
-              borderRadius: '24px',
+              maxWidth: '100%',
+              height: '290px',
+              marginTop: '15px',
+              borderRadius: '32px',
               opacity: 1,
               background: 'radial-gradient(54.49% 161.07% at 44.25% 37.5%, #A4C7FD 0%, #036DA9 91.19%)',
+              overflow: 'hidden',
             }}
           >
             {/* Desktop Navbar - Positioned inside the blue container */}
@@ -418,7 +419,7 @@ export default function Top({
             </div>
 
             {/* Central Content */}
-            <div className="absolute inset-0 flex items-center justify-center px-4" style={{ paddingTop: '120px' }}>
+            <div className="absolute inset-0 flex items-center justify-center px-4" style={{ paddingTop: '120px', borderRadius: '32px', overflow: 'hidden' }}>
               <div className="text-center text-black z-20 flex flex-col items-center max-w-full">
                 {/* Location Title (Breadcrumb) */}
                 {locationTitle && (
@@ -430,7 +431,7 @@ export default function Top({
                       lineHeight: '24px',
                       letterSpacing: '0%',
                       textAlign: 'center',
-                      color: '#2C87BB',
+                      color: '#000000',
                       marginBottom: '16px',
                       opacity: 1
                     }}
@@ -453,7 +454,7 @@ export default function Top({
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: '32px', overflow: 'hidden' }}>
               {/* Abstract shapes for visual enhancement - hidden on small screens */}
               <div className="hidden md:block absolute top-6 lg:top-10 left-1/4 w-12 lg:w-20 h-12 lg:h-20 bg-white/10 rounded-full blur-xl"></div>
               <div className="hidden md:block absolute bottom-6 lg:bottom-10 right-1/4 w-20 lg:w-32 h-20 lg:h-32 bg-white/5 rounded-full blur-2xl"></div>

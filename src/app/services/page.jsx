@@ -66,7 +66,7 @@ export default function ServicesPage() {
       />
 
       {/* Services Content Section */}
-      <section className="py-8 md:py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#F6F5EF' }}>
+      <section className="py-4 md:py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden -mt-6 md:-mt-8" style={{ backgroundColor: '#F6F5EF' }}>
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
