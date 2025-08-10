@@ -5,42 +5,288 @@
       "title": "Debt Syndication",
       "description": "We specialize in structuring and arranging debt financing solutions to support business growth, expansion, and restructuring. Our strong relationships with banks, NBFCs, and financial institutions allow us to offer customized funding solutions, including Term Loans, Structured Finance, External Commercial Borrowings (ECBs), and Asset-Based Lending.",
       "icon": "/money-bag.png",
-      "alt": "Debt Syndication"
+      "alt": "Debt Syndication",
+      "image": "/finance.png",
+      "features": [
+        {
+          "icon": "/money-bag.png",
+          "title": "Term Loans",
+          "description": "Structured term financing solutions for business expansion and growth initiatives."
+        },
+        {
+          "icon": "/venture.png", 
+          "title": "External Commercial Borrowings",
+          "description": "Foreign currency loans for eligible Indian entities from recognized lenders."
+        },
+        {
+          "icon": "/organization.png",
+          "title": "Asset-Based Lending",
+          "description": "Financing secured by business assets to optimize capital structure."
+        },
+        {
+          "icon": "/capital-venture.png",
+          "title": "Structured Finance",
+          "description": "Complex financial instruments tailored to specific business needs."
+        },
+        {
+          "icon": "/closure.png",
+          "title": "NBFC Partnerships",
+          "description": "Strong relationships with Non-Banking Financial Companies for diverse solutions."
+        },
+        {
+          "icon": "/consultant.png",
+          "title": "Bank Relations",
+          "description": "Established connections with leading banks for competitive financing options."
+        }
+      ],
+      "outcomes": [
+        "Access to diverse funding sources and competitive rates",
+        "Structured financing solutions tailored to business needs",
+        "Reduced dependency on single funding sources",
+        "Enhanced working capital and cash flow management",
+        "Strategic financial partnerships for long-term growth",
+        "Professional guidance through complex financing processes"
+      ]
     },
     {
       "id": 2,
       "title": "Working Capital Management",
       "description": "Efficient working capital management is crucial for business sustainability and growth. Our experts assist in optimizing cash flow, enhancing liquidity, and ensuring seamless business operations by offering Fund-Based & Non-Fund-Based Facilities, Invoice & Receivables Financing, Cash Flow Optimization Strategies, Supply Chain Financing, and Trade Finance Solutions.",
       "icon": "/closure.png",
-      "alt": "Working Capital Management"
+      "alt": "Working Capital Management",
+      "image": "/finance.png",
+      "features": [
+        {
+          "icon": "/closure.png",
+          "title": "Cash Flow Optimization",
+          "description": "Strategic planning to improve cash flow cycles and operational efficiency."
+        },
+        {
+          "icon": "/money-bag.png",
+          "title": "Invoice Financing",
+          "description": "Convert outstanding invoices into immediate working capital."
+        },
+        {
+          "icon": "/venture.png",
+          "title": "Supply Chain Financing",
+          "description": "Financing solutions for suppliers and buyers in the supply chain."
+        },
+        {
+          "icon": "/capital-venture.png",
+          "title": "Trade Finance",
+          "description": "International trade financing including letters of credit and guarantees."
+        },
+        {
+          "icon": "/organization.png",
+          "title": "Fund-Based Facilities",
+          "description": "Working capital loans and overdraft facilities for operational needs."
+        },
+        {
+          "icon": "/consultant.png",
+          "title": "Non-Fund Based Facilities",
+          "description": "Bank guarantees and letters of credit without affecting cash flow."
+        }
+      ],
+      "outcomes": [
+        "Improved cash flow and liquidity management",
+        "Reduced working capital requirements",
+        "Enhanced supplier and customer relationships",
+        "Better inventory and receivables management",
+        "Optimized payment cycles and terms",
+        "Increased operational efficiency and profitability"
+      ]
     },
     {
       "id": 3,
       "title": "Project Financing",
       "description": "We provide end-to-end project financing solutions, ensuring that businesses secure the required capital for infrastructure, industrial, and business expansion projects. Our services include Feasibility Studies & Financial Modeling, Debt & Equity Structuring, Government Incentives & Subsidies Advisory, and Private Equity & Venture Capital Funding.",
       "icon": "/venture.png",
-      "alt": "Project Financing"
+      "alt": "Project Financing",
+      "image": "/finance.png",
+      "features": [
+        {
+          "icon": "/venture.png",
+          "title": "Feasibility Studies",
+          "description": "Comprehensive project evaluation and financial modeling for informed decisions."
+        },
+        {
+          "icon": "/capital-venture.png",
+          "title": "Debt & Equity Structuring",
+          "description": "Optimal capital structure design balancing debt and equity components."
+        },
+        {
+          "icon": "/organization.png",
+          "title": "Government Incentives",
+          "description": "Advisory on subsidies, grants, and government schemes for projects."
+        },
+        {
+          "icon": "/money-bag.png",
+          "title": "Private Equity Funding",
+          "description": "Connection with private equity investors for large-scale projects."
+        },
+        {
+          "icon": "/consultant.png",
+          "title": "Venture Capital",
+          "description": "Access to venture capital funding for innovative and growth projects."
+        },
+        {
+          "icon": "/closure.png",
+          "title": "Financial Modeling",
+          "description": "Detailed financial projections and risk analysis for project success."
+        }
+      ],
+      "outcomes": [
+        "Successful project financing and capital raising",
+        "Optimal debt-to-equity ratio for project sustainability",
+        "Access to government incentives and subsidies",
+        "Professional project evaluation and risk assessment",
+        "Connection with suitable investors and lenders",
+        "Strategic guidance throughout the project lifecycle"
+      ]
     },
     {
       "id": 4,
       "title": "Capital Advisory",
       "description": "Strategic capital structuring is essential for maximizing growth potential. We assist in evaluating capital requirements and structuring financial instruments that align with business objectives. Our expertise covers Equity Financing, Convertible Instruments, Private Placement, and Capital Restructuring.",
       "icon": "/capital-venture.png",
-      "alt": "Capital Advisory"
+      "alt": "Capital Advisory",
+      "image": "/finance.png",
+      "features": [
+        {
+          "icon": "/capital-venture.png",
+          "title": "Equity Financing",
+          "description": "Strategic equity raising through various instruments and investor types."
+        },
+        {
+          "icon": "/venture.png",
+          "title": "Convertible Instruments",
+          "description": "Flexible financing through convertible bonds and preferred shares."
+        },
+        {
+          "icon": "/money-bag.png",
+          "title": "Private Placement",
+          "description": "Direct investment opportunities with qualified institutional investors."
+        },
+        {
+          "icon": "/organization.png",
+          "title": "Capital Restructuring",
+          "description": "Optimization of existing capital structure for improved performance."
+        },
+        {
+          "icon": "/consultant.png",
+          "title": "Valuation Services",
+          "description": "Professional business valuation for investment and strategic decisions."
+        },
+        {
+          "icon": "/closure.png",
+          "title": "Investor Relations",
+          "description": "Building and maintaining relationships with potential investors."
+        }
+      ],
+      "outcomes": [
+        "Optimized capital structure for business growth",
+        "Access to diverse equity financing options",
+        "Professional valuation and investment advisory",
+        "Strategic investor partnerships and relationships",
+        "Improved financial flexibility and growth potential",
+        "Enhanced shareholder value and returns"
+      ]
     },
     {
       "id": 5,
       "title": "Business Restructuring & Turnaround Advisory",
       "description": "For businesses facing financial distress, we offer comprehensive restructuring solutions to restore stability and profitability. Our services include Debt Restructuring & Refinancing, Financial Risk Assessment, Asset Monetization Strategies, and Insolvency & Bankruptcy Advisory.",
       "icon": "/organization.png",
-      "alt": "Business Restructuring"
+      "alt": "Business Restructuring",
+      "image": "/finance.png",
+      "features": [
+        {
+          "icon": "/organization.png",
+          "title": "Debt Restructuring",
+          "description": "Renegotiation of debt terms to improve cash flow and financial stability."
+        },
+        {
+          "icon": "/money-bag.png",
+          "title": "Asset Monetization",
+          "description": "Strategic asset sales and optimization to generate liquidity."
+        },
+        {
+          "icon": "/closure.png",
+          "title": "Financial Risk Assessment",
+          "description": "Comprehensive analysis of financial risks and mitigation strategies."
+        },
+        {
+          "icon": "/consultant.png",
+          "title": "Insolvency Advisory",
+          "description": "Professional guidance through insolvency and bankruptcy processes."
+        },
+        {
+          "icon": "/venture.png",
+          "title": "Operational Restructuring",
+          "description": "Business process optimization and operational efficiency improvements."
+        },
+        {
+          "icon": "/capital-venture.png",
+          "title": "Turnaround Strategy",
+          "description": "Comprehensive turnaround planning and execution support."
+        }
+      ],
+      "outcomes": [
+        "Restored financial stability and improved cash flow",
+        "Successful debt restructuring and refinancing",
+        "Enhanced operational efficiency and cost management",
+        "Strategic asset optimization and monetization",
+        "Professional crisis management and turnaround",
+        "Long-term business sustainability and growth"
+      ]
     },
     {
       "id": 6,
       "title": "Venture Capital & MSME Funding",
       "description": "We help startups and small businesses raise venture capital and secure funding for growth and expansion. Our services include Venture Capital & Angel Investment Advisory, MSME Business Loans & Credit Facilitation, Government-Backed Loan Assistance, and Startup & Growth-Stage Fundraising.",
       "icon": "/consultant.png",
-      "alt": "Venture Capital & MSME Funding"
+      "alt": "Venture Capital & MSME Funding",
+      "image": "/finance.png",
+      "features": [
+        {
+          "icon": "/consultant.png",
+          "title": "Venture Capital Advisory",
+          "description": "Strategic guidance for venture capital fundraising and investor relations."
+        },
+        {
+          "icon": "/venture.png",
+          "title": "Angel Investment",
+          "description": "Connection with angel investors for early-stage funding opportunities."
+        },
+        {
+          "icon": "/money-bag.png",
+          "title": "MSME Business Loans",
+          "description": "Specialized lending solutions for micro, small, and medium enterprises."
+        },
+        {
+          "icon": "/organization.png",
+          "title": "Government Schemes",
+          "description": "Access to government-backed loan schemes and support programs."
+        },
+        {
+          "icon": "/capital-venture.png",
+          "title": "Growth-Stage Funding",
+          "description": "Expansion financing for businesses in growth and scaling phases."
+        },
+        {
+          "icon": "/closure.png",
+          "title": "Credit Facilitation",
+          "description": "Assistance with credit evaluation, documentation, and approval processes."
+        }
+      ],
+      "outcomes": [
+        "Successful venture capital and angel investment rounds",
+        "Access to specialized MSME funding programs",
+        "Government scheme benefits and subsidized financing",
+        "Strategic investor partnerships for business growth",
+        "Enhanced creditworthiness and financial profile",
+        "Accelerated business expansion and market penetration"
+      ]
     }
   ]
 }
