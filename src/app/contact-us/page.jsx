@@ -1,5 +1,7 @@
 'use client'
 import React, { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Top from '@/components/Top';
 import Footer from '@/components/Footer';
 import { Phone, Mail, ArrowUpRight, ChevronDown } from 'lucide-react';
@@ -273,52 +275,54 @@ const ContactUs = () => {
 
         {/* Head Office Section */}
         <div className="mt-12 md:mt-16">
-          <div 
-            className="relative bg-blue-600 rounded-2xl overflow-hidden shadow-lg"
-            style={{ background: '#036DA9' }}
-          >
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[250px] md:min-h-[300px]">
-              {/* Left Side - Head Office Info */}
-              <div className="p-6 md:p-8 lg:p-12 flex flex-col justify-center text-white text-center lg:text-left">
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">HEAD OFFICE</h3>
-                <div className="space-y-1 md:space-y-2 mb-6 md:mb-8 text-base md:text-lg">
+          <div className="bg-white rounded-3xl overflow-hidden shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-3 min-h-[300px]">
+              {/* Left Section - HEAD OFFICE */}
+              <div 
+                className="text-white p-8 lg:p-12 flex flex-col justify-center"
+                style={{ background: 'linear-gradient(160.14deg, #0F72B2 24.12%, #046EAA 105.31%)' }}
+              >
+                <h3 className="text-2xl lg:text-3xl font-bold mb-6">HEAD OFFICE</h3>
+                <div className="space-y-2 text-base lg:text-lg">
                   <p>Team Works Inc.</p>
                   <p>Parkview Complex</p>
                   <p>LGF-1, 48, Hassanpur,</p>
                   <p>IP Extension, Delhi-110092</p>
                 </div>
-                <button className="bg-transparent border-2 border-white text-white px-4 md:px-6 py-2 md:py-3 rounded-lg hover:bg-white hover:text-blue-600 transition-all duration-200 w-fit mx-auto lg:mx-0 text-sm md:text-base">
+                <Link 
+                  href="/contact-us" 
+                  className="mt-8 border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-600 transition-colors font-medium inline-block text-center"
+                >
                   CONTACT US
-                </button>
+                </Link>
               </div>
 
-              {/* Right Side - Map and Timeline */}
-              <div className="relative order-first lg:order-last">
-                {/* Map Section */}
-                <div className="h-[250px] md:h-full relative">
-                  <iframe
-                    src="https://maps.google.com/maps?q=Team+Works+Inc,+Parkview+Complex,+LGF-1,+48,+Hassanpur,+IP+Extension,+Delhi-110092&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0, minHeight: '250px' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                  
-                  {/* Timeline Badge */}
-                 
-                </div>
+              {/* Center Section - Map */}
+              <div className="relative">
+                <iframe
+                  src="https://maps.google.com/maps?q=28.5746,77.3150&hl=en&z=15&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: '300px', height: '100%', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
-            </div>
-
-            {/* Bottom Badge */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+              
+              {/* Right Section - 2018 STARTED */}
               <div 
-                className="bg-blue-700 text-white px-3 md:px-4 py-1 md:py-2 rounded text-xs md:text-sm font-medium"
-                style={{ background: '#024A7A' }}
+                className="text-white p-8 lg:p-12 flex flex-col justify-center items-center text-center"
+                style={{ background: 'linear-gradient(160.14deg, #0F72B2 24.12%, #046EAA 105.31%)' }}
               >
-                
+                <div className="text-6xl lg:text-7xl font-bold mb-4">2018</div>
+                <div className="text-xl lg:text-2xl font-semibold mb-8">STARTED</div>
+                <Link 
+                  href="/about-us"
+                  className="border-2 border-white text-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-600 transition-colors font-medium inline-block text-center"
+                >
+                  READ STORY
+                </Link>
               </div>
             </div>
           </div>
