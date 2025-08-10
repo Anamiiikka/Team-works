@@ -62,9 +62,7 @@ export default function ServicesPage() {
       {/* Top Section with Navbar and Hero */}
       <Top 
         title="All Services"
-        description="Explore our comprehensive range of consulting services designed to help your business achieve strategic growth and sustainable success."
-        buttonText="Get Started"
-        buttonLink="/contact"
+        locationTitle="Home >> Services"
       />
 
       {/* Services Content Section */}

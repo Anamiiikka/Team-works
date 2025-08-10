@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function Top({ 
   title = "Looking for job opportunity", 
+  locationTitle = "",
   description = "Lorem ipsum dolor sit amet consectetur. Ullamcorper puruse et sit rhoncus sed imperdiet eget. Varius mattis tortor magna vitae magna.",
   buttonText = "Get Started",
   buttonLink = "/opportunity"
@@ -221,8 +222,14 @@ export default function Top({
         <div className="max-w-[1348px] mx-auto relative z-10">
           {/* Main Container with Gradient Background */}
           <div 
-            className="relative w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] rounded-2xl lg:rounded-3xl overflow-hidden"
+            className="mx-auto overflow-hidden"
             style={{
+              maxWidth: '1349px',
+              width: '100%',
+              height: '275px',
+              marginTop: '33px',
+              borderRadius: '24px',
+              opacity: 1,
               background: 'radial-gradient(54.49% 161.07% at 44.25% 37.5%, #A4C7FD 0%, #036DA9 91.19%)',
             }}
           >
@@ -230,15 +237,20 @@ export default function Top({
             <div 
               className="hidden lg:block absolute z-50"
               style={{
-                width: '1211px',
+                width: '100%',
                 height: '91px',
-                top: '27px',
-                left: '50%',
-                transform: 'translateX(-50%)',
+                top: '0px',
+                left: '0px',
                 opacity: 1
               }}
             >
-              <nav className="relative w-full h-full bg-white/95 backdrop-blur-sm shadow-lg border border-gray-100" style={{ borderRadius: '100px' }}>
+              <nav 
+                className="relative w-full h-full" 
+                style={{ 
+                  background: 'transparent',
+                  borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
+                }}
+              >
                 <div className="w-full h-full px-8 lg:px-12">
                   <div className="flex h-full items-center justify-between">
                     {/* LEFT SIDE: Logo and Navigation Links */}
@@ -253,55 +265,117 @@ export default function Top({
                       </Link>
 
                       {/* Desktop Navigation Links */}
-                      <div className="hidden lg:flex items-center space-x-10 text-gray-700 font-medium text-base">
+                      <div className="hidden lg:flex items-center space-x-10 text-black">
                         <button 
-                          className="hover:text-blue-600 transition-colors font-bold" 
+                          className="hover:text-blue-600 transition-colors" 
                           onClick={(e) => handleNavClick(e, 'home')}
+                          style={{
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%'
+                          }}
                         >
                           Home
                         </button>
                         <button 
-                          className="hover:text-blue-600 transition-colors font-bold" 
+                          className="hover:text-blue-600 transition-colors" 
                           onClick={(e) => handleNavClick(e, 'about')}
+                          style={{
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%'
+                          }}
                         >
                           About
                         </button>
                         <button 
-                          className="hover:text-blue-600 transition-colors font-bold" 
+                          className="hover:text-blue-600 transition-colors" 
                           onClick={(e) => handleNavClick(e, 'services')}
+                          style={{
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%'
+                          }}
                         >
                           Services
                         </button>
                         <button 
-                          className="hover:text-blue-600 transition-colors font-bold" 
+                          className="hover:text-blue-600 transition-colors" 
                           onClick={(e) => handleNavClick(e, 'testimonials')}
+                          style={{
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%'
+                          }}
                         >
                           Client
                         </button>
                         <button 
-                          className="hover:text-blue-600 transition-colors font-bold" 
-                          onClick={(e) => handleNavClick(e, 'career')}
-                        >
-                          Career
-                        </button>
-                        <button 
-                          className="hover:text-blue-600 transition-colors font-bold" 
+                          className="hover:text-blue-600 transition-colors" 
                           onClick={(e) => handleNavClick(e, 'contact')}
+                          style={{
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%'
+                          }}
                         >
                           Contact us
                         </button>
                       </div>
                     </div>
 
-                    {/* RIGHT SIDE: Free Consultation Button */}
-                    <div className="flex items-center">
-                      <button 
-                        className="text-white font-medium text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200" 
-                        style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
-                        onClick={(e) => handleNavClick(e, 'contact')}
-                      >
-                        Free Consultation
-                      </button>
+                    {/* RIGHT SIDE: Sign In and Sign Up Buttons */}
+                    <div className="flex items-center gap-2">
+                      <Link href="/auth/login">
+                        <button 
+                          className="text-white hover:text-blue-200 transition-colors"
+                          style={{
+                            width: '70px',
+                            height: '28px',
+                            borderRadius: '30px',
+                            gap: '10px',
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%',
+                            verticalAlign: 'middle'
+                          }}
+                        >
+                          Sign In
+                        </button>
+                      </Link>
+                      <Link href="/auth/signup">
+                        <button 
+                          className="text-white transition-all duration-200 hover:shadow-lg"
+                          style={{
+                            width: '77px',
+                            height: '28px',
+                            borderRadius: '100px',
+                            borderWidth: '1px',
+                            gap: '8px',
+                            background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)',
+                            fontFamily: 'Inter',
+                            fontWeight: 600,
+                            fontSize: '16px',
+                            lineHeight: '22px',
+                            letterSpacing: '0%',
+                            verticalAlign: 'middle'
+                          }}
+                        >
+                          Sign Up
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -346,6 +420,24 @@ export default function Top({
             {/* Central Content */}
             <div className="absolute inset-0 flex items-center justify-center px-4" style={{ paddingTop: '120px' }}>
               <div className="text-center text-black z-20 flex flex-col items-center max-w-full">
+                {/* Location Title (Breadcrumb) */}
+                {locationTitle && (
+                  <div
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '20px',
+                      lineHeight: '24px',
+                      letterSpacing: '0%',
+                      textAlign: 'center',
+                      color: '#2C87BB',
+                      marginBottom: '16px',
+                      opacity: 1
+                    }}
+                  >
+                    {locationTitle}
+                  </div>
+                )}
                 <h2 
                   className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight mb-4 md:mb-6"
                   style={{
@@ -357,41 +449,6 @@ export default function Top({
                 >
                   {title}
                 </h2>
-                
-                <p 
-                  className="text-sm sm:text-base md:text-lg font-medium mb-6 md:mb-8 px-2"
-                  style={{
-                    fontFamily: 'Inter',
-                    letterSpacing: '0%',
-                    maxWidth: '562px',
-                    opacity: 1
-                  }}
-                >
-                  {description}
-                </p>
-
-                {/* Button */}
-                <Link href={buttonLink}>
-                  <button className="inline-flex items-center gap-2 md:gap-3 bg-black text-white py-2 md:py-3 pr-4 md:pr-6 pl-1 md:pl-2 rounded-full text-sm md:text-base font-medium hover:bg-gray-800 transition-colors duration-300 shadow-lg">
-                    <div 
-                      className="bg-white rounded-full flex items-center justify-center"
-                      style={{
-                        width: 'clamp(32px, 5vw, 40px)',
-                        height: 'clamp(32px, 5vw, 40px)',
-                        opacity: 1
-                      }}
-                    >
-                      <svg 
-                        className="w-4 h-4 md:w-5 md:h-5 text-black transform -rotate-45" 
-                        fill="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                      </svg>
-                    </div>
-                    {buttonText}
-                  </button>
-                </Link>
               </div>
             </div>
 
