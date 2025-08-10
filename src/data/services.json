@@ -4,6 +4,7 @@
       "id": 1,
       "title": "Debt Syndication",
       "description": "We specialize in structuring and arranging debt financing solutions to support business growth, expansion, and restructuring. Our strong relationships with banks, NBFCs, and financial institutions allow us to offer customized funding solutions, including Term Loans, Structured Finance, External Commercial Borrowings (ECBs), and Asset-Based Lending.",
+      "detailedDescription": "We provide comprehensive debt syndication solutions tailored for businesses seeking optimal financing structures. From initial assessment to final documentation, we manage every step of the debt syndication journey. Our team works closely with clients to understand their capital requirements, risk parameters, and repayment capabilities, while also advising on optimal debt structures, interest rate negotiations, and compliance requirements. With a deep understanding of market dynamics and regulatory frameworks, we ensure your financing needs are met with the most favorable terms and conditions.",
       "icon": "/money-bag.png",
       "alt": "Debt Syndication",
       "image": "/finance.png",
@@ -39,19 +40,62 @@
           "description": "Established connections with leading banks for competitive financing options."
         }
       ],
+      "processSteps": [
+        {
+          "stepNumber": "01",
+          "title": "Initial Assessment",
+          "description": "Comprehensive evaluation of business financials, credit profile, and funding requirements to determine optimal debt structure."
+        },
+        {
+          "stepNumber": "02",
+          "title": "Lender Identification",
+          "description": "Strategic identification and approach to suitable banks, NBFCs, and financial institutions based on client profile."
+        },
+        {
+          "stepNumber": "03",
+          "title": "Documentation Preparation",
+          "description": "Preparation of comprehensive loan proposals, financial projections, and required documentation for lenders."
+        },
+        {
+          "stepNumber": "04",
+          "title": "Negotiation & Structuring",
+          "description": "Professional negotiation of terms, interest rates, covenants, and security arrangements for optimal outcomes."
+        },
+        {
+          "stepNumber": "05",
+          "title": "Due Diligence Support",
+          "description": "Assistance during lender due diligence process including site visits, management presentations, and query resolution."
+        },
+        {
+          "stepNumber": "06",
+          "title": "Approval Coordination",
+          "description": "Coordination with multiple lenders for simultaneous approvals and term sheet finalization."
+        },
+        {
+          "stepNumber": "07",
+          "title": "Legal Documentation",
+          "description": "Support during legal documentation, security creation, and compliance with regulatory requirements."
+        },
+        {
+          "stepNumber": "08",
+          "title": "Disbursement & Closure",
+          "description": "Final coordination for fund disbursement, security perfection, and transaction closure with all stakeholders."
+        }
+      ],
       "outcomes": [
-        "Access to diverse funding sources and competitive rates",
-        "Structured financing solutions tailored to business needs",
-        "Reduced dependency on single funding sources",
-        "Enhanced working capital and cash flow management",
-        "Strategic financial partnerships for long-term growth",
-        "Professional guidance through complex financing processes"
+        "Access to diverse funding sources and competitive interest rates",
+        "Structured financing solutions tailored to specific business needs",
+        "Reduced dependency on single funding sources through syndication",
+        "Enhanced working capital and cash flow management capabilities",
+        "Strategic financial partnerships for long-term business growth",
+        "Professional guidance through complex financing processes and negotiations"
       ]
     },
     {
       "id": 2,
       "title": "Working Capital Management",
       "description": "Efficient working capital management is crucial for business sustainability and growth. Our experts assist in optimizing cash flow, enhancing liquidity, and ensuring seamless business operations by offering Fund-Based & Non-Fund-Based Facilities, Invoice & Receivables Financing, Cash Flow Optimization Strategies, Supply Chain Financing, and Trade Finance Solutions.",
+      "detailedDescription": "We provide comprehensive working capital management solutions designed to optimize your business cash flow and operational efficiency. From assessing current working capital cycles to implementing strategic financing solutions, we manage every aspect of your liquidity requirements. Our team works closely with clients to understand their operational cycles, seasonal variations, and cash flow patterns, while also providing guidance on inventory management, receivables optimization, and payment term negotiations. With extensive experience across industries, we ensure your working capital is structured for maximum efficiency and growth.",
       "icon": "/closure.png",
       "alt": "Working Capital Management",
       "image": "/finance.png",
@@ -87,19 +131,62 @@
           "description": "Bank guarantees and letters of credit without affecting cash flow."
         }
       ],
+      "processSteps": [
+        {
+          "stepNumber": "01",
+          "title": "Working Capital Assessment",
+          "description": "Detailed analysis of current working capital cycles, cash flow patterns, and operational requirements."
+        },
+        {
+          "stepNumber": "02",
+          "title": "Cash Flow Modeling",
+          "description": "Development of comprehensive cash flow models to identify optimization opportunities and funding gaps."
+        },
+        {
+          "stepNumber": "03",
+          "title": "Facility Structuring",
+          "description": "Design of optimal mix of fund-based and non-fund-based facilities to meet operational needs."
+        },
+        {
+          "stepNumber": "04",
+          "title": "Lender Approach",
+          "description": "Strategic approach to banks and financial institutions for competitive working capital solutions."
+        },
+        {
+          "stepNumber": "05",
+          "title": "Documentation & Approval",
+          "description": "Preparation of loan applications, financial statements, and supporting documents for quick approvals."
+        },
+        {
+          "stepNumber": "06",
+          "title": "Facility Implementation",
+          "description": "Coordination of facility setup, security creation, and operational guidelines with banking partners."
+        },
+        {
+          "stepNumber": "07",
+          "title": "Process Optimization",
+          "description": "Implementation of systems and processes for efficient utilization of working capital facilities."
+        },
+        {
+          "stepNumber": "08",
+          "title": "Ongoing Monitoring",
+          "description": "Regular monitoring and optimization of working capital performance and facility utilization."
+        }
+      ],
       "outcomes": [
-        "Improved cash flow and liquidity management",
-        "Reduced working capital requirements",
-        "Enhanced supplier and customer relationships",
-        "Better inventory and receivables management",
-        "Optimized payment cycles and terms",
-        "Increased operational efficiency and profitability"
+        "Improved cash flow and liquidity management across business cycles",
+        "Reduced working capital requirements through process optimization",
+        "Enhanced supplier and customer relationships through better payment terms",
+        "Better inventory and receivables management with reduced collection periods",
+        "Optimized payment cycles and credit terms for improved cash flow",
+        "Increased operational efficiency and profitability through strategic financing"
       ]
     },
     {
       "id": 3,
       "title": "Project Financing",
       "description": "We provide end-to-end project financing solutions, ensuring that businesses secure the required capital for infrastructure, industrial, and business expansion projects. Our services include Feasibility Studies & Financial Modeling, Debt & Equity Structuring, Government Incentives & Subsidies Advisory, and Private Equity & Venture Capital Funding.",
+      "detailedDescription": "We provide comprehensive project financing solutions tailored for infrastructure, industrial, and business expansion projects. From initial feasibility studies and financial modeling to debt-equity structuring and investor sourcing, we manage every step of the financing journey. Our team works closely with clients to understand project timelines, capital requirements, and risk parameters, while also advising on government subsidies, incentives, and compliance. With a deep understanding of sector dynamics and capital markets, we ensure your vision is adequately funded and strategically positioned for success.",
       "icon": "/venture.png",
       "alt": "Project Financing",
       "image": "/finance.png",
@@ -135,19 +222,61 @@
           "description": "Detailed financial projections and risk analysis for project success."
         }
       ],
+      "processSteps": [
+        {
+          "stepNumber": "01",
+          "title": "Initial Consultation",
+          "description": "Comprehensive project assessment and preliminary feasibility analysis to understand scope and requirements."
+        },
+        {
+          "stepNumber": "02",
+          "title": "Feasibility Study",
+          "description": "Detailed technical, commercial, and financial feasibility analysis with market research and risk assessment."
+        },
+        {
+          "stepNumber": "03",
+          "title": "Financial Modeling",
+          "description": "Development of robust financial models with cash flow projections, sensitivity analysis, and scenario planning."
+        },
+        {
+          "stepNumber": "04",
+          "title": "Structuring Capital",
+          "description": "Optimal debt-equity mix design considering project cash flows, risk profile, and investor requirements."
+        },
+        {
+          "stepNumber": "05",
+          "title": "Investor Outreach",
+          "description": "Strategic approach to suitable lenders, investors, and government agencies for project funding."
+        },
+        {
+          "stepNumber": "06",
+          "title": "Due Diligence Support",
+          "description": "Comprehensive support during investor and lender due diligence including documentation and presentations."
+        },
+        {
+          "stepNumber": "07",
+          "title": "Negotiation",
+          "description": "Professional negotiation of terms, covenants, and conditions with all stakeholders for optimal outcomes."
+        },
+        {
+          "stepNumber": "08",
+          "title": "Financial Close",
+          "description": "Final documentation, security creation, and fund disbursement coordination for successful project launch."
+        }
+      ],
       "outcomes": [
-        "Successful project financing and capital raising",
-        "Optimal debt-to-equity ratio for project sustainability",
-        "Access to government incentives and subsidies",
-        "Professional project evaluation and risk assessment",
-        "Connection with suitable investors and lenders",
-        "Strategic guidance throughout the project lifecycle"
+        "In-depth assessment of technical, commercial, and financial feasibility",
+        "Development of robust financial models tailored to project scope",
+        "Identification of suitable domestic and international funding sources",
+        "Identification of applicable subsidies, tax benefits, and grants",
+        "Strategic advice leveraging deep sectoral expertise"
       ]
     },
     {
       "id": 4,
       "title": "Capital Advisory",
       "description": "Strategic capital structuring is essential for maximizing growth potential. We assist in evaluating capital requirements and structuring financial instruments that align with business objectives. Our expertise covers Equity Financing, Convertible Instruments, Private Placement, and Capital Restructuring.",
+      "detailedDescription": "We provide comprehensive capital advisory services designed to optimize your business capital structure and funding strategy. From assessing current capital adequacy to implementing strategic financing solutions, we guide every aspect of your capital management journey. Our team works closely with clients to understand their growth objectives, risk tolerance, and market positioning, while also providing insights on valuation, investor relations, and capital market trends. With extensive experience across sectors and funding stages, we ensure your capital strategy is aligned with long-term business success.",
       "icon": "/capital-venture.png",
       "alt": "Capital Advisory",
       "image": "/finance.png",
@@ -183,19 +312,62 @@
           "description": "Building and maintaining relationships with potential investors."
         }
       ],
+      "processSteps": [
+        {
+          "stepNumber": "01",
+          "title": "Capital Assessment",
+          "description": "Comprehensive evaluation of current capital structure, funding gaps, and growth capital requirements."
+        },
+        {
+          "stepNumber": "02",
+          "title": "Strategic Planning",
+          "description": "Development of capital strategy aligned with business objectives, market conditions, and growth plans."
+        },
+        {
+          "stepNumber": "03",
+          "title": "Valuation Analysis",
+          "description": "Professional business valuation using multiple methodologies to determine fair value and pricing strategies."
+        },
+        {
+          "stepNumber": "04",
+          "title": "Instrument Design",
+          "description": "Structuring of appropriate financial instruments including equity, debt, and hybrid securities."
+        },
+        {
+          "stepNumber": "05",
+          "title": "Investor Identification",
+          "description": "Strategic identification and approach to suitable investors based on sector expertise and investment criteria."
+        },
+        {
+          "stepNumber": "06",
+          "title": "Due Diligence Management",
+          "description": "Coordination of investor due diligence process including data room setup and management presentations."
+        },
+        {
+          "stepNumber": "07",
+          "title": "Term Negotiation",
+          "description": "Professional negotiation of investment terms, valuations, and shareholder agreements."
+        },
+        {
+          "stepNumber": "08",
+          "title": "Transaction Closure",
+          "description": "Final documentation, regulatory compliance, and fund disbursement coordination for successful closure."
+        }
+      ],
       "outcomes": [
-        "Optimized capital structure for business growth",
-        "Access to diverse equity financing options",
-        "Professional valuation and investment advisory",
-        "Strategic investor partnerships and relationships",
-        "Improved financial flexibility and growth potential",
-        "Enhanced shareholder value and returns"
+        "Optimized capital structure for sustainable business growth",
+        "Access to diverse equity financing options and investor networks",
+        "Professional valuation and investment advisory services",
+        "Strategic investor partnerships and long-term relationships",
+        "Improved financial flexibility and growth capital availability",
+        "Enhanced shareholder value and return optimization"
       ]
     },
     {
       "id": 5,
       "title": "Business Restructuring & Turnaround Advisory",
       "description": "For businesses facing financial distress, we offer comprehensive restructuring solutions to restore stability and profitability. Our services include Debt Restructuring & Refinancing, Financial Risk Assessment, Asset Monetization Strategies, and Insolvency & Bankruptcy Advisory.",
+      "detailedDescription": "We provide comprehensive business restructuring and turnaround advisory services for companies facing financial challenges or seeking operational optimization. From crisis management to sustainable recovery, we guide every aspect of the restructuring process. Our team works closely with stakeholders to assess current challenges, develop turnaround strategies, and implement sustainable solutions, while also providing expertise on debt restructuring, asset optimization, and stakeholder negotiations. With deep experience in distressed situations, we ensure your business emerges stronger and more resilient.",
       "icon": "/organization.png",
       "alt": "Business Restructuring",
       "image": "/finance.png",
@@ -231,19 +403,62 @@
           "description": "Comprehensive turnaround planning and execution support."
         }
       ],
+      "processSteps": [
+        {
+          "stepNumber": "01",
+          "title": "Crisis Assessment",
+          "description": "Immediate evaluation of financial distress, cash flow position, and critical business issues requiring urgent attention."
+        },
+        {
+          "stepNumber": "02",
+          "title": "Stakeholder Analysis",
+          "description": "Comprehensive mapping of all stakeholders including creditors, investors, suppliers, and employees for strategic planning."
+        },
+        {
+          "stepNumber": "03",
+          "title": "Financial Stabilization",
+          "description": "Implementation of cash flow management and cost reduction measures to stabilize immediate operations."
+        },
+        {
+          "stepNumber": "04",
+          "title": "Restructuring Plan",
+          "description": "Development of comprehensive restructuring strategy including debt modification, asset optimization, and operational changes."
+        },
+        {
+          "stepNumber": "05",
+          "title": "Creditor Negotiations",
+          "description": "Professional negotiation with creditors for debt restructuring, payment deferrals, and covenant modifications."
+        },
+        {
+          "stepNumber": "06",
+          "title": "Implementation Support",
+          "description": "Hands-on support for implementing restructuring initiatives and monitoring progress against targets."
+        },
+        {
+          "stepNumber": "07",
+          "title": "Performance Monitoring",
+          "description": "Ongoing monitoring of financial and operational performance against restructuring plan milestones."
+        },
+        {
+          "stepNumber": "08",
+          "title": "Sustainable Recovery",
+          "description": "Transition to normal operations with strengthened financial position and improved business fundamentals."
+        }
+      ],
       "outcomes": [
-        "Restored financial stability and improved cash flow",
-        "Successful debt restructuring and refinancing",
-        "Enhanced operational efficiency and cost management",
-        "Strategic asset optimization and monetization",
-        "Professional crisis management and turnaround",
-        "Long-term business sustainability and growth"
+        "Restored financial stability and improved cash flow management",
+        "Successful debt restructuring and creditor relationship management",
+        "Enhanced operational efficiency and cost optimization",
+        "Strategic asset optimization and monetization strategies",
+        "Professional crisis management and stakeholder coordination",
+        "Long-term business sustainability and competitive positioning"
       ]
     },
     {
       "id": 6,
       "title": "Venture Capital & MSME Funding",
       "description": "We help startups and small businesses raise venture capital and secure funding for growth and expansion. Our services include Venture Capital & Angel Investment Advisory, MSME Business Loans & Credit Facilitation, Government-Backed Loan Assistance, and Startup & Growth-Stage Fundraising.",
+      "detailedDescription": "We provide specialized venture capital and MSME funding solutions designed to support startups, small businesses, and growth-stage companies. From early-stage fundraising to expansion capital, we manage every aspect of the funding journey. Our team works closely with entrepreneurs and business owners to understand their growth vision, market opportunities, and capital requirements, while also providing access to our extensive network of investors, VCs, and government funding programs. With deep expertise in startup ecosystems and MSME segments, we ensure your business secures the right capital for sustainable growth.",
       "icon": "/consultant.png",
       "alt": "Venture Capital & MSME Funding",
       "image": "/finance.png",
@@ -279,13 +494,55 @@
           "description": "Assistance with credit evaluation, documentation, and approval processes."
         }
       ],
+      "processSteps": [
+        {
+          "stepNumber": "01",
+          "title": "Business Evaluation",
+          "description": "Comprehensive assessment of business model, market opportunity, financial performance, and growth potential."
+        },
+        {
+          "stepNumber": "02",
+          "title": "Funding Strategy",
+          "description": "Development of customized funding strategy considering business stage, capital requirements, and market conditions."
+        },
+        {
+          "stepNumber": "03",
+          "title": "Investment Readiness",
+          "description": "Preparation of business plans, financial projections, pitch decks, and other materials required for fundraising."
+        },
+        {
+          "stepNumber": "04",
+          "title": "Investor Matching",
+          "description": "Strategic identification and approach to suitable investors, VCs, angels, and funding institutions based on sector focus."
+        },
+        {
+          "stepNumber": "05",
+          "title": "Pitch Coordination",
+          "description": "Coordination of investor meetings, pitch presentations, and management interactions for maximum impact."
+        },
+        {
+          "stepNumber": "06",
+          "title": "Due Diligence Support",
+          "description": "Comprehensive support during investor due diligence including documentation, legal compliance, and query resolution."
+        },
+        {
+          "stepNumber": "07",
+          "title": "Term Sheet Negotiation",
+          "description": "Professional negotiation of investment terms, valuations, board representation, and shareholder rights."
+        },
+        {
+          "stepNumber": "08",
+          "title": "Funding Closure",
+          "description": "Final documentation, regulatory approvals, and fund disbursement coordination for successful transaction completion."
+        }
+      ],
       "outcomes": [
-        "Successful venture capital and angel investment rounds",
-        "Access to specialized MSME funding programs",
-        "Government scheme benefits and subsidized financing",
-        "Strategic investor partnerships for business growth",
-        "Enhanced creditworthiness and financial profile",
-        "Accelerated business expansion and market penetration"
+        "Successful venture capital and angel investment fundraising",
+        "Access to specialized MSME funding programs and schemes",
+        "Government scheme benefits and subsidized financing options",
+        "Strategic investor partnerships for accelerated business growth",
+        "Enhanced creditworthiness and improved financial profile",
+        "Accelerated business expansion and market penetration capabilities"
       ]
     }
   ]
