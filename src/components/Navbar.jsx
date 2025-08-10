@@ -85,50 +85,103 @@ export default function Navbar() {
             {isMobileMenuOpen && (
               <div className="pb-4 space-y-2">
                 <button 
-                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg" 
                   onClick={(e) => handleNavClick(e, 'home')}
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    lineHeight: '22px',
+                    letterSpacing: '0%'
+                  }}
                 >
                   Home
                 </button>
                 <button 
-                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg" 
                   onClick={(e) => handleNavClick(e, 'about')}
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    lineHeight: '22px',
+                    letterSpacing: '0%'
+                  }}
                 >
                   About
                 </button>
                 <button 
-                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg" 
                   onClick={(e) => handleNavClick(e, 'services')}
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    lineHeight: '22px',
+                    letterSpacing: '0%'
+                  }}
                 >
                   Services
                 </button>
                 <button 
-                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg" 
                   onClick={(e) => handleNavClick(e, 'testimonials')}
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    lineHeight: '22px',
+                    letterSpacing: '0%'
+                  }}
                 >
                   Client
                 </button>
                 <button 
-                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
-                  onClick={(e) => handleNavClick(e, 'career')}
-                >
-                  Career
-                </button>
-                <button 
-                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg font-bold" 
+                  className="block w-full text-left py-2 px-3 text-black hover:text-blue-600 hover:bg-blue-50 rounded-lg" 
                   onClick={(e) => handleNavClick(e, 'contact')}
+                  style={{
+                    fontFamily: 'Inter',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    lineHeight: '22px',
+                    letterSpacing: '0%'
+                  }}
                 >
                   Contact us
                 </button>
                 
-                <div className="pt-3 border-t border-gray-200">
-                  <button 
-                    className="w-full py-3 px-5 text-white rounded-lg font-medium text-base" 
-                    style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
-                    onClick={(e) => handleNavClick(e, 'contact')}
-                  >
-                    Free Consultation
-                  </button>
+                <div className="pt-3 border-t border-gray-200 space-y-2">
+                  <Link href="/auth/login">
+                    <button 
+                      className="w-full py-2 px-5 text-gray-700 hover:text-blue-600 rounded-lg border border-gray-300 hover:border-blue-300"
+                      style={{
+                        fontFamily: 'Inter',
+                        fontWeight: 600,
+                        fontSize: '16px',
+                        lineHeight: '22px',
+                        letterSpacing: '0%',
+                        verticalAlign: 'middle'
+                      }}
+                    >
+                      Sign In
+                    </button>
+                  </Link>
+                  <Link href="/auth/signup">
+                    <button 
+                      className="w-full py-2 px-5 text-white rounded-lg"
+                      style={{ 
+                        background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)',
+                        fontFamily: 'Inter',
+                        fontWeight: 600,
+                        fontSize: '16px',
+                        lineHeight: '22px',
+                        letterSpacing: '0%',
+                        verticalAlign: 'middle'
+                      }}
+                    >
+                      Sign Up
+                    </button>
+                  </Link>
                 </div>
               </div>
             )}
@@ -139,14 +192,21 @@ export default function Navbar() {
       <div 
         className="hidden lg:block absolute z-50"
         style={{
-          width: '1211px',
-          height: '91px',
+          width: '1200px',
+          height: '92px',
           top: '27px',
-          left: '58px',
+          left: '40px',
           opacity: 1
         }}
       >
-        <nav className="relative w-full h-full bg-white shadow-lg border border-gray-100" style={{ borderRadius: '100px' }}>
+        <nav 
+          className="relative w-full h-full shadow-lg border" 
+          style={{ 
+            borderRadius: '100px',
+            borderWidth: '1px',
+            background: '#FFFFFF70'
+          }}
+        >
           <div className="w-full h-full px-8 lg:px-12">
             <div className="flex h-full items-center justify-between">
               {/* LEFT SIDE: Logo and Navigation Links */}
@@ -161,55 +221,117 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Navigation Links */}
-                <div className="hidden lg:flex items-center space-x-10 text-gray-700 font-medium text-base">
+                <div className="hidden lg:flex items-center space-x-10 text-gray-700">
                   <button 
-                    className="hover:text-blue-600 transition-colors font-bold" 
+                    className="hover:text-blue-600 transition-colors" 
                     onClick={(e) => handleNavClick(e, 'home')}
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%'
+                    }}
                   >
                     Home
                   </button>
                   <button 
-                    className="hover:text-blue-600 transition-colors font-bold" 
+                    className="hover:text-blue-600 transition-colors" 
                     onClick={(e) => handleNavClick(e, 'about')}
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%'
+                    }}
                   >
                     About
                   </button>
                   <button 
-                    className="hover:text-blue-600 transition-colors font-bold" 
+                    className="hover:text-blue-600 transition-colors" 
                     onClick={(e) => handleNavClick(e, 'services')}
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%'
+                    }}
                   >
                     Services
                   </button>
                   <button 
-                    className="hover:text-blue-600 transition-colors font-bold" 
+                    className="hover:text-blue-600 transition-colors" 
                     onClick={(e) => handleNavClick(e, 'testimonials')}
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%'
+                    }}
                   >
                     Client
                   </button>
                   <button 
-                    className="hover:text-blue-600 transition-colors font-bold" 
-                    onClick={(e) => handleNavClick(e, 'career')}
-                  >
-                    Career
-                  </button>
-                  <button 
-                    className="hover:text-blue-600 transition-colors font-bold" 
+                    className="hover:text-blue-600 transition-colors" 
                     onClick={(e) => handleNavClick(e, 'contact')}
+                    style={{
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%'
+                    }}
                   >
                     Contact us
                   </button>
                 </div>
               </div>
 
-              {/* RIGHT SIDE: Free Consultation Button */}
-              <div className="flex items-center">
-                <button 
-                  className="text-white font-medium text-base px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-200" 
-                  style={{ background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)' }}
-                  onClick={(e) => handleNavClick(e, 'contact')}
-                >
-                  Free Consultation
-                </button>
+              {/* RIGHT SIDE: Sign In and Sign Up Buttons */}
+              <div className="flex items-center gap-2">
+                <Link href="/auth/login">
+                  <button 
+                    className="text-gray-700 hover:text-blue-600 transition-colors"
+                    style={{
+                      width: '70px',
+                      height: '28px',
+                      borderRadius: '30px',
+                      gap: '10px',
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%',
+                      verticalAlign: 'middle'
+                    }}
+                  >
+                    Sign In
+                  </button>
+                </Link>
+                <Link href="/auth/signup">
+                  <button 
+                    className="text-white transition-all duration-200 hover:shadow-lg"
+                    style={{
+                      width: '77px',
+                      height: '28px',
+                      borderRadius: '100px',
+                      borderWidth: '1px',
+                      gap: '8px',
+                      background: 'linear-gradient(135.72deg, #4198C9 5.3%, #036DA9 115.18%)',
+                      fontFamily: 'Inter',
+                      fontWeight: 600,
+                      fontSize: '16px',
+                      lineHeight: '22px',
+                      letterSpacing: '0%',
+                      verticalAlign: 'middle'
+                    }}
+                  >
+                    Sign Up
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

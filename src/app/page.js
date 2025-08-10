@@ -9,13 +9,16 @@ import Opportunity from '@/components/Opportunity';
 import Footer from '@/components/Footer';
 import ContactUs from '@/components/ContactUs';
 import FAQ from '@/components/FAQ';
+import FloatingSidebar from '@/components/FloatingSidebar';
 
 import Testimonials from '@/components/Testimonials';
 
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
+      
+      <FloatingSidebar />
       <section id="home">
         <Hero />
       </section>
@@ -38,6 +41,6 @@ export default function Home() {
         <ContactUs />
       </section>
       <Footer/>
-    </>
+    </div>
   );
 }
