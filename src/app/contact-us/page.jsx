@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
+import Top from '@/components/Top';
+import Footer from '@/components/Footer';
 import { Phone, Mail, ArrowUpRight, ChevronDown } from 'lucide-react';
 
 const ContactUs = () => {
@@ -95,52 +96,14 @@ const ContactUs = () => {
 
   return (
     <>
-      {/* Fixed Navbar at top */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-        <Navbar />
-      </div>
-      
-      {/* Contact Us Banner - Full coverage */}
-      <div 
-        className="relative h-[250px] sm:h-[300px] md:h-[352px] w-full flex items-center overflow-hidden"
-        style={{
-          marginTop: '125px', // Reduced for mobile
-          backgroundImage: 'url(/handtwo.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'scroll'
-        }}
-      >
-        {/* Partial Gradient Overlay - Only on left side */}
-        <div 
-          className="absolute inset-y-0 left-0 z-0"
-          style={{
-            width: '80%', // Increased for mobile
-            background: 'linear-gradient(to right, rgba(3, 109, 169, 0.85) 0%, rgba(3, 109, 169, 0.6) 70%, transparent 100%)'
-          }}
-        ></div>
-        
-        {/* Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <div className="text-white">
-            {/* Breadcrumb */}
-            <nav className="flex items-center text-sm md:text-md mb-2 md:mb-4 text-blue-100">
-              <span className="hover:text-white cursor-pointer transition-colors">Home</span>
-              <span className="mx-2">›</span>
-              <span className="text-white">Contact us</span>
-            </nav>
-            
-            {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-none">
-              Contact us
-            </h1>
-          </div>
-        </div>
-      </div>
+      {/* Top Section with Navbar and Header */}
+      <Top 
+        title="Contact us"
+        locationTitle="Home >> Contact us"
+      />
       
       {/* Page Content with custom background */}
-      <div className="py-8 md:py-16 px-4 sm:px-6 md:px-8" style={{ backgroundColor: '#F6F5EF' }}>
+      <div className="py-8 md:py-16 px-4 sm:px-6 md:px-8 -mt-12 md:-mt-16" style={{ backgroundColor: '#F6F5EF' }}>
         <div className="max-w-7xl mx-auto">
           {/* Contact Section with new form */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
@@ -409,6 +372,8 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </>
   );
 }
